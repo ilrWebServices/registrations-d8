@@ -20,6 +20,35 @@ It is based on the [Composer template for Drupal projects][].
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
 
+### Development-only Settings
+
+You may wish to configure some settings (cache, config splits, etc.) for local development. To do so, you may optionally add a `settings.local.php` file to `web/sites/default/`.
+
+Here's a suggested example:
+
+```
+<?php
+
+// Allow any domain to access the site.
+$settings['trusted_host_patterns'] = array();
+
+// Enable the config split for development-only modules, like field_ui.
+$config['config_split.config_split.dev']['status'] = TRUE;
+
+// Enable local development services.
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+
+// Show all error messages, with backtrace information.
+$config['system.logging']['error_level'] = 'verbose';
+
+// Disable CSS and JS aggregation.
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
+
+// Skip file system permissions hardening.
+$settings['skip_permissions_hardening'] = TRUE;
+```
+
 ### Clean install
 
 To work on a blank slate of the codebase without syncing content and data from production, install Drupal like so:
