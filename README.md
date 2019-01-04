@@ -9,6 +9,7 @@ It is based on the [Composer template for Drupal projects][].
 - git
 - PHP 7.1 or greater
 - Composer
+- Drush ([Drush launcher][] is recommended, since a copy of Drush is included in this project)
 
 ## Setup
 
@@ -18,6 +19,14 @@ It is based on the [Composer template for Drupal projects][].
 4. Copy `.env.example` to `.env` and update the database connection info.
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
+
+### Clean install
+
+To work on a blank slate of the codebase without syncing content and data from production, install Drupal like so:
+
+```
+$ drush si minimal --config-dir=../config/sync
+```
 
 ## Adding and Updating Modules and Other Dependencies
 
@@ -62,4 +71,5 @@ Then run `git diff` to determine if any of the scaffolding files have changed.
 Review changes and restore any customizations to `.htaccess` or `robots.txt`. Commit everything together in a single commit (or merge), so `web` will remain in sync with `core` when checking out branches or running `git bisect`.
 
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
+[Drush launcher]: https://github.com/drush-ops/drush-launcher
 [composer-patches]: https://github.com/cweagans/composer-patches
