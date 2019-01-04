@@ -1,5 +1,7 @@
 module:
   block: 0
+  config_filter: 0
+  config_split: 0
   dblog: 0
   dynamic_page_cache: 0
   field: 0
