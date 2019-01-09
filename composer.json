@@ -64,6 +64,11 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
+        "patches": {
+            "drupal/core": {
+                "Use email verification when changing user email addresses": "https://www.drupal.org/files/issues/2018-10-16/85494-261.patch"
+            }
+        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
