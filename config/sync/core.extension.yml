@@ -1,13 +1,23 @@
 module:
+  address: 0
   block: 0
+  commerce: 0
+  commerce_price: 0
+  commerce_product: 0
+  commerce_store: 0
   config_filter: 0
   config_split: 0
+  datetime: 0
   dblog: 0
   dynamic_page_cache: 0
+  entity: 0
   field: 0
   filter: 0
+  inline_entity_form: 0
   node: 0
+  options: 0
   page_cache: 0
+  path: 0
   system: 0
   text: 0
   user: 0
