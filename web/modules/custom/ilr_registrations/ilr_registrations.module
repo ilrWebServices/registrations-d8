@@ -4,3 +4,20 @@
  * @file
  * Contains ilr_registrations.module.
  */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_entity_type_alter().
+ *
+ * Add the 'salesforce' link template to the commerce_product_variation entity.
+ * This will be unnecessary once commerce is patched to add a `canonical` link
+ * template to the ProductVariation entity. To know why that has to happen, see
+ * salesforce_mapping_entity_type_alter().
+ */
+function ilr_registrations_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  if (isset($entity_types['commerce_product_variation'])) {
+    $entity_types['commerce_product_variation']->setLinkTemplate('salesforce', "/commerce_product_variation/{commerce_product_variation}/salesforce");
+  }
+}
