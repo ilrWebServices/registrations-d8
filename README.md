@@ -16,7 +16,7 @@ It is based on the [Composer template for Drupal projects][].
 1. Clone this repository
 2. Open a terminal at the root of the repo
 3. Run `composer install`
-4. Copy `.env.example` to `.env` and update the database connection info.
+4. Copy `.env.example` to `.env` and update the database connection and salesforce info.
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
 
@@ -98,6 +98,32 @@ $ composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-de
 Then run `git diff` to determine if any of the scaffolding files have changed.
 
 Review changes and restore any customizations to `.htaccess` or `robots.txt`. Commit everything together in a single commit (or merge), so `web` will remain in sync with `core` when checking out branches or running `git bisect`.
+
+## Salesforce Integration
+
+When installing the site from scratch, you'll need to configure two groups of settings to connect to Salesforce.
+
+As of this writing (January 2019), you can get values for these settings from the production instance of the Drupal 7 site. Search the `variables` table for the following keys:
+
+- `salesforce_consumer_key`
+- `salesforce_consumer_secret`
+- `salesforce_endpoint` (AKA `login_url`)
+- `salesforce_instance_url`
+- `salesforce_refresh_token`
+
+### 1. Remote/Connected App Settings
+
+These are set in `settings.php` via environment variables. For developers, this means adding them to your `.env` file. See the Setup section above.
+
+### 2. Authorization Settings
+
+These are set using the Drupal 8 State API, so they cannot be added via config or config overrides. Once you have the values for the instance URL and refresh token from the production site, you can add them to your local state using drush:
+
+```
+$ drush state-set salesforce.instance_url [VALUE_FROM_PROD_SITE]
+$ drush state-set salesforce.refresh_token [VALUE_FROM_PROD_SITE]
+```
+
 
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
