@@ -9,16 +9,21 @@ module:
   config_split: 0
   datetime: 0
   dblog: 0
+  dynamic_entity_reference: 0
   dynamic_page_cache: 0
   entity: 0
   field: 0
   filter: 0
   ilr_registrations: 0
   inline_entity_form: 0
+  link: 0
   node: 0
   options: 0
   page_cache: 0
   path: 0
+  salesforce: 0
+  salesforce_mapping: 0
+  salesforce_pull: 0
   system: 0
   text: 0
   user: 0
