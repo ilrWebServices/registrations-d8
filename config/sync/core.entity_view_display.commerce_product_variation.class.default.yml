@@ -1,0 +1,47 @@
+uuid: 4ef92a7b-31a6-4804-a6b2-8defb602287a
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.class
+    - field.field.commerce_product_variation.class.field_salesforce_price
+  module:
+    - commerce_price
+id: commerce_product_variation.class.default
+targetEntityType: commerce_product_variation
+bundle: class
+mode: default
+content:
+  field_salesforce_price:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  list_price:
+    label: above
+    type: commerce_price_default
+    weight: -1
+    region: content
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
+  price:
+    label: above
+    type: commerce_price_default
+    weight: 0
+    region: content
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
+hidden:
+  product_id: true
+  sku: true
+  title: true

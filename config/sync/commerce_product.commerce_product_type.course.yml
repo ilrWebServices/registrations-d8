@@ -1,0 +1,12 @@
+uuid: ef33cb2f-3cae-491b-96ea-b80a9e6a40fb
+langcode: en
+status: true
+dependencies: {  }
+id: course
+label: Course
+description: 'A course pulled from Salesforce. In general, these are not added or edited manually.'
+variationType: class
+multipleVariations: true
+injectVariationFields: true
+traits: {  }
+locked: false

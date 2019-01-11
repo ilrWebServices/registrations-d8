@@ -764,6 +764,17 @@ $settings['file_scan_ignore_directories'] = [
 $settings['entity_update_batch_size'] = 50;
 
 /**
+ * Salesforce settings.
+ *
+ * Some bogus values are stored in config, and the real values come from
+ * the web server environment (or the .env file, generally only used by
+ * developers).
+ */
+$config['salesforce.settings']['consumer_key'] = getenv('SALESFORCE_CONSUMER_KEY');
+$config['salesforce.settings']['consumer_secret'] = getenv('SALESFORCE_CONSUMER_SECRET');
+$config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
+
+/**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,

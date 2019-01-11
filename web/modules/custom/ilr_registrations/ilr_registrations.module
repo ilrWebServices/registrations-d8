@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains ilr_registrations.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\commerce_price\Price;
+
+/**
+ * Implements hook_entity_type_alter().
+ *
+ * Add the 'salesforce' link template to the commerce_product_variation entity.
+ * This will be unnecessary once commerce is patched to add a `canonical` link
+ * template to the ProductVariation entity. To know why that has to happen, see
+ * salesforce_mapping_entity_type_alter().
+ */
+function ilr_registrations_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  if (isset($entity_types['commerce_product_variation'])) {
+    $entity_types['commerce_product_variation']->setLinkTemplate('salesforce', "/commerce_product_variation/{commerce_product_variation}/salesforce");
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Fix the price of commerce_product_variations imported by salesforce.
+ */
+function ilr_registrations_commerce_product_variation_presave(EntityInterface $entity) {
+  // Update the price property if there is a value from the sf mapping.
+  if (isset($entity->field_salesforce_price->first()->value)) {
+    $salesforce_price_string = (string) $entity->field_salesforce_price->first()->value;
+    $entity->price = new Price($salesforce_price_string, 'USD');
+  }
+}

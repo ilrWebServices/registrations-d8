@@ -1,0 +1,7 @@
+name: 'ILR Registations'
+type: module
+description: 'Update hooks and misc custom code for the registrations site'
+core: 8.x
+package: 'ILR'
+dependencies:
+  - commerce_store
