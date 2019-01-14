@@ -12,26 +12,6 @@ targetEntityType: commerce_product_variation
 bundle: class
 mode: default
 content:
-  field_salesforce_price:
-    weight: 1
-    label: above
-    settings:
-      thousand_separator: ''
-      decimal_separator: .
-      scale: 2
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_decimal
-    region: content
-  list_price:
-    label: above
-    type: commerce_price_default
-    weight: -1
-    region: content
-    settings:
-      strip_trailing_zeroes: false
-      currency_display: symbol
-    third_party_settings: {  }
   price:
     label: above
     type: commerce_price_default
@@ -42,6 +22,8 @@ content:
       currency_display: symbol
     third_party_settings: {  }
 hidden:
+  field_salesforce_price: true
+  list_price: true
   product_id: true
   sku: true
   title: true
