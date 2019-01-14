@@ -6,6 +6,7 @@ dependencies:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
     - field.field.commerce_product.course.stores
+    - field.field.commerce_product.course.variations
   module:
     - commerce
     - path
@@ -47,10 +48,10 @@ content:
     type: commerce_entity_select
     weight: -10
     settings:
-      hide_single_entity: true
       autocomplete_threshold: 7
       autocomplete_size: 60
       autocomplete_placeholder: ''
+      hide_single_entity: false
     third_party_settings: {  }
     region: content
   title:
