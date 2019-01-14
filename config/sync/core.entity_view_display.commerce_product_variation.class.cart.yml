@@ -1,0 +1,27 @@
+uuid: 71adde3c-d11f-41f8-bcae-1ecceb60032d
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.class
+    - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.class.field_salesforce_price
+id: commerce_product_variation.class.cart
+targetEntityType: commerce_product_variation
+bundle: class
+mode: cart
+content:
+  title:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+hidden:
+  field_salesforce_price: true
+  list_price: true
+  price: true
+  product_id: true
+  sku: true
