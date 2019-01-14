@@ -9,5 +9,7 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
+  - 'access checkout'
   - 'access content'
   - 'view commerce_product'
+  - 'view own commerce_order'
