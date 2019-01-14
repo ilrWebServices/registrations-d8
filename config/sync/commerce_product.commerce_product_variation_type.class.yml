@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: class
 label: Class
-orderItemType: null
+orderItemType: default
 generateTitle: false
 traits: {  }
 locked: false
