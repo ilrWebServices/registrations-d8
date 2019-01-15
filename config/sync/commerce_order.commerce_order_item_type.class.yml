@@ -7,4 +7,4 @@ id: class
 purchasableEntityType: commerce_product_variation
 orderType: default
 traits: {  }
-locked: false
+locked: true

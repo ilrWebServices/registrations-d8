@@ -9,4 +9,4 @@ variationType: class
 multipleVariations: true
 injectVariationFields: true
 traits: {  }
-locked: false
+locked: true

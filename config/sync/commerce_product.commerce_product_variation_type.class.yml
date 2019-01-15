@@ -7,4 +7,4 @@ label: Class
 orderItemType: class
 generateTitle: false
 traits: {  }
-locked: false
+locked: true
