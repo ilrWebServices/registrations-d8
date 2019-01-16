@@ -33,7 +33,7 @@ field_mappings:
     direction: sf_drupal
   -
     drupal_field_type: properties
-    drupal_field_value: field_salesforce_price
+    drupal_field_value: field_class_price
     salesforce_field: Event_Class_Fee__c
     direction: sf_drupal
   -

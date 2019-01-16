@@ -1,11 +1,11 @@
-uuid: e2349642-9d98-4ec7-acf0-d843e02b90a3
+uuid: 527ecaa8-6a6d-4d5a-a3a4-39463835227c
 langcode: en
 status: true
 dependencies:
   module:
     - commerce_product
-id: commerce_product_variation.field_salesforce_price
-field_name: field_salesforce_price
+id: commerce_product_variation.field_class_price
+field_name: field_class_price
 entity_type: commerce_product_variation
 type: decimal
 settings:

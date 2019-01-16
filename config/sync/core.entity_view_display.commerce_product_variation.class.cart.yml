@@ -6,8 +6,8 @@ dependencies:
     - commerce_product.commerce_product_variation_type.class
     - core.entity_view_mode.commerce_product_variation.cart
     - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
-    - field.field.commerce_product_variation.class.field_salesforce_price
   module:
     - datetime
 id: commerce_product_variation.class.cart
@@ -42,7 +42,7 @@ content:
       link_to_entity: true
     third_party_settings: {  }
 hidden:
-  field_salesforce_price: true
+  field_class_price: true
   list_price: true
   price: true
   product_id: true

@@ -30,8 +30,8 @@ function ilr_registrations_entity_type_alter(array &$entity_types) {
  */
 function ilr_registrations_commerce_product_variation_presave(EntityInterface $entity) {
   // Update the price property if there is a value from the sf mapping.
-  if (isset($entity->field_salesforce_price->first()->value)) {
-    $salesforce_price_string = (string) $entity->field_salesforce_price->first()->value;
+  if (isset($entity->field_class_price->first()->value)) {
+    $salesforce_price_string = (string) $entity->field_class_price->first()->value;
     $entity->price = new Price($salesforce_price_string, 'USD');
   }
 }

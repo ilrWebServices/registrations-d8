@@ -5,8 +5,8 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
     - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
-    - field.field.commerce_product_variation.class.field_salesforce_price
   module:
     - commerce_price
     - datetime
@@ -21,18 +21,18 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_class_price:
+    weight: 104
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   field_class_start:
     weight: 101
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
-    region: content
-  field_salesforce_price:
-    weight: 100
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
     region: content
   list_price:
     type: commerce_list_price
