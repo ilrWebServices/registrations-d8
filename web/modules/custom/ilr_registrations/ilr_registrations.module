@@ -35,3 +35,29 @@ function ilr_registrations_commerce_product_variation_presave(EntityInterface $e
     $entity->price = new Price($salesforce_price_string, 'USD');
   }
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Ensure that `commerce_product`s imported by salesforce use the default store.
+ */
+function ilr_registrations_commerce_product_presave(EntityInterface $entity) {
+  // If this product has a store assigned, it's fine.
+  if (count($entity->getStoreIds()) > 0) {
+    return;
+  }
+
+  // Get the default store.
+  $default_store = \Drupal::service('commerce_store.default_store_resolver')->resolve();
+
+  // Just bail if there is no default store. That should only happen if an
+  // admin deleted it.
+  if (!$default_store) {
+    return;
+  }
+
+  // Set the default store for this storeless product.
+  $entity->stores = [
+    'target_id' => $default_store->id(),
+  ];
+}
