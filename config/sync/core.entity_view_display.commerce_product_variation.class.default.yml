@@ -4,14 +4,35 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
+    - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_start
     - field.field.commerce_product_variation.class.field_salesforce_price
   module:
     - commerce_price
+    - datetime
 id: commerce_product_variation.class.default
 targetEntityType: commerce_product_variation
 bundle: class
 mode: default
 content:
+  field_class_end:
+    type: datetime_default
+    weight: 2
+    region: content
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  field_class_start:
+    type: datetime_default
+    weight: 1
+    region: content
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
   price:
     label: above
     type: commerce_price_default

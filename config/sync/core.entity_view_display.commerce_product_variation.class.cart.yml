@@ -5,12 +5,34 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
     - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_start
     - field.field.commerce_product_variation.class.field_salesforce_price
+  module:
+    - datetime
 id: commerce_product_variation.class.cart
 targetEntityType: commerce_product_variation
 bundle: class
 mode: cart
 content:
+  field_class_end:
+    type: datetime_default
+    weight: 2
+    region: content
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+  field_class_start:
+    type: datetime_default
+    weight: 1
+    region: content
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
   title:
     type: string
     weight: 0

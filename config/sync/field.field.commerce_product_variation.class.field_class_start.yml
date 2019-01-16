@@ -1,0 +1,21 @@
+uuid: ea7ae939-6d0b-4368-9213-89a33943816f
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.class
+    - field.storage.commerce_product_variation.field_class_start
+  module:
+    - datetime
+id: commerce_product_variation.class.field_class_start
+field_name: field_class_start
+entity_type: commerce_product_variation
+bundle: class
+label: 'Class start'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
