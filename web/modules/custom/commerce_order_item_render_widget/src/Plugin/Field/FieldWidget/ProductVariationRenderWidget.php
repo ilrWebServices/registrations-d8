@@ -179,16 +179,27 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
     $element['variation'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => [
-          'variation-item',
-        ],
+        'data-variation-render-container' => '1',
+      ],
+      '#attached' => [
+        'library' => ['commerce_order_item_render_widget/widget'],
       ],
     ];
 
     foreach ($variations as $key => $variation) {
+      $classes = [];
+
+      if ((int) $selected_variation->id() === (int) $key) {
+        $classes[] = 'active';
+      }
+
       $element['variation'][$key] = [
         '#type' => 'container',
         'rendered_entity' => $view_builder->view($variation, $this->getSetting('display_mode')),
+        '#attributes' => [
+          'data-variation-render' => $key,
+          'class' => $classes,
+        ],
       ];
       $element['variation'][$key]['radio'] = [
         '#type' => 'radio',
@@ -197,19 +208,17 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
         // from the theme function.
         '#return_value' => $key,
         '#default_value' => $selected_variation->id(),
-        // '#attributes' => $element['#attributes'],
+        '#attributes' => [
+          'data-variation-render-input' => $key,
+        ],
         // The parents of this individual radio button must include the
         // container defined above, rather than the 'radios' form element
         // normally used.
         '#parents' => array_merge($parents, ['variation']),
-        // '#id' => HtmlUtility::getUniqueId('edit-' . implode('-', $parents_for_id)),
         '#ajax' => [
           'callback' => [get_class($this), 'ajaxRefresh'],
           'wrapper' => $form['#wrapper_id'],
         ],
-        // Errors should only be shown on the parent radios element.
-        // '#error_no_message' => TRUE,
-        // '#weight' => $weight,
       ];
     }
 
