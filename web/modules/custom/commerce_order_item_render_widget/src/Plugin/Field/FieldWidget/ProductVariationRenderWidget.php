@@ -12,6 +12,8 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Plugin implementation of the 'product_variation_render_widget' widget.
@@ -34,6 +36,13 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
   protected $entityTypeManager;
 
   /**
+   * Display modes available for target entity type.
+   *
+   * @var array
+   */
+  protected $displayModes;
+
+  /**
    * Constructs a ProductVariationRenderWidget widget.
    *
    * @param string $plugin_id
@@ -48,11 +57,32 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
    *   Any third party settings.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   Entity type manager service.
+   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository
+   *   The entity repository.
+   * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
+   *   The entity display repository.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeManagerInterface $entity_type_manager, EntityRepositoryInterface $entity_repository) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, EntityTypeManagerInterface $entity_type_manager, EntityRepositoryInterface $entity_repository, EntityDisplayRepositoryInterface $entity_display_repository) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings, $entity_type_manager, $entity_repository);
 
     $this->entityTypeManager = $entity_type_manager;
+    $this->displayModes = $entity_display_repository->getViewModes($this->getFieldSetting('target_type'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $plugin_id,
+      $plugin_definition,
+      $configuration['field_definition'],
+      $configuration['settings'],
+      $configuration['third_party_settings'],
+      $container->get('entity_type.manager'),
+      $container->get('entity.repository'),
+      $container->get('entity_display.repository')
+    );
   }
 
   /**
@@ -60,8 +90,7 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
    */
   public static function defaultSettings() {
     return [
-      'label_display' => TRUE,
-      'label_text' => 'Please select',
+      'display_mode' => 'cart',
     ] + parent::defaultSettings();
   }
 
@@ -70,17 +99,17 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $element = parent::settingsForm($form, $form_state);
-    $element['label_display'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Display label'),
-      '#default_value' => $this->getSetting('label_display'),
-    ];
-    $element['label_text'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Label text'),
-      '#default_value' => $this->getSetting('label_text'),
-      '#description' => $this->t('The label will be available to screen readers even if it is not displayed.'),
-      '#required' => TRUE,
+
+    $modes = [];
+    foreach ($this->displayModes as $mode_name => $mode) {
+      $modes[$mode_name] = $mode['label'];
+    }
+
+    $element['display_mode'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Display mode'),
+      '#options' => $modes,
+      '#default_value' => $this->getSetting('display_mode'),
     ];
 
     return $element;
@@ -91,9 +120,8 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
    */
   public function settingsSummary() {
     $summary = parent::settingsSummary();
-    $summary[] = $this->t('Label: "@text" (@visible)', [
-      '@text' => $this->getSetting('label_text'),
-      '@visible' => $this->getSetting('label_display') ? $this->t('visible') : $this->t('hidden'),
+    $summary[] = $this->t('Display mode: @mode', [
+      '@mode' => $this->displayModes[$this->getSetting('display_mode')]['label']
     ]);
 
     return $summary;
@@ -160,8 +188,7 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
     foreach ($variations as $key => $variation) {
       $element['variation'][$key] = [
         '#type' => 'container',
-        // @todo Make the view mode configurable.
-        'rendered_entity' => $view_builder->view($variation, 'cart'),
+        'rendered_entity' => $view_builder->view($variation, $this->getSetting('display_mode')),
       ];
       $element['variation'][$key]['radio'] = [
         '#type' => 'radio',
