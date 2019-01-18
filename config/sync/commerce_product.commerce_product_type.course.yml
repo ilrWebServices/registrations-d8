@@ -7,6 +7,6 @@ label: Course
 description: 'A course pulled from Salesforce. In general, these are not added or edited manually.'
 variationType: class
 multipleVariations: true
-injectVariationFields: true
+injectVariationFields: false
 traits: {  }
 locked: true

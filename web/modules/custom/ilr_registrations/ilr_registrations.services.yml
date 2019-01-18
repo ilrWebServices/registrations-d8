@@ -1,0 +1,5 @@
+services:
+  ilr_registrations_commerce_event_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\CommerceEventSubscriber
+    tags:
+    - { name: event_subscriber }
