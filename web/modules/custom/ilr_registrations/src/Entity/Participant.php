@@ -50,7 +50,7 @@ use Drupal\user\UserInterface;
  *     "add-form" = "/participant/add/{participant_type}",
  *     "edit-form" = "/participant/{participant}/edit",
  *     "delete-form" = "/participant/{participant}/delete",
- *     "collection" = "/participant",
+ *     "collection" = "/admin/registrations/participants",
  *   },
  *   bundle_entity_type = "participant_type",
  *   field_ui_base_route = "entity.participant_type.edit_form"

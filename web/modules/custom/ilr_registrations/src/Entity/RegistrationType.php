@@ -31,11 +31,11 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/registration_type/{registration_type}",
- *     "add-form" = "/admin/structure/registration_type/add",
- *     "edit-form" = "/admin/structure/registration_type/{registration_type}/edit",
- *     "delete-form" = "/admin/structure/registration_type/{registration_type}/delete",
- *     "collection" = "/admin/structure/registration_type"
+ *     "canonical" = "/admin/registrations/registration_type/{registration_type}",
+ *     "add-form" = "/admin/registrations/registration_type/add",
+ *     "edit-form" = "/admin/registrations/registration_type/{registration_type}/edit",
+ *     "delete-form" = "/admin/registrations/registration_type/{registration_type}/delete",
+ *     "collection" = "/admin/registrations/registration_types"
  *   }
  * )
  */
