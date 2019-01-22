@@ -10,7 +10,7 @@ entity.registration.collection:
   title: 'Registration list'
   route_name: entity.registration.collection
   description: 'List Registration entities'
-  parent: system.admin_structure
+  parent: ilr_registrations.admin
   weight: 100
 
 # Registration type menu items definition
@@ -18,7 +18,7 @@ entity.registration_type.collection:
   title: 'Registration type'
   route_name: entity.registration_type.collection
   description: 'List Registration type (bundles)'
-  parent: system.admin_structure
+  parent: ilr_registrations.admin
   weight: 99
 
 # Participant menu items definition
@@ -26,7 +26,7 @@ entity.participant.collection:
   title: 'Participant list'
   route_name: entity.participant.collection
   description: 'List Participant entities'
-  parent: system.admin_structure
+  parent: ilr_registrations.admin
   weight: 100
 
 # Participant type menu items definition
@@ -34,5 +34,5 @@ entity.participant_type.collection:
   title: 'Participant type'
   route_name: entity.participant_type.collection
   description: 'List Participant type (bundles)'
-  parent: system.admin_structure
+  parent: ilr_registrations.admin
   weight: 99
