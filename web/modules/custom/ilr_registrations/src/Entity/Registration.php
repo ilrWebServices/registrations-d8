@@ -46,12 +46,12 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "//registration/{registration}",
- *     "add-page" = "//registration/add",
- *     "add-form" = "//registration/add/{registration_type}",
- *     "edit-form" = "//registration/{registration}/edit",
- *     "delete-form" = "//registration/{registration}/delete",
- *     "collection" = "//registration",
+ *     "canonical" = "/registration/{registration}",
+ *     "add-page" = "/registration/add",
+ *     "add-form" = "/registration/add/{registration_type}",
+ *     "edit-form" = "/registration/{registration}/edit",
+ *     "delete-form" = "/registration/{registration}/delete",
+ *     "collection" = "/registration",
  *   },
  *   bundle_entity_type = "registration_type",
  *   field_ui_base_route = "entity.registration_type.edit_form"
