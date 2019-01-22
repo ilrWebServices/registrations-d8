@@ -1,0 +1,7 @@
+entity.commerce_order_item.canonical:
+  path: /admin/commerce/config/order-item/{commerce_order_item}
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Orders'
+  requirements:
+    _permission: 'access commerce administration pages'
