@@ -1,3 +1,10 @@
+ilr_registrations.admin:
+  title: 'Registrations'
+  route_name: 'ilr_registrations.admin'
+  parent: 'system.admin'
+  description: 'Administer and configure Registrations.'
+  weight: -9
+
 # Registration menu items definition
 entity.registration.collection:
   title: 'Registration list'
