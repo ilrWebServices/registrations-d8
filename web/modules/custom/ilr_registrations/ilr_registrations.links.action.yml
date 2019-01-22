@@ -10,3 +10,14 @@ entity.registration_type.add_form:
   appears_on:
     - entity.registration_type.collection
 
+entity.participant.add_form:
+  route_name: entity.participant.add_page
+  title: 'Add Participant'
+  appears_on:
+    - entity.participant.collection
+
+entity.participant_type.add_form:
+  route_name: entity.participant_type.add_form
+  title: 'Add Participant type'
+  appears_on:
+    - entity.participant_type.collection

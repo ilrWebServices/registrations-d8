@@ -14,3 +14,18 @@ entity.registration_type.collection:
   parent: system.admin_structure
   weight: 99
 
+# Participant menu items definition
+entity.participant.collection:
+  title: 'Participant list'
+  route_name: entity.participant.collection
+  description: 'List Participant entities'
+  parent: system.admin_structure
+  weight: 100
+
+# Participant type menu items definition
+entity.participant_type.collection:
+  title: 'Participant type'
+  route_name: entity.participant_type.collection
+  description: 'List Participant type (bundles)'
+  parent: system.admin_structure
+  weight: 99

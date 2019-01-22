@@ -17,3 +17,23 @@ view published registration entities:
 
 view unpublished registration entities:
   title: 'View unpublished Registration entities'
+
+add participant entities:
+  title: 'Create new Participant entities'
+
+administer participant entities:
+  title: 'Administer Participant entities'
+  description: 'Allow to access the administration form to configure Participant entities.'
+  restrict access: true
+
+delete participant entities:
+  title: 'Delete Participant entities'
+
+edit participant entities:
+  title: 'Edit Participant entities'
+
+view published participant entities:
+  title: 'View published Participant entities'
+
+view unpublished participant entities:
+  title: 'View unpublished Participant entities'
