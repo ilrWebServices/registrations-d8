@@ -35,7 +35,7 @@ use Drupal\user\UserInterface;
  *     },
  *   },
  *   base_table = "participant",
- *   admin_permission = "administer participant entities",
+ *   admin_permission = "administer participants",
  *   entity_keys = {
  *     "id" = "id",
  *     "bundle" = "type",

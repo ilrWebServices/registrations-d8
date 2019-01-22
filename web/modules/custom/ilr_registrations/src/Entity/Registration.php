@@ -35,7 +35,7 @@ use Drupal\user\UserInterface;
  *     },
  *   },
  *   base_table = "registration",
- *   admin_permission = "administer registration entities",
+ *   admin_permission = "administer registrations",
  *   entity_keys = {
  *     "id" = "id",
  *     "bundle" = "type",

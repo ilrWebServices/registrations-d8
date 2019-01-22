@@ -27,10 +27,10 @@ class RegistrationAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view published registration entities');
 
       case 'update':
-        return AccessResult::allowedIfHasPermission($account, 'edit registration entities');
+        return AccessResult::allowedIfHasPermission($account, 'edit registrations');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermission($account, 'delete registration entities');
+        return AccessResult::allowedIfHasPermission($account, 'delete registrations');
     }
 
     // Unknown operation, no opinion.
@@ -41,7 +41,7 @@ class RegistrationAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermission($account, 'add registration entities');
+    return AccessResult::allowedIfHasPermission($account, 'add registrations');
   }
 
 }

@@ -1,42 +1,42 @@
 access registration administration pages:
   title: 'Access Registrations administration pages'
 
-add registration entities:
-  title: 'Create new Registration entities'
+add registrations:
+  title: 'Create new Registrations'
 
-administer registration entities:
-  title: 'Administer Registration entities'
-  description: 'Allow to access the administration form to configure Registration entities.'
+administer registrations:
+  title: 'Administer Registrations'
+  description: 'Administer Registration types and associated fields.'
   restrict access: true
 
-delete registration entities:
-  title: 'Delete Registration entities'
+delete registrations:
+  title: 'Delete Registrations'
 
-edit registration entities:
-  title: 'Edit Registration entities'
+edit registrations:
+  title: 'Edit Registrations'
 
 view published registration entities:
-  title: 'View published Registration entities'
+  title: 'View published Registrations'
 
 view unpublished registration entities:
-  title: 'View unpublished Registration entities'
+  title: 'View unpublished Registrations'
 
-add participant entities:
-  title: 'Create new Participant entities'
+add participants:
+  title: 'Create new Participants'
 
-administer participant entities:
-  title: 'Administer Participant entities'
-  description: 'Allow to access the administration form to configure Participant entities.'
+administer participants:
+  title: 'Administer Participants'
+  description: 'Administer Participant types and associated fields.'
   restrict access: true
 
-delete participant entities:
-  title: 'Delete Participant entities'
+delete participants:
+  title: 'Delete Participants'
 
-edit participant entities:
-  title: 'Edit Participant entities'
+edit participants:
+  title: 'Edit Participants'
 
 view published participant entities:
-  title: 'View published Participant entities'
+  title: 'View published Participants'
 
 view unpublished participant entities:
-  title: 'View unpublished Participant entities'
+  title: 'View unpublished Participants'

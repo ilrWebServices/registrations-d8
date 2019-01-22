@@ -27,10 +27,10 @@ class ParticipantAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view published participant entities');
 
       case 'update':
-        return AccessResult::allowedIfHasPermission($account, 'edit participant entities');
+        return AccessResult::allowedIfHasPermission($account, 'edit participants');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermission($account, 'delete participant entities');
+        return AccessResult::allowedIfHasPermission($account, 'delete participants');
     }
 
     // Unknown operation, no opinion.
@@ -41,7 +41,7 @@ class ParticipantAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermission($account, 'add participant entities');
+    return AccessResult::allowedIfHasPermission($account, 'add participants');
   }
 
 }
