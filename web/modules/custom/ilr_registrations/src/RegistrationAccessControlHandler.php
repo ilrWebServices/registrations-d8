@@ -21,10 +21,7 @@ class RegistrationAccessControlHandler extends EntityAccessControlHandler {
     /** @var \Drupal\ilr_registrations\Entity\RegistrationInterface $entity */
     switch ($operation) {
       case 'view':
-        if (!$entity->isPublished()) {
-          return AccessResult::allowedIfHasPermission($account, 'view unpublished registration entities');
-        }
-        return AccessResult::allowedIfHasPermission($account, 'view published registration entities');
+        return AccessResult::allowedIfHasPermission($account, 'view registrations');
 
       case 'update':
         return AccessResult::allowedIfHasPermission($account, 'edit registrations');

@@ -21,10 +21,7 @@ class ParticipantAccessControlHandler extends EntityAccessControlHandler {
     /** @var \Drupal\ilr_registrations\Entity\ParticipantInterface $entity */
     switch ($operation) {
       case 'view':
-        if (!$entity->isPublished()) {
-          return AccessResult::allowedIfHasPermission($account, 'view unpublished participant entities');
-        }
-        return AccessResult::allowedIfHasPermission($account, 'view published participant entities');
+        return AccessResult::allowedIfHasPermission($account, 'view participants');
 
       case 'update':
         return AccessResult::allowedIfHasPermission($account, 'edit participants');

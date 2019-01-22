@@ -53,25 +53,4 @@ interface RegistrationInterface extends ContentEntityInterface, EntityChangedInt
    */
   public function setCreatedTime($timestamp);
 
-  /**
-   * Returns the Registration published status indicator.
-   *
-   * Unpublished Registration are only visible to restricted users.
-   *
-   * @return bool
-   *   TRUE if the Registration is published.
-   */
-  public function isPublished();
-
-  /**
-   * Sets the published status of a Registration.
-   *
-   * @param bool $published
-   *   TRUE to set this Registration to published, FALSE to set it to unpublished.
-   *
-   * @return \Drupal\ilr_registrations\Entity\RegistrationInterface
-   *   The called Registration entity.
-   */
-  public function setPublished($published);
-
 }

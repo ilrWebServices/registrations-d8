@@ -53,25 +53,4 @@ interface ParticipantInterface extends ContentEntityInterface, EntityChangedInte
    */
   public function setCreatedTime($timestamp);
 
-  /**
-   * Returns the Participant published status indicator.
-   *
-   * Unpublished Participant are only visible to restricted users.
-   *
-   * @return bool
-   *   TRUE if the Participant is published.
-   */
-  public function isPublished();
-
-  /**
-   * Sets the published status of a Participant.
-   *
-   * @param bool $published
-   *   TRUE to set this Participant to published, FALSE to set it to unpublished.
-   *
-   * @return \Drupal\ilr_registrations\Entity\ParticipantInterface
-   *   The called Participant entity.
-   */
-  public function setPublished($published);
-
 }

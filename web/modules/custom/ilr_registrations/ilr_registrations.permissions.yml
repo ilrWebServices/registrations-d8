@@ -15,11 +15,8 @@ delete registrations:
 edit registrations:
   title: 'Edit Registrations'
 
-view published registration entities:
-  title: 'View published Registrations'
-
-view unpublished registration entities:
-  title: 'View unpublished Registrations'
+view registrations:
+  title: 'View Registrations'
 
 add participants:
   title: 'Create new Participants'
@@ -35,8 +32,5 @@ delete participants:
 edit participants:
   title: 'Edit Participants'
 
-view published participant entities:
-  title: 'View published Participants'
-
-view unpublished participant entities:
-  title: 'View unpublished Participants'
+view participants:
+  title: 'View Participants'
