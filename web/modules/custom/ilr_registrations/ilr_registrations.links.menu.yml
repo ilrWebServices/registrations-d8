@@ -3,36 +3,36 @@ ilr_registrations.admin:
   route_name: 'ilr_registrations.admin'
   parent: 'system.admin'
   description: 'Administer and configure Registrations.'
-  weight: -9
+  weight: -10
 
 # Registration menu items definition
 entity.registration.collection:
-  title: 'Registration list'
+  title: 'Registrations'
   route_name: entity.registration.collection
-  description: 'List Registration entities'
+  description: 'Manage Registrations.'
   parent: ilr_registrations.admin
-  weight: 100
+  weight: 0
 
 # Registration type menu items definition
 entity.registration_type.collection:
-  title: 'Registration type'
+  title: 'Registration types'
   route_name: entity.registration_type.collection
-  description: 'List Registration type (bundles)'
+  description: 'Add and configure Registration types.'
   parent: ilr_registrations.admin
-  weight: 99
+  weight: 10
 
 # Participant menu items definition
 entity.participant.collection:
-  title: 'Participant list'
+  title: 'Participants'
   route_name: entity.participant.collection
-  description: 'List Participant entities'
+  description: 'Manage Participants.'
   parent: ilr_registrations.admin
-  weight: 100
+  weight: 1
 
 # Participant type menu items definition
 entity.participant_type.collection:
-  title: 'Participant type'
+  title: 'Participant types'
   route_name: entity.participant_type.collection
-  description: 'List Participant type (bundles)'
+  description: 'Add and configure Participant types.'
   parent: ilr_registrations.admin
-  weight: 99
+  weight: 11
