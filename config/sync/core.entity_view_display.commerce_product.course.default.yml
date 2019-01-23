@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
+    - field.field.commerce_product.course.registration_type
     - field.field.commerce_product.course.stores
     - field.field.commerce_product.course.variations
   module:
@@ -40,5 +41,6 @@ content:
     region: content
 hidden:
   created: true
+  registration_type: true
   stores: true
   uid: true

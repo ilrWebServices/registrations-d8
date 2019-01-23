@@ -1,0 +1,20 @@
+uuid: 6cfe45c1-2c12-4834-89b1-93636c689cbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - ilr_registrations
+id: commerce_product.registration_type
+field_name: registration_type
+entity_type: commerce_product
+type: entity_reference
+settings:
+  target_type: registration_type
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
