@@ -1,0 +1,28 @@
+uuid: a9079c64-8e2f-4ecd-a774-f74c52799613
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.registration.field_participants
+    - ilr_registrations.participant_type.default
+    - ilr_registrations.registration_type.default
+id: registration.default.field_participants
+field_name: field_participants
+entity_type: registration
+bundle: default
+label: Participants
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:participant'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

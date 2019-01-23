@@ -1,0 +1,38 @@
+uuid: 440ba2ba-f113-4a6f-b3be-94d7627c6b3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.registration.default.field_participants
+    - ilr_registrations.registration_type.default
+  module:
+    - user
+id: registration.default.default
+targetEntityType: registration
+bundle: default
+mode: default
+content:
+  field_participants:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
