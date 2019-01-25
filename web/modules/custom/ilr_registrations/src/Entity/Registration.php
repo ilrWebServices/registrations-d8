@@ -17,6 +17,7 @@ use Drupal\user\UserInterface;
  * @ContentEntityType(
  *   id = "registration",
  *   label = @Translation("Registration"),
+ *   label_collection = @Translation("Registrations"),
  *   bundle_label = @Translation("Registration type"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",

@@ -17,6 +17,7 @@ use Drupal\user\UserInterface;
  * @ContentEntityType(
  *   id = "participant",
  *   label = @Translation("Participant"),
+ *   label_collection = @Translation("Participants"),
  *   bundle_label = @Translation("Participant type"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",

@@ -10,6 +10,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  * @ConfigEntityType(
  *   id = "registration_type",
  *   label = @Translation("Registration type"),
+ *   label_collection = @Translation("Registration types"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\ilr_registrations\RegistrationTypeListBuilder",

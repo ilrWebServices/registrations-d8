@@ -10,6 +10,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  * @ConfigEntityType(
  *   id = "participant_type",
  *   label = @Translation("Participant type"),
+ *   label_collection = @Translation("Participant types"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\ilr_registrations\ParticipantTypeListBuilder",
