@@ -9,7 +9,7 @@ dependencies:
     - field.field.commerce_product.course.stores
     - field.field.commerce_product.course.variations
   module:
-    - commerce_product
+    - ilr_registrations
     - text
 id: commerce_product.course.default
 targetEntityType: commerce_product
@@ -23,6 +23,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  registration_type:
+    type: registration_form
+    weight: 0
+    region: content
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
   title:
     label: hidden
     type: string
@@ -31,16 +39,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  variations:
-    type: commerce_add_to_cart
-    weight: 10
-    label: hidden
-    settings:
-      combine: true
-    third_party_settings: {  }
-    region: content
 hidden:
   created: true
-  registration_type: true
   stores: true
   uid: true
+  variations: true
