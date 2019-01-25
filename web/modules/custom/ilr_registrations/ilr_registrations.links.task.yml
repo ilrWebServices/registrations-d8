@@ -15,6 +15,11 @@ entity.registration.delete_form:
   title: Delete
   weight: 10
 
+entity.registration_type.edit_form:
+  route_name: entity.registration_type.edit_form
+  base_route: entity.registration_type.edit_form
+  title: 'Edit'
+
 # Participant routing definition
 entity.participant.canonical:
   route_name: entity.participant.canonical
@@ -32,3 +37,7 @@ entity.participant.delete_form:
   title: Delete
   weight: 10
 
+entity.participant_type.edit_form:
+  route_name: entity.participant_type.edit_form
+  base_route: entity.participant_type.edit_form
+  title: 'Edit'
