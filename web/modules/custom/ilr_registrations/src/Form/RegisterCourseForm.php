@@ -156,6 +156,9 @@ class RegisterCourseForm extends FormBase {
     parent::validateForm($form, $form_state);
 
     // @todo: Ensure that a variation (class) was selected.
+    if (empty($form_state->getValue('variation'))) {
+      $form_state->setErrorByName('variation', $this->t('Please select a class.'));
+    }
   }
 
   /**
