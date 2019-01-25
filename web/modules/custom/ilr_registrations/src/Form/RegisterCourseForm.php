@@ -196,7 +196,14 @@ class RegisterCourseForm extends FormBase {
       // Load the selected variation and add it to the cart. The cart manager
       // will create a user notification.
       $variation = $this->entityTypeManager->getStorage('commerce_product_variation')->load($variation_id);
-      $this->cartManager->addEntity($cart, $variation, $quantity);
+      $order_item = $this->cartManager->addEntity($cart, $variation, $quantity);
+
+      // Link the registration as a reference to the newly created order item.
+      // @todo: Consider the ramifications of hard-coding `field_registration`
+      if ($registration->id() && $order_item) {
+        $order_item->field_registration->entity = $registration;
+        $order_item->save();
+      }
     }
   }
 
