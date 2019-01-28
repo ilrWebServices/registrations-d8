@@ -16,25 +16,6 @@ interface RegistrationInterface extends ContentEntityInterface, EntityChangedInt
   // Add get/set methods for your configuration properties here.
 
   /**
-   * Gets the Registration name.
-   *
-   * @return string
-   *   Name of the Registration.
-   */
-  public function getName();
-
-  /**
-   * Sets the Registration name.
-   *
-   * @param string $name
-   *   The Registration name.
-   *
-   * @return \Drupal\ilr_registrations\Entity\RegistrationInterface
-   *   The called Registration entity.
-   */
-  public function setName($name);
-
-  /**
    * Gets the Registration creation timestamp.
    *
    * @return int
