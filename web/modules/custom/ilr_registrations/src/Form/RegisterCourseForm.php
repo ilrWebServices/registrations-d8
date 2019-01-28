@@ -168,7 +168,7 @@ class RegisterCourseForm extends FormBase {
     // Save the registration and participants.
     $form_display = $form_state->get('form_display');
     $registration = $form_state->get('registration');
-    $extracted = $form_display->extractFormValues($registration, $form, $form_state); // Do we need this?
+    $extracted = $form_display->extractFormValues($registration, $form, $form_state);
 
     if ($registration->save()) {
       drupal_set_message($this->t('Registration saved.'));
@@ -198,7 +198,7 @@ class RegisterCourseForm extends FormBase {
       $variation = $this->entityTypeManager->getStorage('commerce_product_variation')->load($variation_id);
       $order_item = $this->cartManager->addEntity($cart, $variation, $quantity);
 
-      // Link the registration as a reference to the newly created order item.
+      // Link the registration as a reference on the newly created order item.
       // @todo: Consider the ramifications of hard-coding `field_registration`
       if ($registration->id() && $order_item) {
         $order_item->field_registration->entity = $registration;
