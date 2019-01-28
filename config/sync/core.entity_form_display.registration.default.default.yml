@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.participant.inline
     - field.field.registration.default.field_participants
     - ilr_registrations.registration_type.default
   module:
@@ -15,7 +16,7 @@ content:
   field_participants:
     weight: 1
     settings:
-      form_mode: default
+      form_mode: inline
       label_singular: ''
       label_plural: ''
       allow_new: true

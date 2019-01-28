@@ -1,0 +1,22 @@
+uuid: 50d02672-e10a-4589-9365-883cfa247da1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - ilr_registrations.participant_type.default
+id: participant.default.inline
+targetEntityType: participant
+bundle: default
+mode: inline
+content:
+  name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  user_id: true
