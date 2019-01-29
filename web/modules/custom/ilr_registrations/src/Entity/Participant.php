@@ -76,6 +76,33 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
   /**
    * {@inheritdoc}
    */
+  public function preSave(EntityStorageInterface $storage) {
+    // Join this participant to a new or existing user account based on the
+    // participant's mail value.
+    if (!$this->mail->isEmpty()) {
+      // Load a user for this email address.
+      $user_account = user_load_by_mail($this->mail->value);
+
+      // If no user, create and save a new one.
+      if (!$user_account) {
+        $user_account = $this->entityTypeManager()->getStorage('user')->create();
+        $user_account->setPassword(user_password(20));
+        $user_account->enforceIsNew();
+        $user_account->setEmail($this->mail->value);
+        $user_account->setUsername($this->mail->value);
+        $user_account->set('init', $this->mail->value);
+        $user_account->activate();
+        $result = $user_account->save();
+      }
+
+      // Set the participant user reference to the user account.
+      $this->set('uid', $user_account->id());
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function label() {
     if ($this->mail->isEmpty()) {
       $participant_type = ParticipantType::load($this->bundle());
