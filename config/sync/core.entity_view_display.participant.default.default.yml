@@ -1,0 +1,35 @@
+uuid: 06b65f2e-8163-438d-83f4-243a5ecdac97
+langcode: en
+status: true
+dependencies:
+  config:
+    - ilr_registrations.participant_type.default
+  module:
+    - user
+id: participant.default.default
+targetEntityType: participant
+bundle: default
+mode: default
+content:
+  creator_uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  mail:
+    type: email_mailto
+    weight: -10
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
