@@ -8,6 +8,7 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Defines the Participant entity.
@@ -40,9 +41,9 @@ use Drupal\user\UserInterface;
  *   entity_keys = {
  *     "id" = "id",
  *     "bundle" = "type",
- *     "label" = "name",
+ *     "uid" = "uid",
+ *     "mail" = "mail",
  *     "uuid" = "uuid",
- *     "uid" = "user_id",
  *     "langcode" = "langcode",
  *   },
  *   links = {
@@ -60,6 +61,7 @@ use Drupal\user\UserInterface;
 class Participant extends ContentEntityBase implements ParticipantInterface {
 
   use EntityChangedTrait;
+  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
@@ -67,23 +69,33 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);
     $values += [
-      'user_id' => \Drupal::currentUser()->id(),
+      'creator_uid' => \Drupal::currentUser()->id(),
     ];
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getName() {
-    return $this->get('name')->value;
+  public function label() {
+    if ($this->mail->isEmpty()) {
+      $participant_type = ParticipantType::load($this->bundle());
+      $label = $this->t('@type participant #@id', [
+        '@type' => $participant_type->label(),
+        '@id' => $this->id(),
+      ]);
+    }
+    else {
+      $label = $this->getMail();
+    }
+
+    return $label;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function setName($name) {
-    $this->set('name', $name);
-    return $this;
+  public function getMail() {
+    return $this->get('mail')->value;
   }
 
   /**
@@ -105,21 +117,21 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
    * {@inheritdoc}
    */
   public function getOwner() {
-    return $this->get('user_id')->entity;
+    return $this->get('creator_uid')->entity;
   }
 
   /**
    * {@inheritdoc}
    */
   public function getOwnerId() {
-    return $this->get('user_id')->target_id;
+    return $this->get('creator_uid')->target_id;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setOwnerId($uid) {
-    $this->set('user_id', $uid);
+    $this->set('creator_uid', $uid);
     return $this;
   }
 
@@ -127,7 +139,7 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
    * {@inheritdoc}
    */
   public function setOwner(UserInterface $account) {
-    $this->set('user_id', $account->id());
+    $this->set('creator_uid', $account->id());
     return $this;
   }
 
@@ -137,9 +149,9 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Participant entity.'))
+    $fields['uid'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('User Account'))
+      ->setDescription(t('The user ID of the account associated with this Participant.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -151,7 +163,7 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
       ])
       ->setDisplayOptions('form', [
         'type' => 'entity_reference_autocomplete',
-        'weight' => 5,
+        'weight' => -9,
         'settings' => [
           'match_operator' => 'CONTAINS',
           'size' => '60',
@@ -162,26 +174,51 @@ class Participant extends ContentEntityBase implements ParticipantInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['name'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Participant entity.'))
-      ->setSettings([
-        'max_length' => 50,
-        'text_processing' => 0,
-      ])
+    $fields['mail'] = BaseFieldDefinition::create('email')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The email of this participant.'))
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
+        'label' => 'hidden',
+        'type' => 'email_mailto',
+        'weight' => -10,
       ])
       ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => -4,
+        'type' => 'email_default',
+        'weight' => -10,
+        'settings' => [
+          'size' => '100',
+          'placeholder' => 'email address',
+        ],
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
+
+    $fields['creator_uid'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Creator'))
+      ->setDescription(t('The user ID of the creator/owner of this Participant.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'user')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'author',
+        'weight' => 0,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'weight' => 10,
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ],
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
