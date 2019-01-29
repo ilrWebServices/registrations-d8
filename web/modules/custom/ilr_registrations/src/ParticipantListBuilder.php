@@ -19,7 +19,7 @@ class ParticipantListBuilder extends EntityListBuilder {
    */
   public function buildHeader() {
     $header['id'] = $this->t('Participant ID');
-    $header['name'] = $this->t('Name');
+    $header['name'] = $this->t('Participant');
     return $header + parent::buildHeader();
   }
 
