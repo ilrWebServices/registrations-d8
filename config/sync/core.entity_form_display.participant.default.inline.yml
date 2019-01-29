@@ -10,6 +10,14 @@ targetEntityType: participant
 bundle: default
 mode: inline
 content:
+  mail:
+    type: email_default
+    weight: -10
+    settings:
+      size: 100
+      placeholder: 'email address'
+    region: content
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: -10
@@ -19,4 +27,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  creator_uid: true
+  uid: true
   user_id: true

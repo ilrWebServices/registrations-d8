@@ -9,6 +9,23 @@ targetEntityType: participant
 bundle: default
 mode: default
 content:
+  creator_uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  mail:
+    type: email_default
+    weight: -10
+    settings:
+      size: 100
+      placeholder: 'email address'
+    region: content
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: -4
@@ -16,6 +33,15 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
     third_party_settings: {  }
   user_id:
     type: entity_reference_autocomplete
