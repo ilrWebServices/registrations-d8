@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_item_type.class
-    - field.field.commerce_order_item.class.field_registration
   module:
     - commerce_order
 id: commerce_order_item.class.default
@@ -38,4 +37,3 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_registration: true

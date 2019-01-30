@@ -160,6 +160,16 @@ class Registration extends ContentEntityBase implements RegistrationInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['event_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Event'))
+      ->setDescription(t('The event for this registration.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'commerce_order_item')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
       ->setDescription(t('The time that the entity was created.'));

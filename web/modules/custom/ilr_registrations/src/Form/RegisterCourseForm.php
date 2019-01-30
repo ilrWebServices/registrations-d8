@@ -165,14 +165,9 @@ class RegisterCourseForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Save the registration and participants.
     $form_display = $form_state->get('form_display');
     $registration = $form_state->get('registration');
     $extracted = $form_display->extractFormValues($registration, $form, $form_state);
-
-    if ($registration->save()) {
-      drupal_set_message($this->t('Registration saved.'));
-    }
 
     // Add the selected class product variation, if one exists, to a new or
     // existing cart.
@@ -198,11 +193,13 @@ class RegisterCourseForm extends FormBase {
       $variation = $this->entityTypeManager->getStorage('commerce_product_variation')->load($variation_id);
       $order_item = $this->cartManager->addEntity($cart, $variation, $quantity);
 
-      // Link the registration as a reference on the newly created order item.
-      // @todo: Consider the ramifications of hard-coding `field_registration`
-      if ($registration->id() && $order_item) {
-        $order_item->field_registration->entity = $registration;
-        $order_item->save();
+      // Link the order item as a reference on the newly created registration.
+      if ($order_item) {
+        $registration->event_id->entity = $order_item;
+
+        if ($registration->save()) {
+          drupal_set_message($this->t('Registration saved.'));
+        }
       }
     }
   }
