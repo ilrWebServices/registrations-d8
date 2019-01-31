@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\commerce_price\Price;
+use Drupal\commerce_store\Entity\Store;
 
 /**
  * Implements hook_entity_type_alter().
@@ -124,10 +125,35 @@ function ilr_registrations_theme_suggestions_participant(array $variables) {
 
 /**
  * Implements hook_entity_bundle_create().
- *
- * Creates an 'inline' form display for each new participant type.
  */
 function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
+  // Create an initial store for newly created commerce store types.
+  // See https://docs.drupalcommerce.org/commerce2/developer-guide/stores/create-store.
+  if ($entity_type_id == 'commerce_store') {
+    $address = [
+      'country_code' => 'US',
+      'address_line1' => '615 Ives Hall',
+      'locality' => 'Ithaca',
+      'administrative_area' => 'NY',
+      'postal_code' => '14850',
+    ];
+
+    $store = Store::create([
+      'type' => $bundle,
+      'uid' => 1,
+      'uuid' => '64d69849-b75d-4414-91d8-b0fb1d0fb4cb',
+      'name' => 'ILR Store',
+      'mail' => 'ilrweb@cornell.edu',
+      'address' => $address,
+      'default_currency' => 'USD',
+    ]);
+    $store->save();
+
+    $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');
+    $store_storage->markAsDefault($store);
+  }
+
+  // Create an 'inline' form display for each new participant type.
   if ($entity_type_id == 'participant' && !\Drupal::isConfigSyncing()) {
     $storage = \Drupal::entityTypeManager()->getStorage('entity_form_display');
     $form_display = $storage->load('participant.' . $bundle . '.inline');
