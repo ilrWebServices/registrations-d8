@@ -180,8 +180,8 @@ class RegisterCourseForm extends FormBase {
 
       // Get a count of the participants being registered, which will determine
       // the count of items in the cart.
-      if ($form_state->hasValue('field_participants')) {
-        $participants = $form_state->getValue('field_participants');
+      if ($form_state->hasValue('participants')) {
+        $participants = $form_state->getValue('participants');
         $quantity = isset($participants['entities']) ? count($participants['entities']) : 1;
       }
       else {

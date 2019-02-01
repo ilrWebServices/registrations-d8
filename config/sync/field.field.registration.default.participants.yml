@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.registration.field_participants
+    - field.storage.registration.participants
     - ilr_registrations.participant_type.default
     - ilr_registrations.registration_type.default
-id: registration.default.field_participants
-field_name: field_participants
+id: registration.default.participants
+field_name: participants
 entity_type: registration
 bundle: default
 label: Participants

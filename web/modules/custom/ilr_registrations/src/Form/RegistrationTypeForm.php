@@ -68,8 +68,8 @@ class RegistrationTypeForm extends EntityForm {
    * Adds the default participants field to a registration type.
    */
   private function addParticipantsField() {
-    $field_storage = \Drupal::entityTypeManager()->getStorage('field_storage_config')->load('registration.field_participants');
-    $field = \Drupal::entityTypeManager()->getStorage('field_config')->load('registration.' . $this->entity->id() . '.field_participants');
+    $field_storage = \Drupal::entityTypeManager()->getStorage('field_storage_config')->load('registration.participants');
+    $field = \Drupal::entityTypeManager()->getStorage('field_config')->load('registration.' . $this->entity->id() . '.participants');
 
     if (empty($field)) {
       $field = \Drupal::entityTypeManager()->getStorage('field_config')->create([
@@ -104,7 +104,7 @@ class RegistrationTypeForm extends EntityForm {
         ]);
       }
 
-      $form_display->setComponent('field_participants', [
+      $form_display->setComponent('participants', [
         'type' => 'inline_entity_form_complex',
         'weight' => 10,
         'settings' => [

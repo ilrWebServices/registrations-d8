@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - ilr_registrations
-id: registration.field_participants
-field_name: field_participants
+id: registration.participants
+field_name: participants
 entity_type: registration
 type: entity_reference
 settings:
