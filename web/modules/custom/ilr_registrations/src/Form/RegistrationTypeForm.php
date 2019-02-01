@@ -20,6 +20,27 @@ class RegistrationTypeForm extends EntityForm {
   protected $participantTypeStorage;
 
   /**
+   * The field storage config storage.
+   *
+   * @var \Drupal\field\FieldStorageConfigStorage
+   */
+  protected $fieldStorageConfigStorage;
+
+  /**
+   * The field config storage.
+   *
+   * @var \Drupal\field\FieldConfigStorage
+   */
+  protected $fieldConfigStorage;
+
+  /**
+   * The entity form display storage.
+   *
+   * @var \Drupal\Core\Config\Entity\ConfigEntityStorage
+   */
+  protected $entityFormDisplayStorage;
+
+  /**
    * Creates a new RegistrationTypeForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -27,6 +48,9 @@ class RegistrationTypeForm extends EntityForm {
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->participantTypeStorage = $entity_type_manager->getStorage('participant_type');
+    $this->fieldStorageConfigStorage = $entity_type_manager->getStorage('field_storage_config');
+    $this->fieldConfigStorage = $entity_type_manager->getStorage('field_config');
+    $this->entityFormDisplayStorage = $entity_type_manager->getStorage('entity_form_display');
   }
 
   /**
@@ -118,11 +142,11 @@ class RegistrationTypeForm extends EntityForm {
    * @see node_add_body_field() and commerce_product_add_variations_field().
    */
   private function addParticipantsField(string $participant_type = 'default') {
-    $field_storage = \Drupal::entityTypeManager()->getStorage('field_storage_config')->load('registration.participants');
-    $field = \Drupal::entityTypeManager()->getStorage('field_config')->load('registration.' . $this->entity->id() . '.participants');
+    $field_storage = $this->fieldStorageConfigStorage->load('registration.participants');
+    $field = $this->fieldConfigStorage->load('registration.' . $this->entity->id() . '.participants');
 
     if (empty($field)) {
-      $field = \Drupal::entityTypeManager()->getStorage('field_config')->create([
+      $field = $this->fieldConfigStorage->create([
         'field_storage' => $field_storage,
         'bundle' => $this->entity->id(),
         'label' => 'Participants',
@@ -142,11 +166,10 @@ class RegistrationTypeForm extends EntityForm {
       ]);
       $field->save();
 
-      $form_dislay_storage = \Drupal::entityTypeManager()->getStorage('entity_form_display');
-      $form_display = $form_dislay_storage->load('registration.' . $this->entity->id() . '.default');
+      $form_display = $this->entityFormDisplayStorage->load('registration.' . $this->entity->id() . '.default');
 
       if (!$form_display) {
-        $form_display = $form_dislay_storage->create([
+        $form_display = $this->entityFormDisplayStorage->create([
           'targetEntityType' => 'registration',
           'bundle' => $this->entity->id(),
           'mode' => 'default',
