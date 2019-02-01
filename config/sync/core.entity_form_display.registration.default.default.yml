@@ -38,4 +38,5 @@ content:
     type: inline_entity_form_complex
     region: content
 hidden:
+  event_id: true
   user_id: true
