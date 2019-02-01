@@ -4,11 +4,39 @@ namespace Drupal\ilr_registrations\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Class RegistrationTypeForm.
  */
 class RegistrationTypeForm extends EntityForm {
+
+  /**
+   * The participant type storage.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  protected $participantTypeStorage;
+
+  /**
+   * Creates a new RegistrationTypeForm object.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->participantTypeStorage = $entity_type_manager->getStorage('participant_type');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -17,6 +45,13 @@ class RegistrationTypeForm extends EntityForm {
     $form = parent::form($form, $form_state);
 
     $registration_type = $this->entity;
+    $participant_types = $this->participantTypeStorage->loadMultiple();
+    $participant_type_options = [];
+
+    foreach ($participant_types as $participant_type) {
+      $participant_type_options[$participant_type->id()] = $participant_type->label();
+    }
+
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Label'),
@@ -35,7 +70,15 @@ class RegistrationTypeForm extends EntityForm {
       '#disabled' => !$registration_type->isNew(),
     ];
 
-    /* You will need additional form elements for your custom properties. */
+    if ($registration_type->isNew()) {
+      $form['participant_type'] = [
+        '#type' => 'select',
+        '#title' => $this->t('Participant type'),
+        '#options' => $participant_type_options,
+        '#default_value' => 'default',
+        '#description' => $this->t('Select a default participant type for this registration type. You can change this later by editing the Participants field.'),
+      ];
+    }
 
     return $form;
   }
@@ -53,7 +96,12 @@ class RegistrationTypeForm extends EntityForm {
           '%label' => $registration_type->label(),
         ]));
 
-        $this->addParticipantsField();
+        if ($form_state->hasValue('participant_type')) {
+          $this->addParticipantsField($form_state->getValue('participant_type'));
+        }
+        else {
+          $this->addParticipantsField();
+        }
         break;
 
       default:
@@ -66,8 +114,10 @@ class RegistrationTypeForm extends EntityForm {
 
   /**
    * Adds the default participants field to a registration type.
+   *
+   * @see node_add_body_field() and commerce_product_add_variations_field().
    */
-  private function addParticipantsField() {
+  private function addParticipantsField(string $participant_type = 'default') {
     $field_storage = \Drupal::entityTypeManager()->getStorage('field_storage_config')->load('registration.participants');
     $field = \Drupal::entityTypeManager()->getStorage('field_config')->load('registration.' . $this->entity->id() . '.participants');
 
@@ -80,7 +130,7 @@ class RegistrationTypeForm extends EntityForm {
           'handler' => 'default:participant',
           'handler_settings' => [
             'target_bundles' => [
-              'default' => 'default', // @todo: Consider setting this on the Registration type form.
+              'default' => $participant_type,
             ],
             'sort' => [
               'field' => '_none'
