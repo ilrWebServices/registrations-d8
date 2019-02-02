@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
 use Drupal\commerce_store\CurrentStoreInterface;
+use Drupal\ilr_registrations\Plugin\Field\FieldFormatter\RegistrationFormFormatter;
 
 /**
  * Class RegisterCourseForm.
@@ -78,7 +79,7 @@ class RegisterCourseForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, ProductInterface $product = NULL, $registration_type = 'default') {
+  public function buildForm(array $form, FormStateInterface $form_state, ProductInterface $product = NULL, $registration_type = 'default', RegistrationFormFormatter $registration_form_formatter = NULL) {
     $form = [];
 
     // Create a new, empty registration.
@@ -125,9 +126,7 @@ class RegisterCourseForm extends FormBase {
       foreach ($variations as $key => $variation) {
         $form['variation'][$key] = [
           '#type' => 'container',
-          // @todo: The view_mode could be configurable in the display formatter
-          // that calls this form.
-          'rendered_entity' => $view_builder->view($variation, 'cart'),
+          'rendered_entity' => $view_builder->view($variation, $registration_form_formatter->getSetting('variation_view_mode')),
         ];
         $form['variation'][$key]['radio'] = [
           '#type' => 'radio',
