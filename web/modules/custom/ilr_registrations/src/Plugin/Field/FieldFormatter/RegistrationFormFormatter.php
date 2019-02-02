@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
+use Drupal\Core\Form\FormBuilderInterface;
 
 /**
  * Plugin implementation of the 'registration_form' formatter.
@@ -31,6 +32,13 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
   protected $variationViewModes;
 
   /**
+   * The form builder.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
    * Constructs a RegistrationFormFormatter object.
    *
    * @param string $plugin_id
@@ -48,13 +56,15 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    * @param array $third_party_settings
    *   Any third party settings.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, EntityDisplayRepositoryInterface $entity_display_repository) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, EntityDisplayRepositoryInterface $entity_display_repository, FormBuilderInterface $form_builder) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
 
     $this->variationViewModes = [];
     foreach ($entity_display_repository->getViewModes('commerce_product_variation') as $mode_name => $mode) {
       $this->variationViewModes[$mode_name] = $mode['label'];
     }
+
+    $this->formBuilder = $form_builder;
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -66,7 +76,8 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
       $configuration['label'],
       $configuration['view_mode'],
       $configuration['third_party_settings'],
-      $container->get('entity_display.repository')
+      $container->get('entity_display.repository'),
+      $container->get('form_builder')
     );
   }
 
@@ -124,7 +135,7 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
 
     // Load a custom form that will combine the registration entity form
     // with some custom form elements for class product variation selection.
-    $form = \Drupal::formBuilder()->getForm('Drupal\ilr_registrations\Form\RegisterCourseForm', $product, $registration_type, $this);
+    $form = $this->formBuilder->getForm('Drupal\ilr_registrations\Form\RegisterCourseForm', $product, $registration_type, $this);
 
     $elements[0]['registration_add_form'] = $form;
 
