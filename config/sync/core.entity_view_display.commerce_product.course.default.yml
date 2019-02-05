@@ -5,11 +5,13 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
+    - field.field.commerce_product.course.field_registration_webform
     - field.field.commerce_product.course.stores
     - field.field.commerce_product.course.variations
   module:
     - commerce_product
     - text
+    - webform
 id: commerce_product.course.default
 targetEntityType: commerce_product
 bundle: course
@@ -21,6 +23,14 @@ content:
     weight: -4
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_registration_webform:
+    weight: 1
+    label: above
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
     region: content
   title:
     label: hidden

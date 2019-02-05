@@ -1,0 +1,20 @@
+uuid: ce04d37c-2825-4252-abb9-4836e422c34d
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - webform
+id: commerce_product.field_registration_webform
+field_name: field_registration_webform
+entity_type: commerce_product
+type: webform
+settings:
+  target_type: webform
+module: webform
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
