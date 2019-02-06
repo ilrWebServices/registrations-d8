@@ -1,11 +1,11 @@
-uuid: a9079c64-8e2f-4ecd-a774-f74c52799613
+uuid: a3836163-84b5-4985-bab9-d5c5f16205aa
 langcode: en
 status: true
 dependencies:
   config:
+    - erf.participant_type.default
+    - erf.registration_type.default
     - field.storage.registration.participants
-    - ilr_registrations.participant_type.default
-    - ilr_registrations.registration_type.default
 id: registration.default.participants
 field_name: participants
 entity_type: registration

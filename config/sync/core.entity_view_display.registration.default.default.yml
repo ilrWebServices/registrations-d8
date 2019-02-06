@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - erf.registration_type.default
     - field.field.registration.default.participants
-    - ilr_registrations.registration_type.default
   module:
     - user
 id: registration.default.default
@@ -12,14 +12,6 @@ targetEntityType: registration
 bundle: default
 mode: default
 content:
-  name:
-    label: above
-    type: string
-    weight: -4
-    region: content
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   participants:
     weight: 1
     label: above
@@ -35,5 +27,4 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden:
-  event_id: true
+hidden: {  }

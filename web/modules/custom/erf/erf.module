@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Contains erf.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_help().
+ */
+function erf_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the entity_registration_form module.
+    case 'help.page.erf':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provide an interface and service to create registration forms and attach them to entities') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function erf_theme() {
+  $theme = [];
+  $theme['registration'] = [
+    'render element' => 'elements',
+    'file' => 'registration.page.inc',
+    'template' => 'registration',
+  ];
+  $theme['registration_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'registration.page.inc',
+  ];
+  $theme['participant'] = [
+    'render element' => 'elements',
+    'file' => 'participant.page.inc',
+    'template' => 'participant',
+  ];
+  $theme['participant_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'participant.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function erf_theme_suggestions_registration(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#registration'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'registration__' . $sanitized_view_mode;
+  $suggestions[] = 'registration__' . $entity->bundle();
+  $suggestions[] = 'registration__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'registration__' . $entity->id();
+  $suggestions[] = 'registration__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function erf_theme_suggestions_participant(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#participant'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'participant__' . $sanitized_view_mode;
+  $suggestions[] = 'participant__' . $entity->bundle();
+  $suggestions[] = 'participant__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'participant__' . $entity->id();
+  $suggestions[] = 'participant__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+/**
+ * Implements hook_entity_bundle_create().
+ */
+function erf_entity_bundle_create($entity_type_id, $bundle) {
+  // Create an 'inline' form display for each new participant type.
+  if ($entity_type_id == 'participant' && !\Drupal::isConfigSyncing()) {
+    $storage = \Drupal::entityTypeManager()->getStorage('entity_form_display');
+    $form_display = $storage->load('participant.' . $bundle . '.inline');
+
+    if (!$form_display) {
+      /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
+      $form_display = $storage->create([
+        'targetEntityType' => 'participant',
+        'bundle' => $bundle,
+        'mode' => 'inline',
+        'status' => TRUE,
+      ]);
+      // Hide the uid and creator_uid by default.
+      $form_display->removeComponent('uid');
+      $form_display->removeComponent('creator_uid');
+      $form_display->save();
+    }
+  }
+}
