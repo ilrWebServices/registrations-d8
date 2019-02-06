@@ -118,25 +118,14 @@ class RegisterCourseForm extends FormBase {
       $variation_storage = $this->entityTypeManager->getStorage('commerce_product_variation');
       $variations = $variation_storage->loadEnabled($product);
 
+      // @see \Drupal\ilr_registrations\Element\CommerceProductVariationsElement
       $form['variation'] = [
-        '#type' => 'container',
-        '#weight' => -10
+        '#type' => 'commerce_product_variations_entity_selector',
+        '#product' => $product,
+        '#title' => 'Available Classes',
+        '#view_mode' => $registration_form_formatter->getSetting('variation_view_mode'),
+        '#required' => TRUE,
       ];
-
-      foreach ($variations as $key => $variation) {
-        $form['variation'][$key] = [
-          '#type' => 'container',
-          'rendered_entity' => $view_builder->view($variation, $registration_form_formatter->getSetting('variation_view_mode')),
-        ];
-        $form['variation'][$key]['radio'] = [
-          '#type' => 'radio',
-          '#title' => $variation->label(),
-          '#return_value' => $key,
-          // '#default_value' => $selected_variation->id(),
-          '#parents' => ['variation'],
-          // '#required' => TRUE,
-        ];
-      }
     }
 
     $form['submit'] = [
@@ -146,18 +135,6 @@ class RegisterCourseForm extends FormBase {
     ];
 
     return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
-    parent::validateForm($form, $form_state);
-
-    // @todo: Ensure that a variation (class) was selected.
-    if (empty($form_state->getValue('variation'))) {
-      $form_state->setErrorByName('variation', $this->t('Please select a class.'));
-    }
   }
 
   /**
