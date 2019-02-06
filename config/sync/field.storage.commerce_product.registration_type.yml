@@ -4,7 +4,7 @@ status: true
 dependencies:
   module:
     - commerce_product
-    - ilr_registrations
+    - erf
 id: commerce_product.registration_type
 field_name: registration_type
 entity_type: commerce_product

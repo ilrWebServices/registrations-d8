@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
+    - erf.registration_type.default
     - field.field.registration.default.participants
-    - ilr_registrations.registration_type.default
   module:
     - inline_entity_form
 id: registration.default.default
@@ -13,16 +13,8 @@ targetEntityType: registration
 bundle: default
 mode: default
 content:
-  name:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   participants:
-    weight: 1
+    weight: 0
     settings:
       form_mode: inline
       label_singular: ''
@@ -37,6 +29,13 @@ content:
     third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
-hidden:
-  event_id: true
-  user_id: true
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

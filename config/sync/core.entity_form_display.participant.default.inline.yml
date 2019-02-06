@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
-    - ilr_registrations.participant_type.default
+    - erf.participant_type.default
 id: participant.default.inline
 targetEntityType: participant
 bundle: default
@@ -18,15 +18,6 @@ content:
       placeholder: 'email address'
     region: content
     third_party_settings: {  }
-  name:
-    type: string_textfield
-    weight: -10
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden:
   creator_uid: true
   uid: true
-  user_id: true
