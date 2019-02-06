@@ -12,7 +12,7 @@ id: basic_registration
 title: 'Basic Registration'
 description: 'A basic registration form that can be attached to class products.'
 category: Commerce
-elements: "organization:\n  '#type': textfield\n  '#title': Organization\nparticipants:\n  '#type': webform_contact\n  '#title': Participants\n  '#multiple': true\n  '#email__required': true\n  '#phone__access': false\n  '#address__access': false\n  '#address_2__access': false\n  '#city__access': false\n  '#state_province__access': false\n  '#postal_code__access': false\n  '#country__access': false\n  '#flexbox': '1'"
+elements: "organization:\n  '#type': textfield\n  '#title': Organization\n  '#required': true\nparticipants:\n  '#type': webform_custom_composite\n  '#title': Participants\n  '#element':\n    email:\n      '#type': email\n      '#required': true\n      '#title': Email\n    last_name:\n      '#type': textfield\n      '#title': 'Last Name'\n    first_name:\n      '#type': textfield\n      '#title': 'First Name'\navailable_classes:\n  '#type': commerce_product_variations\n  '#title': 'Available Classes'\n  '#multiple': false\n  '#required': true\n  '#product': 48\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#draft__label': Register"
 css: ''
 javascript: ''
 settings:
@@ -21,7 +21,7 @@ settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -53,7 +53,9 @@ settings:
   submission_label: ''
   submission_log: false
   submission_views: {  }
-  submission_views_replace: {  }
+  submission_views_replace:
+    webform_routes: {  }
+    node_routes: {  }
   submission_user_columns: {  }
   submission_user_duplicate: false
   submission_access_denied: default
@@ -87,7 +89,7 @@ settings:
   preview_excluded_elements: {  }
   preview_exclude_empty: true
   preview_exclude_empty_checkbox: false
-  draft: none
+  draft: all
   draft_multiple: false
   draft_auto_save: false
   draft_saved_message: ''
@@ -114,8 +116,8 @@ settings:
   entity_limit_total_interval: null
   entity_limit_user: null
   entity_limit_user_interval: null
-  purge: none
-  purge_days: null
+  purge: draft
+  purge_days: 10
   results_disabled: false
   results_disabled_ignore: false
   token_update: false
