@@ -135,7 +135,7 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
 
     // Load a custom form that will combine the registration entity form
     // with some custom form elements for class product variation selection.
-    $form = $this->formBuilder->getForm('Drupal\ilr_registrations\Form\RegisterCourseForm', $product, $registration_type, $this);
+    $form = $this->formBuilder->getForm('Drupal\ilr_registrations\Form\RegisterProductForm', $product, $registration_type, $this);
 
     $elements[0]['registration_add_form'] = $form;
 

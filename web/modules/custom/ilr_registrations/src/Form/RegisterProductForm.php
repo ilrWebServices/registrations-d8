@@ -13,9 +13,9 @@ use Drupal\commerce_store\CurrentStoreInterface;
 use Drupal\ilr_registrations\Plugin\Field\FieldFormatter\RegistrationFormFormatter;
 
 /**
- * Class RegisterCourseForm.
+ * Class RegisterProductForm.
  */
-class RegisterCourseForm extends FormBase {
+class RegisterProductForm extends FormBase {
 
   /**
    * Drupal\Core\Entity\EntityTypeManagerInterface definition.
@@ -46,7 +46,7 @@ class RegisterCourseForm extends FormBase {
   protected $currentStore;
 
   /**
-   * Constructs a new RegisterCourseForm object.
+   * Constructs a new RegisterProductForm object.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -73,7 +73,7 @@ class RegisterCourseForm extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'register_course_form';
+    return 'register_product_form';
   }
 
   /**
@@ -114,10 +114,6 @@ class RegisterCourseForm extends FormBase {
     // Get the product variations (classes) for this registration. Add these
     // variations as options to this form. If no product exists, skip this part.
     if ($product) {
-      $view_builder = $this->entityTypeManager->getViewBuilder('commerce_product_variation');
-      $variation_storage = $this->entityTypeManager->getStorage('commerce_product_variation');
-      $variations = $variation_storage->loadEnabled($product);
-
       // @see \Drupal\ilr_registrations\Element\CommerceProductVariationsElement
       $form['variation'] = [
         '#type' => 'commerce_product_variations_entity_selector',
