@@ -5,10 +5,8 @@ namespace Drupal\erf\Plugin\Field\FieldFormatter;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 
 /**
@@ -23,13 +21,6 @@ use Drupal\Core\Form\FormBuilderInterface;
  * )
  */
 class RegistrationFormFormatter extends FormatterBase implements ContainerFactoryPluginInterface {
-
-  /**
-   * View modes available for the product variation display and selection.
-   *
-   * @var array
-   */
-  protected $variationViewModes;
 
   /**
    * The form builder.
@@ -56,13 +47,8 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    * @param array $third_party_settings
    *   Any third party settings.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, EntityDisplayRepositoryInterface $entity_display_repository, FormBuilderInterface $form_builder) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, FormBuilderInterface $form_builder) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
-
-    $this->variationViewModes = [];
-    foreach ($entity_display_repository->getViewModes('commerce_product_variation') as $mode_name => $mode) {
-      $this->variationViewModes[$mode_name] = $mode['label'];
-    }
 
     $this->formBuilder = $form_builder;
   }
@@ -76,47 +62,8 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
       $configuration['label'],
       $configuration['view_mode'],
       $configuration['third_party_settings'],
-      $container->get('entity_display.repository'),
       $container->get('form_builder')
     );
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function defaultSettings() {
-    return [
-      'variation_view_mode' => 'cart',
-    ] + parent::defaultSettings();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function settingsForm(array $form, FormStateInterface $form_state) {
-    $form = parent::settingsForm($form, $form_state);
-
-    $form['variation_view_mode'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Variation view mode'),
-      '#options' => $this->variationViewModes,
-      '#default_value' => $this->getSetting('variation_view_mode'),
-    ];
-
-    return $form;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function settingsSummary() {
-    $summary = parent::settingsSummary();
-    $summary[] = $this->t('A registration entity form of the selected type will be shown along with a product variation selector. Upon submission, the variation will be added to the cart and a new registration will be created and linked to the order item.');
-    $summary[] = $this->t('Product variations will be displayed using the %mode view mode.', [
-      '%mode' => $this->variationViewModes[$this->getSetting('variation_view_mode')],
-    ]);
-
-    return $summary;
   }
 
   /**
