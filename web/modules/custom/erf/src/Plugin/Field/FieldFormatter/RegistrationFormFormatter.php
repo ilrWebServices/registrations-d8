@@ -96,12 +96,12 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $form = parent::settingsForm($form, $form_state);
 
-    $form['variation_view_mode'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Variation view mode'),
-      '#options' => $this->variationViewModes,
-      '#default_value' => $this->getSetting('variation_view_mode'),
-    ];
+    // $form['variation_view_mode'] = [
+    //   '#type' => 'select',
+    //   '#title' => $this->t('Variation view mode'),
+    //   '#options' => $this->variationViewModes,
+    //   '#default_value' => $this->getSetting('variation_view_mode'),
+    // ];
 
     return $form;
   }
@@ -111,10 +111,10 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    */
   public function settingsSummary() {
     $summary = parent::settingsSummary();
-    $summary[] = $this->t('A registration entity form of the selected type will be shown along with a product variation selector. Upon submission, the variation will be added to the cart and a new registration will be created and linked to the order item.');
-    $summary[] = $this->t('Product variations will be displayed using the %mode view mode.', [
-      '%mode' => $this->variationViewModes[$this->getSetting('variation_view_mode')],
-    ]);
+    $summary[] = $this->t('A registration entity form of the selected type will be displayed.');
+    // $summary[] = $this->t('Product variations will be displayed using the %mode view mode.', [
+    //   '%mode' => $this->variationViewModes[$this->getSetting('variation_view_mode')],
+    // ]);
 
     return $summary;
   }
