@@ -146,9 +146,9 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    * {@inheritdoc}
    */
   public static function isApplicable(FieldDefinitionInterface $field_definition) {
-    $entity_type = $field_definition->getTargetEntityTypeId();
-    $field_name = $field_definition->getName();
-    return $entity_type == 'commerce_product' && $field_name == 'registration_type';
+    // Only allow on fields that reference `registration_type` config entities.
+    $storage_def = $field_definition->getFieldStorageDefinition();
+    return $storage_def->getSetting('target_type') == 'registration_type';
   }
 
 }
