@@ -10,7 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
 use Drupal\commerce_store\CurrentStoreInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Class EntityRegistrationForm.
@@ -35,8 +35,7 @@ class EntityRegistrationForm extends FormBase {
 
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager'),
-      $container->get('event')
+      $container->get('entity_type.manager')
     );
   }
 
@@ -50,13 +49,18 @@ class EntityRegistrationForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, EntityInterface $source_entity = NULL, $registration_type = 'default') {
+  public function buildForm(array $form, FormStateInterface $form_state, ContentEntityInterface $source_entity = NULL, $registration_type = 'default') {
     $form = [];
 
     // Create a new, empty registration.
     $registration = $this->entityTypeManager->getStorage('registration')->create([
       'type' => $registration_type
     ]);
+
+    if ($source_entity) {
+      $registration->entity_type = $source_entity->getEntityTypeId();
+      $registration->entity_id = $source_entity->id();
+    }
 
     $form_state->set('registration', $registration);
 
