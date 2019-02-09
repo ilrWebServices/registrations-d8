@@ -1,0 +1,4 @@
+services:
+  plugin.manager.registration_handler:
+    class: Drupal\erf\Plugin\RegistrationHandlerManager
+    parent: default_plugin_manager
