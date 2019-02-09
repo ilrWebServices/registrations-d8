@@ -22,3 +22,18 @@ To attach a registration form to any content entity (e.g. an Event content type 
 - Under 'Manage display', select 'Registration Form' for the new field and click Save.
 
 Now visit an entity with the field. If you added the field to an event content type, for example, visit an event node, edit it, and enter a registration type in your new field. Save and view the node, and you'll see a registration form included on the node.
+
+
+## Roadmap
+
+### Commerce Integration
+
+- Add handler plugin system
+- Add handler settings to registration types
+- Handlers should declare which host entity types they work with
+- The registration type selector on host entities should filter out types that don't support the host.
+- Handler can inject form elements to the EntityRegistrationForm
+- Handler can process those form element values upon submission
+- Handler can declare formatter settings (e.g. variation view mode setting)
+- Handlers can't be added to registration types that are attached to entities that wouldn't support them.
+-

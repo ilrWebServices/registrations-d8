@@ -1,0 +1,14 @@
+{
+  "name": "drupal/erf_commerce",
+  "type": "drupal-module",
+  "description": "Integrates Commerce products with Entity Registration Form.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/erf_commerce",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/erf_commerce",
+    "source": "http://cgit.drupalcode.org/erf_commerce"
+  },
+  "require": { }
+}

@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains erf_commerce.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_help().
+ */
+function erf_commerce_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the erf_commerce module.
+    case 'help.page.erf_commerce':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Integrates Commerce products with Entity Registration Form.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function erf_commerce_entity_base_field_info(EntityTypeInterface $entity_type) {
+  // Add a new base field to the registration entity for connecting
+  // registrations to commerce order items (i.e. product variations in a cart).
+  if ($entity_type->id() === 'registration') {
+    $fields['commerce_order_item_id'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Commerce Order Item ID'))
+      ->setDefaultValue(NULL);
+    return $fields;
+  }
+}
