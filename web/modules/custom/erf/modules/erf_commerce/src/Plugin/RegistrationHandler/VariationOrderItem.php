@@ -18,4 +18,27 @@ use Drupal\erf\Plugin\RegistrationHandlerBase;
  */
 class VariationOrderItem extends RegistrationHandlerBase {
 
+  public function getFormatterSettings() {
+    return [
+      'variation_view_mode' => [
+        'default_value' => 'cart',
+        'form_element' => [
+          '#type' => 'select',
+          '#title' => $this->t('Variation view mode'),
+          // '#options' => $this->variationViewModes,
+          '#options' => ['test' => 'Test', 'foo' => 'Foo'],
+        ],
+        'summary' => 'Product variation view mode: %setting_value'
+      ],
+      'test' => [
+        'default_value' => 'cart',
+        'form_element' => [
+          '#type' => 'textfield',
+          '#title' => $this->t('Variation view mode'),
+        ],
+        'summary' => 'Test setting: %setting_value'
+      ],
+    ];
+  }
+
 }

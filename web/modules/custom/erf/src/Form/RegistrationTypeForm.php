@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Component\Plugin\PluginManagerInterface;
 
 /**
  * Class RegistrationTypeForm.
@@ -41,16 +42,24 @@ class RegistrationTypeForm extends EntityForm {
   protected $entityFormDisplayStorage;
 
   /**
+   * The registration handler plugin manager.
+   *
+   * @var \Drupal\Component\Plugin\PluginManagerInterface
+   */
+  protected $registrationHandlerManager;
+
+  /**
    * Creates a new RegistrationTypeForm object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, PluginManagerInterface $registration_handler_manager) {
     $this->participantTypeStorage = $entity_type_manager->getStorage('participant_type');
     $this->fieldStorageConfigStorage = $entity_type_manager->getStorage('field_storage_config');
     $this->fieldConfigStorage = $entity_type_manager->getStorage('field_config');
     $this->entityFormDisplayStorage = $entity_type_manager->getStorage('entity_form_display');
+    $this->registrationHandlerManager = $registration_handler_manager;
   }
 
   /**
@@ -58,7 +67,8 @@ class RegistrationTypeForm extends EntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('plugin.manager.registration_handler')
     );
   }
 
@@ -71,6 +81,12 @@ class RegistrationTypeForm extends EntityForm {
     $registration_type = $this->entity;
     $participant_types = $this->participantTypeStorage->loadMultiple();
     $participant_type_options = [];
+    $registration_handler_options = [];
+    $registration_handler_defaults = [];
+
+    foreach ($this->registrationHandlerManager->getDefinitions() as $definition) {
+      $registration_handler_options[$definition['id']] = $definition['label'];
+    }
 
     foreach ($participant_types as $participant_type) {
       $participant_type_options[$participant_type->id()] = $participant_type->label();
@@ -92,6 +108,13 @@ class RegistrationTypeForm extends EntityForm {
         'exists' => '\Drupal\erf\Entity\RegistrationType::load',
       ],
       '#disabled' => !$registration_type->isNew(),
+    ];
+
+    $form['handlers'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Handlers'),
+      '#options' => $registration_handler_options,
+      '#default_value' => $registration_type->getHandlers(),
     ];
 
     if ($registration_type->isNew()) {

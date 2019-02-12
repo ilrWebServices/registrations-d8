@@ -3,12 +3,14 @@
 namespace Drupal\erf\Plugin;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Base class for RegistrationHandler plugin plugins.
  */
 abstract class RegistrationHandlerBase extends PluginBase implements RegistrationHandlerInterface {
 
+  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
@@ -22,6 +24,13 @@ abstract class RegistrationHandlerBase extends PluginBase implements Registratio
    */
   public function description() {
     return $this->pluginDefinition['description'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFormatterSettings() {
+    return [];
   }
 
 }

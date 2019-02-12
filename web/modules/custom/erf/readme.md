@@ -36,4 +36,4 @@ Now visit an entity with the field. If you added the field to an event content t
 - Handler can process those form element values upon submission
 - Handler can declare formatter settings (e.g. variation view mode setting)
 - Handlers can't be added to registration types that are attached to entities that wouldn't support them.
--
+- Consider whether the entityreference field from the registration to the variation would need to get updated if the order item changed.

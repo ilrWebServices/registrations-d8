@@ -56,4 +56,26 @@ class RegistrationType extends ConfigEntityBundleBase implements RegistrationTyp
    */
   protected $label;
 
+  /**
+   * The Registration type handlers.
+   *
+   * @var array
+   */
+  protected $handlers = [];
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getHandlers() {
+    $active_handlers = [];
+
+    foreach ($this->handlers as $machine_name => $active) {
+      if ($active) {
+        $active_handlers[] = $machine_name;
+      }
+    }
+
+    return $active_handlers;
+  }
+
 }

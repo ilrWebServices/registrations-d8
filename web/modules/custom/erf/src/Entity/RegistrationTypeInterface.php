@@ -9,5 +9,12 @@ use Drupal\Core\Config\Entity\ConfigEntityInterface;
  */
 interface RegistrationTypeInterface extends ConfigEntityInterface {
 
-  // Add get/set methods for your configuration properties here.
+  /**
+   * Return the configured handlers for this registration type.
+   *
+   * @return Array
+   *   An array of registration handler plugin machine names.
+   */
+  public function getHandlers();
+
 }

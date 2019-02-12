@@ -8,5 +8,10 @@ erf.registration_type.*:
     label:
       type: label
       label: 'Label'
+    handlers:
+      type: sequence
+      label: 'Handlers'
+      sequence:
+        type: string
     uuid:
       type: string

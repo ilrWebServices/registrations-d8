@@ -10,6 +10,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Form\FormBuilderInterface;
+use Drupal\Component\Plugin\PluginManagerInterface;
 
 /**
  * Plugin implementation of the 'registration_form' formatter.
@@ -39,6 +40,20 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
   protected $formBuilder;
 
   /**
+   * The registration handler plugin manager.
+   *
+   * @var \Drupal\Component\Plugin\PluginManagerInterface
+   */
+  protected $registrationHandlerManager;
+
+  /**
+   * The active handlers for this regsitration form.
+   *
+   * @var array
+   */
+  protected $handlers = [];
+
+  /**
    * Constructs a RegistrationFormFormatter object.
    *
    * @param string $plugin_id
@@ -56,7 +71,7 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    * @param array $third_party_settings
    *   Any third party settings.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, EntityDisplayRepositoryInterface $entity_display_repository, FormBuilderInterface $form_builder) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, EntityDisplayRepositoryInterface $entity_display_repository, FormBuilderInterface $form_builder, PluginManagerInterface $registration_handler_manager) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
 
     $this->variationViewModes = [];
@@ -65,6 +80,17 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
     }
 
     $this->formBuilder = $form_builder;
+    $this->registrationHandlerManager = $registration_handler_manager;
+
+    // Get all of the available registration handlers.
+    foreach ($this->registrationHandlerManager->getDefinitions() as $definition) {
+      // Filter out any handlers that don't work with this source entity (i.e.
+      // the entity that this registration type field is attached to).
+      if (in_array($field_definition->getTargetEntityTypeId(), $definition['source_entities'])) {
+        // While attaching this handler to this formatter, instantiate it.
+        $this->handlers[] = $this->registrationHandlerManager->createInstance($definition['id']);
+      }
+    }
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -77,7 +103,8 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
       $configuration['view_mode'],
       $configuration['third_party_settings'],
       $container->get('entity_display.repository'),
-      $container->get('form_builder')
+      $container->get('form_builder'),
+      $container->get('plugin.manager.registration_handler')
     );
   }
 
@@ -85,8 +112,12 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
    * {@inheritdoc}
    */
   public static function defaultSettings() {
+    $handler_default_settings = [];
+
+    // @todo: Additional defalut settings can come from handler plugins, but we can't use $this->handlers in a static function.
     return [
       'variation_view_mode' => 'cart',
+      'test' => 'cart',
     ] + parent::defaultSettings();
   }
 
@@ -96,12 +127,15 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $form = parent::settingsForm($form, $form_state);
 
-    // $form['variation_view_mode'] = [
-    //   '#type' => 'select',
-    //   '#title' => $this->t('Variation view mode'),
-    //   '#options' => $this->variationViewModes,
-    //   '#default_value' => $this->getSetting('variation_view_mode'),
-    // ];
+    // Add any additional formatter settings from handler plugins.
+    foreach ($this->handlers as $handler) {
+      $formatter_settings = $handler->getFormatterSettings();
+
+      foreach ($formatter_settings as $key => $formatter_setting) {
+        $form[$key] = $formatter_setting['form_element'];
+        $form[$key]['#default_value'] = $this->getSetting($key);
+      }
+    }
 
     return $form;
   }
@@ -112,9 +146,17 @@ class RegistrationFormFormatter extends FormatterBase implements ContainerFactor
   public function settingsSummary() {
     $summary = parent::settingsSummary();
     $summary[] = $this->t('A registration entity form of the selected type will be displayed.');
-    // $summary[] = $this->t('Product variations will be displayed using the %mode view mode.', [
-    //   '%mode' => $this->variationViewModes[$this->getSetting('variation_view_mode')],
-    // ]);
+
+    // Add any additional settings summaries from handler plugins.
+    foreach ($this->handlers as $handler) {
+      $formatter_settings = $handler->getFormatterSettings();
+
+      foreach ($formatter_settings as $key => $formatter_setting) {
+        $summary[] = $this->t($formatter_setting['summary'], [
+          '%setting_value' => $this->getSetting($key)
+        ]);
+      }
+    }
 
     return $summary;
   }

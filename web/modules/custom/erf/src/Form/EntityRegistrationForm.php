@@ -11,6 +11,7 @@ use Drupal\commerce_cart\CartManagerInterface;
 use Drupal\commerce_cart\CartProviderInterface;
 use Drupal\commerce_store\CurrentStoreInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\erf\Plugin\Field\FieldFormatter\RegistrationFormFormatter;
 
 /**
  * Class EntityRegistrationForm.
@@ -49,8 +50,10 @@ class EntityRegistrationForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, ContentEntityInterface $source_entity = NULL, $registration_type = 'default') {
+  public function buildForm(array $form, FormStateInterface $form_state, ContentEntityInterface $source_entity = NULL, $registration_type = 'default', RegistrationFormFormatter $registration_form_formatter = NULL) {
     $form = [];
+
+    // dump($registration_form_formatter->getSettings());
 
     // Create a new, empty registration.
     $registration = $this->entityTypeManager->getStorage('registration')->create([
@@ -86,6 +89,8 @@ class EntityRegistrationForm extends FormBase {
       $form[$name]['#weight'] = $component['weight'];
     }
 
+    // add plugin form elements
+
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Register'),
@@ -109,6 +114,8 @@ class EntityRegistrationForm extends FormBase {
     $form_display = $form_state->get('form_display');
     $registration = $form_state->get('registration');
     $extracted = $form_display->extractFormValues($registration, $form, $form_state);
+
+    // process plugin form elements
 
     if ($registration->save()) {
       drupal_set_message($this->t('Registration saved.'));
