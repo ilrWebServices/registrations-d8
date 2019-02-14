@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ilr_registrations\Element;
+namespace Drupal\erf_commerce\Element;
 
 use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Element\FormElement;
@@ -14,7 +14,7 @@ use Drupal\Component\Utility\Html as HtmlUtility;
  * given product.
  *
  * Properties:
- * - #product: A product entity.
+ * - #variations: An array of `commerce_product_variations`. Like #options.
  * - #view_mode: The view mode to use to render the product variations.
  *
  * Usage:
@@ -22,7 +22,7 @@ use Drupal\Component\Utility\Html as HtmlUtility;
  * $form['variation'] = [
  *   '#type' => 'commerce_product_variations_entity_selector',
  *   '#title' => 'Available Classes',
- *   '#product' => $product_entity or $product_id,
+ *   '#variations' => $variations,
  *   '#view_mode' => 'cart',
  *   '#default_value' => 1345,
  *   '#required' => TRUE,
@@ -47,8 +47,8 @@ class CommerceProductVariationsElement extends FormElement {
   public function getInfo() {
     $class = get_class($this);
     return [
-      // Product entity from which to fetch the variations.
-      '#product' => NULL,
+      // An array of `commerce_product_variation` entities.
+      '#variations' => NULL,
 
       // The view mode to use to display the product variations.
       '#view_mode' => 'cart',
@@ -71,16 +71,7 @@ class CommerceProductVariationsElement extends FormElement {
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $view_builder = $entity_type_manager->getViewBuilder('commerce_product_variation');
 
-    if ($element['#product'] instanceof \Drupal\commerce_product\Entity\Product) {
-      $product = $element['#product'];
-    }
-    elseif (is_numeric($element['#product'])) {
-      $product = $entity_type_manager->getStorage('commerce_product')->load($element['#product']);
-    }
-
-    $variations = $entity_type_manager->getStorage('commerce_product_variation')->loadEnabled($product);
-
-    foreach ($variations as $key => $variation) {
+    foreach ($element['#variations'] as $key => $variation) {
       $parents_for_id = array_merge($element['#parents'], [$key]);
 
       $element[$key] = [
