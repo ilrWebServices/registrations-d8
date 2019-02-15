@@ -137,11 +137,14 @@ class RenderedVariationReferenceWidget extends OptionsWidgetBase implements Cont
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
+    $variations = $this->getRenderedVariationOptions($items->getEntity());
+    $selected = $this->getSelectedOptions($items);
+
     $element += [
       '#type' => 'commerce_product_variations_entity_selector',
-      '#variations' => $this->getRenderedVariationOptions($items->getEntity()),
+      '#variations' => $variations,
       '#view_mode' => $this->getSetting('variation_view_mode'),
-      '#default_value' => $this->getSelectedOptions($items),
+      '#default_value' => $this->multiple ? $selected : reset($selected),
     ];
 
     return $element;
