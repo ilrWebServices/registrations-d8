@@ -194,3 +194,19 @@ function erf_commerce_registration_update(EntityInterface $registration) {
     $commerce_cart_manager->updateOrderItem($cart, $order_item);
   }
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ *
+ * Remove any registrations linked to deleted order items.
+ */
+function erf_commerce_commerce_order_item_delete(EntityInterface $order_item) {
+  $registration = \Drupal::entityTypeManager()->getStorage('registration')->loadByProperties([
+    'commerce_order_item_id' => $order_item->id(),
+  ]);
+
+  if ($registration) {
+    $registration = reset($registration);
+    $registration->delete();
+  }
+}
