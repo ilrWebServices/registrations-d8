@@ -52,14 +52,28 @@ class EntityRegistrationForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state, ContentEntityInterface $source_entity = NULL, $registration_type = 'default') {
     $form = [];
 
-    // Create a new, empty registration.
-    $registration = $this->entityTypeManager->getStorage('registration')->create([
-      'type' => $registration_type
+    // Is there an existing registration for this source entity for this user?
+    // If so, load it.
+    $registration = \Drupal::entityTypeManager()->getStorage('registration')->loadByProperties([
+      'type' => $registration_type,
+      'user_id' => \Drupal::currentUser()->id(),
+      'entity_type' => $source_entity->getEntityTypeId(),
+      'entity_id' => $source_entity->id(),
     ]);
 
-    if ($source_entity) {
-      $registration->entity_type = $source_entity->getEntityTypeId();
-      $registration->entity_id = $source_entity->id();
+    if ($registration) {
+      $registration = reset($registration);
+    }
+    else {
+      // Create a new, empty registration.
+      $registration = $this->entityTypeManager->getStorage('registration')->create([
+        'type' => $registration_type
+      ]);
+
+      if ($source_entity) {
+        $registration->entity_type = $source_entity->getEntityTypeId();
+        $registration->entity_id = $source_entity->id();
+      }
     }
 
     $form_state->set('registration', $registration);
