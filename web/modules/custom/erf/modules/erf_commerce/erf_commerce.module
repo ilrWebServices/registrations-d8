@@ -111,6 +111,22 @@ function erf_commerce_form_registration_type_add_submit(array &$form, FormStateI
 }
 
 /**
+ * Get a new or existing cart for the user associated with a registration.
+ */
+function erf_get_cart_for_registration(EntityInterface $registration) {
+  $commerce_cart_provider = \Drupal::service('commerce_cart.cart_provider');
+  $store = \Drupal::service('commerce_store.current_store')->getStore();
+
+  // Get or create a cart for the registration user.
+  $cart = $commerce_cart_provider->getCart('default', $store, $registration->user_id->entity);
+  if (empty($cart)) {
+    $cart = $commerce_cart_provider->createCart('default', $store, $registration->user_id->entity);
+  }
+
+  return $cart;
+}
+
+/**
  * Implements hook_ENTITY_TYPE_insert().
  *
  * Add an item to a cart when a registration with a `product_variation` field is
@@ -122,15 +138,8 @@ function erf_commerce_registration_insert(EntityInterface $registration) {
   }
 
   $entity_type_manager = \Drupal::service('entity_type.manager');
-  $commerce_cart_provider = \Drupal::service('commerce_cart.cart_provider');
+  $cart = erf_get_cart_for_registration($registration);
   $commerce_cart_manager = \Drupal::service('commerce_cart.cart_manager');
-  $store = \Drupal::service('commerce_store.current_store')->getStore();
-
-  // Get or create a cart for the current user.
-  $cart = $commerce_cart_provider->getCart('default', $store, $registration->user_id->entity);
-  if (empty($cart)) {
-    $cart = $commerce_cart_provider->createCart('default', $store, $registration->user_id->entity);
-  }
 
   // Get a count of the participants being registered, which will determine
   // the count of items in the cart.
@@ -144,4 +153,44 @@ function erf_commerce_registration_insert(EntityInterface $registration) {
   // Link the order item as a reference on the newly created registration.
   $registration->commerce_order_item_id = $order_item->id();
   $registration->save();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Update order items if there are changes to a registration in a cart.
+ */
+function erf_commerce_registration_update(EntityInterface $registration) {
+  if ($registration->commerce_order_item_id->isEmpty()) {
+    return;
+  }
+
+  $order_item = $registration->commerce_order_item_id->entity;
+  $order_item_changed = FALSE;
+
+  // Check to see if the variation has changed.
+  if ($registration->hasField('product_variation')) {
+    if ($registration->product_variation->entity->id() !== $registration->original->product_variation->entity->id()) {
+      // The variation selection has changed. Adjust the order item. Note that
+      // the call to `updateOrderItem()` below will automatically trigger a
+      // change the order_item title.
+      $order_item->set('purchased_entity', $registration->product_variation->entity->id());
+      $order_item_changed = TRUE;
+    }
+  }
+
+  // Check to see if the number of participants has changed.
+  if ($registration->participants->count() !== $registration->original->participants->count()) {
+    // Change the order item quantity. Note that the call to `updateOrderItem()`
+    // below will automatically trigger a recalculation of the total price.
+    $order_item->set('quantity', $registration->participants->count());
+    $order_item_changed = TRUE;
+  }
+
+  // Only save the order item if there are modifications.
+  if ($order_item_changed) {
+    $cart = erf_get_cart_for_registration($registration);
+    $commerce_cart_manager = \Drupal::service('commerce_cart.cart_manager');
+    $commerce_cart_manager->updateOrderItem($cart, $order_item);
+  }
 }
