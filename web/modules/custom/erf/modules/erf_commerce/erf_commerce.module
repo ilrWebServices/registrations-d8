@@ -37,8 +37,10 @@ function erf_commerce_entity_base_field_info(EntityTypeInterface $entity_type) {
   // registrations to commerce order items (i.e. product variations in a cart).
   if ($entity_type->id() === 'registration') {
     // @todo: This could be an entity reference field.
-    $fields['commerce_order_item_id'] = BaseFieldDefinition::create('integer')
+    $fields['commerce_order_item_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Commerce Order Item ID'))
+      ->setSetting('target_type', 'commerce_order_item')
+      ->setSetting('handler', 'default')
       ->setDefaultValue(NULL);
     return $fields;
   }
