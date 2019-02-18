@@ -117,6 +117,27 @@ class Registration extends ContentEntityBase implements RegistrationInterface {
   /**
    * {@inheritdoc}
    */
+  public static function postDelete(EntityStorageInterface $storage, array $entities) {
+    parent::postDelete($storage, $entities);
+
+    // Delete the participants of a deleted registration.
+    $participants = [];
+    foreach ($entities as $registration) {
+      if (!$registration->hasField('participants')) {
+        continue;
+      }
+
+      foreach ($registration->participants as $participant) {
+        $participants[$participant->entity->id()] = $participant->entity;
+      }
+    }
+    $participants_storage = \Drupal::service('entity_type.manager')->getStorage('participant');
+    $participants_storage->delete($participants);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getOwner() {
     return $this->get('user_id')->entity;
   }
