@@ -1,4 +1,4 @@
-ilr_registrations.admin:
+registrations.admin:
   path: '/admin/registrations'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'

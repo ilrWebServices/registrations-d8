@@ -1,6 +1,6 @@
 name: 'Entity Registration Form'
 type: module
-description: 'Provide an interface and service to create registration forms and attach them to entities'
+description: 'Enables configurable registration forms.'
 core: 8.x
 package: 'Entity Registration Form'
 

@@ -25,6 +25,13 @@ function erf_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_toolbar_alter().
+ */
+function erf_toolbar_alter(&$items) {
+  $items['administration']['#attached']['library'][] = 'erf/toolbar';
+}
+
+/**
  * Implements hook_theme().
  */
 function erf_theme() {
