@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95cbfbe07a7be61a048bccb953c0b737",
+    "content-hash": "692f17ae9a2d428c4c10436d2cbfbd0c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2900,6 +2900,35 @@
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
+            }
+        },
+        {
+            "name": "drupal/erf",
+            "version": "dev-8.x-1.x",
+            "dist": {
+                "type": "path",
+                "url": "/Users/Shared/src/erf",
+                "reference": "55e5eaa6be3cf1d0d75d6b47d88beac3fa3d8b08",
+                "shasum": null
+            },
+            "require": {
+                "drupal/inline_entity_form": "^1.0-rc1"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Enables configurable registration forms.",
+            "homepage": "https://www.drupal.org/project/erf",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/erf",
+                "source": "http://cgit.drupalcode.org/erf"
+            },
+            "transport-options": {
+                "symlink": true
             }
         },
         {
@@ -7934,6 +7963,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
@@ -8712,6 +8742,11 @@
         {
             "name": "webflo/drupal-core-require-dev",
             "version": "8.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webflo/drupal-core-require-dev.git",
+                "reference": "c3b99d2add865e7308c109ef1735a39a9575ce57"
+            },
             "require": {
                 "behat/mink": "1.7.x-dev",
                 "behat/mink-goutte-driver": "^1.2",
@@ -8738,7 +8773,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "drupal/erf": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
