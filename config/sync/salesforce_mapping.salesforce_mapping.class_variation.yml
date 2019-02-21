@@ -12,7 +12,7 @@ key: ''
 async: false
 push_standalone: false
 pull_trigger_date: LastModifiedDate
-pull_where_clause: ''
+pull_where_clause: 'Show_on_Web__c = TRUE'
 sync_triggers:
   pull_create: true
   pull_update: true
