@@ -1,0 +1,10 @@
+uuid: dcefa490-ad19-483c-ba03-af10781a8501
+langcode: en
+status: true
+dependencies:
+  module:
+    - ilr_registrations
+id: participant.inline
+label: Inline
+targetEntityType: participant
+cache: true

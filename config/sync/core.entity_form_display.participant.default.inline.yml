@@ -1,0 +1,23 @@
+uuid: 50d02672-e10a-4589-9365-883cfa247da1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - erf.participant_type.default
+id: participant.default.inline
+targetEntityType: participant
+bundle: default
+mode: inline
+content:
+  mail:
+    type: email_default
+    weight: -10
+    settings:
+      size: 100
+      placeholder: 'email address'
+    region: content
+    third_party_settings: {  }
+hidden:
+  creator_uid: true
+  uid: true

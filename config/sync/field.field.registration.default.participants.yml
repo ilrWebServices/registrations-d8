@@ -1,0 +1,28 @@
+uuid: a3836163-84b5-4985-bab9-d5c5f16205aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.default
+    - erf.registration_type.default
+    - field.storage.registration.participants
+id: registration.default.participants
+field_name: participants
+entity_type: registration
+bundle: default
+label: Participants
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:participant'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

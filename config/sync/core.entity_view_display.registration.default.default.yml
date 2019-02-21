@@ -1,0 +1,30 @@
+uuid: 440ba2ba-f113-4a6f-b3be-94d7627c6b3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.default
+    - field.field.registration.default.participants
+  module:
+    - user
+id: registration.default.default
+targetEntityType: registration
+bundle: default
+mode: default
+content:
+  participants:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
