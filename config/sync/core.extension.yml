@@ -34,6 +34,7 @@ module:
   salesforce_pull: 0
   state_machine: 0
   system: 0
+  telephone: 0
   text: 0
   user: 0
   views: 10
