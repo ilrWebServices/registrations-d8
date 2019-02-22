@@ -1,0 +1,19 @@
+uuid: 44fad746-a723-4b92-8582-1550b6a03024
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+    - field.storage.participant.field_last_name
+id: participant.basic.field_last_name
+field_name: field_last_name
+entity_type: participant
+bundle: basic
+label: 'Last Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

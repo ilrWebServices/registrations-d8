@@ -1,0 +1,61 @@
+uuid: 8856099f-a21f-49b4-94e5-d52819c0116d
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+    - field.field.participant.basic.field_first_name
+    - field.field.participant.basic.field_last_name
+    - field.field.participant.basic.field_phone
+  module:
+    - user
+id: participant.basic.default
+targetEntityType: participant
+bundle: basic
+mode: default
+content:
+  creator_uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_first_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_last_name:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_phone:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  mail:
+    label: hidden
+    type: email_mailto
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
