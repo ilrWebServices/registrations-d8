@@ -1,0 +1,19 @@
+uuid: 53115560-3a3e-4d81-b835-bfa250567cbe
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - erf
+id: registration.field_organization
+field_name: field_organization
+entity_type: registration
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

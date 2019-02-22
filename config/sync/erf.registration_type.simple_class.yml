@@ -1,0 +1,6 @@
+uuid: e2826b91-2628-44bf-8d7e-ca4e6f16adfa
+langcode: en
+status: true
+dependencies: {  }
+id: simple_class
+label: 'Simple Class'
