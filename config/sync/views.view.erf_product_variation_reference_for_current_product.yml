@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - commerce_product
+    - datetime
 _core:
   default_config_hash: mDgPpNJLBS1tHgpGF-8LaLSIVAoGlqW7vbQt-NMEZtw
 id: erf_product_variation_reference_for_current_product
@@ -143,7 +144,20 @@ display:
           separator: ', '
           field_api_classes: false
       filters: {  }
-      sorts: {  }
+      sorts:
+        field_class_start_value:
+          id: field_class_start_value
+          table: commerce_product_variation__field_class_start
+          field: field_class_start_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: datetime
       header: {  }
       footer: {  }
       empty: {  }
