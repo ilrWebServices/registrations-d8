@@ -9,7 +9,7 @@ dependencies:
     - field.field.commerce_product.course.stores
     - field.field.commerce_product.course.variations
   module:
-    - ilr_registrations
+    - erf
     - text
 id: commerce_product.course.default
 targetEntityType: commerce_product
@@ -28,8 +28,7 @@ content:
     weight: 0
     region: content
     label: above
-    settings:
-      combine: true
+    settings: {  }
     third_party_settings: {  }
   title:
     label: hidden
