@@ -30,6 +30,10 @@ function ilr_registrations_entity_type_alter(array &$entity_types) {
  * Fix the price of commerce_product_variations imported by salesforce.
  */
 function ilr_registrations_commerce_product_variation_presave(EntityInterface $entity) {
+  if (!$entity->hasField('field_class_price')) {
+    return;
+  }
+
   // Update the price property if there is a value from the sf mapping.
   if (isset($entity->field_class_price->first()->value)) {
     $salesforce_price_string = (string) $entity->field_class_price->first()->value;
