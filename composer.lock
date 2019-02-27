@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "692f17ae9a2d428c4c10436d2cbfbd0c",
+    "content-hash": "c916de36bee0db8f4afe63d35552a1af",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -951,6 +951,44 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
+        },
+        {
+            "name": "cornell/union",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/union.git",
+                "reference": "c23c51e5229588ef9500c949d6837f7be569e7e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/c23c51e5229588ef9500c949d6837f7be569e7e3",
+                "reference": "c23c51e5229588ef9500c949d6837f7be569e7e3",
+                "shasum": ""
+            },
+            "require": {
+                "twig/twig": "^1.0"
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Amaral",
+                    "email": "jeff.amaral@cornell.edu"
+                },
+                {
+                    "name": "Aaron Froehlich",
+                    "email": "aaronfroehlich@gmail.com"
+                }
+            ],
+            "description": "A component-based design system",
+            "support": {
+                "source": "https://github.com/ilrWebServices/union/tree/master",
+                "issues": "https://github.com/ilrWebServices/union/issues"
+            },
+            "time": "2019-02-27T16:50:31+00:00"
         },
         {
             "name": "cweagans/composer-patches",
@@ -2908,8 +2946,7 @@
             "dist": {
                 "type": "path",
                 "url": "/Users/Shared/src/erf",
-                "reference": "55e5eaa6be3cf1d0d75d6b47d88beac3fa3d8b08",
-                "shasum": null
+                "reference": "55e5eaa6be3cf1d0d75d6b47d88beac3fa3d8b08"
             },
             "require": {
                 "drupal/inline_entity_form": "^1.0-rc1"
@@ -3326,6 +3363,34 @@
             "homepage": "https://www.drupal.org/project/state_machine",
             "support": {
                 "source": "http://cgit.drupalcode.org/state_machine"
+            }
+        },
+        {
+            "name": "drupal/union_connector",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/Shared/src/union_connector",
+                "reference": "e6326ab19c62bb225c92aeef27e4461406646d6a"
+            },
+            "require": {
+                "cornell/union": "dev-master"
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A simple integration module for the Union component system",
+            "homepage": "https://github.com/ilrWebServices/union_connector",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/ilrWebServices/union_connector/issues",
+                "source": "https://github.com/ilrWebServices/union_connector.git"
+            },
+            "transport-options": {
+                "symlink": true
             }
         },
         {
@@ -4125,6 +4190,48 @@
                 "php"
             ],
             "time": "2018-10-10T09:24:14+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -8774,7 +8881,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/erf": 20
+        "drupal/erf": 20,
+        "drupal/union_connector": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
