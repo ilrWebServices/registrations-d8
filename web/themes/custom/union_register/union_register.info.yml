@@ -1,0 +1,9 @@
+name: Union Register
+type: theme
+description: 'The initial custom theme using the Cornell ILR Union Component Library'
+package: Union
+core: 8.x
+libraries:
+  - union_organizer/union.button
+base theme: stable
+
