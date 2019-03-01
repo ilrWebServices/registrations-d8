@@ -22,9 +22,16 @@ function livereloadInit(done) {
   done();
 }
 
+function unionLivereload() {
+  return gulp
+    .src('web/libraries/union/source/components/**/*.css')
+    .pipe(livereload());
+}
+
 function watchFiles(done) {
   console.log('Watching for .scss file changes in /scss.');
   gulp.watch('web/themes/custom/union_register/scss/**/*.scss', css);
+  gulp.watch('web/libraries/union/source/components/**/*.css', unionLivereload);
   done();
 }
 
