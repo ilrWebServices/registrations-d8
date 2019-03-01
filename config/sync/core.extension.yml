@@ -37,6 +37,7 @@ module:
   system: 0
   telephone: 0
   text: 0
+  union_organizer: 0
   user: 0
   views: 10
   minimal: 1000
