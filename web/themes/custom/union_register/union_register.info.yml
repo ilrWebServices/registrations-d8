@@ -4,6 +4,6 @@ description: 'The initial custom theme using the Cornell ILR Union Component Lib
 package: Union
 core: 8.x
 libraries:
-  - union_organizer/union.button
+  - union_register/global
 base theme: stable
 

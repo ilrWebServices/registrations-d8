@@ -1,0 +1,36 @@
+{
+  "name": "registrations.ilr.test",
+  "version": "1.0.0",
+  "description": "This site serves as a Drupal-based version of https://register.ilr.cornell.edu, which is used to register users for classes and programs, track certificate progress, and process payments.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-livereload": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilrWebServices/registrations-d8.git"
+  },
+  "author": {
+    "name": "Aaron Froehlich",
+    "email": "aaronfroehlich@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jeff Amaral",
+      "email": "jeff@freethoughtdesign.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilrWebServices/registrations-d8/issues"
+  },
+  "homepage": "https://github.com/ilrWebServices/registrations-d8#readme"
+}
