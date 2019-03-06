@@ -1,0 +1,21 @@
+header {
+  background: $white;
+  padding: 1em;
+
+  .logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin-right: 40px;
+  }
+}
+
+#block-union-register-branding {
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  background: $cornell_red;
+  padding: 1em;
+}
