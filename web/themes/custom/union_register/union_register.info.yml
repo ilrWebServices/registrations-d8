@@ -6,4 +6,10 @@ core: 8.x
 libraries:
   - union_register/global
 base theme: stable
-
+regions:
+    header: Header
+    highlighted: Highlighted
+    help: Help
+    content: Content
+    sidebar_first: Sidebar
+    footer: Footer
