@@ -1,0 +1,21 @@
+uuid: 9a8f9063-6925-47bc-99c6-a983a39a37b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+  theme:
+    - union_register
+id: union_register_cart
+theme: union_register
+region: sidebar_first
+weight: 0
+provider: null
+plugin: commerce_cart
+settings:
+  id: commerce_cart
+  label: Cart
+  provider: commerce_cart
+  label_display: visible
+  dropdown: false
+visibility: {  }

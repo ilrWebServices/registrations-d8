@@ -1,0 +1,24 @@
+uuid: 46ea6750-367b-4089-becd-b6b53f49ed05
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - union_register
+id: union_register_main_nav
+theme: union_register
+region: header
+weight: 1
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }
