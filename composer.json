@@ -18,12 +18,27 @@
             }
         },
         {
+            "type": "path",
+            "url": "/Users/Shared/src/union",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/Users/Shared/src/union_organizer",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
         "composer/installers": "^1.2",
+        "cornell/union": "@dev",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/commerce": "^2.11",
@@ -32,7 +47,9 @@
         "drupal/core": "^8.6.0",
         "drupal/erf": "@dev",
         "drupal/salesforce": "^3.1",
+        "drupal/union_organizer": "@dev",
         "drush/drush": "^9.0.0",
+        "oomphinc/composer-installers-extender": "^1.1",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
@@ -73,9 +90,10 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
+        "installer-types": ["library"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "cornell/union"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],

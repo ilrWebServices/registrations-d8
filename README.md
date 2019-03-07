@@ -10,6 +10,7 @@ It is based on the [Composer template for Drupal projects][].
 - PHP 7.1 or greater
 - Composer
 - Drush ([Drush launcher][] is recommended, since a copy of Drush is included in this project)
+- Node.js 8.x or greater (for theming)
 
 ## Setup
 
@@ -17,6 +18,7 @@ It is based on the [Composer template for Drupal projects][].
 2. Open a terminal at the root of the repo
 3. Run `composer install`
 4. Copy `.env.example` to `.env` and update the database connection and salesforce info.
+5. Run `npm install && npm run build` to generate the CSS for the custom theme.
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
 
@@ -124,7 +126,23 @@ $ drush state-set salesforce.instance_url [VALUE_FROM_PROD_SITE]
 $ drush state-set salesforce.refresh_token [VALUE_FROM_PROD_SITE]
 ```
 
+## Theme Development
+
+This project uses a custom theme that includes shared components from the [Union Component Library][].
+
+The custom theme is found in `web/themes/custom/union_register/`. The Sass CSS preprocessor is used for styles, and you can compile CSS either 1) manually via `npm run build` or 2) automatically by running `npm start` in a spare terminal.
+
+### Including Union Components
+
+Union Components are integrated into the theme using the [Union Organizer][] module. See the documentation for that module for more information.
+
+### Livereload
+
+If you set `LIVERELOAD=1` in your `.env` file and reload your browser while `npm start` is running, changes to stylesheets will reload automatically in your browser.
+
 
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
 [composer-patches]: https://github.com/cweagans/composer-patches
+[Union Component Library]: https://github.com/ilrWebServices/union
+[Union Organizer]: https://github.com/ilrWebServices/union_organizer

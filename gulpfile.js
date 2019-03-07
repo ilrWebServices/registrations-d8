@@ -1,0 +1,38 @@
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
+const livereload = require("gulp-livereload");
+
+// CSS task
+function css() {
+  return gulp
+    .src('web/themes/custom/union_register/scss/style.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: "compressed" })
+      .on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('web/themes/custom/union_register/css'));
+}
+
+function livereloadStartServer(done) {
+  livereload.listen({ 'port': 35777 });
+  done();
+}
+
+function watchFiles(done) {
+  gulp.watch('web/themes/custom/union_register/scss/**/*.scss', css);
+
+  var lr_watcher = gulp.watch([
+    'web/libraries/union/source/components/**/*.css',
+    'web/themes/custom/union_register/css/style.css'
+  ]);
+
+  lr_watcher.on('change', livereload.changed);
+
+  done();
+}
+
+const watch = gulp.parallel(watchFiles, livereloadStartServer);
+
+exports.sass = css
+exports.default = watch

@@ -1,0 +1,20 @@
+uuid: 291e0fae-ee3d-410a-a073-f3f6f8a648cf
+langcode: en
+status: true
+dependencies:
+  theme:
+    - union_register
+_core:
+  default_config_hash: PffmQ-ABSz5tFjWmVsR7NesunDnEivvopnJnBjl8KNE
+id: union_register_local_actions
+theme: union_register
+region: content
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

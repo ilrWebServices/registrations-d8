@@ -1,0 +1,22 @@
+uuid: a5f9940c-4f82-4c8c-8188-0bfd6bee1b05
+langcode: en
+status: true
+dependencies:
+  theme:
+    - union_register
+_core:
+  default_config_hash: c-06bbElRY5sKmglk74ppgTW93Et4-EJFyNiUZMb8JY
+id: union_register_local_tasks
+theme: union_register
+region: content
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

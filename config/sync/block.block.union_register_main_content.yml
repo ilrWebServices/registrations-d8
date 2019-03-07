@@ -1,0 +1,20 @@
+uuid: 7b248290-58f1-4b24-8993-535af7358157
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - union_register
+id: union_register_main_content
+theme: union_register
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main content'
+  provider: system
+  label_display: '0'
+visibility: {  }
