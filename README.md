@@ -22,6 +22,33 @@ It is based on the [Composer template for Drupal projects][].
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
 
+### Linked Composer Packages
+
+As of this writing in March of 2019, three composer packages are linked to local directories for more rapid development:
+
+- `drupal/erf`
+- `drupal/union_organizer`
+- `cornell/union`
+
+This means that they won't be installed automatically by composer. It also means that you'll need these projects in the following hard-coded locations:
+
+- /Users/Shared/src/erf
+- /Users/Shared/src/union
+- /Users/Shared/src/union_organizer
+
+These directories generally contain git repos. This script snippet can help get them set up, assuming `/Users/Shared/src/` already exists:
+
+```
+cd /Users/Shared/src/ && \
+git clone git@git.drupal.org:project/erf.git && \
+git clone git@github.com:ilrWebServices/union.git && \
+git clone git@github.com:ilrWebServices/union_organizer.git
+```
+
+In general, you'll want to check out the `master` branch for each of those repositories.
+
+Once the code in those modules is stable, they will be switched to versioned dependencies.
+
 ### Development-only Settings
 
 You may wish to configure some settings (cache, config splits, etc.) for local development. To do so, you may optionally add a `settings.local.php` file to `web/sites/default/`.
