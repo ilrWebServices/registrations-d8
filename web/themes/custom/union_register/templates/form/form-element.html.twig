@@ -1,1 +1,3 @@
-{% include "@union/form-element.twig" %}
+{% include "@union/form-element.twig" with {
+  required: element['#required']
+}%}
