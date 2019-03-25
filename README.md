@@ -17,7 +17,7 @@ It is based on the [Composer template for Drupal projects][].
 1. Clone this repository
 2. Open a terminal at the root of the repo
 3. Run `composer install`
-4. Copy `.env.example` to `.env` and update the database connection and salesforce info.
+4. Copy `.env.example` to `.env` and update the database connection, salesforce, and payment info.
 5. Run `npm install && npm run build` to generate the CSS for the custom theme.
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.

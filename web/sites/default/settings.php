@@ -775,6 +775,17 @@ $config['salesforce.settings']['consumer_secret'] = getenv('SALESFORCE_CONSUMER_
 $config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
 
 /**
+ * FreedomPay settings.
+ *
+ * Some bogus values are stored in config, and the real values come from
+ * the web server environment (or the .env file, generally only used by
+ * developers).
+ */
+$config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['store_id'] = getenv('FREEDOMPAY_STORE_ID_REG');
+$config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['terminal_id'] = getenv('FREEDOMPAY_TERMINAL_ID_REG');
+$config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['mode'] = getenv('FREEDOMPAY_MODE_REG');
+
+/**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,
@@ -784,7 +795,6 @@ $config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
  *
  * Keep this code block at the end of this file to take full effect.
  */
-
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
