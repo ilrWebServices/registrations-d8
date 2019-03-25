@@ -12,6 +12,9 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\commerce_order\Entity\OrderInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Drupal\commerce_payment\Exception\PaymentGatewayException;
 
 /**
  * Provides the FreedomPay HPP (Hosted Payment Page) payment gateway.
@@ -138,6 +141,91 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function onReturn(OrderInterface $order, Request $request) {
+    // Get the transid from the redirect request.
+    $transid = $request->query->get('transid');
+
+    // If the `transid` query parameter was lost somewhere along the way, just
+    // bail. It should be valid, however, since the user should have been
+    // redirected here from HPPCallbackController::return().
+    if (!$transid) {
+      return;
+    }
+
+    // Load the payment associated with this returned transaction.
+    $payment = $this->entityTypeManager->getStorage('commerce_payment')->loadByProperties([
+      'remote_id' => $transid,
+      'order_id' => $order->id(),
+      'state' => 'new',
+    ]);
+    $payment = reset($payment);
+
+    // If the payment is missing, bail.
+    if (!$payment) {
+      return;
+    }
+
+    // Get the transaction from Freedompay.
+    $hpp_transaction = $this->getTransaction($transid);
+
+    if (!empty($hpp_transaction['AuthResponse']['AuthorizationDecision'])){
+      $payment->remote_state = $hpp_transaction['AuthResponse']['AuthorizationDecision'];
+
+      if ($hpp_transaction['AuthResponse']['AuthorizationDecision'] === 'ACCEPT') {
+        $payment->setState('completed');
+      }
+
+      $payment->save();
+    }
+
+    if ($payment->getState()->getId() !== 'completed') {
+      // The AuthResponse.AuthorizationDecision was one of REJECT, FAILURE, or
+      // ERROR, so throw a payment failure exception.
+
+      // @todo Maybe delete the payment at this point? If the user tries to pay
+      // again, a new transaction (and thus payment) will be created, so this
+      // one is basically an orphan.
+      throw new PaymentGatewayException('Payment failed!');
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function onCancel(OrderInterface $order, Request $request) {
+    // Call the parent onCancel method, which only sets a message.
+    parent::onCancel($order, $request);
+
+    // Get the transid from the redirect request.
+    $transid = $request->query->get('transid');
+
+    // If the `transid` query parameter was lost somewhere along the way, just
+    // bail. It should be valid, however, since the user should have been
+    // redirected here from HPPCallbackController::return().
+    if (!$transid) {
+      return;
+    }
+
+    // Load the payment associated with this canceled transaction.
+    $payment = $this->entityTypeManager->getStorage('commerce_payment')->loadByProperties([
+      'remote_id' => $transid,
+      'order_id' => $order->id(),
+      'state' => 'new',
+    ]);
+    $payment = reset($payment);
+
+    // If the payment is missing, bail.
+    if (!$payment) {
+      return;
+    }
+
+    // Delete the associated payment.
+    $payment->delete();
+  }
+
+  /**
    * Return the URL to the payment API.
    *
    * @return string
@@ -181,6 +269,48 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
     }
     catch (\GuzzleHttp\Exception\ClientException $e) {
       $this->logger->alert('Could not create a transaction.');
+      return FALSE;
+    }
+
+    $response_array = json_decode($response->getBody(), true);
+
+    if (!empty($response_array['ResponseMessage'])) {
+      $this->logger->alert($response_array['ResponseMessage']);
+      return FALSE;
+    }
+
+    return $response_array;
+  }
+
+  /**
+   * Get a Freedompay HPP transaction via the API.
+   *
+   * The returned transaction ID and payment form URL can be used to create and
+   * complete a payment.
+   *
+   * @return array|FALSE The CheckoutDetailsResponse object from Freedompay as
+   *   an array or FALSE if there was an error. The array will contain the
+   *   following keys (among others):
+   *   - OriginalRequest: Data from the original request
+   *   - MaskedCardNumber: The masked card number on file associated with the
+   *     token. Only populated if the transaction has successfully been
+   *     authorized.
+   *   - StoreName
+   *   - AuthResponse
+   *   - CaptureResponse:
+   *   - FailedResponses:
+   *   - TokenInformation:
+   *   - ResponseMessage:
+   *   - NameOnCard:
+   */
+  public function getTransaction($transid) {
+    try {
+      $response = $this->httpClient->post($this->getApiUrl() . '/getTransaction', [
+          RequestOptions::JSON => $transid
+      ]);
+    }
+    catch (\GuzzleHttp\Exception\ClientException $e) {
+      $this->logger->alert('Could not get a transaction.');
       return FALSE;
     }
 
