@@ -1,0 +1,6 @@
+services:
+  commerce_freedompay.hpp_transid_access_checker:
+    class: Drupal\commerce_freedompay\Access\HPPResponseTransidAccess
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: access_check, applies_to: _hpp_transid_access_checker }

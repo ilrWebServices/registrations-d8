@@ -1,0 +1,7 @@
+name: 'Commerce FreedomPay'
+type: module
+description: 'Provides Commerce integration for FreedomPay Hosted Payment Page (HPP)'
+core: 8.x
+package: 'Commerce (contrib)'
+dependencies:
+  - commerce:commerce_payment

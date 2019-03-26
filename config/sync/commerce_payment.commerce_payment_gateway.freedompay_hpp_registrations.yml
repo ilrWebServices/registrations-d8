@@ -1,0 +1,24 @@
+uuid: d3daf451-f0e9-4265-aa98-82a49dabb88f
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_freedompay
+id: freedompay_hpp_registrations
+label: 'FreedomPay HPP Registrations'
+weight: null
+plugin: freedompay_hpp
+configuration:
+  store_id: 'set via environment'
+  terminal_id: 'set via environment'
+  display_label: 'Secure Payment Page'
+  mode: test
+  payment_method_types:
+    - credit_card
+conditions:
+  -
+    plugin: order_product_type
+    configuration:
+      product_types:
+        - course
+conditionOperator: AND

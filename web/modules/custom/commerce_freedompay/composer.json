@@ -1,0 +1,10 @@
+{
+  "name": "drupal/commerce_freedompay",
+  "type": "drupal-module",
+  "description": "Provides Commerce integration for FreedomPay Hosted Payment",
+  "homepage": "https://www.drupal.org/project/commerce_freedompay",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/commerce": "~2"
+  }
+}
