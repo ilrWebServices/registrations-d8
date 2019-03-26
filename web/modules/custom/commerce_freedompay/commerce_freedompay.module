@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Contains commerce_freedompay.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_entity_operation().
+ *
+ * Add an operation to freedompay_hpp payments to view the full transaction
+ * details.
+ */
+function commerce_freedompay_entity_operation(EntityInterface $entity) {
+  $operations = [];
+
+  if ($entity->getEntityTypeId() !== 'commerce_payment') {
+    return;
+  }
+
+  if ($entity->getPaymentGateway()->getPluginId() !== 'freedompay_hpp') {
+    return;
+  }
+
+  // The FreedomPay transaction id is stored in the as the remote_id of the
+  // payment. It shouldn't be missing for completed payments, but you never
+  // know.
+  if (empty($entity->getRemoteId())) {
+    return;
+  }
+
+  $operations['freedompay_transaction'] = [
+    'title' => t('FreedomPay Transaction'),
+    'weight' => 200,
+    'url' => Url::fromRoute('commerce_freedompay.transaction', [
+      'commerce_payment' => $entity->id()
+    ]),
+  ];
+
+  return $operations;
+}

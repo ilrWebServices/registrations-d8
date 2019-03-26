@@ -33,3 +33,10 @@ commerce_freedompay.callback.cancel:
     no_cache: TRUE
   requirements:
     _hpp_transid_access_checker: 'TRUE'
+
+commerce_freedompay.transaction:
+  path: '/admin/commerce-freedompay/transaction/{commerce_payment}'
+  defaults:
+    _controller: '\Drupal\commerce_freedompay\Controller\TransactionController::viewTransaction'
+  requirements:
+    _permission: 'administer commerce_payment'
