@@ -5,6 +5,7 @@ package: Union
 core: 8.x
 libraries:
   - union_register/global
+  - union_organizer/ilr
 base theme: stable
 regions:
     header: Header
