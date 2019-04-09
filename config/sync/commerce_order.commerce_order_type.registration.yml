@@ -10,7 +10,7 @@ third_party_settings:
     cart_form_view: commerce_cart_form
     cart_block_view: commerce_cart_block
   commerce_checkout:
-    checkout_flow: default
+    checkout_flow: registration
 label: Registration
 id: registration
 workflow: order_default
