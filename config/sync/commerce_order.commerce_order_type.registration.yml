@@ -7,7 +7,7 @@ dependencies:
     - commerce_checkout
 third_party_settings:
   commerce_cart:
-    cart_form_view: commerce_cart_form
+    cart_form_view: registration_cart_form
     cart_block_view: commerce_cart_block
   commerce_checkout:
     checkout_flow: registration
