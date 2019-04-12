@@ -6,9 +6,6 @@ dependencies:
     - erf.participant_type.basic
     - field.field.participant.basic.field_first_name
     - field.field.participant.basic.field_last_name
-    - field.field.participant.basic.field_phone
-  module:
-    - telephone
 id: participant.basic.default
 targetEntityType: participant
 bundle: basic
@@ -16,7 +13,7 @@ mode: default
 content:
   creator_uid:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -24,7 +21,7 @@ content:
     region: content
     third_party_settings: {  }
   field_first_name:
-    weight: 11
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -32,31 +29,24 @@ content:
     type: string_textfield
     region: content
   field_last_name:
-    weight: 12
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_phone:
-    weight: 13
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: telephone_default
-    region: content
   mail:
     type: email_default
-    weight: -10
+    weight: 2
     settings:
       size: 100
-      placeholder: 'email address'
+      placeholder: ''
     region: content
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: -9
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
