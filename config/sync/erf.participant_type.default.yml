@@ -4,4 +4,3 @@ status: true
 dependencies: {  }
 id: default
 label: Default
-reference_user: false
