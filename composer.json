@@ -109,6 +109,9 @@
             "drupal/inline_entity_form": {
                 "Field name/label disappears when I create a new entity inline":
                 "https://www.drupal.org/files/issues/inline_entity_form-no_label_required_field_with_no_entries-2842744.patch"
+            },
+            "drupal/commerce": {
+                "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch"
             }
         }
     }

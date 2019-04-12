@@ -1,0 +1,13 @@
+diff --git a/modules/order/src/Plugin/views/area/OrderTotal.php b/modules/order/src/Plugin/views/area/OrderTotal.php
+index 0fbf2ae1..736dd0e1 100644
+--- a/modules/order/src/Plugin/views/area/OrderTotal.php
++++ b/modules/order/src/Plugin/views/area/OrderTotal.php
+@@ -76,7 +76,7 @@ public function render($empty = FALSE) {
+         if (!$argument instanceof NumericArgument) {
+           continue;
+         }
+-        if (!in_array($argument->getField(), ['commerce_order.order_id', 'commerce_order_item.order_id'])) {
++        if (!in_array($argument->getField(), ['commerce_order.order_id', 'commerce_order_item.order_id', 'commerce_order_commerce_order_item.order_id'])) {
+           continue;
+         }
+         if ($order = $this->orderStorage->load($argument->getValue())) {
