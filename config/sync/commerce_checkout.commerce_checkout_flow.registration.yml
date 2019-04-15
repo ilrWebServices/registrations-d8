@@ -23,7 +23,7 @@ configuration:
       step: order_information
       weight: 10
     order_summary:
-      view: commerce_checkout_order_summary
+      view: registration_checkout_order_summary
       step: _sidebar
       weight: 10
     completion_message:
