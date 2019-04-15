@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0a8ddbd14de974784cbd616ff40a41c",
+    "content-hash": "3f3c39aec6528004c5384c03b8fd75b5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1922,7 +1922,7 @@
             "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/address",
+                "url": "https://git.drupalcode.org/project/address.git",
                 "reference": "8.x-1.4"
             },
             "dist": {
@@ -1981,7 +1981,7 @@
             "version": "2.11.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/commerce",
+                "url": "https://git.drupalcode.org/project/commerce.git",
                 "reference": "8.x-2.11"
             },
             "dist": {
@@ -2058,7 +2058,7 @@
             "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/config_filter",
+                "url": "https://git.drupalcode.org/project/config_filter.git",
                 "reference": "8.x-1.4"
             },
             "dist": {
@@ -2127,7 +2127,7 @@
             "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/config_split",
+                "url": "https://git.drupalcode.org/project/config_split.git",
                 "reference": "8.x-1.4"
             },
             "dist": {
@@ -2693,7 +2693,7 @@
             "version": "2.0.0-alpha8",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/dynamic_entity_reference",
+                "url": "https://git.drupalcode.org/project/dynamic_entity_reference.git",
                 "reference": "8.x-2.0-alpha8"
             },
             "dist": {
@@ -2752,7 +2752,7 @@
             "version": "3.0.0-rc1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/encrypt",
+                "url": "https://git.drupalcode.org/project/encrypt.git",
                 "reference": "8.x-3.0-rc1"
             },
             "dist": {
@@ -2816,7 +2816,7 @@
             "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/entity",
+                "url": "https://git.drupalcode.org/project/entity.git",
                 "reference": "8.x-1.0-rc1"
             },
             "dist": {
@@ -2879,7 +2879,7 @@
             "version": "1.6.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/entity_reference_revisions",
+                "url": "https://git.drupalcode.org/project/entity_reference_revisions.git",
                 "reference": "8.x-1.6"
             },
             "dist": {
@@ -2965,7 +2965,7 @@
             "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/inline_entity_form",
+                "url": "https://git.drupalcode.org/project/inline_entity_form.git",
                 "reference": "8.x-1.0-rc1"
             },
             "dist": {
@@ -2992,6 +2992,9 @@
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Field name/label disappears when I create a new entity inline": "https://www.drupal.org/files/issues/inline_entity_form-no_label_required_field_with_no_entries-2842744.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3031,7 +3034,7 @@
             "version": "1.8.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/key",
+                "url": "https://git.drupalcode.org/project/key.git",
                 "reference": "8.x-1.8"
             },
             "dist": {
@@ -3099,7 +3102,7 @@
             "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/profile",
+                "url": "https://git.drupalcode.org/project/profile.git",
                 "reference": "8.x-1.0-rc1"
             },
             "dist": {
@@ -3167,7 +3170,7 @@
             "version": "3.1.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/salesforce",
+                "url": "https://git.drupalcode.org/project/salesforce.git",
                 "reference": "8.x-3.1"
             },
             "dist": {
@@ -3267,7 +3270,7 @@
             "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/state_machine",
+                "url": "https://git.drupalcode.org/project/state_machine.git",
                 "reference": "8.x-1.0-rc1"
             },
             "dist": {
@@ -7263,12 +7266,12 @@
             "version": "v1.6.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
                 "shasum": ""
             },
