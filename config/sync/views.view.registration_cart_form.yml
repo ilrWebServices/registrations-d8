@@ -523,23 +523,12 @@ display:
           entity_type: registration
           entity_field: commerce_order_item_id
           plugin_id: standard
+      arguments:
         order_id:
           id: order_id
           table: commerce_order_item
           field: order_id
           relationship: commerce_order_item_id
-          group_type: group
-          admin_label: Order
-          required: true
-          entity_type: commerce_order_item
-          entity_field: order_id
-          plugin_id: standard
-      arguments:
-        order_id:
-          id: order_id
-          table: commerce_order
-          field: order_id
-          relationship: order_id
           group_type: group
           admin_label: ''
           default_action: default
@@ -569,7 +558,7 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-          entity_type: commerce_order
+          entity_type: commerce_order_item
           entity_field: order_id
           plugin_id: numeric
       display_extenders: {  }
