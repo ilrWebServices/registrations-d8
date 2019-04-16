@@ -1,17 +1,21 @@
-uuid: 624d3b50-63cc-4f2a-8b25-37d6197fec7b
+uuid: 0fb3cfc9-afc9-4d85-a88e-9848a47abb7b
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.storage.registration.participants
   module:
+    - commerce_cart
     - commerce_order
     - commerce_price
-id: commerce_order_item_table
-label: 'Order items'
+    - erf
+id: registration_cart_form
+label: 'Registration Cart form with participants'
 module: views
-description: 'Display a set of order items in a table.'
-tag: commerce_order_item_table
-base_table: commerce_order_item
-base_field: order_item_id
+description: 'A cart listing of registration info for orders of the type `regisistration`'
+tag: commerce_cart_form
+base_table: registration
+base_field: id
 core: 8.x
 display:
   default:
@@ -49,52 +53,14 @@ display:
         options:
           offset: 0
       style:
-        type: table
+        type: html_list
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            title: title
-            unit_price__number: unit_price__number
-            quantity: quantity
-            total_price__number: total_price__number
-          info:
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            unit_price__number:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            quantity:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            total_price__number:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
         options:
@@ -103,15 +69,15 @@ display:
           hide_empty: false
           default_field_elements: true
       fields:
-        title:
-          id: title
-          table: commerce_order_item
-          field: title
+        id:
+          id: id
+          table: registration
+          field: id
           relationship: none
           group_type: group
           admin_label: ''
-          label: Title
-          exclude: false
+          label: 'Registration ID'
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -152,9 +118,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
+          type: number_integer
           settings:
-            link_to_entity: false
+            thousand_separator: ''
+            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -165,17 +132,197 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: registration
+          entity_field: id
+          plugin_id: field
+        rendered_entity:
+          id: rendered_entity
+          table: registration
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: default
           entity_type: null
-          entity_field: title
+          entity_field: null
+          plugin_id: rendered_entity
+        purchased_entity:
+          id: purchased_entity
+          table: commerce_order_item
+          field: purchased_entity
+          relationship: commerce_order_item_id
+          group_type: group
+          admin_label: ''
+          label: Class
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_view
+          settings:
+            view_mode: cart
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: commerce_order_item
+          entity_field: purchased_entity
+          plugin_id: field
+        participants:
+          id: participants
+          table: registration__participants
+          field: participants
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Participants
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: ul
+          separator: ', '
+          field_api_classes: false
           plugin_id: field
         unit_price__number:
           id: unit_price__number
           table: commerce_order_item
           field: unit_price__number
-          relationship: none
+          relationship: commerce_order_item_id
           group_type: group
           admin_label: ''
-          label: 'Unit price'
+          label: 'Price per participant'
           exclude: false
           alter:
             alter_text: false
@@ -234,82 +381,14 @@ display:
           entity_type: commerce_order_item
           entity_field: unit_price
           plugin_id: field
-        quantity:
-          id: quantity
-          table: commerce_order_item
-          field: quantity
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Quantity
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_decimal
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
-            decimal_separator: .
-            scale: 2
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: commerce_order_item
-          entity_field: quantity
-          plugin_id: field
         total_price__number:
           id: total_price__number
           table: commerce_order_item
           field: total_price__number
-          relationship: none
+          relationship: commerce_order_item_id
           group_type: group
           admin_label: ''
-          label: 'Total price'
+          label: Total
           exclude: false
           alter:
             alter_text: false
@@ -368,32 +447,91 @@ display:
           entity_type: commerce_order_item
           entity_field: total_price
           plugin_id: field
+        remove_button:
+          id: remove_button
+          table: commerce_order_item
+          field: remove_button
+          relationship: commerce_order_item_id
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          entity_type: commerce_order_item
+          plugin_id: commerce_order_item_remove_button
       filters: {  }
       sorts: {  }
       header: {  }
-      footer: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
+      footer:
+        commerce_order_total:
+          id: commerce_order_total
           table: views
-          field: area_text_custom
+          field: commerce_order_total
           relationship: none
           group_type: group
           admin_label: ''
-          empty: true
-          tokenize: false
-          content: 'There are no order items yet.'
-          plugin_id: text_custom
-      relationships: {  }
+          empty: false
+          plugin_id: commerce_order_total
+      empty: {  }
+      relationships:
+        commerce_order_item_id:
+          id: commerce_order_item_id
+          table: registration
+          field: commerce_order_item_id
+          relationship: none
+          group_type: group
+          admin_label: 'Order item'
+          required: true
+          entity_type: registration
+          entity_field: commerce_order_item_id
+          plugin_id: standard
       arguments:
         order_id:
           id: order_id
           table: commerce_order_item
           field: order_id
-          relationship: none
+          relationship: commerce_order_item_id
           group_type: group
           admin_label: ''
-          default_action: 'not found'
+          default_action: default
           exception:
             value: all
             title_enable: false
@@ -430,4 +568,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.registration.default.default'
+        - 'config:core.entity_view_display.registration.simple_class.default'
+        - 'config:field.storage.registration.participants'

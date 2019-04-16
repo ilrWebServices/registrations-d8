@@ -1,96 +1,86 @@
-uuid: 9b10ae2f-945a-479a-861c-793aaf46ffb1
+uuid: 2230eca6-b2a3-4dba-9612-e95cce8012fb
 langcode: en
 status: true
 dependencies:
   config:
-    - commerce_order.commerce_order_type.default
-    - field.field.commerce_order.default.order_items
+    - commerce_order.commerce_order_type.registration
+    - field.field.commerce_order.registration.order_items
   module:
     - commerce_order
     - state_machine
     - user
-_core:
-  default_config_hash: DGdHybHLw9uLIR4f16miPoJYlsJxbxZk_li7kD13aE4
-id: commerce_order.default.default
+id: commerce_order.registration.default
 targetEntityType: commerce_order
-bundle: default
+bundle: registration
 mode: default
 content:
-  changed:
-    type: timestamp
-    weight: 4
-    label: inline
-    settings:
-      date_format: short
-      custom_date_format: ''
-      timezone: ''
-    third_party_settings: {  }
-    region: content
   completed:
-    label: inline
+    label: above
     type: timestamp
-    weight: 2
+    weight: 0
+    region: content
     settings:
-      date_format: short
+      date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-    region: content
   ip_address:
-    label: inline
+    label: above
     type: string
-    weight: 7
+    weight: 0
+    region: content
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    region: content
   mail:
-    label: inline
+    label: above
     type: basic_string
-    weight: 6
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   order_items:
     type: commerce_order_item_table
     weight: 0
-    settings: {  }
+    label: above
+    settings:
+      order_item_view: registration_order_items
     third_party_settings: {  }
-    label: hidden
     region: content
   placed:
-    label: inline
+    label: above
     type: timestamp
-    weight: 3
+    weight: 0
+    region: content
     settings:
-      date_format: short
+      date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-    region: content
   state:
     label: hidden
     type: state_transition_form
-    weight: 8
+    weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   total_price:
-    type: commerce_order_total_summary
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
     label: hidden
+    type: commerce_order_total_summary
+    weight: 0
     region: content
-  uid:
-    label: inline
-    type: author
-    weight: 5
     settings: {  }
     third_party_settings: {  }
+  uid:
+    label: above
+    type: author
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   billing_profile: true
+  changed: true
   order_number: true
   store_id: true
   total_paid: true
