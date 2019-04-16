@@ -100,9 +100,20 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add the participant_ui js library when there is a registration form.
+ */
+function ilr_registrations_form_entity_registration_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form['participants']['widget']['entities']['#theme'] == 'inline_entity_form_entity_table') {
+    $form['#attached']['library'][] = 'ilr_registrations/ilr_registrations_participant_ui';
+  }
+}
+
+/**
  * Implements hook_inline_entity_form_entity_form_alter().
  *
- * Add the participant_ui js library.
+ * Add the participant_ui js library when there is an IEF for participants.
  */
 function ilr_registrations_inline_entity_form_entity_form_alter(&$entity_form, FormStateInterface &$form_state) {
   if ($entity_form['#entity_type'] == 'participant') {
