@@ -13,3 +13,4 @@ _core:
 consumer_key: '000000'
 consumer_secret: '000000'
 login_url: 'https://login.salesforce.com'
+salesforce_auth_provider: oauth_default
