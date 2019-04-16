@@ -41,7 +41,7 @@
         "cornell/union": "@dev",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
-        "drupal/commerce": "^2.11",
+        "drupal/commerce": "^2.13",
         "drupal/config_split": "^1.4",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
