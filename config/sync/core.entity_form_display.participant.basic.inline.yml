@@ -7,9 +7,6 @@ dependencies:
     - erf.participant_type.basic
     - field.field.participant.basic.field_first_name
     - field.field.participant.basic.field_last_name
-    - field.field.participant.basic.field_phone
-  module:
-    - telephone
 id: participant.basic.inline
 targetEntityType: participant
 bundle: basic
@@ -17,7 +14,7 @@ mode: inline
 content:
   field_first_name:
     type: string_textfield
-    weight: 1
+    weight: 0
     region: content
     settings:
       size: 60
@@ -25,25 +22,18 @@ content:
     third_party_settings: {  }
   field_last_name:
     type: string_textfield
-    weight: 2
+    weight: 1
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_phone:
-    type: telephone_default
-    weight: 3
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
   mail:
     type: email_default
-    weight: 0
+    weight: 2
     settings:
       size: 100
-      placeholder: 'email address'
+      placeholder: ''
     region: content
     third_party_settings: {  }
 hidden:

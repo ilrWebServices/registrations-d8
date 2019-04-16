@@ -4,24 +4,15 @@ status: true
 dependencies:
   config:
     - erf.registration_type.simple_class
-    - field.field.registration.simple_class.field_organization
     - field.field.registration.simple_class.participants
     - field.field.registration.simple_class.product_variation
   module:
-    - address
     - user
 id: registration.simple_class.default
 targetEntityType: registration
 bundle: simple_class
 mode: default
 content:
-  field_organization:
-    weight: 1
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
-    region: content
   user_id:
     label: hidden
     type: author

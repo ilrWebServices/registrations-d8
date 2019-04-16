@@ -8,6 +8,7 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\commerce_price\Price;
 use Drupal\commerce_store\Entity\Store;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -95,5 +96,27 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
 
     $store_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_store');
     $store_storage->markAsDefault($store);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add the participant_ui js library when there is a registration form.
+ */
+function ilr_registrations_form_entity_registration_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form['participants']['widget']['entities']['#theme'] == 'inline_entity_form_entity_table') {
+    $form['#attached']['library'][] = 'ilr_registrations/ilr_registrations_participant_ui';
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ *
+ * Add the participant_ui js library when there is an IEF for participants.
+ */
+function ilr_registrations_inline_entity_form_entity_form_alter(&$entity_form, FormStateInterface &$form_state) {
+  if ($entity_form['#entity_type'] == 'participant') {
+    $entity_form['#attached']['library'][] = 'ilr_registrations/ilr_registrations_participant_ui';
   }
 }

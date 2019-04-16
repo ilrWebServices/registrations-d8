@@ -1,0 +1,4 @@
+ilr_registrations_participant_ui:
+  version: 1.x
+  js:
+    js/ilr_registrations_participant_ui.js: {}
