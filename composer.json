@@ -47,6 +47,7 @@
         "drupal/core": "^8.6.0",
         "drupal/erf": "@dev",
         "drupal/salesforce": "^3.1",
+        "drupal/typed_data": "^1.0@alpha",
         "drupal/union_organizer": "@dev",
         "drush/drush": "^9.0.0",
         "oomphinc/composer-installers-extender": "^1.1",
