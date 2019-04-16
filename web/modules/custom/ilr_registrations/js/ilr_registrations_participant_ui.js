@@ -30,11 +30,11 @@
         }
 
         if (btnId.indexOf('ief-entity-remove') !== -1) {
-          shortValue = '-';
+          shortValue = '×';
         }
 
         if (btnId.indexOf('ief-add-cancel') !== -1 || btnId.indexOf('ief-edit-cancel') !== -1 || btnId.indexOf('ief-remove-cancel') !== -1) {
-          shortValue = 'x';
+          shortValue = "×";
         }
 
         iefButtons[i].setAttribute('aria-label', btnValue);
