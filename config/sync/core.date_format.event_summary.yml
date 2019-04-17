@@ -1,0 +1,8 @@
+uuid: 39095b90-85c5-41d7-9084-ab3115bb1ba9
+langcode: en
+status: true
+dependencies: {  }
+id: event_summary
+label: 'Event summary'
+locked: false
+pattern: 'M j, Y'

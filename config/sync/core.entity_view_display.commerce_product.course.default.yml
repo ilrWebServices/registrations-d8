@@ -27,7 +27,7 @@ content:
     type: registration_form
     weight: 0
     region: content
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
   title:

@@ -1,0 +1,10 @@
+uuid: 040bc0da-3588-4050-84eb-0bdaf96498fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.order_item
+label: 'Order Item'
+targetEntityType: participant
+cache: true
