@@ -28,13 +28,7 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  mail:
-    label: hidden
-    type: basic_string
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   creator_uid: true
+  mail: true
   uid: true

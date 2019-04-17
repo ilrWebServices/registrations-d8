@@ -15,23 +15,14 @@ targetEntityType: commerce_product_variation
 bundle: class
 mode: cart
 content:
-  field_class_end:
-    type: datetime_default
-    weight: 2
-    region: content
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
   field_class_start:
     type: datetime_default
     weight: 1
     region: content
-    label: above
+    label: hidden
     settings:
       timezone_override: ''
-      format_type: medium
+      format_type: event_summary
     third_party_settings: {  }
   title:
     type: string
@@ -42,6 +33,7 @@ content:
       link_to_entity: true
     third_party_settings: {  }
 hidden:
+  field_class_end: true
   field_class_price: true
   list_price: true
   price: true
