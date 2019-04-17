@@ -1,4 +1,15 @@
-$cornell_red: #B31B1B;
+/*=============================================
+=            Color vars            =
+=============================================*/
+$cornell-red: #B31B1B;
 $white: white;
-$gray: #F7F7F7;
-$color-border: #ccc;
+$gray-light: #F7F7F7;
+$gray-medium: #ccc;
+$gray-dark: darken($gray-medium, 30%);
+
+/*=============================================
+=            Colors used            =
+=============================================*/
+$color-border: $gray-medium;
+$color-link: $cornell-red;
+$color-breadcrumbs: $color-link;
