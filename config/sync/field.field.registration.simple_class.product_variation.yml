@@ -16,10 +16,6 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: views
-  handler_settings:
-    view:
-      view_name: erf_product_variation_reference_for_current_product
-      display_name: entity_reference
-      arguments: {  }
+  handler: erf_commerce_variation
+  handler_settings: {  }
 field_type: entity_reference
