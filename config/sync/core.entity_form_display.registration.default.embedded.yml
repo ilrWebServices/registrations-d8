@@ -1,25 +1,19 @@
-uuid: 9e5e7f1d-1ad8-447b-ac01-7092f61a1024
+uuid: 49a524d5-c691-41fe-a8d7-6978607c0aa7
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
+    - core.entity_form_mode.registration.embedded
     - erf.registration_type.default
     - field.field.registration.default.participants
   module:
     - inline_entity_form
-id: registration.default.default
+id: registration.default.embedded
 targetEntityType: registration
 bundle: default
-mode: default
+mode: embedded
 content:
-  locked:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   participants:
     weight: 0
     settings:
@@ -36,13 +30,6 @@ content:
     third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
-  user_id:
-    type: entity_reference_autocomplete
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    region: content
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  locked: true
+  user_id: true

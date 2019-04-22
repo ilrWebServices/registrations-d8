@@ -1,27 +1,21 @@
-uuid: 9e02562c-c6dd-4643-8794-0b31e0bdb0ec
+uuid: 02462503-f15b-4b58-a741-fe9c638512f9
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
+    - core.entity_form_mode.registration.embedded
     - erf.registration_type.simple_class
     - field.field.registration.simple_class.participants
     - field.field.registration.simple_class.product_variation
   module:
     - erf_commerce
     - inline_entity_form
-id: registration.simple_class.default
+id: registration.simple_class.embedded
 targetEntityType: registration
 bundle: simple_class
-mode: default
+mode: embedded
 content:
-  locked:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   participants:
     type: inline_entity_form_complex
     weight: 2
@@ -45,13 +39,6 @@ content:
       variation_view_mode: cart
     third_party_settings: {  }
     region: content
-  user_id:
-    type: entity_reference_autocomplete
-    weight: 5
-    region: content
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  locked: true
+  user_id: true

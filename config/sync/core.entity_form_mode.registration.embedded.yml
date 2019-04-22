@@ -1,0 +1,10 @@
+uuid: 06dacd03-36c3-4cf6-9f8e-0d84f2bdb438
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: registration.embedded
+label: 'Embedded on Source Entity'
+targetEntityType: registration
+cache: true
