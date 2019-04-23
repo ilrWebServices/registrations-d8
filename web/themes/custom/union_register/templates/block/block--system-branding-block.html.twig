@@ -14,13 +14,10 @@
  */
 #}
 {% block content %}
-  {% if site_logo %}
-    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
-      <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" class="logo" />
-    </a>
-  {% endif %}
-  {% if site_name %}
-    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
-  {% endif %}
-  {{ site_slogan }}
+  {% include '@union/_ilr-lockup.twig' with {
+    logo_link: path('<front>'),
+    logo_alt: site_name
+  } only %}
+
+  {# @todo Place site-specific branding here, like a logo or some text, and set the lockup link above to www.ilr.cornell.edu. #}
 {% endblock %}
