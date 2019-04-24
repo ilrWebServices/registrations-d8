@@ -114,7 +114,8 @@
             },
             "drupal/commerce": {
                 "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
-                "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch"
+                "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch",
+                "Rework the ownership model for customer profiles": "https://www.drupal.org/files/issues/2019-03-18/3022850-27.patch"
             }
         }
     }
