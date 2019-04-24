@@ -41,6 +41,8 @@
         "cornell/union": "@dev",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/adminimal_admin_toolbar": "^1.9",
+        "drupal/adminimal_theme": "^1.4",
         "drupal/commerce": "^2.13",
         "drupal/config_split": "^1.4",
         "drupal/console": "^1.0.2",
