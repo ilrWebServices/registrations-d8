@@ -1,6 +1,8 @@
 module:
   address: 0
+  admin_toolbar: 0
   block: 0
+  breakpoint: 0
   commerce: 0
   commerce_cart: 0
   commerce_checkout: 0
@@ -38,6 +40,7 @@ module:
   system: 0
   telephone: 0
   text: 0
+  toolbar: 0
   typed_data: 0
   union_organizer: 0
   user: 0
@@ -47,7 +50,6 @@ theme:
   stable: 0
   classy: 0
   seven: 0
-  bartik: 0
   union_register: 0
 profile: minimal
 _core:
