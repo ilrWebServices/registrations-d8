@@ -6,7 +6,7 @@ dependencies:
     - commerce_checkout
   theme:
     - union_register
-id: checkoutprogress
+id: union_register_checkoutprogress
 theme: union_register
 region: content
 weight: 0
