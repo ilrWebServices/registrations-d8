@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - commerce_cart
+    - system
   theme:
     - union_register
 id: union_register_cart
@@ -18,4 +19,9 @@ settings:
   provider: commerce_cart
   label_display: visible
   dropdown: false
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/checkout/*\r\n/cart"
+    negate: true
+    context_mapping: {  }
