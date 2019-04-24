@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This site serves as a Drupal-based version of https://register.ilr.cornell.edu, which is used to register users for classes and programs, track certificate progress, and process payments.",
   "main": "gulpfile.js",
-  "dependencies": {},
+  "dependencies": {
+    "breakpoint-sass": "^2.7.1"
+  },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-livereload": "^4.0.1",

@@ -3,12 +3,19 @@ const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const livereload = require("gulp-livereload");
 
+var sass_config = {
+  includePaths: [
+    'node_modules/',
+  ],
+  outputStyle: "compressed"
+};
+
 // CSS task
 function css() {
   return gulp
     .src('web/themes/custom/union_register/scss/style.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: "compressed" })
+    .pipe(sass(sass_config)
       .on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('web/themes/custom/union_register/css'));
