@@ -1,18 +1,12 @@
 header {
   background: $white;
-  padding: 1em;
-
-  .logo {
-    width: 80px;
-    height: auto;
-    display: block;
-    margin-right: 40px;
-  }
+  padding: 1em 0;
 }
 
-#block-union-register-branding {
-  display: flex;
-  align-items: center;
+aside.layout-sidebar-first {
+  @include breakpoint($medium) {
+    margin-top: 4.5rem;
+  }
 }
 
 footer {
