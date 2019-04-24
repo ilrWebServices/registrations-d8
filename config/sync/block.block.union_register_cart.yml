@@ -9,7 +9,7 @@ dependencies:
 id: union_register_cart
 theme: union_register
 region: sidebar_first
-weight: 0
+weight: -4
 provider: null
 plugin: commerce_cart
 settings:
