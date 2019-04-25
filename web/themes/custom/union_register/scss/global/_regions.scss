@@ -10,6 +10,8 @@ aside.layout-sidebar-first {
 }
 
 .region--footer {
+  @include full-width;
+
   background: $cornell_red;
   padding: 1em;
 }
