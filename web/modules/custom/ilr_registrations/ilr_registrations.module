@@ -23,6 +23,9 @@ function ilr_registrations_entity_type_alter(array &$entity_types) {
   if (isset($entity_types['commerce_product_variation'])) {
     $entity_types['commerce_product_variation']->setLinkTemplate('salesforce', "/commerce_product_variation/{commerce_product_variation}/salesforce");
   }
+  if (isset($entity_types['commerce_promotion'])) {
+    $entity_types['commerce_promotion']->setLinkTemplate('salesforce', "/promotion/{commerce_promotion}/salesforce");
+  }
 }
 
 /**
