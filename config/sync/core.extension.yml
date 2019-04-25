@@ -12,6 +12,7 @@ module:
   commerce_payment: 0
   commerce_price: 0
   commerce_product: 0
+  commerce_promotion: 0
   commerce_store: 0
   config_filter: 0
   config_split: 0
