@@ -72,6 +72,23 @@ function ilr_registrations_commerce_product_presave(EntityInterface $entity) {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Create a default coupon for new promotions.
+ *
+ * @todo Consider limiting to only promotions added from Salesforce.
+ */
+function ilr_registrations_commerce_promotion_insert(EntityInterface $entity) {
+  $coupon_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_promotion_coupon');
+  $coupon = $coupon_storage->create([
+    'promotion_id' => $entity->id(),
+    'code' => $entity->label(),
+    'status' => 1
+  ]);
+  $coupon->save();
+}
+
+/**
  * Implements hook_entity_bundle_create().
  */
 function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
