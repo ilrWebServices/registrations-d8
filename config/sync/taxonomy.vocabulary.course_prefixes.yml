@@ -1,0 +1,9 @@
+uuid: 482889fd-aa84-451e-9dc5-dca8534f02f2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Course Prefixes'
+vid: course_prefixes
+description: 'Course Prefixes can be used to group Course Products for discounts and other uses.'
+hierarchy: 0
+weight: 0
