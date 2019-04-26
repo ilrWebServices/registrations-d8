@@ -48,27 +48,25 @@ function ilr_registrations_commerce_product_variation_presave(EntityInterface $e
 /**
  * Implements hook_ENTITY_TYPE_presave().
  *
- * Ensure that `commerce_product`s imported by salesforce use the default store.
+ * Set some values for `commerce_product`s when they are saved.
+ * - Ensure that they use the default store if they don't have one set. This can
+ *   happen when imported via Salesforce.
  */
-function ilr_registrations_commerce_product_presave(EntityInterface $entity) {
-  // If this product has a store assigned, it's fine.
-  if (count($entity->getStoreIds()) > 0) {
-    return;
+function ilr_registrations_commerce_product_presave(EntityInterface $product) {
+  // Check if this product has a store assigned.
+  if (count($product->getStoreIds()) === 0) {
+    // Get the default store.
+    $default_store = \Drupal::service('commerce_store.default_store_resolver')->resolve();
+
+    // Ensure that there is a default store. The only reason it would be missing
+    // is if an admin deleted it.
+    if ($default_store) {
+      // Set the default store for this storeless product.
+      $product->stores = [
+        'target_id' => $default_store->id(),
+      ];
+    }
   }
-
-  // Get the default store.
-  $default_store = \Drupal::service('commerce_store.default_store_resolver')->resolve();
-
-  // Just bail if there is no default store. That should only happen if an
-  // admin deleted it.
-  if (!$default_store) {
-    return;
-  }
-
-  // Set the default store for this storeless product.
-  $entity->stores = [
-    'target_id' => $default_store->id(),
-  ];
 }
 
 /**
