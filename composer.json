@@ -28,6 +28,7 @@
         "drupal/typed_data": "^1.0@alpha",
         "drush/drush": "^9.0.0",
         "oomphinc/composer-installers-extender": "^1.1",
+        "platformsh/config-reader": "^2.2",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
