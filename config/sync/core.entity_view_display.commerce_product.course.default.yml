@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
+    - field.field.commerce_product.course.field_course_number
     - field.field.commerce_product.course.field_course_prefixes
     - field.field.commerce_product.course.field_tags
     - field.field.commerce_product.course.registration_type
@@ -42,6 +43,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_course_number: true
   field_course_prefixes: true
   field_tags: true
   stores: true

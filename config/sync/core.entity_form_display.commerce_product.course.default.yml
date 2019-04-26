@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
+    - field.field.commerce_product.course.field_course_number
     - field.field.commerce_product.course.field_course_prefixes
     - field.field.commerce_product.course.field_tags
     - field.field.commerce_product.course.registration_type
@@ -34,6 +35,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_course_number:
+    weight: -2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_course_prefixes:
     weight: 93
     settings:
