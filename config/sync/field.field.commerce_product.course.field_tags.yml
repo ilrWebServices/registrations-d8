@@ -1,0 +1,29 @@
+uuid: c8195cab-b257-429a-bc5c-9a8f346d7d87
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.course
+    - field.storage.commerce_product.field_tags
+    - taxonomy.vocabulary.product_tags
+id: commerce_product.course.field_tags
+field_name: field_tags
+entity_type: commerce_product
+bundle: course
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      product_tags: product_tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

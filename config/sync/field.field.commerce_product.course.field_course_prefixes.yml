@@ -1,0 +1,29 @@
+uuid: ea3b0508-57dc-42b8-8097-90956c8c9897
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.course
+    - field.storage.commerce_product.field_course_prefixes
+    - taxonomy.vocabulary.course_prefixes
+id: commerce_product.course.field_course_prefixes
+field_name: field_course_prefixes
+entity_type: commerce_product
+bundle: course
+label: 'Course Prefixes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      course_prefixes: course_prefixes
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

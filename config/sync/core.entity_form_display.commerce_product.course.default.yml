@@ -5,6 +5,8 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.course
     - field.field.commerce_product.course.body
+    - field.field.commerce_product.course.field_course_prefixes
+    - field.field.commerce_product.course.field_tags
     - field.field.commerce_product.course.registration_type
     - field.field.commerce_product.course.stores
     - field.field.commerce_product.course.variations
@@ -32,6 +34,24 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_course_prefixes:
+    weight: 93
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_tags:
+    weight: 94
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   path:
     type: path
     weight: 30
