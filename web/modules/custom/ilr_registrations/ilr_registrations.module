@@ -102,6 +102,30 @@ function ilr_registrations_commerce_product_presave(EntityInterface $product) {
       $product->set('field_course_prefixes', $course_prefix_term->id());
     }
   }
+
+  // Check that the product has the `field_tags` field.
+  if ($product->isNew() && $product->hasField('field_tags')) {
+    $product_tags_vid = 'product_tags';
+
+    // Get the 'Discount Eligible' term.
+    $discount_eligible_term = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties([
+      'name' => 'Discount Eligible',
+      'vid' => $product_tags_vid,
+    ]);
+    $discount_eligible_term = reset($discount_eligible_term);
+
+    // If there is no such term, create one.
+    if (empty($discount_eligible_term)) {
+      $discount_eligible_term = $term_storage->create([
+        'name' => 'Discount Eligible',
+        'vid' => $product_tags_vid,
+      ]);
+      $discount_eligible_term->save();
+    }
+
+    // Assign the discount eligible tid to the product entity.
+    $product->set('field_tags', $discount_eligible_term->id());
+  }
 }
 
 /**
