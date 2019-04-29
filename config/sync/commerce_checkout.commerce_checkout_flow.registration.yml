@@ -14,25 +14,28 @@ configuration:
       allow_guest_checkout: false
       allow_registration: true
       step: login
-      weight: 10
+      weight: 0
+    completion_register:
+      step: complete
+      weight: 4
     review:
-      step: review
-      weight: 10
+      step: _disabled
+      weight: 7
     contact_information:
       double_entry: false
       step: order_information
-      weight: 10
+      weight: 1
     order_summary:
       view: registration_checkout_order_summary
       step: _sidebar
-      weight: 10
+      weight: 6
     completion_message:
       step: complete
-      weight: 10
+      weight: 5
     payment_information:
-      step: order_information
-      weight: 10
+      step: review
+      weight: 2
     payment_process:
       capture: true
       step: payment
-      weight: 10
+      weight: 3
