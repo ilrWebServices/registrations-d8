@@ -1,6 +1,11 @@
 uuid: e2826b91-2628-44bf-8d7e-ca4e6f16adfa
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - erf_commerce
+third_party_settings:
+  erf_commerce:
+    cart_redirect: true
 id: simple_class
 label: 'Simple Class'
