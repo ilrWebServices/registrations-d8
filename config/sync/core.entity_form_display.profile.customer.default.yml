@@ -4,12 +4,19 @@ status: true
 dependencies:
   config:
     - field.field.profile.customer.address
+    - field.field.profile.customer.field_email
+    - field.field.profile.customer.field_first_name
+    - field.field.profile.customer.field_industry
+    - field.field.profile.customer.field_job_title
+    - field.field.profile.customer.field_last_name
+    - field.field.profile.customer.field_organization
+    - field.field.profile.customer.field_phone
     - profile.type.customer
   enforced:
     module:
       - commerce_order
   module:
-    - address
+    - telephone
 _core:
   default_config_hash: 7mnnVkJkUSPhil9xoiTfdTivMqxCUloT_71AHWNUbJg
 id: profile.customer.default
@@ -17,10 +24,60 @@ targetEntityType: profile
 bundle: customer
 mode: default
 content:
-  address:
-    type: address_default
-    weight: 0
-    settings: {  }
+  field_email:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: email_default
     region: content
-hidden: {  }
+  field_first_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_industry:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_job_title:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_last_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_organization:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+hidden:
+  address: true

@@ -1,0 +1,19 @@
+uuid: 6a291615-dae7-4fbf-b150-dda979a01da2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_email
+    - profile.type.customer
+id: profile.customer.field_email
+field_name: field_email
+entity_type: profile
+bundle: customer
+label: Email
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
