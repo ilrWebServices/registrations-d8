@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22b0ae492eb2cdcfd048151d16f4e5e6",
+    "content-hash": "003529183f63e0852c2788b8a626a00e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1032,36 +1032,6 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
-        },
-        {
-            "name": "cornell/union",
-            "version": "0.0.1",
-            "dist": {
-                "type": "path",
-                "url": "/Users/Shared/src/union",
-                "reference": "c23c51e5229588ef9500c949d6837f7be569e7e3"
-            },
-            "require": {
-                "twig/twig": "^1.0"
-            },
-            "type": "library",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeff Amaral",
-                    "email": "jeff.amaral@cornell.edu"
-                },
-                {
-                    "name": "Aaron Froehlich",
-                    "email": "aaronfroehlich@gmail.com"
-                }
-            ],
-            "description": "A component-based design system",
-            "transport-options": {
-                "symlink": true
-            }
         },
         {
             "name": "cweagans/composer-patches",
@@ -3115,34 +3085,6 @@
             }
         },
         {
-            "name": "drupal/erf",
-            "version": "dev-8.x-1.x",
-            "dist": {
-                "type": "path",
-                "url": "/Users/Shared/src/erf",
-                "reference": "55e5eaa6be3cf1d0d75d6b47d88beac3fa3d8b08"
-            },
-            "require": {
-                "drupal/inline_entity_form": "^1.0-rc1"
-            },
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Enables configurable registration forms.",
-            "homepage": "https://www.drupal.org/project/erf",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "issues": "https://www.drupal.org/project/issues/erf",
-                "source": "http://cgit.drupalcode.org/erf"
-            },
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "drupal/inline_entity_form",
             "version": "1.0.0-rc1",
             "source": {
@@ -3592,31 +3534,6 @@
             "homepage": "https://www.drupal.org/project/typed_data",
             "support": {
                 "source": "https://git.drupalcode.org/project/typed_data"
-            }
-        },
-        {
-            "name": "drupal/union_organizer",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/Shared/src/union_organizer",
-                "reference": "50932fe8d229c6d774864a32452212cd3119020a"
-            },
-            "type": "drupal-module",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "A simple integration module for the Union component system",
-            "homepage": "https://github.com/ilrWebServices/union_organizer",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "issues": "https://github.com/ilrWebServices/union_organizer/issues",
-                "source": "https://github.com/ilrWebServices/union_organizer.git"
-            },
-            "transport-options": {
-                "symlink": true
             }
         },
         {
@@ -4609,6 +4526,45 @@
                 "random"
             ],
             "time": "2019-01-03T20:59:08+00:00"
+        },
+        {
+            "name": "platformsh/config-reader",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/platformsh/config-reader-php.git",
+                "reference": "1c3a27e4086b3e7206dca118e4388d6394537b13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/platformsh/config-reader-php/zipball/1c3a27e4086b3e7206dca118e4388d6394537b13",
+                "reference": "1c3a27e4086b3e7206dca118e4388d6394537b13",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Platformsh\\ConfigReader\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Larry Garfield",
+                    "email": "larry@platform.sh"
+                }
+            ],
+            "description": "Small helper to access Platform.sh environment variables",
+            "time": "2019-04-25T21:51:04+00:00"
         },
         {
             "name": "psr/container",
@@ -9270,10 +9226,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cornell/union": 20,
-        "drupal/erf": 20,
-        "drupal/typed_data": 15,
-        "drupal/union_organizer": 20
+        "drupal/typed_data": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,

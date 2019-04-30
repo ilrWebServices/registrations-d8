@@ -11,34 +11,12 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "/Users/Shared/src/erf",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "/Users/Shared/src/union",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "/Users/Shared/src/union_organizer",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
         "composer/installers": "^1.2",
-        "cornell/union": "@dev",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^1.26",
@@ -46,12 +24,11 @@
         "drupal/config_split": "^1.4",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
-        "drupal/erf": "@dev",
         "drupal/salesforce": "^3.1",
         "drupal/typed_data": "^1.0@alpha",
-        "drupal/union_organizer": "@dev",
         "drush/drush": "^9.0.0",
         "oomphinc/composer-installers-extender": "^1.1",
+        "platformsh/config-reader": "^2.2",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
