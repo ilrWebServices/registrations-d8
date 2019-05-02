@@ -565,10 +565,14 @@ if ($settings['hash_salt']) {
  * The "en" part of the variable name, is dynamic and can be any langcode of
  * any added language. (eg locale_custom_strings_de for german).
  */
-# $settings['locale_custom_strings_en'][''] = [
-#   'forum'      => 'Discussion board',
-#   '@count min' => '@count minutes',
-# ];
+$settings['locale_custom_strings_en'][''] = [
+  'Coupon code' => 'Discount code',
+  'Apply coupon' => 'Apply discount',
+  'Applied coupons' => 'Applied discounts',
+  'Remove coupon' => 'Remove discount',
+  'The provided coupon code is invalid.' => 'The provided discount code is invalid.',
+  'Please provide a coupon code.' => 'Please provide a discount code.',
+];
 
 /**
  * A custom theme for the offline page:
