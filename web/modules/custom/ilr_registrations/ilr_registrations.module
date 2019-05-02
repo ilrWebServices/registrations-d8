@@ -234,4 +234,8 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
       }
     }
   }
+
+  if (isset($form['sidebar']['coupon_redemption']['form'])) {
+    $form['sidebar']['coupon_redemption']['form']['#attached']['library'][] = 'ilr_registrations/coupon_enhancements';
+  }
 }
