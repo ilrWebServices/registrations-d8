@@ -23,6 +23,9 @@ function ilr_registrations_entity_type_alter(array &$entity_types) {
   if (isset($entity_types['commerce_product_variation'])) {
     $entity_types['commerce_product_variation']->setLinkTemplate('salesforce', "/commerce_product_variation/{commerce_product_variation}/salesforce");
   }
+  if (isset($entity_types['commerce_promotion'])) {
+    $entity_types['commerce_promotion']->setLinkTemplate('salesforce', "/promotion/{commerce_promotion}/salesforce");
+  }
 }
 
 /**
@@ -45,27 +48,106 @@ function ilr_registrations_commerce_product_variation_presave(EntityInterface $e
 /**
  * Implements hook_ENTITY_TYPE_presave().
  *
- * Ensure that `commerce_product`s imported by salesforce use the default store.
+ * Set some values for `commerce_product`s when they are saved.
+ * - Ensure that they use the default store if they don't have one set. This can
+ *   happen when imported via Salesforce.
+ * - Create or assign taxonomy terms for newly created products.
  */
-function ilr_registrations_commerce_product_presave(EntityInterface $entity) {
-  // If this product has a store assigned, it's fine.
-  if (count($entity->getStoreIds()) > 0) {
-    return;
+function ilr_registrations_commerce_product_presave(EntityInterface $product) {
+  // Check if this product has a store assigned.
+  if (count($product->getStoreIds()) === 0) {
+    // Get the default store.
+    $default_store = \Drupal::service('commerce_store.default_store_resolver')->resolve();
+
+    // Ensure that there is a default store. The only reason it would be missing
+    // is if an admin deleted it.
+    if ($default_store) {
+      // Set the default store for this storeless product.
+      $product->stores = [
+        'target_id' => $default_store->id(),
+      ];
+    }
   }
 
-  // Get the default store.
-  $default_store = \Drupal::service('commerce_store.default_store_resolver')->resolve();
+  $entity_type_manager = \Drupal::service('entity_type.manager');
+  $product_storage = $entity_type_manager->getStorage('commerce_product');
+  $term_storage = $entity_type_manager->getStorage('taxonomy_term');
 
-  // Just bail if there is no default store. That should only happen if an
-  // admin deleted it.
-  if (!$default_store) {
-    return;
+  // Check that the product has a value for `field_course_number` and that the
+  // product has the `field_course_prefixes` field.
+  if ($product->isNew() && $product->hasField('field_course_number') && !$product->get('field_course_number')->isEmpty() && $product->hasField('field_course_prefixes')) {
+    $course_prefixes_vid = 'course_prefixes';
+
+    // Get the course number prefix from the course number (e.g. CR100 -> CR).
+    if (preg_match('/^[A-Z]+/', $product->get('field_course_number')->value, $matches)) {
+      $course_number_prefix = $matches[0];
+
+      // Get the term for this course number prefix.
+      $course_prefix_term = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties([
+        'name' => $course_number_prefix,
+        'vid' => $course_prefixes_vid,
+      ]);
+      $course_prefix_term = reset($course_prefix_term);
+
+      // If there is no term for this prefix, create a new one.
+      if (empty($course_prefix_term)) {
+        $course_prefix_term = $term_storage->create([
+          'name' => $course_number_prefix,
+          'vid' => $course_prefixes_vid,
+        ]);
+        $course_prefix_term->save();
+      }
+
+      // Assign the course number prefix tid to the product entity.
+      $product->set('field_course_prefixes', $course_prefix_term->id());
+    }
   }
 
-  // Set the default store for this storeless product.
-  $entity->stores = [
-    'target_id' => $default_store->id(),
-  ];
+  // Check that the product has the `field_tags` field.
+  if ($product->isNew() && $product->hasField('field_tags')) {
+    $product_tags_vid = 'product_tags';
+
+    // Get the 'Discount Eligible' term.
+    $discount_eligible_term = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties([
+      'name' => 'Discount Eligible',
+      'vid' => $product_tags_vid,
+    ]);
+    $discount_eligible_term = reset($discount_eligible_term);
+
+    // If there is no such term, create one.
+    if (empty($discount_eligible_term)) {
+      $discount_eligible_term = $term_storage->create([
+        'name' => 'Discount Eligible',
+        'vid' => $product_tags_vid,
+      ]);
+      $discount_eligible_term->save();
+    }
+
+    // Assign the discount eligible tid to the product entity.
+    $product->set('field_tags', $discount_eligible_term->id());
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Process imported entities when they are saved by a sf mapping object.
+ */
+function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_mapped_object) {
+  if ($sf_mapped_object->getMapping()->id() === 'discount_promotion') {
+    $commerce_promotion = $sf_mapped_object->getMappedEntity();
+
+    // Create a default coupon for new promotions from Salesforce.
+    if ($sf_mapped_object->isNew()) {
+      $coupon_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_promotion_coupon');
+      $coupon = $coupon_storage->create([
+        'promotion_id' => $commerce_promotion->id(),
+        'code' => $commerce_promotion->label(),
+        'status' => 1
+      ]);
+      $coupon->save();
+    }
+  }
 }
 
 /**
@@ -156,5 +238,9 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
         }
       }
     }
+  }
+
+  if (isset($form['sidebar']['coupon_redemption']['form'])) {
+    $form['sidebar']['coupon_redemption']['form']['#attached']['library'][] = 'ilr_registrations/coupon_enhancements';
   }
 }

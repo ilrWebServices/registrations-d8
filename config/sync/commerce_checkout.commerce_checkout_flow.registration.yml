@@ -4,12 +4,18 @@ status: true
 dependencies:
   module:
     - commerce_payment
+    - commerce_promotion
 id: registration
 label: Registration
 plugin: multistep_default
 configuration:
   display_checkout_progress: true
   panes:
+    coupon_redemption:
+      allow_multiple: false
+      step: _sidebar
+      weight: 10
+      capture: true
     login:
       allow_guest_checkout: false
       allow_registration: true

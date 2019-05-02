@@ -1,0 +1,48 @@
+uuid: 016d8f80-e8a0-4fc4-8648-ba1bddd62c08
+langcode: en
+status: true
+dependencies:
+  module:
+    - salesforce_pull
+id: discount_promotion
+label: 'Discount Promotion'
+weight: 0
+type: salesforce_mapping
+key: ''
+async: false
+push_standalone: false
+pull_trigger_date: LastModifiedDate
+pull_where_clause: ''
+sync_triggers:
+  pull_create: true
+  pull_update: true
+  pull_delete: false
+salesforce_object_type: EXECED_Discount_Code__c
+drupal_entity_type: commerce_promotion
+drupal_bundle: commerce_promotion
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: name
+    salesforce_field: Name
+    direction: sf_drupal
+  -
+    drupal_field_type: properties
+    drupal_field_value: description
+    salesforce_field: Discount_Description__c
+    direction: sf_drupal
+  -
+    drupal_field_type: properties
+    drupal_field_value: start_date
+    salesforce_field: Discount_Start_Date__c
+    direction: sf_drupal
+  -
+    drupal_field_type: properties
+    drupal_field_value: end_date
+    salesforce_field: Discount_End_Date__c
+    direction: sf_drupal
+push_limit: 0
+push_retries: 3
+push_frequency: 0
+pull_frequency: 0
+always_upsert: false
