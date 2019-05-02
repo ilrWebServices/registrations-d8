@@ -129,20 +129,25 @@ function ilr_registrations_commerce_product_presave(EntityInterface $product) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_insert().
+ * Implements hook_ENTITY_TYPE_presave().
  *
- * Create a default coupon for new promotions.
- *
- * @todo Consider limiting to only promotions added from Salesforce.
+ * Process imported entities when they are saved by a sf mapping object.
  */
-function ilr_registrations_commerce_promotion_insert(EntityInterface $entity) {
-  $coupon_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_promotion_coupon');
-  $coupon = $coupon_storage->create([
-    'promotion_id' => $entity->id(),
-    'code' => $entity->label(),
-    'status' => 1
-  ]);
-  $coupon->save();
+function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_mapped_object) {
+  if ($sf_mapped_object->getMapping()->id() === 'discount_promotion') {
+    $commerce_promotion = $sf_mapped_object->getMappedEntity();
+
+    // Create a default coupon for new promotions from Salesforce.
+    if ($sf_mapped_object->isNew()) {
+      $coupon_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_promotion_coupon');
+      $coupon = $coupon_storage->create([
+        'promotion_id' => $commerce_promotion->id(),
+        'code' => $commerce_promotion->label(),
+        'status' => 1
+      ]);
+      $coupon->save();
+    }
+  }
 }
 
 /**
