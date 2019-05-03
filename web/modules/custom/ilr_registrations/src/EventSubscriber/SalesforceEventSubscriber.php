@@ -4,6 +4,7 @@ namespace Drupal\ilr_registrations\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\salesforce\Event\SalesforceEvents;
+use Drupal\salesforce_mapping\Event\SalesforceQueryEvent;
 use Drupal\salesforce_mapping\Event\SalesforcePullEvent;
 
 /**
@@ -16,9 +17,27 @@ class SalesforceEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events = [
+      SalesforceEvents::PULL_QUERY => 'pullQueryAlter',
       SalesforceEvents::PULL_PRESAVE => 'pullPresave',
     ];
     return $events;
+  }
+
+  /**
+   * SalesforceQueryEvent pull query alter event callback.
+   *
+   * @param \Drupal\salesforce_mapping\Event\SalesforceQueryEvent $event
+   *   The event.
+   */
+  public function pullQueryAlter(SalesforceQueryEvent $event) {
+    // Add some additional fields to the `discount_promotion` mapping. They'll
+    // be used in self::pullPresave().
+    if ($event->getMapping()->id() === 'discount_promotion') {
+      $query = $event->getQuery();
+      $query->fields[] = "Discount_Type__c";
+      $query->fields[] = "Discount_Percent__c";
+      $query->fields[] = "Discount_Amount__c";
+    }
   }
 
   /**
@@ -46,6 +65,34 @@ class SalesforceEventSubscriber implements EventSubscriberInterface {
         // Set the order type for this typeless promotion.
         $commerce_promotion->setOrderTypeIds(['registration']);
       }
+
+      $sf = $event->getMappedObject()->getSalesforceRecord();
+
+      // Set the promotion offer type based on sf object settings. Note that the
+      // fields `Discount_Type__c`, `Discount_Percent__c`, and
+      // `Discount_Amount__c` are not mapped, but are instead added in
+      // self::pullQueryAlter().
+      if ($sf->field('Discount_Type__c') === 'Individual_Percentage') {
+        $offer = [
+          'target_plugin_id' => 'order_percentage_off',
+          'target_plugin_configuration' => [
+            'percentage' => (string) ($sf->field('Discount_Percent__c') / 100),
+          ],
+        ];
+      }
+      else {
+        $offer = [
+          'target_plugin_id' => 'order_fixed_amount_off',
+          'target_plugin_configuration' => [
+            'amount' => [
+              'number' => (string) $sf->field('Discount_Amount__c'),
+              'currency_code' => 'USD',
+            ],
+          ],
+        ];
+      }
+
+      $commerce_promotion->offer = $offer;
     }
   }
 
