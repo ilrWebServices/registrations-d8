@@ -93,6 +93,33 @@ class SalesforceEventSubscriber implements EventSubscriberInterface {
       }
 
       $commerce_promotion->offer = $offer;
+
+      // Add a 'Discount Eligible' product category condition, too, but only on
+      // initial import. Note that this will only work if the
+      // `discount_promotion` mapping runs after the `course_product` mapping,
+      // since the 'Discount Eligible' term is created during product import.
+      // @see ilr_registrations_commerce_product_presave().
+      if ($commerce_promotion->isNew()) {
+        $entity_type_manager = \Drupal::service('entity_type.manager');
+
+        // Get the 'Discount Eligible' term.
+        $discount_eligible_term = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties([
+          'name' => 'Discount Eligible',
+          'vid' => 'product_tags',
+        ]);
+        $discount_eligible_term = reset($discount_eligible_term);
+
+        if ($discount_eligible_term) {
+          $commerce_promotion->conditions = [
+            [
+              'target_plugin_id' => 'order_product_category',
+              'target_plugin_configuration' => [
+                'terms' => [$discount_eligible_term->uuid()],
+              ],
+            ],
+          ];
+        }
+      }
     }
   }
 
