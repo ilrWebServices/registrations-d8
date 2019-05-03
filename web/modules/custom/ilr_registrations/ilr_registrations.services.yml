@@ -3,3 +3,8 @@ services:
     class: Drupal\ilr_registrations\EventSubscriber\CommerceEventSubscriber
     tags:
     - { name: event_subscriber }
+  ilr_registrations_salesforce_event_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\SalesforceEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
