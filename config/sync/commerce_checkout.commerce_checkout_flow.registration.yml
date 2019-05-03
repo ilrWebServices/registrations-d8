@@ -11,37 +11,37 @@ plugin: multistep_default
 configuration:
   display_checkout_progress: true
   panes:
-    coupon_redemption:
-      allow_multiple: false
-      step: _sidebar
-      weight: 10
-      capture: true
     login:
       allow_guest_checkout: false
       allow_registration: true
       step: login
       weight: 0
-    completion_register:
-      step: complete
-      weight: 4
-    review:
-      step: _disabled
-      weight: 7
     contact_information:
       double_entry: false
       step: order_information
       weight: 1
-    order_summary:
-      view: registration_checkout_order_summary
-      step: _sidebar
-      weight: 6
-    completion_message:
-      step: complete
-      weight: 5
     payment_information:
-      step: review
+      step: order_information
       weight: 2
     payment_process:
       capture: true
       step: payment
       weight: 3
+    completion_register:
+      step: complete
+      weight: 4
+    completion_message:
+      step: complete
+      weight: 5
+    order_summary:
+      view: registration_checkout_order_summary
+      step: _sidebar
+      weight: 6
+    review:
+      step: _disabled
+      weight: 7
+    coupon_redemption:
+      allow_multiple: false
+      step: _sidebar
+      weight: 10
+      capture: true
