@@ -6,7 +6,7 @@ dependencies:
     - salesforce_pull
 id: discount_promotion
 label: 'Discount Promotion'
-weight: 0
+weight: 2
 type: salesforce_mapping
 key: ''
 async: false
