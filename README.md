@@ -22,32 +22,21 @@ It is based on the [Composer template for Drupal projects][].
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
 
-### Linked Composer Packages
+### Git submodules
 
-As of this writing in March of 2019, three composer packages are linked to local directories for more rapid development:
+As of this writing in May of 2019, three projects that would normally be included via Composer are included as [git submodules][] for more rapid development:
 
 - `drupal/erf`
 - `drupal/union_organizer`
 - `cornell/union`
 
-This means that they won't be installed automatically by composer. It also means that you'll need these projects in the following hard-coded locations:
+This means that they won't be installed automatically by Composer. It also means that these projects will be nested git repositories in the following locations:
 
-- /Users/Shared/src/erf
-- /Users/Shared/src/union
-- /Users/Shared/src/union_organizer
+- web/modules/contrib/erf
+- web/libraries/union/
+- web/modules/contrib/union_organizer
 
-These directories generally contain git repos. This script snippet can help get them set up, assuming `/Users/Shared/src/` already exists:
-
-```
-cd /Users/Shared/src/ && \
-git clone git@git.drupal.org:project/erf.git && \
-git clone git@github.com:ilrWebServices/union.git && \
-git clone git@github.com:ilrWebServices/union_organizer.git
-```
-
-In general, you'll want to check out the `master` branch for each of those repositories.
-
-Once the code in those modules is stable, they will be switched to versioned dependencies.
+Once the code is stable in these projects, they will be switched to versioned Composer dependencies.
 
 ### Development-only Settings
 
@@ -170,6 +159,7 @@ If you set `LIVERELOAD=1` in your `.env` file and reload your browser while `npm
 
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
+[git submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 [composer-patches]: https://github.com/cweagans/composer-patches
 [Union Component Library]: https://github.com/ilrWebServices/union
 [Union Organizer]: https://github.com/ilrWebServices/union_organizer
