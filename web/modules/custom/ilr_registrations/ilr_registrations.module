@@ -185,10 +185,40 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
  * Implements hook_form_FORM_ID_alter().
  *
  * Add the participant_ui js library when there is a registration form.
+ * Add the default participant for logged_in users with previous registrations.
  */
 function ilr_registrations_form_entity_registration_form_alter(&$form, FormStateInterface $form_state) {
   if ($form['participants']['widget']['entities']['#theme'] == 'inline_entity_form_entity_table') {
     $form['#attached']['library'][] = 'ilr_registrations/ilr_registrations_participant_ui';
+
+    // Check if the current user is authenticated
+    $account = \Drupal::currentUser();
+    if ($account->isAuthenticated()) {
+      $entity_type_manager = \Drupal::service('entity_type.manager');
+      $registration_storage = $entity_type_manager->getStorage('registration');
+      $registrations = $registration_storage->loadByProperties([
+        'user_id' => $account->id(),
+      ]);
+
+      if (empty($registrations)) {
+        return;
+      }
+
+      $registrations_with_participants = [];
+      foreach ($registrations as $registration) {
+        if (!empty($registration->participants)) {
+          $registrations_with_participants[] = $registration;
+        }
+      }
+
+      if (empty($registrations_with_participants)) {
+        return;
+      }
+
+      $last_registration = end($registrations_with_participants);
+      $default_participant = $last_registration->participants->first()->entity;
+      $form['participants']['widget']['form']['inline_entity_form']['#default_value'] = $default_participant;
+    }
   }
 }
 
