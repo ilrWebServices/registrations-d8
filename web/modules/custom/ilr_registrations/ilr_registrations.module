@@ -205,8 +205,10 @@ function ilr_registrations_form_entity_registration_form_alter(&$form, FormState
       return;
     }
 
+    $registration_participant_type = $form['participants']['widget']['form']['inline_entity_form']['#bundle'];
+
     foreach ($registrations as $registration_id => $registration) {
-      if ($registration->participants->isEmpty()) {
+      if ($registration->participants->isEmpty() || $registration->participants->first()->entity->bundle() !== $registration_participant_type) {
         unset($registrations[$registration_id]);
       }
     }
