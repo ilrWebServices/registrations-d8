@@ -1,0 +1,8 @@
+ilr_registrations.sf_id_redirect:
+  path: '/class/{salesforce_id}'
+  defaults:
+    _controller: '\Drupal\ilr_registrations\Controller\IlrRegistrationsController::sfIdRedirect'
+    _title: 'Salesforce Class Object Redirect'
+  requirements:
+    _permission: 'access products'
+    salesforce_id: '[a-zA-Z0-9]{15}|[a-zA-Z0-9]{18}'
