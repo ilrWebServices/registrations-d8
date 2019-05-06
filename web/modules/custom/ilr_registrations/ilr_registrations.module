@@ -213,28 +213,30 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
   // Set the fieldset label
   $form['payment_information']['#title'] = t('Your info');
 
-  // Get the registrations from the order registration manager
-  $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
-  $order = $form_state->getFormObject()->getOrder();
-  $registrations = $order_registration_manager->getOrderRegistrations($order);
-
-  if (!empty($registrations)) {
-    $registration = reset($registrations);
-    $participants = $registration->participants;
+  // Check if on the billing pane
+  if (isset($form['payment_information']['billing_information'])) {
     $billing_pane = &$form['payment_information']['billing_information'];
 
-    // Set the values if there are matching field names
-    if (isset($billing_pane) && !empty($participants)) {
-      $default_participant = $participants->first()->entity;
-      $fields = $default_participant->getFields();
-      $keys = array_keys($billing_pane);
+    // Get the registrations from the order registration manager
+    $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
+    $order = $form_state->getFormObject()->getOrder();
+    $registrations = $order_registration_manager->getOrderRegistrations($order);
 
-      foreach ($keys as $key) {
-        if (isset($fields[$key])) {
-          $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->get($key)->getString();
-        }
-        elseif (strpos($key, '_email') > 0) {
-          $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->getMail();
+    if (!empty($registrations)) {
+      $registration = reset($registrations);
+
+      if (!empty($registration->participants)) {
+        $default_participant = $registration->participants->first()->entity;
+        $fields = $default_participant->getFields();
+        $keys = array_keys($billing_pane);
+
+        // Set the values if there are matching field names
+        foreach ($keys as $key) {
+          if (isset($fields[$key])) {
+            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->get($key)->getString();
+          } elseif (strpos($key, '_email') > 0) {
+            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->getMail();
+          }
         }
       }
     }
