@@ -36,7 +36,7 @@ content:
     type: rendered_variations
     weight: 0
     settings:
-      variation_view_mode: cart
+      variation_view_mode: selection
     third_party_settings: {  }
     region: content
 hidden:
