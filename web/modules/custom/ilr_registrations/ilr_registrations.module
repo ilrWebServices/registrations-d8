@@ -224,8 +224,24 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
 
     if (!empty($registrations)) {
       $registration = reset($registrations);
+      // Check first to see if there are any existing commerce profiles
+      // @todo: rework once https://www.drupal.org/project/commerce/issues/3022850 lands
+      $entity_type_manager = \Drupal::service('entity_type.manager');
+      $profile_storage = $entity_type_manager->getStorage('profile');
+      $user_profiles = $profile_storage->loadByProperties([
+        'type' => 'customer',
+        'uid' => $order->getCustomerId(),
+      ]);
 
-      if (!empty($registration->participants)) {
+      if (!empty($user_profiles)) {
+        // Use the last profile
+        $most_recent_profile = end($user_profiles);
+        foreach ($most_recent_profile->getFields() as $field_name => $value) {
+          if (isset($billing_pane[$field_name])) {
+            $billing_pane[$field_name]['widget'][0]['value']['#default_value'] = $most_recent_profile->{$field_name}->getString();
+          }
+        }
+      } elseif (!empty($registration->participants)) {
         $default_participant = $registration->participants->first()->entity;
         $fields = $default_participant->getFields();
         $keys = array_keys($billing_pane);
