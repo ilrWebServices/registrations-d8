@@ -243,14 +243,12 @@ function ilr_registrations_inline_entity_form_entity_form_alter(&$entity_form, F
 function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state) {
   // Set the fieldset label
   $form['payment_information']['#title'] = t('Your info');
+  $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
+  $order = $form_state->getFormObject()->getOrder();
 
   // Check if on the billing pane
   if (isset($form['payment_information']['billing_information'])) {
     $billing_pane = &$form['payment_information']['billing_information'];
-
-    // Get the registrations from the order registration manager
-    $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
-    $order = $form_state->getFormObject()->getOrder();
     $registrations = $order_registration_manager->getOrderRegistrations($order);
 
     if (!empty($registrations)) {
@@ -290,6 +288,13 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
   }
 
   if (isset($form['sidebar']['coupon_redemption']['form'])) {
-    $form['sidebar']['coupon_redemption']['form']['#attached']['library'][] = 'ilr_registrations/coupon_enhancements';
+    // Hide the coupon inline form if the order total is zero.
+    if ($order->getBalance()->isZero()) {
+      $form['sidebar']['coupon_redemption']['#access'] = FALSE;
+    }
+    // Add the js enhancement for the coupon form.
+    else {
+      $form['sidebar']['coupon_redemption']['form']['#attached']['library'][] = 'ilr_registrations/coupon_enhancements';
+    }
   }
 }
