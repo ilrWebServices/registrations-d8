@@ -11,9 +11,5 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access content'
-  - 'add participants'
-  - 'add registrations'
-  - 'delete participants'
-  - 'edit participants'
+  - 'manage own registrations'
   - 'view commerce_product'
-  - 'view participants'
