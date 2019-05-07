@@ -13,5 +13,7 @@ permissions:
   - 'access content'
   - 'add participants'
   - 'add registrations'
+  - 'delete participants'
+  - 'edit participants'
   - 'view commerce_product'
   - 'view participants'

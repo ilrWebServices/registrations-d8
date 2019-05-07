@@ -13,6 +13,8 @@ permissions:
   - 'access content'
   - 'add participants'
   - 'add registrations'
+  - 'delete participants'
+  - 'edit participants'
   - 'manage own commerce_payment_method'
   - 'view commerce_product'
   - 'view own commerce_order'
