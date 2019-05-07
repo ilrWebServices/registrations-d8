@@ -1,0 +1,34 @@
+uuid: c0b1c7d2-c9f9-4f63-919b-fd8445ca377e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.class
+    - core.entity_view_mode.commerce_product_variation.selection
+    - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_price
+    - field.field.commerce_product_variation.class.field_class_start
+  module:
+    - datetime
+id: commerce_product_variation.class.selection
+targetEntityType: commerce_product_variation
+bundle: class
+mode: selection
+content:
+  field_class_start:
+    type: datetime_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: event_summary
+    third_party_settings: {  }
+hidden:
+  field_class_end: true
+  field_class_price: true
+  list_price: true
+  price: true
+  product_id: true
+  sku: true
+  title: true
