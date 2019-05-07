@@ -219,7 +219,7 @@ function ilr_registrations_form_entity_registration_form_alter(&$form, FormState
 
     $last_registration = end($registrations);
     $most_recent_participant = $last_registration->participants->first()->entity;
-    $form['participants']['widget']['form']['inline_entity_form']['#default_value'] = $most_recent_participant;
+    $form['participants']['widget']['form']['inline_entity_form']['#default_value'] = $most_recent_participant->createDuplicate();
   }
 }
 
