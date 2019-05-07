@@ -4,5 +4,5 @@ ilr_registrations.sf_id_redirect:
     _controller: '\Drupal\ilr_registrations\Controller\IlrRegistrationsController::sfIdRedirect'
     _title: 'Salesforce Class Object Redirect'
   requirements:
-    _permission: 'access products'
+    _permission: 'view commerce_product'
     salesforce_id: '[a-zA-Z0-9]{15}|[a-zA-Z0-9]{18}'
