@@ -194,7 +194,7 @@ function ilr_registrations_form_entity_registration_form_alter(&$form, FormState
 
   // Check if the current user is authenticated
   $account = \Drupal::currentUser();
-  if ($account->isAuthenticated() && isset($form['participants']['widget']['form']['inline_entity_form']) && $form_state->get('registration')->isNew()) {
+  if ($account->isAuthenticated() && isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput())) {
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $registration_storage = $entity_type_manager->getStorage('registration');
     $registrations = $registration_storage->loadByProperties([
