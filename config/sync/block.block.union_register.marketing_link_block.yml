@@ -1,0 +1,28 @@
+uuid: e0d35c2a-5008-4cf5-9daa-642ed4f585fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - ilr_registrations
+    - system
+  theme:
+    - union_register
+id: union_register.marketing_link_block
+theme: union_register
+region: content
+weight: 0
+provider: null
+plugin: marketing_link_block
+settings:
+  id: marketing_link_block
+  label: 'Marketing link block'
+  provider: ilr_registrations
+  label_display: '0'
+  marketing_site_url: 'https://www.registration-system-tgmauli-dd2imk5jkez6q.us-2.platformsh.site'
+  link_text: 'Return to course details.'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/product/*'
+    negate: false
+    context_mapping: {  }
