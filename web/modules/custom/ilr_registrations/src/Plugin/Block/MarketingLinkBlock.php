@@ -75,7 +75,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
    */
   public function defaultConfiguration() {
     return [
-      'marketing_site_url' => 'www.ilr.cornell.edu',
+      'marketing_site_url' => 'http://www.ilr.cornell.edu',
       'link_text' => 'Return to course details.',
     ] + parent::defaultConfiguration();
   }
