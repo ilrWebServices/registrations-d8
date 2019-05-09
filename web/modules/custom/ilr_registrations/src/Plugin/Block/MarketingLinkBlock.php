@@ -87,14 +87,15 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     $form['marketing_site_url'] = [
       '#type' => 'url',
       '#title' => $this->t('Marketing site url'),
-    '#description' => $this->t('The url of the marketing site'),
+      '#description' => $this->t('The url of the marketing site'),
       '#default_value' => $this->configuration['marketing_site_url'],
       '#weight' => '0',
     ];
+
     $form['link_text'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Link text'),
-    '#description' => $this->t('The text for the link back to the marketing site'),
+      '#description' => $this->t('The text for the link back to the marketing site'),
       '#default_value' => $this->configuration['link_text'],
       '#maxlength' => 256,
       '#size' => 64,
