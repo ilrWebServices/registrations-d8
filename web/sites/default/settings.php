@@ -789,6 +789,13 @@ $config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations'
 $config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['terminal_id'] = getenv('FREEDOMPAY_TERMINAL_ID_REG');
 $config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['mode'] = getenv('FREEDOMPAY_MODE_REG');
 
+/**
+ * Miscellaneous overrides.
+ */
+if (getenv('MARKETING_SITE_HOSTNAME')) {
+  $config['block.block.union_register_marketing_link_block']['settings']['marketing_site_url'] = getenv('MARKETING_SITE_HOSTNAME');
+}
+
 // Automatic Platform.sh settings.
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
