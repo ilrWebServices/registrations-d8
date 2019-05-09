@@ -8,7 +8,6 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
-use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -139,8 +138,11 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     $marketing_site_url = $this->configuration['marketing_site_url'];
     $marketing_site_url .= '/course/' . $mapped_object->sfid();
 
-    $link = Link::fromTextAndUrl($this->configuration['link_text'], Url::fromUri($marketing_site_url));
-    $build['marketing_link_block']['content'] = $link->toRenderable();
+    $build['marketing_link_block']['content'] = [
+      '#type' => 'link',
+      '#title' => $this->configuration['link_text'],
+      '#url' => Url::fromUri($marketing_site_url),
+    ];
 
     return $build;
   }
