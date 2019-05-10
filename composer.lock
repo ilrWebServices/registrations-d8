@@ -3214,7 +3214,7 @@
             "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities.",
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "support": {
-                "source": "http://cgit.drupalcode.org/inline_entity_form"
+                "source": "https://git.drupalcode.org/project/inline_entity_form"
             }
         },
         {
@@ -3354,23 +3354,24 @@
         },
         {
             "name": "drupal/salesforce",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/salesforce.git",
-                "reference": "8.x-3.2"
+                "reference": "8.x-3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/salesforce-8.x-3.2.zip",
-                "reference": "8.x-3.2",
-                "shasum": "0c38bbc7cadd466e0332fe04422a7db25a36def4"
+                "url": "https://ftp.drupal.org/files/projects/salesforce-8.x-3.3.zip",
+                "reference": "8.x-3.3",
+                "shasum": "b9a79c580dacb0a54b27cee83d43c9af9dcaf075"
             },
             "require": {
                 "consolidation/output-formatters": "^3.2.0",
                 "drupal/core": "~8.0",
                 "drupal/dynamic_entity_reference": "^2.0@alpha",
                 "drupal/encrypt": "^3.0@rc",
+                "drupal/typed_data": "^1.0@alpha",
                 "lusitanian/oauth": "^0.8.11",
                 "messageagency/force.com-toolkit-for-php": "^1.0.0"
             },
@@ -3378,7 +3379,8 @@
                 "drupal/dynamic_entity_reference": "~2.0",
                 "drupal/encrypt": "*",
                 "drupal/salesforce_mapping": "*",
-                "drupal/salesforce_push": "*"
+                "drupal/salesforce_push": "*",
+                "drupal/webform": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -3386,7 +3388,7 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.2",
+                    "version": "8.x-3.3",
                     "datestamp": "1555693984",
                     "security-coverage": {
                         "status": "covered",
@@ -5165,7 +5167,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.4.25",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -5290,7 +5292,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.25",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -5587,7 +5589,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.25",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",

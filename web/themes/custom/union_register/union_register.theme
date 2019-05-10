@@ -18,3 +18,20 @@ function union_register_preprocess_page(array &$variables) {
     $variables['attributes']['class'] = ['layout-container--commerce'];
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Only display the city and state for class locations.
+ */
+function union_register_preprocess_field__field_class_location(&$variables) {
+  foreach ($variables['items'] as $key => $item) {
+    $variables['items_override'][$key]['content'] = [
+      'locality' => $item['content']['locality'],
+      'administrative_area' => $item['content']['administrative_area'],
+    ];
+  }
+
+  $variables['items_original'] = $variables['items'];
+  $variables['items'] = $variables['items_override'];
+}

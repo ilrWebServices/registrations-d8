@@ -1,0 +1,19 @@
+uuid: 491b6887-986d-4000-9f27-2d3fb7270ba9
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - commerce_product
+id: commerce_product_variation.field_class_location
+field_name: field_class_location
+entity_type: commerce_product_variation
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
