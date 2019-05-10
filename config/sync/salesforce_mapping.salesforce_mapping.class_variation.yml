@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - salesforce_pull
+    - typed_data
 id: class_variation
 label: 'Class Variation'
 weight: 1
@@ -50,6 +51,16 @@ field_mappings:
     drupal_field_type: properties
     drupal_field_value: field_class_end
     salesforce_field: End__c
+    direction: sf_drupal
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_class_location.locality
+    salesforce_field: Event_Location_City__c
+    direction: sf_drupal
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_class_location.administrative_area
+    salesforce_field: Event_Location_State__c
     direction: sf_drupal
 push_limit: 0
 push_retries: 3

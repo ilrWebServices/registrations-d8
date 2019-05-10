@@ -5,9 +5,11 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
     - field.field.commerce_product_variation.class.field_class_end
+    - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
   module:
+    - address
     - commerce_price
     - datetime
 id: commerce_product_variation.class.default
@@ -20,6 +22,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_class_location:
+    weight: 105
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_class_price:
     weight: 104
