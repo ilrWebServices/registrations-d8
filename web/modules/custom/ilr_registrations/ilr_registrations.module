@@ -235,6 +235,15 @@ function ilr_registrations_inline_entity_form_entity_form_alter(&$entity_form, F
 }
 
 /**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Remove the 'Save' button from the registration cart form.
+ */
+function ilr_registrations_form_views_form_registration_cart_form_default_alter(&$form, FormStateInterface $form_state) {
+  $form['actions']['submit']['#access'] = FALSE;
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Update the fieldset label for the payment_information pane.
