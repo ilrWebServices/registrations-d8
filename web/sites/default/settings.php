@@ -572,6 +572,7 @@ $settings['locale_custom_strings_en'][''] = [
   'Remove coupon' => 'Remove discount',
   'The provided coupon code is invalid.' => 'The provided discount code is invalid.',
   'Please provide a coupon code.' => 'Please provide a discount code.',
+  'Home' => 'Account Home',
 ];
 
 /**
