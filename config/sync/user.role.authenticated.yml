@@ -11,7 +11,6 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access content'
-  - 'manage own commerce_payment_method'
   - 'manage own registrations'
   - 'view commerce_product'
   - 'view own commerce_order'
