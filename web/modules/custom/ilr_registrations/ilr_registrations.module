@@ -9,6 +9,8 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\commerce_price\Price;
 use Drupal\commerce_store\Entity\Store;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -314,4 +316,38 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
 function ilr_registrations_local_tasks_alter(&$local_tasks) {
   // Re-title the Edit tab on the user account page.
   $local_tasks['entity.user.edit_form']['title'] = 'Edit your information';
+}
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function ilr_registrations_user_format_name_alter(&$name, $account) {
+  $entity_type_manager = \Drupal::service('entity_type.manager');
+
+  // Load a customer profile for this user. This can be done via
+  // loadDefaultByUser() as below, but loadByUser() and loadMultipleByUser() are
+  // also options.
+  $profile = $entity_type_manager->getStorage('profile')->loadDefaultByUser($account, 'customer', TRUE);
+
+  if (empty($profile)) {
+    return;
+  }
+
+  // If the customer profile has both a first and last name, show them as the
+  // display name.
+  if ($profile->hasField('field_first_name') && $profile->hasField('field_last_name')) {
+    $name = $profile->field_first_name->value . ' ' . $profile->field_last_name->value;
+  }
+}
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ */
+function ilr_registrations_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // Add a cacheable dependency to the user for any breadcrumbs that have one in
+  // the current route. This ensures that changes to the user display name from
+  // ilr_registrations_user_format_name_alter() appear immediately.
+  if ($route_match && $user = $route_match->getParameter('user')) {
+    $breadcrumb->addCacheableDependency($user);
+  }
 }
