@@ -142,6 +142,11 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
       '#type' => 'link',
       '#title' => $this->configuration['link_text'],
       '#url' => Url::fromUri($marketing_site_url),
+      '#cache' => [
+        'contexts' => [
+          'url.path',
+        ],
+      ]
     ];
 
     return $build;
