@@ -299,8 +299,9 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
   }
 
   if (isset($form['sidebar']['coupon_redemption']['form'])) {
-    // Hide the coupon inline form if the order total is zero.
-    if ($order->getBalance()->isZero()) {
+    // Hide the coupon inline form if the order total is zero, but not if there
+    // are any applied coupons.
+    if ($order->getBalance()->isZero() && $order->coupons->count() === 0) {
       $form['sidebar']['coupon_redemption']['#access'] = FALSE;
     }
     // Add the js enhancement for the coupon form.
