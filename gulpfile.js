@@ -39,7 +39,7 @@ function watchFiles(done) {
   done();
 }
 
-const watch = gulp.parallel(watchFiles, livereloadStartServer);
+const watch = gulp.parallel(css, watchFiles, livereloadStartServer);
 
 exports.sass = css
 exports.default = watch
