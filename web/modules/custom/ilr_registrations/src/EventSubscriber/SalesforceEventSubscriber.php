@@ -121,6 +121,16 @@ class SalesforceEventSubscriber implements EventSubscriberInterface {
         }
       }
     }
+
+    // Modify commerce_products before they are saved after a SF pull.
+    if ($event->getMapping()->id() === 'course_product') {
+      $commerce_product = $event->getEntity();
+
+      // Set the registration type to `simple_class` by default.
+      if ($commerce_product->isNew() && $commerce_product->hasField('registration_type')) {
+        $commerce_product->registration_type = 'simple_class';
+      }
+    }
   }
 
 }
