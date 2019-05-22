@@ -47,4 +47,7 @@ function union_register_preprocess_commerce_checkout_completion_message(&$variab
   $variables['home_link'] = Link::createFromRoute(t('Account Home'), 'entity.user.canonical', [
     'user' => $variables['order_entity']->getCustomer()->id()
   ])->toString();
+
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('commerce_order');
+  $variables['order_detail'] = $view_builder->view($variables['order_entity'], 'user');
 }

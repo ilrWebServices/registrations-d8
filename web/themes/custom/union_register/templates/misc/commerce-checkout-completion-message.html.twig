@@ -7,15 +7,21 @@
  * - order_entity: The order entity.
  * - payment_instructions: The payment instructions, if provided.
  * - home_link: A link to the home page for the order's user.
+ * - order_detail: The completed commerce_order, as would be viewed at
+ *   /user/{user}/orders/{commerce_order}.
  *
  * @ingroup themeable
  */
 #}
 <div class="checkout-complete">
-  {{ 'Your order number is @number.'|t({'@number': order_entity.getOrderNumber}) }} <br>
-  {{ 'You can view your order on @home_link when logged in.'|t({'@home_link': home_link}) }} <br>
+  <p>Your order is complete.</p>
+
+  <h2>{{ 'Order number @number'|t({'@number': order_entity.getOrderNumber}) }}</h2>
+
+  {{ order_detail }}
 
   {% if payment_instructions %}
+    <hr />
     <div class="checkout-complete__payment-instructions">
       <h2>{{ 'Payment instructions'|t }}</h2>
       {{ payment_instructions }}
