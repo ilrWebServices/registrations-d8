@@ -128,6 +128,27 @@ function ilr_registrations_commerce_product_presave(EntityInterface $product) {
     // Assign the discount eligible tid to the product entity.
     $product->set('field_tags', $discount_eligible_term->id());
   }
+
+  // If the product variations have a field_class_start field, sort the
+  // variation deltas by that field.
+  if ($product->variations->count() > 0 && $product->variations->first()->entity->hasField('field_class_start')) {
+    $variation_entities = $product->variations->referencedEntities();
+
+    // sort the variations by date here.
+    usort($variation_entities, function($a, $b) {
+      if ($a->field_class_start->first()->value == $b->field_class_start->first()->value) {
+        return 0;
+      }
+      elseif ($a->field_class_start->first()->value < $b->field_class_start->first()->value) {
+        return -1;
+      }
+      else {
+        return 1;
+      }
+    });
+
+    $product->set('variations', $variation_entities);
+  }
 }
 
 /**
