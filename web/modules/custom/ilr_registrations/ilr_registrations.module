@@ -337,7 +337,7 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
  */
 function ilr_registrations_local_tasks_alter(&$local_tasks) {
   // Re-title the Edit tab on the user account page.
-  $local_tasks['entity.user.edit_form']['title'] = 'Edit your information';
+  $local_tasks['entity.user.edit_form']['title'] = 'Change password';
 }
 
 /**
