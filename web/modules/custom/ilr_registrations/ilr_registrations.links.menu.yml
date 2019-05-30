@@ -1,0 +1,5 @@
+ilr_registrations.catalog:
+  title: 'Return to course catalog'
+  url: https://www.ilr.cornell.edu/programs/professional-programs/workshops-courses-training
+  menu_name: footer
+  weight: 15
