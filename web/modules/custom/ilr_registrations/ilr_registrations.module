@@ -273,46 +273,63 @@ function ilr_registrations_form_views_form_registration_cart_form_default_alter(
  * Set default values based on the first participant.
  */
 function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state) {
-  // Set the fieldset label
+  // Set the payment info fieldset label.
   $form['payment_information']['#title'] = t('Account info');
+
+  // Get the order for this checkout multistep form.
   $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
   $order = $form_state->getFormObject()->getOrder();
 
-  // Check if on the billing pane
+  // If we're on the billing pane, make some alterations below.
   if (isset($form['payment_information']['billing_information'])) {
     $billing_pane = &$form['payment_information']['billing_information'];
-    $registrations = $order_registration_manager->getOrderRegistrations($order);
 
-    if (!empty($registrations)) {
-      $registration = reset($registrations);
-      // Check first to see if there are any existing commerce profiles
-      // @todo: rework once https://www.drupal.org/project/commerce/issues/3022850 lands
-      $entity_type_manager = \Drupal::service('entity_type.manager');
-      $profile_storage = $entity_type_manager->getStorage('profile');
-      $user_profiles = $profile_storage->loadByProperties([
-        'type' => 'customer',
-        'uid' => $order->getCustomerId(),
-      ]);
+    // Get any existing commerce customer profiles.
+    // @todo: rework once https://www.drupal.org/project/commerce/issues/3022850 lands
+    $entity_type_manager = \Drupal::service('entity_type.manager');
+    $profile_storage = $entity_type_manager->getStorage('profile');
+    $user_profiles = $profile_storage->loadByProperties([
+      'type' => 'customer',
+      'uid' => $order->getCustomerId(),
+    ]);
 
-      if (!empty($user_profiles)) {
-        // Use the last profile
-        $most_recent_profile = end($user_profiles);
-        foreach ($most_recent_profile->getFields() as $field_name => $value) {
-          if (isset($billing_pane[$field_name])) {
-            $billing_pane[$field_name]['widget'][0]['value']['#default_value'] = $most_recent_profile->{$field_name}->getString();
+    if (!empty($user_profiles)) {
+      // Use the last profile.
+      $most_recent_profile = end($user_profiles);
+
+      foreach ($most_recent_profile->getFields() as $field_name => $value) {
+        if (isset($billing_pane[$field_name])) {
+          $billing_pane[$field_name]['widget'][0]['value']['#default_value'] = $most_recent_profile->{$field_name}->getString();
+        }
+      }
+    }
+    else {
+      $registrations = $order_registration_manager->getOrderRegistrations($order);
+
+      // Look through all participants for all registrations in this order. See
+      // if there is a participant with an email address that matches the order
+      // customer email address. The customer is most likely the current user.
+      $customer_participant = FALSE;
+      foreach ($registrations as $registration) {
+        foreach ($registration->participants as $participant) {
+          if ($participant->entity->mail->value === $order->getCustomer()->mail->value) {
+            $customer_participant = $participant->entity;
+            break 2;
           }
         }
-      } elseif (!empty($registration->participants)) {
-        $default_participant = $registration->participants->first()->entity;
-        $fields = $default_participant->getFields();
+      }
+
+      if ($customer_participant) {
+        $fields = $customer_participant->getFields();
         $keys = array_keys($billing_pane);
 
-        // Set the values if there are matching field names
+        // Set the values if there are matching field names.
         foreach ($keys as $key) {
           if (isset($fields[$key])) {
-            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->get($key)->getString();
-          } elseif (strpos($key, '_email') > 0) {
-            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $default_participant->getMail();
+            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->get($key)->getString();
+          }
+          elseif (strpos($key, '_email') > 0) {
+            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->getMail();
           }
         }
       }
