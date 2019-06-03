@@ -284,22 +284,16 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
   if (isset($form['payment_information']['billing_information'])) {
     $billing_pane = &$form['payment_information']['billing_information'];
 
-    // Get any existing commerce customer profiles.
+    // Get the default commerce customer profile.
     // @todo: rework once https://www.drupal.org/project/commerce/issues/3022850 lands
     $entity_type_manager = \Drupal::service('entity_type.manager');
-    $profile_storage = $entity_type_manager->getStorage('profile');
-    $user_profiles = $profile_storage->loadByProperties([
-      'type' => 'customer',
-      'uid' => $order->getCustomerId(),
-    ]);
+    $profile = $entity_type_manager->getStorage('profile')->loadDefaultByUser($order->getCustomer(), 'customer', TRUE);
 
-    if (!empty($user_profiles)) {
-      // Use the last profile.
-      $most_recent_profile = end($user_profiles);
-
-      foreach ($most_recent_profile->getFields() as $field_name => $value) {
+    // If there is a profile, pre-fill any matching form fields.
+    if (!empty($profile)) {
+      foreach ($profile->getFields() as $field_name => $value) {
         if (isset($billing_pane[$field_name])) {
-          $billing_pane[$field_name]['widget'][0]['value']['#default_value'] = $most_recent_profile->{$field_name}->getString();
+          $billing_pane[$field_name]['widget'][0]['value']['#default_value'] = $profile->{$field_name}->getString();
         }
       }
     }
