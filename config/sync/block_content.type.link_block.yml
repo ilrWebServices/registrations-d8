@@ -1,0 +1,8 @@
+uuid: d8d29dfa-7292-4ea0-9d8b-d1bc84af49d4
+langcode: en
+status: true
+dependencies: {  }
+id: link_block
+label: 'Link Block'
+revision: 0
+description: 'A <em>Link Block</em> is a block with one or more link fields.'
