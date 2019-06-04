@@ -12,3 +12,13 @@
     grid-column: content;
   }
 }
+
+// Special case for the survey link block on the order completion page.
+#block-qualtrics-link {
+  float: right;
+  max-width: 50%;
+
+  h2 {
+    margin-top: 0;
+  }
+}
