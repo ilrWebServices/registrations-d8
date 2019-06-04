@@ -1,0 +1,29 @@
+uuid: 2454a943-ae83-42eb-a372-d6c3bb320eaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - fixed_block_content.fixed_block_content.order_completion_survey
+  module:
+    - fixed_block_content
+    - system
+  theme:
+    - union_register
+id: qualtrics_link
+theme: union_register
+region: content
+weight: 0
+provider: null
+plugin: 'fixed_block_content:order_completion_survey'
+settings:
+  id: 'fixed_block_content:order_completion_survey'
+  label: 'Order Completion Survey'
+  provider: fixed_block_content
+  label_display: '0'
+  view_mode: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '/checkout/*/complete'
+    negate: false
+    context_mapping: {  }
