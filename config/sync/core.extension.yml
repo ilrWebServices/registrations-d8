@@ -2,6 +2,7 @@ module:
   address: 0
   admin_toolbar: 0
   block: 0
+  block_content: 0
   breakpoint: 0
   commerce: 0
   commerce_cart: 0
@@ -27,6 +28,8 @@ module:
   erf_commerce: 0
   field: 0
   filter: 0
+  fixed_block_content: 0
+  hal: 0
   ilr_registrations: 0
   inline_entity_form: 0
   link: 0
@@ -38,6 +41,7 @@ module:
   salesforce: 0
   salesforce_mapping: 0
   salesforce_pull: 0
+  serialization: 0
   state_machine: 0
   system: 0
   taxonomy: 0

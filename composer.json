@@ -25,6 +25,7 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
         "drupal/email_registration": "^1.0@RC",
+        "drupal/fixed_block_content": "^1.0",
         "drupal/salesforce": "^3.1",
         "drupal/typed_data": "^1.0@alpha",
         "drush/drush": "^9.0.0",
