@@ -7443,24 +7443,24 @@
         },
         {
             "name": "zaporylie/composer-drupal-optimizations",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zaporylie/composer-drupal-optimizations.git",
-                "reference": "cc5eb9f0b5fa664885765748ce5190c1de7d2571"
+                "reference": "173c198fd7c9aefa5e5b68cd755ee63eb0abf7e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zaporylie/composer-drupal-optimizations/zipball/cc5eb9f0b5fa664885765748ce5190c1de7d2571",
-                "reference": "cc5eb9f0b5fa664885765748ce5190c1de7d2571",
+                "url": "https://api.github.com/repos/zaporylie/composer-drupal-optimizations/zipball/173c198fd7c9aefa5e5b68cd755ee63eb0abf7e8",
+                "reference": "173c198fd7c9aefa5e5b68cd755ee63eb0abf7e8",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1",
-                "drupal/core": "^8.5"
+                "composer-plugin-api": "^1.1"
             },
             "require-dev": {
-                "composer/composer": "^1.6"
+                "composer/composer": "^1.6",
+                "phpunit/phpunit": "^6"
             },
             "type": "composer-plugin",
             "extra": {
@@ -7482,7 +7482,7 @@
                 }
             ],
             "description": "Composer plugin to improve composer performance for Drupal projects",
-            "time": "2018-07-15T18:04:58+00:00"
+            "time": "2019-02-20T10:00:17+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
