@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Product Tags'
 vid: product_tags
 description: 'Generic product tags can be used to group and filter products. Currently used for discount elegibility.'
-hierarchy: 0
 weight: 0
