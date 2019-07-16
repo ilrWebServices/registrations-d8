@@ -37,6 +37,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $billing_profile = $order->getBillingProfile();
     $payments = $this->entityManager->getStorage('commerce_payment')->loadByProperties([
       'order_id' => $order->id(),
+      'state' => 'completed',
     ]);
     $payment = reset($payments);
     $payment_gateway = $payment->getPaymentGateway();
