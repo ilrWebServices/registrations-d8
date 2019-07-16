@@ -71,7 +71,6 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       ],
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
       "items" => [],
-      "discounts" => [], // @todo These might be full order adjustments.
     ];
 
     foreach ($items as $item) {
