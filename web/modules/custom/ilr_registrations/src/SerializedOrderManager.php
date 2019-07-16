@@ -10,8 +10,6 @@ use Drupal\commerce_order\Entity\OrderInterface;
  */
 class SerializedOrderManager implements SerializedOrderManagerInterface {
 
-  const POS_ID = 'register.ilr.cornell.edu';
-
   /**
    * Drupal\Core\Entity\EntityManagerInterface definition.
    *
@@ -48,7 +46,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
 
 
     $response = [
-      "point_of_sale" => $this::POS_ID,
+      "point_of_sale" => $payment_gateway->id(),
       "order_id" => $order->id(),
       "payments" => [
         [
