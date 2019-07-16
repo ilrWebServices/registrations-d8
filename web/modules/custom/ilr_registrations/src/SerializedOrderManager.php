@@ -116,15 +116,6 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             'additional_fields' => [], // @todo
           ];
         }
-
-        $class_product_variation = $item->getPurchasedEntity();
-        $course_product = $class_product_variation->getProduct();
-
-        $sf_variation_mapped_objects = $sf_mapping_storage->loadByEntity($class_product_variation);
-        $sf_variation_mapped_object = reset($sf_variation_mapped_objects);
-
-        $sf_product_mapped_objects = $sf_mapping_storage->loadByEntity($course_product);
-        $sf_product_mapped_object = reset($sf_product_mapped_objects);
       }
 
       $response['items'][] = [
@@ -138,9 +129,9 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "registration" => [
           "description" => "For example, a single course with 1+ participants.",
           "product_type" => "Open Enrollment",
-          "course_id" => $sf_product_mapped_object->sfid(),
-          "class_id" => $sf_variation_mapped_object->sfid(),
           "additional_fields" => [],
+          "course_id" => $item->getData('sf_course_id'),
+          "class_id" => $item->getData('sf_class_id'),
           "participants" => $participants,
         ]
       ];
