@@ -174,6 +174,35 @@ function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Store salesforce id data with class order items.
+ */
+function erf_commerce_commerce_order_item_presave(EntityInterface $order_item) {
+  if ($order_item->bundle() !== 'class') {
+    return;
+  }
+
+  $sf_mapping_storage = \Drupal::service('entity_type.manager')->getStorage('salesforce_mapped_object');
+  $class_product_variation = $order_item->getPurchasedEntity();
+  $course_product = $class_product_variation->getProduct();
+
+  $sf_variation_mapped_objects = $sf_mapping_storage->loadByEntity($class_product_variation);
+
+  if (!empty($sf_variation_mapped_objects)) {
+    $sf_variation_mapped_object = reset($sf_variation_mapped_objects);
+    $order_item->setData('sf_class_id', $sf_variation_mapped_object->sfid());
+  }
+
+  $sf_product_mapped_objects = $sf_mapping_storage->loadByEntity($course_product);
+
+  if (!empty($sf_product_mapped_objects)) {
+    $sf_product_mapped_object = reset($sf_product_mapped_objects);
+    $order_item->setData('sf_course_id', $sf_product_mapped_object->sfid());
+  }
+}
+
+/**
  * Implements hook_entity_bundle_create().
  */
 function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
