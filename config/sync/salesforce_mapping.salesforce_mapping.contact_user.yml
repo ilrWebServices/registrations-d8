@@ -1,0 +1,31 @@
+uuid: 406d734c-266d-49fe-8d24-16e7473c25ed
+langcode: en
+status: true
+dependencies: {  }
+id: contact_user
+label: 'Contact User'
+weight: 0
+type: salesforce_mapping
+key: ''
+async: false
+push_standalone: false
+pull_trigger_date: LastModifiedDate
+pull_where_clause: ''
+sync_triggers:
+  pull_create: false
+  pull_update: false
+  pull_delete: false
+salesforce_object_type: Contact
+drupal_entity_type: user
+drupal_bundle: user
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: mail
+    salesforce_field: Email
+    direction: sf_drupal
+push_limit: 0
+push_retries: 3
+push_frequency: 0
+pull_frequency: 0
+always_upsert: false
