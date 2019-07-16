@@ -70,7 +70,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "additional_fields" => [], // @todo
       ],
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
-      "items" => [], // Set below.
+      "order_items" => [], // Set below.
     ];
 
     // Process order items.
@@ -122,7 +122,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         }
       }
 
-      $response['items'][] = [
+      $response['order_items'][] = [
         'name' => $item->getTitle(),
         "discounts" => $discounts,
         "price" => (float) $item->getUnitPrice()->getNumber(),
