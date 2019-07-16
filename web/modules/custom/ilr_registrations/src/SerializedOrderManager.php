@@ -45,7 +45,6 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     // @todo Deal with possible remote transaction retrieval failure.
     $transaction = $payment_gateway->getPlugin()->getTransaction($payment->getRemoteId());
 
-
     $response = [
       "point_of_sale" => $payment_gateway->id(),
       "order_id" => $order->id(),
@@ -59,7 +58,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         ]
       ],
       "customer" => [
-        "contact_sfid" => null,
+        "contact_sfid" => null, // @todo Lookup a mapped value.
         "email" => $billing_profile->uid->entity->mail->value,
         "billing_email" => $billing_profile->field_email->value,
         "first_name" => $billing_profile->field_first_name->value,
@@ -70,13 +69,15 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "additional_fields" => [], // @todo
       ],
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
-      "items" => [],
+      "items" => [], // Set below.
     ];
 
+    // Process order items.
     foreach ($items as $item) {
       $discounts = [];
       $item_adjustments = $item->getAdjustments();
 
+      // Process discounts for this item.
       foreach ($item_adjustments as $item_adjustment) {
         $promotions = $promotion_storage->loadByProperties([
           'promotion_id' => $item_adjustment->getSourceId(),
@@ -100,6 +101,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         }
       }
 
+      // Process registrations and participants for this item.
       $participants = [];
       $registrations = $registration_storage->loadByProperties([
         'commerce_order_item_id' => $item->id(),
@@ -128,7 +130,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "total" => (float) $item->getTotalPrice()->getNumber(),
         "discounted_total" => (float) $item->getAdjustedTotalPrice()->getNumber(),
         "registration" => [
-          "additional_fields" => [],
+          "additional_fields" => [], // @todo
           "description" => "",
           "product_type" => $item->bundle(),
           "course_id" => $item->getData('sf_course_id'),
