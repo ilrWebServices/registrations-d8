@@ -6,3 +6,11 @@ ilr_registrations.sf_id_redirect:
   requirements:
     _permission: 'view commerce_product'
     salesforce_id: '[a-zA-Z0-9]{15}|[a-zA-Z0-9]{18}'
+
+ilr_registrations.serialized_order_controller_load:
+  path: '/admin/commerce/orders/{commerce_order}/serialized'
+  defaults:
+    _controller: '\Drupal\ilr_registrations\Controller\SerializedOrderController::load'
+    _title: 'Serialized Commerce Order'
+  requirements:
+    _permission: 'access content'
