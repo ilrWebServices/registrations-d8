@@ -5,6 +5,7 @@ namespace Drupal\ilr_registrations;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class SerializedOrderService.
@@ -26,11 +27,19 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   protected $configFactory;
 
   /**
+   * Symfony\Component\HttpFoundation\Request definition.
+   *
+   * @var \Symfony\Component\HttpFoundation\Request
+   */
+  protected $request;
+
+  /**
    * Constructs a new SerializedOrderService object.
    */
-  public function __construct(EntityManagerInterface $entity_manager, ConfigFactoryInterface $config_factory) {
+  public function __construct(EntityManagerInterface $entity_manager, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
     $this->entityManager = $entity_manager;
     $this->configFactory = $config_factory;
+    $this->request = $request_stack->getCurrentRequest();
   }
 
   /**
@@ -47,7 +56,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $billing_profile = $order->getBillingProfile();
 
     $response = [
-      "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . \Drupal::request()->getHost(),
+      "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
       "order_id" => $order->id(),
       "payments" => [],
       "customer" => [
