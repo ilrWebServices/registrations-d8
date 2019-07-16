@@ -129,8 +129,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "discounted_total" => (float) $item->getAdjustedTotalPrice()->getNumber(),
         "registration" => [
           "description" => "For example, a single course with 1+ participants.",
-          "product_type" => "Open Enrollment",
           "additional_fields" => [],
+          "product_type" => $item->bundle(),
           "course_id" => $item->getData('sf_course_id'),
           "class_id" => $item->getData('sf_class_id'),
           "participants" => $participants,
