@@ -30,6 +30,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   public function getObjectForOrder(OrderInterface $order) {
     $promotion_storage = $this->entityManager->getStorage('commerce_promotion');
     $sf_mapping_storage = $this->entityManager->getStorage('salesforce_mapped_object');
+    $registration_storage = $this->entityManager->getStorage('registration');
 
     $items = $order->getItems();
     $customer = $order->getCustomer();
@@ -82,7 +83,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           'promotion_id' => $item_adjustment->getSourceId(),
         ]);
 
-        if (count($promotions)) {
+        if (!empty($promotions)) {
           foreach ($promotions as $promotion) {
             $sf_promo_mapped_objects = $sf_mapping_storage->loadByEntity($promotion);
             $sf_promo_mapped_object = reset($sf_promo_mapped_objects);
@@ -101,12 +102,13 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       }
 
       $participants = [];
-      $registration = $this->entityManager->getStorage('registration')->loadByProperties([
+      $registrations = $registration_storage->loadByProperties([
         'commerce_order_item_id' => $item->id(),
       ]);
 
-      if ($registration) {
-        $registration = reset($registration);
+      if (!empty($registrations)) {
+        $registration = reset($registrations);
+
         foreach ($registration->participants as $participant) {
           $participants[] = [
             "contact_sfid" => null,
