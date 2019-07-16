@@ -4,6 +4,7 @@ namespace Drupal\ilr_registrations;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Class SerializedOrderService.
@@ -18,10 +19,18 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   protected $entityManager;
 
   /**
+   * Drupal\Core\Config\ConfigFactoryInterface definition.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
+  /**
    * Constructs a new SerializedOrderService object.
    */
-  public function __construct(EntityManagerInterface $entity_manager) {
+  public function __construct(EntityManagerInterface $entity_manager, ConfigFactoryInterface $config_factory) {
     $this->entityManager = $entity_manager;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -47,7 +56,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $transaction = $payment_gateway->getPlugin()->getTransaction($payment->getRemoteId());
 
     $response = [
-      "point_of_sale" => $payment_gateway->id(),
+      "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . \Drupal::request()->getHost(),
       "order_id" => $order->id(),
       "payments" => [
         [

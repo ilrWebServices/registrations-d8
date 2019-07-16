@@ -10,4 +10,4 @@ services:
       - { name: event_subscriber }
   ilr_registrations.serialized_order:
     class: Drupal\ilr_registrations\SerializedOrderManager
-    arguments: ['@entity.manager']
+    arguments: ['@entity.manager', '@config.factory']
