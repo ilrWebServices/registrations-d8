@@ -37,6 +37,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
    * {@inheritdoc}
    */
   public function getObjectForOrder(OrderInterface $order) {
+    $payment_storage = $this->entityManager->getStorage('commerce_payment');
     $promotion_storage = $this->entityManager->getStorage('commerce_promotion');
     $sf_mapping_storage = $this->entityManager->getStorage('salesforce_mapped_object');
     $registration_storage = $this->entityManager->getStorage('registration');
@@ -44,29 +45,11 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $items = $order->getItems();
     $customer = $order->getCustomer();
     $billing_profile = $order->getBillingProfile();
-    $payments = $this->entityManager->getStorage('commerce_payment')->loadByProperties([
-      'order_id' => $order->id(),
-      'state' => 'completed',
-    ]);
-    $payment = reset($payments);
-    $payment_gateway = $payment->getPaymentGateway();
-
-    // Note that this function makes a remote call to the FreedomPay API.
-    // @todo Deal with possible remote transaction retrieval failure.
-    $transaction = $payment_gateway->getPlugin()->getTransaction($payment->getRemoteId());
 
     $response = [
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . \Drupal::request()->getHost(),
       "order_id" => $order->id(),
-      "payments" => [
-        [
-          "payment_type" => $payment_gateway->getPluginId(), //"freedompay_cc",
-          "payment_id" => $payment->id(),
-          "amount" => (float) $payment->getAmount()->getNumber(),
-          "transaction_id" => $payment->getRemoteId(),
-          "transaction_data" => $transaction,
-        ]
-      ],
+      "payments" => [],
       "customer" => [
         "contact_sfid" => null, // @todo Lookup a mapped value.
         "email" => $billing_profile->uid->entity->mail->value,
@@ -81,6 +64,34 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
       "order_items" => [], // Set below.
     ];
+
+    // Process payments.
+    $commerce_payments = $payment_storage->loadByProperties([
+      'order_id' => $order->id(),
+      'state' => 'completed',
+    ]);
+
+    if (!empty($commerce_payments)) {
+      $payments = [];
+
+      foreach ($commerce_payments as $commerce_payment) {
+        $payment_gateway = $commerce_payment->getPaymentGateway();
+
+        // Note that this function makes a remote call to the FreedomPay API.
+        // @todo Deal with possible remote transaction retrieval failure.
+        $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
+
+        $payments[] = [
+          "payment_type" => $payment_gateway->getPluginId(), //"freedompay_cc",
+          "payment_id" => $commerce_payment->id(),
+          "amount" => (float) $commerce_payment->getAmount()->getNumber(),
+          "transaction_id" => $commerce_payment->getRemoteId(),
+          "transaction_data" => $transaction,
+        ];
+      }
+
+      $response['payments'] = $payments;
+    }
 
     // Process order items.
     foreach ($items as $item) {
