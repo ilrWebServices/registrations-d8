@@ -61,7 +61,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       ],
       "customer" => [
         "contact_sfid" => null,
-        "user_email" => $billing_profile->uid->entity->mail->value,
+        "email" => $billing_profile->uid->entity->mail->value,
         "billing_email" => $billing_profile->field_email->value,
         "first_name" => $billing_profile->field_first_name->value,
         "last_name" => $billing_profile->field_last_name->value,
