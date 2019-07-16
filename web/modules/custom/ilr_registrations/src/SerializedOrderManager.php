@@ -92,7 +92,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             $discount = [
               "sfid" => $sf_promo_mapped_object->sfid(),
               "code" => $promotion->label(),
-              "type" => $item_adjustment->getPercentage() ? 'percentage' : 'amount',
+              "type" => $item_adjustment->getPercentage() ? 'percentage' : 'fixed_amount',
               "amount" => (float) $item_adjustment->getAmount()->getNumber(),
               "percentage" => (float) $item_adjustment->getPercentage(),
             ];
