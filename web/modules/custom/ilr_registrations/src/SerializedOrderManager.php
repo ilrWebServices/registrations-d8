@@ -72,7 +72,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "city" => $billing_address['locality'],
         "state" => $billing_address['administrative_area'],
         "zip" => $billing_address['postal_code'],
-        "country_code" -> $billing_address['country_code'],
+        "country_code" => $billing_address['country_code'],
         "job_title" => $billing_profile->field_job_title->value,
         "phone" => $billing_profile->field_phone->value,
         "additional_fields" => [], // @todo
@@ -161,7 +161,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             "city" => $billing_address['locality'],
             "state" => $billing_address['administrative_area'],
             "zip" => $billing_address['postal_code'],
-            "country_code"->$billing_address['country_code'],
+            "country_code" => $billing_address['country_code'],
             'additional_fields' => [], // @todo
           ];
         }
