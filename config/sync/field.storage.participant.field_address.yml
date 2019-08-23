@@ -1,18 +1,16 @@
-uuid: 888e0121-867d-4142-88b7-aa612569efa6
+uuid: b5149acf-a0c3-4210-ad3a-445541a670c1
 langcode: en
 status: true
 dependencies:
   module:
+    - address
     - erf
-id: participant.field_last_name
-field_name: field_last_name
+id: participant.field_address
+field_name: field_address
 entity_type: participant
-type: string
-settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+type: address
+settings: {  }
+module: address
 locked: false
 cardinality: 1
 translatable: true

@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - erf.participant_type.basic
-    - field.field.participant.basic.field_first_name
-    - field.field.participant.basic.field_last_name
+    - field.field.participant.basic.field_address
   module:
+    - address
     - user
 id: participant.basic.default
 targetEntityType: participant
@@ -20,21 +20,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_first_name:
-    weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_last_name:
+  field_address:
     weight: 1
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: address_default
     region: content
   mail:
     label: hidden

@@ -54,6 +54,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $items = $order->getItems();
     $customer = $order->getCustomer();
     $billing_profile = $order->getBillingProfile();
+    $billing_address = $billing_profile->address->first()->getValue();
 
     $response = [
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
@@ -63,9 +64,15 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "contact_sfid" => null, // @todo Lookup a mapped value.
         "email" => $billing_profile->uid->entity->mail->value,
         "billing_email" => $billing_profile->field_email->value,
-        "first_name" => $billing_profile->field_first_name->value,
-        "last_name" => $billing_profile->field_last_name->value,
-        "company" => $billing_profile->field_organization->value,
+        "first_name" => $billing_address['given_name'],
+        "last_name" => $billing_address['family_name'],
+        "company" => $billing_address['organization'],
+        "address_line1" => $billing_address['address_line1'],
+        "address_line2" => $billing_address['address_line2'],
+        "city" => $billing_address['locality'],
+        "state" => $billing_address['administrative_area'],
+        "zip" => $billing_address['postal_code'],
+        "country_code" => $billing_address['country_code'],
         "job_title" => $billing_profile->field_job_title->value,
         "phone" => $billing_profile->field_phone->value,
         "additional_fields" => [], // @todo
@@ -141,11 +148,20 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         $registration = reset($registrations);
 
         foreach ($registration->participants as $participant) {
+          // @todo - handle participants even if there is not an address field
+          $address_values = reset($participant->entity->field_address->getValue());
           $participants[] = [
             "contact_sfid" => null,
             'email' => $participant->entity->mail->value,
-            "first_name" => $participant->entity->field_first_name->value,
-            "last_name" => $participant->entity->field_last_name->value,
+            "first_name" => $billing_address['given_name'],
+            "last_name" => $billing_address['family_name'],
+            "company" => $billing_address['organization'],
+            "address_line1" => $billing_address['address_line1'],
+            "address_line2" => $billing_address['address_line2'],
+            "city" => $billing_address['locality'],
+            "state" => $billing_address['administrative_area'],
+            "zip" => $billing_address['postal_code'],
+            "country_code" => $billing_address['country_code'],
             'additional_fields' => [], // @todo
           ];
         }

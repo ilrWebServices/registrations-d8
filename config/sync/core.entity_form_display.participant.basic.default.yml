@@ -4,8 +4,9 @@ status: true
 dependencies:
   config:
     - erf.participant_type.basic
-    - field.field.participant.basic.field_first_name
-    - field.field.participant.basic.field_last_name
+    - field.field.participant.basic.field_address
+  module:
+    - address
 id: participant.basic.default
 targetEntityType: participant
 bundle: basic
@@ -20,21 +21,11 @@ content:
       placeholder: ''
     region: content
     third_party_settings: {  }
-  field_first_name:
-    weight: 0
-    settings:
-      size: 60
-      placeholder: ''
+  field_address:
+    weight: 5
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_last_name:
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: address_default
     region: content
   mail:
     type: email_default

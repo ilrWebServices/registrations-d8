@@ -5,28 +5,19 @@ dependencies:
   config:
     - core.entity_form_mode.participant.inline
     - erf.participant_type.basic
-    - field.field.participant.basic.field_first_name
-    - field.field.participant.basic.field_last_name
+    - field.field.participant.basic.field_address
+  module:
+    - address
 id: participant.basic.inline
 targetEntityType: participant
 bundle: basic
 mode: inline
 content:
-  field_first_name:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_last_name:
-    type: string_textfield
+  field_address:
+    type: address_default
     weight: 1
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   mail:
     type: email_default

@@ -5,29 +5,34 @@ dependencies:
   config:
     - core.entity_view_mode.participant.order_item
     - erf.participant_type.basic
-    - field.field.participant.basic.field_first_name
-    - field.field.participant.basic.field_last_name
+    - field.field.participant.basic.field_address
+  module:
+    - address
 id: participant.basic.order_item
 targetEntityType: participant
 bundle: basic
 mode: order_item
 content:
-  field_first_name:
+  field_address:
+    type: address_default
     weight: 0
+    region: content
     label: hidden
     settings:
-      link_to_entity: false
+      field_settings:
+        givenName: givenName
+        familyName: familyName
+        additionalName: 0
+        organization: 0
+        addressLine1: 0
+        addressLine2: 0
+        postalCode: 0
+        sortingCode: 0
+        dependentLocality: 0
+        locality: 0
+        administrativeArea: 0
+        country: 0
     third_party_settings: {  }
-    type: string
-    region: content
-  field_last_name:
-    weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
 hidden:
   creator_uid: true
   mail: true

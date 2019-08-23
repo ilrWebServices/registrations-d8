@@ -94,6 +94,9 @@
             "drupal/commerce": {
                 "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
                 "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch"
+            },
+            "drupal/address": {
+                "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
             }
         }
     }
