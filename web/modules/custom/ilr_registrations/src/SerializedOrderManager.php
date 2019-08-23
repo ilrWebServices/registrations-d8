@@ -54,7 +54,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $items = $order->getItems();
     $customer = $order->getCustomer();
     $billing_profile = $order->getBillingProfile();
-    $billing_address = reset($billing_profile->address->getValue());
+    $billing_address = $billing_profile->address->first()->getValue();
 
     $response = [
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
