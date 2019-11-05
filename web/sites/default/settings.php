@@ -775,9 +775,11 @@ $settings['entity_update_batch_size'] = 50;
  * the web server environment (or the .env file, generally only used by
  * developers).
  */
-$config['salesforce.settings']['consumer_key'] = getenv('SALESFORCE_CONSUMER_KEY');
-$config['salesforce.settings']['consumer_secret'] = getenv('SALESFORCE_CONSUMER_SECRET');
-$config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
+if (getenv('SALESFORCE_ENABLED')) {
+  $config['salesforce.settings']['consumer_key'] = getenv('SALESFORCE_CONSUMER_KEY');
+  $config['salesforce.settings']['consumer_secret'] = getenv('SALESFORCE_CONSUMER_SECRET');
+  $config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
+}
 
 /**
  * FreedomPay settings.
