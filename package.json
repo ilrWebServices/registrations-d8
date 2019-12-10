@@ -4,6 +4,7 @@
   "description": "This site serves as a Drupal-based version of https://register.ilr.cornell.edu, which is used to register users for classes and programs, track certificate progress, and process payments.",
   "main": "gulpfile.js",
   "dependencies": {
+    "@cornell_ilr/union": "^0.2.24",
     "breakpoint-sass": "^2.7.1"
   },
   "devDependencies": {
@@ -14,7 +15,8 @@
   },
   "scripts": {
     "start": "gulp",
-    "build": "gulp sass"
+    "build": "gulp sass",
+    "postinstall": "if [ -L \"./web/libraries/union\" ]; then echo \"./web/libraries/union is a symlink; skipping copy from ./node_modules\"; else rsync -av --delete ./node_modules/@cornell_ilr/union ./web/libraries/; fi"
   },
   "repository": {
     "type": "git",
