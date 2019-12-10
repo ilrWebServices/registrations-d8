@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b91db5ddbfdacab70c935fb06b2e4396",
+    "content-hash": "d89f5c5c9c74677f175b11f3a53dbbf3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1254,6 +1254,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -2233,6 +2234,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3891,6 +3895,35 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/typed_data"
             }
+        },
+        {
+            "name": "drupal/union_organizer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/union_organizer.git",
+                "reference": "ca6c52f4c6104e61cf576298d27ad3f0be4af7b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/ca6c52f4c6104e61cf576298d27ad3f0be4af7b5",
+                "reference": "ca6c52f4c6104e61cf576298d27ad3f0be4af7b5",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A simple integration module for the Union component system",
+            "homepage": "https://github.com/ilrWebServices/union_organizer",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/ilrWebServices/union_organizer/issues",
+                "source": "https://github.com/ilrWebServices/union_organizer.git"
+            },
+            "time": "2019-10-31T15:03:07+00:00"
         },
         {
             "name": "drush/drush",
@@ -9945,7 +9978,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/email_registration": 5,
-        "drupal/typed_data": 15
+        "drupal/typed_data": 15,
+        "drupal/union_organizer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
