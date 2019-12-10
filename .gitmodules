@@ -1,6 +1,3 @@
 [submodule "web/modules/contrib/erf"]
 	path = web/modules/contrib/erf
 	url = git@git.drupal.org:project/erf.git
-[submodule "web/modules/contrib/union_organizer"]
-	path = web/modules/contrib/union_organizer
-	url = git@github.com:ilrWebServices/union_organizer.git
