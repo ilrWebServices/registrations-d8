@@ -1,3 +1,0 @@
-[submodule "web/modules/contrib/erf"]
-	path = web/modules/contrib/erf
-	url = git@git.drupal.org:project/erf.git
