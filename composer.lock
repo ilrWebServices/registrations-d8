@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b91db5ddbfdacab70c935fb06b2e4396",
+    "content-hash": "fa1dcfe1cf70ba8b3ea2798195761499",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1254,6 +1254,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -2233,6 +2234,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3383,6 +3387,65 @@
             }
         },
         {
+            "name": "drupal/erf",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/erf.git",
+                "reference": "8.x-1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/erf-8.x-1.0-alpha1.zip",
+                "reference": "8.x-1.0-alpha1",
+                "shasum": "4d2b162c21748b61b82615b85a9e90cffce90921"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/inline_entity_form": "^1.0-rc1"
+            },
+            "require-dev": {
+                "drupal/commerce_product": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1",
+                    "datestamp": "1576023180",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "a-fro",
+                    "homepage": "https://www.drupal.org/user/2420892"
+                },
+                {
+                    "name": "jeffam",
+                    "homepage": "https://www.drupal.org/user/397127"
+                }
+            ],
+            "description": "Enables configurable registration forms.",
+            "homepage": "https://www.drupal.org/project/erf",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/erf",
+                "issues": "https://www.drupal.org/project/issues/erf"
+            }
+        },
+        {
             "name": "drupal/fixed_block_content",
             "version": "1.0.0",
             "source": {
@@ -3891,6 +3954,35 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/typed_data"
             }
+        },
+        {
+            "name": "drupal/union_organizer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/union_organizer.git",
+                "reference": "ca6c52f4c6104e61cf576298d27ad3f0be4af7b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/ca6c52f4c6104e61cf576298d27ad3f0be4af7b5",
+                "reference": "ca6c52f4c6104e61cf576298d27ad3f0be4af7b5",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A simple integration module for the Union component system",
+            "homepage": "https://github.com/ilrWebServices/union_organizer",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/ilrWebServices/union_organizer/issues",
+                "source": "https://github.com/ilrWebServices/union_organizer.git"
+            },
+            "time": "2019-10-31T15:03:07+00:00"
         },
         {
             "name": "drush/drush",
@@ -7997,7 +8089,7 @@
             "version": "8.3.5",
             "source": {
                 "type": "git",
-                "url": "https://git.drupal.org/project/coder.git",
+                "url": "https://git.drupalcode.org/project/coder.git",
                 "reference": "35277fc8675b6a2cbb194f8880145a9c85c845c4"
             },
             "require": {
@@ -9938,6 +10030,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "require-dev dependencies from drupal/core",
+            "abandoned": "drupal/core-dev",
             "time": "2019-06-05T19:31:46+00:00"
         }
     ],
@@ -9945,7 +10038,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/email_registration": 5,
-        "drupal/typed_data": 15
+        "drupal/typed_data": 15,
+        "drupal/union_organizer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

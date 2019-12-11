@@ -10,7 +10,7 @@ It is based on the [Composer template for Drupal projects][].
 - PHP 7.1 or greater
 - Composer
 - Drush ([Drush launcher][] is recommended, since a copy of Drush is included in this project)
-- Node.js 8.x or greater (for theming)
+- Node.js 8.x or greater
 
 ## Setup
 
@@ -18,25 +18,9 @@ It is based on the [Composer template for Drupal projects][].
 2. Open a terminal at the root of the repo
 3. Run `composer install`
 4. Copy `.env.example` to `.env` and update the database connection, salesforce, and payment info.
-5. Run `npm install && npm run build` to generate the CSS for the custom theme.
+5. Run `npm install && npm run build` to install the Union library and generate the CSS for the custom theme.
 
 Setting up your local web server and database is left as an excercise for the developer. Please note when setting up your web server, though, that this project uses the `web` directory as the web root.
-
-### Git submodules
-
-As of this writing in May of 2019, three projects that would normally be included via Composer are included as [git submodules][] for more rapid development:
-
-- `drupal/erf`
-- `drupal/union_organizer`
-- `cornell/union`
-
-This means that they won't be installed automatically by Composer. It also means that these projects will be nested git repositories in the following locations:
-
-- web/modules/contrib/erf
-- web/libraries/union/
-- web/modules/contrib/union_organizer
-
-Once the code is stable in these projects, they will be switched to versioned Composer dependencies.
 
 ### Development-only Settings
 
