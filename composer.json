@@ -1,109 +1,108 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
-    "type": "project",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "",
-            "role": ""
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/ilrWebServices/union_organizer.git"
-        }
-    ],
-    "require": {
-        "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/drupal-scaffold": "^2.5",
-        "drupal/admin_toolbar": "^1.26",
-        "drupal/commerce": "^2.13",
-        "drupal/config_split": "^1.4",
-        "drupal/console": "^1.0.2",
-        "drupal/core": "^8.6.0",
-        "drupal/email_registration": "^1.0@RC",
-        "drupal/erf": "^1.0",
-        "drupal/fixed_block_content": "^1.0",
-        "drupal/salesforce": "^3.1",
-        "drupal/typed_data": "^1.0@alpha",
-        "drupal/union_organizer": "dev-master",
-        "drush/drush": "^9.0.0",
-        "oomphinc/composer-installers-extender": "^1.1",
-        "platformsh/config-reader": "^2.2",
-        "vlucas/phpdotenv": "^2.4",
-        "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
-    },
-    "require-dev": {
-        "webflo/drupal-core-require-dev": "^8.6.0"
-    },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "sort-packages": true
-    },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ],
-        "files": ["load.environment.php"]
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
-    },
-    "extra": {
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
-        "installer-types": ["library"],
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library", "cornell/union"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/{$name}": ["type:drupal-drush"]
-        },
-        "drupal-scaffold": {
-            "initial": {
-                ".editorconfig": "../.editorconfig",
-                ".gitattributes": "../.gitattributes"
-            }
-        },
-        "patches": {
-            "drupal/inline_entity_form": {
-                "Field name/label disappears when I create a new entity inline":
-                "https://www.drupal.org/files/issues/inline_entity_form-no_label_required_field_with_no_entries-2842744.patch"
-            },
-            "drupal/commerce": {
-                "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
-                "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch"
-            },
-            "drupal/address": {
-                "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
-            }
-        }
+  "name": "drupal-composer/drupal-project",
+  "description": "Project template for Drupal 8 projects with composer",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "",
+      "role": ""
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ilrWebServices/union_organizer.git"
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.2",
+    "cweagans/composer-patches": "^1.6.5",
+    "drupal-composer/drupal-scaffold": "^2.5",
+    "drupal/admin_toolbar": "^1.26",
+    "drupal/commerce": "^2.13",
+    "drupal/config_split": "^1.4",
+    "drupal/console": "^1.0.2",
+    "drupal/core": "^8.6.0",
+    "drupal/email_registration": "^1.0@RC",
+    "drupal/erf": "^1.0",
+    "drupal/fixed_block_content": "^1.0",
+    "drupal/salesforce": "^3.1",
+    "drupal/typed_data": "^1.0@alpha",
+    "drupal/union_organizer": "dev-master",
+    "drush/drush": "^9.0.0",
+    "oomphinc/composer-installers-extender": "^1.1",
+    "platformsh/config-reader": "^2.2",
+    "vlucas/phpdotenv": "^2.4",
+    "webflo/drupal-finder": "^1.0.0",
+    "webmozart/path-util": "^2.3",
+    "zaporylie/composer-drupal-optimizations": "^1.0"
+  },
+  "require-dev": {
+    "webflo/drupal-core-require-dev": "^8.6.0"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ],
+    "files": ["load.environment.php"]
+  },
+  "scripts": {
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ]
+  },
+  "extra": {
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "installer-types": ["library"],
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library", "cornell/union"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/Commands/{$name}": ["type:drupal-drush"]
+    },
+    "drupal-scaffold": {
+      "initial": {
+        ".editorconfig": "../.editorconfig",
+        ".gitattributes": "../.gitattributes"
+      }
+    },
+    "patches": {
+      "drupal/inline_entity_form": {
+        "Field name/label disappears when I create a new entity inline": "https://www.drupal.org/files/issues/inline_entity_form-no_label_required_field_with_no_entries-2842744.patch"
+      },
+      "drupal/commerce": {
+        "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
+        "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch"
+      },
+      "drupal/address": {
+        "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
+      }
+    }
+  }
 }
