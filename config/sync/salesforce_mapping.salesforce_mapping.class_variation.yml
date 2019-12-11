@@ -12,6 +12,7 @@ type: salesforce_mapping
 key: ''
 async: false
 push_standalone: false
+pull_standalone: false
 pull_trigger_date: LastModifiedDate
 pull_where_clause: 'Show_on_Web__c = TRUE'
 sync_triggers:

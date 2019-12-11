@@ -9,9 +9,9 @@ _core:
   default_config_hash: PZl4AQDUouSVwavb0FNRlcbJx924n5FtCq8l73AMj5g
 id: customer
 label: Customer
-registration: false
+display_label: null
 multiple: true
+registration: false
 roles: {  }
-weight: 0
-use_revisions: false
-description: null
+allow_revisions: false
+new_revision: false
