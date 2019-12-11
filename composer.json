@@ -28,12 +28,12 @@
   "require": {
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
-    "drupal-composer/drupal-scaffold": "^2.5",
     "drupal/admin_toolbar": "^1.26",
     "drupal/commerce": "^2.13",
     "drupal/config_split": "^1.4",
     "drupal/console": "^1.0.2",
-    "drupal/core": "^8.6.0",
+    "drupal/core-composer-scaffold": "^8.8",
+    "drupal/core-recommended": "^8.8",
     "drupal/email_registration": "^1.0@RC",
     "drupal/erf": "^1.0",
     "drupal/fixed_block_content": "^1.0",
@@ -41,15 +41,12 @@
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-master",
     "drush/drush": "^9.0.0",
-    "oomphinc/composer-installers-extender": "^1.1",
     "platformsh/config-reader": "^2.2",
     "vlucas/phpdotenv": "^2.4",
-    "webflo/drupal-finder": "^1.0.0",
-    "webmozart/path-util": "^2.3",
     "zaporylie/composer-drupal-optimizations": "^1.0"
   },
   "require-dev": {
-    "webflo/drupal-core-require-dev": "^8.6.0"
+    "drupal/core-dev": "^8.8"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -60,43 +57,26 @@
     "sort-packages": true
   },
   "autoload": {
-    "classmap": [
-      "scripts/composer/ScriptHandler.php"
-    ],
     "files": ["load.environment.php"]
   },
-  "scripts": {
-    "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-    ],
-    "pre-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-    ],
-    "post-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-    ],
-    "post-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-    ]
-  },
   "extra": {
-    "patchLevel": {
-      "drupal/core": "-p2"
+    "drupal-scaffold": {
+      "locations": {
+          "web-root": "web/"
+      }
     },
-    "installer-types": ["library"],
     "installer-paths": {
       "web/core": ["type:drupal-core"],
-      "web/libraries/{$name}": ["type:drupal-library", "cornell/union"],
+      "web/libraries/{$name}": ["type:drupal-library"],
       "web/modules/contrib/{$name}": ["type:drupal-module"],
       "web/profiles/contrib/{$name}": ["type:drupal-profile"],
       "web/themes/contrib/{$name}": ["type:drupal-theme"],
-      "drush/Commands/{$name}": ["type:drupal-drush"]
+      "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
     },
-    "drupal-scaffold": {
-      "initial": {
-        ".editorconfig": "../.editorconfig",
-        ".gitattributes": "../.gitattributes"
-      }
+    "patchLevel": {
+      "drupal/core": "-p2"
     },
     "patches": {
       "drupal/inline_entity_form": {
