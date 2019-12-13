@@ -225,6 +225,7 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
       'mail' => 'ilrweb@cornell.edu',
       'address' => $address,
       'default_currency' => 'USD',
+      'is_default' => TRUE,
     ]);
     $store->save();
 
