@@ -15,7 +15,6 @@ description: ''
 tag: commerce_order_summary
 base_table: registration
 base_field: id
-core: 8.x
 display:
   default:
     display_plugin: default

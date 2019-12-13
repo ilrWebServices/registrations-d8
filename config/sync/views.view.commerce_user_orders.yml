@@ -2,8 +2,7 @@ uuid: 141e6d4a-6ca5-40f9-801c-894e29a5c1ae
 langcode: en
 status: true
 dependencies:
-  config:
-    - field.storage.commerce_order.order_items
+  config: {  }
   module:
     - commerce_order
     - commerce_price
@@ -19,7 +18,6 @@ description: 'Display a list of placed orders for a user.'
 tag: Commerce
 base_table: commerce_order
 base_field: order_id
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -264,7 +262,7 @@ display:
         order_items:
           id: order_items
           table: commerce_order__order_items
-          field: order_items
+          field: order_items_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -547,6 +545,8 @@ display:
             remember_roles:
               authenticated: authenticated
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''

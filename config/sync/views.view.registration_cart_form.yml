@@ -16,7 +16,6 @@ description: 'A cart listing of registration info for orders of the type `regisi
 tag: commerce_cart_form
 base_table: registration
 base_field: id
-core: 8.x
 display:
   default:
     display_plugin: default
