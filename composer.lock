@@ -2030,17 +2030,17 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "2.15.0",
+            "version": "2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",
-                "reference": "8.x-2.15"
+                "reference": "8.x-2.16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.15.zip",
-                "reference": "8.x-2.15",
-                "shasum": "935f40a5f9a36425109b4e3acb182e7a8d1d158f"
+                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.16.zip",
+                "reference": "8.x-2.16",
+                "shasum": "9c3297f4f18d1276bd76d2129aac3b4476dc5db5"
             },
             "require": {
                 "commerceguys/intl": "^1.0.0",
@@ -2074,7 +2074,7 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.15",
+                    "version": "8.x-2.16",
                     "datestamp": "1576074180",
                     "security-coverage": {
                         "status": "covered",

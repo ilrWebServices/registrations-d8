@@ -9,8 +9,6 @@ dependencies:
     - field.field.commerce_product.course.field_course_prefixes
     - field.field.commerce_product.course.field_tags
     - field.field.commerce_product.course.registration_type
-    - field.field.commerce_product.course.stores
-    - field.field.commerce_product.course.variations
   module:
     - commerce
     - path
