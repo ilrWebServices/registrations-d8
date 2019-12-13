@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eae00c9e1997f59a912932cb8cd11bbe",
+    "content-hash": "daa41515efb7f3792244a2f918151c1b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2075,7 +2075,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.15",
-                    "datestamp": "1573079392",
+                    "datestamp": "1576074180",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2083,7 +2083,7 @@
                 },
                 "patches_applied": {
                     "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
-                    "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-04-16/2689919-21_commerce_Order-Items-Table-formatter-select-view.patch"
+                    "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-08-27/2689919-26_commerce_Order-Items-Table-formatter-select-view-no-post-update.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
