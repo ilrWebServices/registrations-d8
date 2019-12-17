@@ -23,7 +23,7 @@ $databases['default']['default'] = [
 ];
 
 // Enable Redis caching.
-if ($platformsh->hasRelationship('redis') && !drupal_installation_attempted() && extension_loaded('redis')) {
+if ($platformsh->hasRelationship('redis') && !drupal_installation_attempted() && extension_loaded('redis') && class_exists('Drupal\redis\ClientFactory')) {
   $redis = $platformsh->credentials('redis');
 
   // Set Redis as the default backend for any cache bin not otherwise specified.
@@ -80,8 +80,8 @@ if ($platformsh->hasRelationship('redis') && !drupal_installation_attempted() &&
 if (!isset($settings['file_private_path'])) {
   $settings['file_private_path'] = $platformsh->appDir . '/private';
 }
-if (!isset($config['system.file']['path']['temporary'])) {
-  $config['system.file']['path']['temporary'] = $platformsh->appDir . '/tmp';
+if (!isset($settings['file_temp_path'])) {
+  $settings['file_temp_path'] = $platformsh->appDir . '/tmp';
 }
 
 // Configure the default PhpStorage and Twig template cache directories.
@@ -92,20 +92,13 @@ if (!isset($settings['php_storage']['twig'])) {
   $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
 }
 
-// Set trusted hosts based on Platform.sh routes.
-if (!isset($settings['trusted_host_patterns'])) {
-  $routes = $platformsh->routes();
-  $patterns = [];
-  foreach ($routes as $url => $route) {
-    $host = parse_url($url, PHP_URL_HOST);
-    if ($host !== FALSE && $route['type'] == 'upstream' && $route['upstream'] == $platformsh->applicationName) {
-      // Replace asterisk wildcards with a regular expression.
-      $host_pattern = str_replace('\*', '[^\.]+', preg_quote($host));
-      $patterns[] = '^' . $host_pattern . '$';
-    }
-  }
-  $settings['trusted_host_patterns'] = array_unique($patterns);
-}
+// The 'trusted_hosts_pattern' setting allows an admin to restrict the Host header values
+// that are considered trusted.  If an attacker sends a request with a custom-crafted Host
+// header then it can be an injection vector, depending on how the Host header is used.
+// However, Platform.sh already replaces the Host header with the route that was used to reach
+// Platform.sh, so it is guaranteed to be safe.  The following line explicitly allows all
+// Host headers, as the only possible Host header is already guaranteed safe.
+$settings['trusted_host_patterns'] = ['.*'];
 
 // Import variables prefixed with 'd8settings:' into $settings
 // and 'd8config:' into $config.
@@ -113,26 +106,26 @@ foreach ($platformsh->variables() as $name => $value) {
   $parts = explode(':', $name);
   list($prefix, $key) = array_pad($parts, 3, null);
   switch ($prefix) {
-      // Variables that begin with `d8settings` or `drupal` get mapped
-      // to the $settings array verbatim, even if the value is an array.
-      // For example, a variable named d8settings:example-setting' with
-      // value 'foo' becomes $settings['example-setting'] = 'foo';
+    // Variables that begin with `d8settings` or `drupal` get mapped
+    // to the $settings array verbatim, even if the value is an array.
+    // For example, a variable named d8settings:example-setting' with
+    // value 'foo' becomes $settings['example-setting'] = 'foo';
     case 'd8settings':
     case 'drupal':
       $settings[$key] = $value;
       break;
-      // Variables that begin with `d8config` get mapped to the $config
-      // array.  Deeply nested variable names, with colon delimiters,
-      // get mapped to deeply nested array elements. Array values
-      // get added to the end just like a scalar. Variables without
-      // both a config object name and property are skipped.
-      // Example: Variable `d8config:conf_file:prop` with value `foo` becomes
-      // $config['conf_file']['prop'] = 'foo';
-      // Example: Variable `d8config:conf_file:prop:subprop` with value `foo` becomes
-      // $config['conf_file']['prop']['subprop'] = 'foo';
-      // Example: Variable `d8config:conf_file:prop:subprop` with value ['foo' => 'bar'] becomes
-      // $config['conf_file']['prop']['subprop']['foo'] = 'bar';
-      // Example: Variable `d8config:prop` is ignored.
+    // Variables that begin with `d8config` get mapped to the $config
+    // array.  Deeply nested variable names, with colon delimiters,
+    // get mapped to deeply nested array elements. Array values
+    // get added to the end just like a scalar. Variables without
+    // both a config object name and property are skipped.
+    // Example: Variable `d8config:conf_file:prop` with value `foo` becomes
+    // $config['conf_file']['prop'] = 'foo';
+    // Example: Variable `d8config:conf_file:prop:subprop` with value `foo` becomes
+    // $config['conf_file']['prop']['subprop'] = 'foo';
+    // Example: Variable `d8config:conf_file:prop:subprop` with value ['foo' => 'bar'] becomes
+    // $config['conf_file']['prop']['subprop']['foo'] = 'bar';
+    // Example: Variable `d8config:prop` is ignored.
     case 'd8config':
       if (count($parts) > 2) {
         $temp = &$config[$key];
