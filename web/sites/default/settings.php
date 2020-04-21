@@ -756,19 +756,6 @@ $settings['entity_update_batch_size'] = 50;
 $settings['entity_update_backup'] = TRUE;
 
 /**
- * Salesforce settings.
- *
- * Some bogus values are stored in config, and the real values come from
- * the web server environment (or the .env file, generally only used by
- * developers).
- */
-if (getenv('SALESFORCE_ENABLED')) {
-  $config['salesforce.settings']['consumer_key'] = getenv('SALESFORCE_CONSUMER_KEY');
-  $config['salesforce.settings']['consumer_secret'] = getenv('SALESFORCE_CONSUMER_SECRET');
-  $config['salesforce.settings']['login_url'] = getenv('SALESFORCE_LOGIN_URL');
-}
-
-/**
  * FreedomPay settings.
  *
  * Some bogus values are stored in config, and the real values come from
