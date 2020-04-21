@@ -43,7 +43,7 @@
     "drupal/union_organizer": "dev-master",
     "drush/drush": "^10",
     "platformsh/config-reader": "^2.2",
-    "vlucas/phpdotenv": "^2.4",
+    "vlucas/phpdotenv": "^4.1",
     "zaporylie/composer-drupal-optimizations": "^1.0"
   },
   "require-dev": {
