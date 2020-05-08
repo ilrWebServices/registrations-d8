@@ -34,6 +34,10 @@ Here's a suggested example:
 // Allow any domain to access the site.
 $settings['trusted_host_patterns'] = array();
 
+// Switch the salesforce auth provider for production. Otherwise, we will use
+// the default for dev.
+// $config['salesforce.settings']['salesforce_auth_provider'] = 'ilr_marketing_jwt_oauth';
+
 // Enable the config split for development-only modules, like field_ui.
 $config['config_split.config_split.dev']['status'] = TRUE;
 
@@ -103,28 +107,33 @@ Review changes and restore any customizations to `.htaccess` or `robots.txt`. Co
 
 ## Salesforce Integration
 
-When installing the site from scratch, you'll need to configure two groups of settings to connect to Salesforce.
+This site uses the Salesforce Suite module to synchronize some Salesforce objects to Drupal entities, mainly Professionional Programs courses, classes, and related items.
 
-As of this writing (January 2019), you can get values for these settings from the production instance of the Drupal 7 site. Search the `variables` table for the following keys:
+Authentication is done via OAuth JWT tokens - one for ILR Drupal sites to connect to the production instance and one for all development sites to connect to the `tiger` sandbox instance. See the [OAuth JWT Bearer Token flow documentation][] for more information.
 
-- `salesforce_consumer_key`
-- `salesforce_consumer_secret`
-- `salesforce_endpoint` (AKA `login_url`)
-- `salesforce_instance_url`
-- `salesforce_refresh_token`
+### Configuration
 
-### 1. Remote/Connected App Settings
+The only required configuration is to set the `SALESFORCE_CONSUMER_JWT_X509_KEY` environment variable. For development, this is done by editing the `.env` file. On production, this is done via platform.sh environment variable settings.
 
-These are set in `settings.php` via environment variables. For developers, this means adding them to your `.env` file. See the Setup section above.
+The JWT x509 key is stored in the 'SalesForce prod key/secret for ILR Marketing D8 JWT' note in the shared 'ILR Webdev' folder in LastPass.
 
-### 2. Authorization Settings
+### Usage
 
-These are set using the Drupal 8 State API, so they cannot be added via config or config overrides. Once you have the values for the instance URL and refresh token from the production site, you can add them to your local state using drush:
+You can see the status of the two authentication providers via drush:
 
 ```
-$ drush state-set salesforce.instance_url [VALUE_FROM_PROD_SITE]
-$ drush state-set salesforce.refresh_token [VALUE_FROM_PROD_SITE]
+$ drush sflp
 ```
+
+...or by visiting `/admin/config/salesforce/authorize/list`.
+
+You can then refresh the authentication tokens for one or both of the providers by either using the _Edit / Re-auth_ button in the web interface or via drush:
+
+```
+$ drush sfrt ilr_marketing_jwt_oauth_dev
+```
+
+If needed, the default provider can be overriden during local development (e.g. for testing with production data) by updating the configuration for the `salesforce_auth_provider`. See the "Development-only Settings" above for an example.
 
 ## Theme Development
 
@@ -144,6 +153,7 @@ If you set `LIVERELOAD=1` in your `.env` file and reload your browser while `npm
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
 [git submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+[OAuth JWT Bearer Token flow documentation]: https://www.drupal.org/docs/8/modules/salesforce-suite/create-a-oauth-jwt-bearer-token-flow-connected-app-4x
 [composer-patches]: https://github.com/cweagans/composer-patches
 [Union Component Library]: https://github.com/ilrWebServices/union
 [Union Organizer]: https://github.com/ilrWebServices/union_organizer

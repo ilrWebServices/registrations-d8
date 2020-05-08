@@ -37,13 +37,13 @@
     "drupal/email_registration": "^1.0@RC",
     "drupal/erf": "^1.0",
     "drupal/fixed_block_content": "^1.0",
-    "drupal/salesforce": "^3.1",
+    "drupal/salesforce": "^4.0",
     "drupal/token": "^1.5",
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-master",
     "drush/drush": "^10",
     "platformsh/config-reader": "^2.2",
-    "vlucas/phpdotenv": "^2.4",
+    "vlucas/phpdotenv": "^4.1",
     "zaporylie/composer-drupal-optimizations": "^1.0"
   },
   "require-dev": {

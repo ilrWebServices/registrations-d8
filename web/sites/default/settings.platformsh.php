@@ -146,3 +146,9 @@ $settings['hash_salt'] = $settings['hash_salt'] ?? $platformsh->projectEntropy;
 
 // Set the deployment identifier, which is used by some Drupal cache systems.
 $settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
+
+if ($platformsh->onProduction()) {
+  // Switch the salesforce auth provider for production. Otherwise, we will use
+  // the default for dev.
+  $config['salesforce.settings']['salesforce_auth_provider'] = 'ilr_marketing_jwt_oauth';
+}
