@@ -77,6 +77,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "phone" => $billing_profile->field_phone->value,
         "additional_fields" => [], // @todo
       ],
+      "payment_owner" => $order->hasField('field_payment_owner') ? $order->field_payment_owner->value : NULL,
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
       "order_items" => [], // Set below.
     ];
