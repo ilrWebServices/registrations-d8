@@ -147,21 +147,28 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       if (!empty($registrations)) {
         $registration = reset($registrations);
 
-        foreach ($registration->participants as $participant) {
+        foreach ($registration->participants->referencedEntities() as $participant) {
           // @todo - handle participants even if there is not an address field
-          $address_values = reset($participant->entity->field_address->getValue());
+          $address_value = $participant->field_address->getValue();
+          $address = reset($address_value);
           $participants[] = [
             "contact_sfid" => null,
-            'email' => $participant->entity->mail->value,
-            "first_name" => $billing_address['given_name'],
-            "last_name" => $billing_address['family_name'],
-            "company" => $billing_address['organization'],
-            "address_line1" => $billing_address['address_line1'],
-            "address_line2" => $billing_address['address_line2'],
-            "city" => $billing_address['locality'],
-            "state" => $billing_address['administrative_area'],
-            "zip" => $billing_address['postal_code'],
-            "country_code" => $billing_address['country_code'],
+            'email' => $participant->mail->value,
+            "first_name" => $address['given_name'],
+            "last_name" => $address['family_name'],
+            "company" => $address['organization'],
+            "address_line1" => $address['address_line1'],
+            "address_line2" => $address['address_line2'],
+            "city" => $address['locality'],
+            "state" => $address['administrative_area'],
+            "zip" => $address['postal_code'],
+            "country_code" => $address['country_code'],
+            "job_title" => $participant->hasField('field_job_title') ? $participant->field_job_title->value : NULL,
+            "phone" => $participant->hasField('field_phone') ? $participant->field_phone->value : NULL,
+            "dietary_restrictions" => $participant->hasField('field_dietary_restrictions') ? $participant->field_dietary_restrictions->value : NULL,
+            "accessible_accommodation" => $participant->hasField('field_accessible_accommodation') ? $participant->field_accessible_accommodation->value : NULL,
+            "is_cornell_employee" => $participant->hasField('field_is_cornell_employee') ? ($participant->field_is_cornell_employee->value ? 'true' : 'false') : NULL,
+            "apply_to_certificate" => "",
             'additional_fields' => [], // @todo
           ];
         }
@@ -175,10 +182,11 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "quantity" => (int) $item->getQuantity(),
         "total" => (float) $item->getTotalPrice()->getNumber(),
         "discounted_total" => (float) $item->getAdjustedTotalPrice()->getNumber(),
-        "registration" => [
+        "product" => [
+          "product_type" => "registration",
+          "x_product_type_subtype" => $item->bundle(), // Not in the spec, but maybe still useful.
           "additional_fields" => [], // @todo
           "description" => "",
-          "product_type" => $item->bundle(),
           "course_id" => $item->getData('sf_course_id'),
           "class_id" => $item->getData('sf_class_id'),
           "participants" => $participants,
