@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.registration
+    - field.field.commerce_order.registration.field_payment_owner
   module:
     - commerce_order
     - inline_entity_form
@@ -31,6 +32,12 @@ content:
     weight: 20
     region: content
     third_party_settings: {  }
+  field_payment_owner:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   order_items:
     type: inline_entity_form_complex
     weight: 0

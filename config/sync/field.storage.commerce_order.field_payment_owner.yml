@@ -1,0 +1,27 @@
+uuid: 45913e5e-cc00-48e9-91a4-30fb4c0f8d84
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_order
+    - options
+id: commerce_order.field_payment_owner
+field_name: field_payment_owner
+entity_type: commerce_order
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: customer
+      label: 'My personal funds'
+    -
+      value: company
+      label: 'My company is paying'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

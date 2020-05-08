@@ -1,0 +1,21 @@
+uuid: b810044e-9deb-401b-8739-e489e05cc029
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.registration
+    - field.storage.commerce_order.field_payment_owner
+  module:
+    - options
+id: commerce_order.registration.field_payment_owner
+field_name: field_payment_owner
+entity_type: commerce_order
+bundle: registration
+label: 'What is the source of payment for this registration?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
