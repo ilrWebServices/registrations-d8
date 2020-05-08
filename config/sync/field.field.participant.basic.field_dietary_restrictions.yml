@@ -1,0 +1,19 @@
+uuid: 665c0809-514c-48dd-a0eb-8a85a375d660
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+    - field.storage.participant.field_dietary_restrictions
+id: participant.basic.field_dietary_restrictions
+field_name: field_dietary_restrictions
+entity_type: participant
+bundle: basic
+label: 'Please let us know if you have any dietary restrictions.'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

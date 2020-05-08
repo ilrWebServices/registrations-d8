@@ -4,7 +4,12 @@ status: true
 dependencies:
   config:
     - erf.participant_type.basic
+    - field.field.participant.basic.field_accessible_accommodation
     - field.field.participant.basic.field_address
+    - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_is_cornell_employee
+    - field.field.participant.basic.field_job_title
+    - field.field.participant.basic.field_phone
   module:
     - address
     - user
@@ -20,12 +25,51 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_accessible_accommodation:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
   field_address:
     weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
+    region: content
+  field_dietary_restrictions:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_is_cornell_employee:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_job_title:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_phone:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
     region: content
   mail:
     label: hidden

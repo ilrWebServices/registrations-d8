@@ -1,0 +1,19 @@
+uuid: d86b6cfd-eafa-47e1-806c-b85fbeccc6e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+    - field.storage.participant.field_job_title
+id: participant.basic.field_job_title
+field_name: field_job_title
+entity_type: participant
+bundle: basic
+label: 'Job Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

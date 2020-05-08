@@ -4,9 +4,15 @@ status: true
 dependencies:
   config:
     - erf.participant_type.basic
+    - field.field.participant.basic.field_accessible_accommodation
     - field.field.participant.basic.field_address
+    - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_is_cornell_employee
+    - field.field.participant.basic.field_job_title
+    - field.field.participant.basic.field_phone
   module:
     - address
+    - telephone
 id: participant.basic.default
 targetEntityType: participant
 bundle: basic
@@ -22,11 +28,49 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
+  field_accessible_accommodation:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
   field_address:
     weight: 5
     settings: {  }
     third_party_settings: {  }
     type: address_default
+    region: content
+  field_dietary_restrictions:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_is_cornell_employee:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_job_title:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone:
+    weight: 6
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
     region: content
   mail:
     type: email_default

@@ -1,0 +1,23 @@
+uuid: 64ae101b-c0a5-46f8-9dca-a51fc2b1a760
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+    - field.storage.participant.field_is_cornell_employee
+id: participant.basic.field_is_cornell_employee
+field_name: field_is_cornell_employee
+entity_type: participant
+bundle: basic
+label: 'Are you a Cornell employee?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'true'
+  off_label: 'false'
+field_type: boolean

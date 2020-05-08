@@ -1,0 +1,19 @@
+uuid: ffce2e67-0817-424f-bdae-dd55dff5864f
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+    - telephone
+id: participant.field_phone
+field_name: field_phone
+entity_type: participant
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -5,7 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.participant.order_item
     - erf.participant_type.basic
+    - field.field.participant.basic.field_accessible_accommodation
     - field.field.participant.basic.field_address
+    - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_is_cornell_employee
+    - field.field.participant.basic.field_job_title
+    - field.field.participant.basic.field_phone
   module:
     - address
 id: participant.basic.order_item
@@ -35,5 +40,10 @@ content:
     third_party_settings: {  }
 hidden:
   creator_uid: true
+  field_accessible_accommodation: true
+  field_dietary_restrictions: true
+  field_is_cornell_employee: true
+  field_job_title: true
+  field_phone: true
   mail: true
   uid: true

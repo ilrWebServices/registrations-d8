@@ -1,0 +1,19 @@
+uuid: 103bde7c-9758-4d67-ab46-34da1705f53d
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_accessible_accommodation
+field_name: field_accessible_accommodation
+entity_type: participant
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
