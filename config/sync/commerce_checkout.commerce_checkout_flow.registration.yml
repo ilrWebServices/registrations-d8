@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - commerce_checkout_order_fields
     - commerce_payment
     - commerce_promotion
     - email_registration
@@ -12,11 +13,11 @@ plugin: multistep_default
 configuration:
   display_checkout_progress: true
   panes:
-    login:
-      allow_guest_checkout: true
-      allow_registration: false
-      step: _disabled
-      weight: 11
+    email_registration_login:
+      allow_guest_checkout: false
+      allow_registration: true
+      step: login
+      weight: 0
     contact_information:
       double_entry: false
       step: order_information
@@ -30,6 +31,11 @@ configuration:
       weight: 3
     completion_register:
       step: complete
+      weight: 4
+    'order_fields:checkout':
+      wrapper_element: container
+      display_label: 'Order fields'
+      step: order_information
       weight: 4
     completion_message:
       step: complete
@@ -46,8 +52,11 @@ configuration:
       step: _sidebar
       weight: 10
       capture: true
-    email_registration_login:
-      allow_guest_checkout: false
-      allow_registration: true
-      step: login
-      weight: 0
+    email_registration_completion_registration:
+      step: _disabled
+      weight: 10
+    login:
+      allow_guest_checkout: true
+      allow_registration: false
+      step: _disabled
+      weight: 11
