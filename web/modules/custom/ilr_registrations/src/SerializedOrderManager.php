@@ -187,7 +187,6 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           "product_type" => "registration",
           "x_product_type_subtype" => $item->bundle(), // Not in the spec, but maybe still useful.
           "additional_fields" => [], // @todo
-          "description" => "",
           "course_id" => $item->getData('sf_course_id'),
           "class_id" => $item->getData('sf_class_id'),
           "participants" => $participants,
