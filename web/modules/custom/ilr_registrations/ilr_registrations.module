@@ -407,8 +407,8 @@ function ilr_registrations_user_format_name_alter(&$name, $account) {
 
   // If the customer profile has both a first and last name, show them as the
   // display name.
-  if ($profile->hasField('field_first_name') && $profile->hasField('field_last_name')) {
-    $name = $profile->field_first_name->value . ' ' . $profile->field_last_name->value;
+  if ($profile->address->given_name && $profile->address->family_name) {
+    $name = $profile->address->given_name . ' ' . $profile->address->family_name;
   }
 }
 
