@@ -62,7 +62,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "payments" => [],
       "customer" => [
         "contact_sfid" => null, // @todo Lookup a mapped value.
-        "email" => $billing_profile->uid->entity->mail->value,
+        "email" => $order->uid->entity->getEmail(),
         "billing_email" => $billing_profile->field_email->value,
         "first_name" => $billing_address['given_name'],
         "last_name" => $billing_address['family_name'],
