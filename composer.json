@@ -30,6 +30,7 @@
     "cweagans/composer-patches": "^1.6.5",
     "drupal/admin_toolbar": "^2.0",
     "drupal/commerce": "^2.15",
+    "drupal/commerce_checkout_order_fields": "^1.0",
     "drupal/config_split": "^1.4",
     "drupal/console": "^1.0.2",
     "drupal/core-composer-scaffold": "^8.8",
@@ -89,6 +90,9 @@
       },
       "drupal/address": {
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
+      },
+      "drupal/commerce_checkout_order_fields": {
+        "Required fields not allowed": "https://www.drupal.org/files/issues/2019-06-26/commerce_checkout_order_fields-3063654-2.patch"
       }
     }
   }
