@@ -7,6 +7,7 @@ use Drupal\ilr_registrations\SerializedOrderManagerInterface;
 use Drupal\salesforce\Rest\RestClientInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\state_machine\Event\WorkflowTransitionEvent;
+use Drupal\salesforce\Rest\RestException;
 
 /**
  * Class EntityTypeSubscriber.
@@ -72,14 +73,34 @@ class OrderCompleteSubscriber implements EventSubscriberInterface {
     // Use the Salesforce module Rest API to post this serialized order to their
     // webhook. This will call the correct endpoint automatically based on the
     // default authentication provider.
-    $result = $this->sfapi->apiCall('/services/apexrest/WebReg', $serialized_order, 'POST', TRUE);
+    try {
+      $response = $this->sfapi->apiCall('/services/apexrest/WebReg', $serialized_order, 'POST', TRUE);
 
-    // Log the results.
-    $this->logger->notice('WebReg hook called for order @order_id. Response code: @response_code. Response message: @response_message', [
-      '@order_id' => $order->id(),
-      '@response_code' => $result->getStatusCode(),
-      '@response_message' => $result->getReasonPhrase(),
-    ]);
+      $this->logger->notice('WebReg hook success for order @order_id. Response code: @response_code. Response message: @response_message', [
+        '@order_id' => $order->id(),
+        '@response_code' => $response->getStatusCode(),
+        '@response_message' => $response->getReasonPhrase(),
+      ]);
+    }
+    // Catch `RequestException`s first.
+    catch (RestException $e) {
+      $response = $e->getResponse();
+
+      $this->logger->error('WebReg hook rest error for order @order_id. Response code: @response_code. Response message: @response_message. Error message: @message', [
+        '@order_id' => $order->id(),
+        '@response_code' => $response ? $response->getStatusCode() : '?',
+        '@response_message' => $response ? $response->getReasonPhrase() : '?',
+        '@message' => $e->getMessage(),
+      ]);
+    }
+    // Another exception may be thrown, e.g. for a network error, missing
+    // OAuth credentials, invalid params, etc.
+    catch (\Exception $e) {
+      $this->logger->error('WebReg hook error for order @order_id. Error message: @message', [
+        '@order_id' => $order->id(),
+        '@message' => $e->getMessage(),
+      ]);
+    }
   }
 
 }
