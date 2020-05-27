@@ -3,6 +3,11 @@ services:
     class: Drupal\ilr_registrations\EventSubscriber\CommerceEventSubscriber
     tags:
       - { name: event_subscriber }
+  ilr_registrations_order_complete_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\OrderCompleteSubscriber
+    arguments: ['@ilr_registrations.serialized_order', '@salesforce.client', '@logger.factory']
+    tags:
+      - { name: event_subscriber }
   ilr_registrations_salesforce_event_subscriber:
     class: Drupal\ilr_registrations\EventSubscriber\SalesforceEventSubscriber
     arguments: []
