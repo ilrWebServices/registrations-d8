@@ -19,6 +19,8 @@ module:
   commerce_store: 0
   config_filter: 0
   config_split: 0
+  config_update: 0
+  config_update_ui: 0
   datetime: 0
   dblog: 0
   dynamic_entity_reference: 0
