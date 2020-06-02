@@ -27,21 +27,25 @@ field_mappings:
     drupal_field_value: name
     salesforce_field: Name
     direction: sf_drupal
+    id: 0
   -
     drupal_field_type: properties
     drupal_field_value: description
     salesforce_field: Discount_Description__c
     direction: sf_drupal
+    id: 1
   -
     drupal_field_type: properties
     drupal_field_value: start_date
     salesforce_field: Discount_Start_Date__c
     direction: sf_drupal
+    id: 2
   -
     drupal_field_type: properties
     drupal_field_value: end_date
     salesforce_field: Discount_End_Date__c
     direction: sf_drupal
+    id: 3
 push_limit: 0
 push_retries: 3
 push_frequency: 0
