@@ -5,3 +5,10 @@
  * Contains ilr_registrations.install.
  */
 
+/**
+ * Revert the basic participant type address field to allow Canadian addresses.
+ */
+function ilr_registrations_update_8001() {
+  $reverter = \Drupal::service('config_update.config_update');
+  $reverter->revert('field_config', 'participant.basic.field_address');
+}
