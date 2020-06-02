@@ -61,6 +61,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "order_id" => $order->id(),
       "payments" => [],
       "customer" => [
+        'customer_profile_id' => $billing_profile->id(),
         "contact_sfid" => null, // @todo Lookup a mapped value.
         "email" => $order->uid->entity->getEmail(),
         "billing_email" => $billing_profile->field_email->value,
@@ -153,6 +154,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           $address_value = $participant->field_address->getValue();
           $address = reset($address_value);
           $participants[] = [
+            'participant_id' => $participant->id(),
             "contact_sfid" => null,
             'email' => $participant->mail->value,
             "first_name" => $address['given_name'],
