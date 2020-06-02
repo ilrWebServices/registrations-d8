@@ -7,7 +7,6 @@ label: Development
 description: ''
 folder: ../config/dev
 module:
-  config: 0
   field_ui: 0
   salesforce_mapping_ui: 0
   views_ui: 0
