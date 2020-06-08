@@ -28,14 +28,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_email:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: email_default
-    region: content
   field_industry:
     weight: 6
     settings:
@@ -60,4 +52,5 @@ content:
     type: telephone_default
     region: content
 hidden:
+  field_email: true
   is_default: true
