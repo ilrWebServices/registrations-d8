@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - commerce_promotion
     - salesforce_pull
 id: discount_promotion
 label: 'Discount Promotion'
