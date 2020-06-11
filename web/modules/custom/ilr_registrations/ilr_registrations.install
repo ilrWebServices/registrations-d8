@@ -12,3 +12,11 @@ function ilr_registrations_update_8001() {
   $reverter = \Drupal::service('config_update.config_update');
   $reverter->revert('field_config', 'participant.basic.field_address');
 }
+
+/**
+ * Revert the basic participant type to enable Drupal user referencing.
+ */
+function ilr_registrations_update_8002() {
+  $reverter = \Drupal::service('config_update.config_update');
+  $reverter->revert('participant_type', 'basic');
+}
