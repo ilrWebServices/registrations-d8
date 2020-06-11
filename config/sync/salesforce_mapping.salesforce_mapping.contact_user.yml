@@ -1,0 +1,29 @@
+uuid: 4abe08d2-4dd5-405c-a6c6-afb19f290876
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: contact_user
+label: 'Contact to User'
+weight: 10
+type: salesforce_mapping
+key: null
+async: false
+push_standalone: false
+pull_standalone: false
+pull_trigger_date: LastModifiedDate
+pull_where_clause: ''
+sync_triggers:
+  pull_create: false
+  pull_update: false
+  pull_delete: false
+salesforce_object_type: Contact
+drupal_entity_type: user
+drupal_bundle: user
+field_mappings: {  }
+push_limit: 0
+push_retries: 3
+push_frequency: 0
+pull_frequency: 0
+always_upsert: null
