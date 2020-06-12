@@ -6,6 +6,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\commerce_product\Event\ProductEvents;
 use Drupal\commerce_product\Event\FilterVariationsEvent;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\address\Event\AddressEvents;
+use Drupal\address\Event\AddressFormatEvent;
 
 /**
  * Class EntityTypeSubscriber.
@@ -23,6 +25,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
   public static function getSubscribedEvents() {
     return [
       ProductEvents::FILTER_VARIATIONS => 'filterVariations',
+      AddressEvents::ADDRESS_FORMAT => 'onAddressFormat',
     ];
   }
 
@@ -62,6 +65,24 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
     }
 
     $event->setVariations($filtered_variations);
+  }
+
+  /**
+   * Address format event callback.
+   *
+   * I would never in a million years have guessed how to display the middle
+   * name field in address fields if not for this Commerce documentation:
+   * https://docs.drupalcommerce.org/commerce2/developer-guide/customers/addresses/address-formats
+   */
+  public function onAddressFormat(AddressFormatEvent $event) {
+    $definition = $event->getDefinition();
+
+    // Include %additionalName (e.g. middle name) in the format.
+    $format = $definition['format'];
+    $format = str_replace('%additionalName', '', $format);
+    $format = str_replace('%givenName %familyName', "%givenName %additionalName %familyName", $format);
+    $definition['format'] = $format;
+    $event->setDefinition($definition);
   }
 
 }
