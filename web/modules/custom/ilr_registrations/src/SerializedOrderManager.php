@@ -70,7 +70,12 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "order_id" => $order->id(),
       "payments" => [],
       "customer" => [
-        'customer_profile_id' => $billing_profile->id(),
+        // `customer_profile_id` was originally planned to be the profile entity
+        // id (e.g. $billing_profile->id()), but commerce uses anonymous user
+        // profiles for orders to preserve history, and thus we can't get the
+        // Drupal user from the profile. This should probably be renamed
+        // `customer_user_id`.
+        'customer_profile_id' => $customer->id(),
         "contact_sfid" => $customer_contact_sfid,
         "email" => $order->uid->entity->getEmail(),
         "first_name" => $billing_address['given_name'],
