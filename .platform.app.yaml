@@ -126,6 +126,6 @@ web:
 # The configuration of scheduled execution.
 crons:
   drupal:
-    # Run drush cron every hour
-    spec: '0 * * * *'
+    # Run drush cron every five minutes
+    spec: '*/5 * * * *'
     cmd: 'cd web ; drush core-cron'
