@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.registration
-    - field.field.commerce_order.registration.field_financial_transaction_id
     - field.field.commerce_order.registration.field_payment_owner
     - field.field.commerce_order.registration.field_salesforce_order_name
   module:
@@ -34,14 +33,6 @@ content:
     weight: 20
     region: content
     third_party_settings: {  }
-  field_financial_transaction_id:
-    weight: 22
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_payment_owner:
     weight: 21
     settings: {  }
