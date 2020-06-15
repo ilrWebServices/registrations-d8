@@ -14,3 +14,13 @@ ilr_registrations.serialized_order_controller_load:
     _title: 'Serialized Commerce Order'
   requirements:
     _permission: 'access content'
+
+ilr_registrations.salesforce_commerce_webhook_v1:
+  path: '/hooks/v1/salesforce-commerce'
+  defaults:
+    _controller: '\Drupal\ilr_registrations\Controller\SalesforceCommerceWebhook::v1'
+    _title: 'Salesforce Commerce Webhook v1'
+  methods: [POST]
+  requirements:
+    _content_type_format: json
+    _permission: 'access content'
