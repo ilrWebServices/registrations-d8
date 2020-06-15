@@ -3,7 +3,6 @@
 namespace Drupal\ilr_registrations\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 // use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -33,11 +32,11 @@ class SalesforceCommerceWebhook extends ControllerBase {
   /**
    * Constructs a new SalesforceCommerceWebhook object.
    *
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   * @param \Drupal\Core\Queue\QueueFactory $queue_factory
    *   The logger channel factory.
    */
-  public function __construct(LoggerChannelFactoryInterface $logger_factory, QueueFactory $queue_factory) {
-    $this->logger = $logger_factory->get('ilr_registrations_webhook');
+  public function __construct(QueueFactory $queue_factory) {
+    $this->logger = $this->getLogger('ilr_registrations_webhook');
     $this->queue = $queue_factory->get('salesforce_commerce_webhook_processor');
   }
 
@@ -46,7 +45,6 @@ class SalesforceCommerceWebhook extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('logger.factory'),
       $container->get('queue')
     );
   }
