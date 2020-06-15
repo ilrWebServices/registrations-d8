@@ -7,6 +7,7 @@ dependencies:
     - field.field.participant.basic.field_accessible_accommodation
     - field.field.participant.basic.field_address
     - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_industry
     - field.field.participant.basic.field_is_cornell_employee
     - field.field.participant.basic.field_job_title
     - field.field.participant.basic.field_phone
@@ -49,6 +50,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
+  field_industry:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_is_cornell_employee:
     weight: 9
