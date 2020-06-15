@@ -21,21 +21,23 @@ default_value:
   -
     langcode: ''
     country_code: US
-    administrative_area: null
-    locality: null
+    administrative_area: ''
+    locality: ''
     dependent_locality: null
-    postal_code: null
+    postal_code: ''
     sorting_code: null
-    address_line1: null
-    address_line2: null
-    organization: null
+    address_line1: ''
+    address_line2: ''
+    organization: ''
     given_name: ''
-    additional_name: null
+    additional_name: ''
     family_name: ''
 default_value_callback: ''
 settings:
   available_countries: {  }
   langcode_override: ''
-  field_overrides: {  }
+  field_overrides:
+    organization:
+      override: required
   fields: {  }
 field_type: address

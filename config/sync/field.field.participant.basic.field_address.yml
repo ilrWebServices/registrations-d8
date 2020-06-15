@@ -28,7 +28,7 @@ default_value:
     address_line2: ''
     organization: ''
     given_name: ''
-    additional_name: null
+    additional_name: ''
     family_name: ''
 default_value_callback: ''
 settings:
@@ -36,6 +36,8 @@ settings:
     CA: CA
     US: US
   langcode_override: ''
-  field_overrides: {  }
+  field_overrides:
+    organization:
+      override: required
   fields: {  }
 field_type: address
