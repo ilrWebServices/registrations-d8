@@ -1,0 +1,36 @@
+uuid: 188d2ef5-282e-4036-9c87-028304ea69cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.registration
+    - field.field.commerce_order.registration.field_salesforce_order_name
+id: order_to_reg_order
+label: 'Salesforce Order to Registration Commerce Order'
+weight: 10
+type: salesforce_mapping
+key: ''
+async: false
+push_standalone: false
+pull_standalone: false
+pull_trigger_date: LastModifiedDate
+pull_where_clause: ''
+sync_triggers:
+  pull_create: false
+  pull_update: false
+  pull_delete: false
+salesforce_object_type: Order__c
+drupal_entity_type: commerce_order
+drupal_bundle: registration
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_salesforce_order_name
+    salesforce_field: Name
+    direction: sf_drupal
+    id: 0
+push_limit: 0
+push_retries: 3
+push_frequency: 0
+pull_frequency: 0
+always_upsert: false
