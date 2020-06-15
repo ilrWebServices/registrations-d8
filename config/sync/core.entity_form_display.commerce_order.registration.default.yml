@@ -6,6 +6,7 @@ dependencies:
     - commerce_order.commerce_order_type.registration
     - field.field.commerce_order.registration.field_financial_transaction_id
     - field.field.commerce_order.registration.field_payment_owner
+    - field.field.commerce_order.registration.field_salesforce_order_name
   module:
     - commerce_order
     - inline_entity_form
@@ -46,6 +47,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_salesforce_order_name:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   order_items:
     type: inline_entity_form_complex

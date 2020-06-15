@@ -1,0 +1,19 @@
+uuid: 50990678-e608-4d86-ad3f-a5704157a005
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.registration
+    - field.storage.commerce_order.field_salesforce_order_name
+id: commerce_order.registration.field_salesforce_order_name
+field_name: field_salesforce_order_name
+entity_type: commerce_order
+bundle: registration
+label: 'Salesforce Order Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

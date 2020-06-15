@@ -1,0 +1,21 @@
+uuid: 5f52ae4f-ce76-41f7-801d-61465368725b
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_order
+id: commerce_order.field_salesforce_order_name
+field_name: field_salesforce_order_name
+entity_type: commerce_order
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
