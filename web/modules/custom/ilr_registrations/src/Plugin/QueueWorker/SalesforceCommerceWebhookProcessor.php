@@ -60,8 +60,8 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
     // Verify that the salesforce order matches this commerce order by loading
     // the order object from salesforce.
     // TODO Verify that this fails if the SFID is incorrect.
-    $order_mapping = $this->entityTypeManager->getStorage('salesforce_mapping')->load('ft_reg_order');
-    $sf_order_object = $this->sfapi->objectRead('EXECED_Financial_Transaction__c', $data['sf_order_id']);
+    $order_mapping = $this->entityTypeManager->getStorage('salesforce_mapping')->load('order_to_reg_order');
+    $sf_order_object = $this->sfapi->objectRead('Order__c', $data['sf_order_id']);
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($data['pos_order_id']);
     $this->createMapping($order_mapping, $sf_order_object, $order, TRUE);
 
