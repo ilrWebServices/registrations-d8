@@ -2,7 +2,7 @@
 
 namespace Drupal\ilr_registrations;
 
-use Drupal\Core\Entity\EntityManagerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -15,9 +15,9 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   /**
    * Drupal\Core\Entity\EntityManagerInterface definition.
    *
-   * @var \Drupal\Core\Entity\EntityManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityManager;
+  protected $entityTypeManager;
 
   /**
    * Drupal\Core\Config\ConfigFactoryInterface definition.
@@ -36,8 +36,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   /**
    * Constructs a new SerializedOrderService object.
    */
-  public function __construct(EntityManagerInterface $entity_manager, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
-    $this->entityManager = $entity_manager;
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
+    $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
     $this->request = $request_stack->getCurrentRequest();
   }
@@ -46,10 +46,10 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
    * {@inheritdoc}
    */
   public function getObjectForOrder(OrderInterface $order) {
-    $payment_storage = $this->entityManager->getStorage('commerce_payment');
-    $promotion_storage = $this->entityManager->getStorage('commerce_promotion');
-    $sf_mapping_storage = $this->entityManager->getStorage('salesforce_mapped_object');
-    $registration_storage = $this->entityManager->getStorage('registration');
+    $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
+    $promotion_storage = $this->entityTypeManager->getStorage('commerce_promotion');
+    $sf_mapping_storage = $this->entityTypeManager->getStorage('salesforce_mapped_object');
+    $registration_storage = $this->entityTypeManager->getStorage('registration');
 
     $items = $order->getItems();
     $customer = $order->getCustomer();
