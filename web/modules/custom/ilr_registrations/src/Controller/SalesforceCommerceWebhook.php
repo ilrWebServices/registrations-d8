@@ -3,12 +3,10 @@
 namespace Drupal\ilr_registrations\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-// use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-// use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SalesforceCommerceWebhook.
