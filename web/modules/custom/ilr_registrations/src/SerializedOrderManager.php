@@ -56,13 +56,22 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     $billing_profile = $order->getBillingProfile();
     $billing_address = $billing_profile->address->first()->getValue();
 
+    if ($customer_contact_mapping = $sf_mapping_storage->loadByEntity($customer)) {
+      /** @var Drupal\salesforce_mapping\Entity\MappedObject $customer_contact_mapping */
+      $customer_contact_mapping = reset($customer_contact_mapping);
+      $customer_contact_sfid = $customer_contact_mapping->sfid();
+    }
+    else {
+      $customer_contact_sfid = NULL;
+    }
+
     $response = [
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
       "order_id" => $order->id(),
       "payments" => [],
       "customer" => [
         'customer_profile_id' => $billing_profile->id(),
-        "contact_sfid" => null, // @todo Lookup a mapped value.
+        "contact_sfid" => $customer_contact_sfid,
         "email" => $order->uid->entity->getEmail(),
         "first_name" => $billing_address['given_name'],
         "middle_name" => $billing_address['additional_name'],
@@ -150,12 +159,21 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         $registration = reset($registrations);
 
         foreach ($registration->participants->referencedEntities() as $participant) {
+          if (!$participant->uid->isEmpty() && $participant_contact_mapping = $sf_mapping_storage->loadByEntity($participant->uid->entity)) {
+            /** @var Drupal\salesforce_mapping\Entity\MappedObject $participant_contact_mapping */
+            $participant_contact_mapping = reset($participant_contact_mapping);
+            $participant_contact_sfid = $participant_contact_mapping->sfid();
+          }
+          else {
+            $participant_contact_sfid = NULL;
+          }
+
           // @todo - handle participants even if there is not an address field
           $address_value = $participant->field_address->getValue();
           $address = reset($address_value);
           $participants[] = [
             'participant_id' => $participant->id(),
-            "contact_sfid" => null,
+            "contact_sfid" => $participant_contact_sfid,
             'email' => $participant->mail->value,
             "first_name" => $address['given_name'],
             "middle_name" => $address['additional_name'],
