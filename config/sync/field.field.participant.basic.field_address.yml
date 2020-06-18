@@ -32,9 +32,7 @@ default_value:
     family_name: ''
 default_value_callback: ''
 settings:
-  available_countries:
-    CA: CA
-    US: US
+  available_countries: {  }
   langcode_override: ''
   field_overrides:
     organization:
