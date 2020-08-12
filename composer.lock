@@ -4065,38 +4065,36 @@
         },
         {
             "name": "drupal/state_machine",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/state_machine.git",
-                "reference": "8.x-1.0-rc1"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.0-rc1.zip",
-                "reference": "8.x-1.0-rc1",
-                "shasum": "bea94c4def643f60d3134f9c5d8495ddb56c93dd"
+                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "b39ca317ca8d9cd5c9ebcf720a84d44ca697d57f"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8.7.7 || ^9",
+                "php": ">=7.0.8"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.0-rc1",
-                    "datestamp": "1542124077",
+                    "version": "8.x-1.0",
+                    "datestamp": "1582902575",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -4153,9 +4151,9 @@
                 }
             ],
             "description": "Provides code-driven workflow functionality.",
-            "homepage": "https://www.drupal.org/project/state_machine",
+            "homepage": "http://drupal.org/project/state_machine",
             "support": {
-                "source": "http://cgit.drupalcode.org/state_machine"
+                "source": "https://git.drupalcode.org/project/state_machine"
             }
         },
         {
