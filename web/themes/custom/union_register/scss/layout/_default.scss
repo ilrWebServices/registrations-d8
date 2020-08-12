@@ -4,16 +4,23 @@ body {
 
 .layout-container {
   width: 100%;
+  min-height: 100vh;
   display: grid;
   grid-row-gap: 1em;
   grid-column-gap: 0;
-  grid-template-rows: [header] auto [body] auto [content-bottom] auto [footer] 100px;
+  grid-template-rows: [header] auto [body] 1fr [content-bottom] auto [footer] 100px;
   grid-template-columns: [left-gutter] 1fr [content] 22fr [right-gutter] 1fr;
 
   @include medium {
     grid-column-gap: 2rem;
     grid-template-columns: [left-gutter] 2fr [content] 9fr [sidebar] 3fr [right-gutter] 2fr;
     justify-items: stretch;
+  }
+
+  // Partial fix for logged in users with the toolbar. A padding gets
+  // dynamically added to the top of the page.
+  .toolbar-tray-open.toolbar-horizontal & {
+    min-height: calc(100vh - 100px);
   }
 }
 
