@@ -1,11 +1,28 @@
+.cu-input--submit {
+  border-width: 2px;
+  padding: var(--cu-vr-4) var(--cu-ps-1);
+}
+
+// Participant UI
 // @todo consider how to better integrate with union
 .field--name-participants.field--widget-inline-entity-form-complex {
   margin-bottom: 2rem;
 
-  fieldset {
+  .cu-fieldset {
     border: 1px solid $cornell-red;
     border-radius: 2px;
+    margin: 0;
   }
+
+  .ief-form-bottom.cu-fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  .field--widget-boolean-checkbox {
+    margin-bottom: var(--cu-vr-1);
+  }
+
   .tabledrag-toggle-weight-wrapper,
   thead,
   .ief-tabledrag-handle {
@@ -28,21 +45,5 @@
     margin-bottom: var(--cu-ms-1);
     padding-bottom: var(--cu-ms1);
   }
-
-  .button {
-    background-color: white;
-    border-radius: 25px;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
-    margin-left: var(--cu-vr-1);
-    margin-bottom: 0;
-  }
-
-  div[data-drupal-selector="edit-participants-actions"] {
-    text-align: center;
-    margin-bottom: -38px;
-  }
 }
+
