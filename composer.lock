@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78d6fa1f32c65de6fac055d9a227c121",
+    "content-hash": "7e7a2cda5f55b1ffda1983d318f7a36e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2202,39 +2202,34 @@
         },
         {
             "name": "drupal/commerce_checkout_order_fields",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce_checkout_order_fields.git",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_checkout_order_fields-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "ccb0c83f21a842a98b65bc3fae769af639400a2e"
+                "url": "https://ftp.drupal.org/files/projects/commerce_checkout_order_fields-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "2ae206616cb292586f40021db68e936ed68daf0f"
             },
             "require": {
                 "drupal/commerce": "^2.4",
                 "drupal/commerce_checkout": "*",
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1558539181",
+                    "version": "8.x-1.1",
+                    "datestamp": "1592931337",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
                 },
-                "patches_applied": {
-                    "Required fields not allowed": "https://www.drupal.org/files/issues/2019-06-26/commerce_checkout_order_fields-3063654-2.patch"
-                }
+                "patches_applied": []
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
