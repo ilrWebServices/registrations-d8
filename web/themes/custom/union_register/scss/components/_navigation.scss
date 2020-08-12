@@ -1,3 +1,23 @@
+#block-union-register-main-nav {
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+
+    li {
+      margin-right: 1em;
+
+      a {
+        color: black;
+      }
+    }
+  }
+
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
 #block-union-register-footer-menu {
   ul {
     display: flex;
