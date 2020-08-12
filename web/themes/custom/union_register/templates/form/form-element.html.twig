@@ -1,4 +1,8 @@
+{% if element['#type'] in ['textfield', 'textarea', 'tel', 'email'] %}
+  {% set labelDisplay = 'float' %}
+{% endif %}
 {% include "@union/_form-element.twig" with {
   required: element['#required'],
+  labelDisplay: labelDisplay,
   descriptionText: element['#description']
 }%}
