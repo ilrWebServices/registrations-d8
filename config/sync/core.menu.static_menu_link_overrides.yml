@@ -1,12 +1,12 @@
 definitions:
   user__logout:
-    menu_name: footer
+    menu_name: main
     parent: ''
     weight: 10
     expanded: false
     enabled: true
   user__page:
-    menu_name: footer
+    menu_name: main
     parent: ''
     weight: -10
     expanded: false
