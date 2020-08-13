@@ -1,18 +1,3 @@
-.layout-container--commerce {
-  @include breakpoint(md) {
-    grid-template-columns: [left-gutter] 1fr [content] 22fr [right-gutter] 1fr;
-  }
-
-  main {
-    grid-column: content/right-gutter;
-  }
-
-  aside.layout-sidebar-first {
-    grid-row: content-bottom;
-    grid-column: content;
-  }
-}
-
 // Special case for the survey link block on the order completion page.
 #block-qualtrics-link {
   padding: 0 var(--cu-ps1) var(--cu-vr1);

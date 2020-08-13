@@ -2,4 +2,9 @@
 .cu-logo--ilr-lockup {
   max-width: 450px;
   min-width: 300px;
+
+  img {
+    max-width: none;
+    width: 100%;
+  }
 }

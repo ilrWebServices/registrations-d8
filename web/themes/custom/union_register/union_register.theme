@@ -13,12 +13,6 @@ function union_register_preprocess_page(array &$variables) {
   if (getenv('LIVERELOAD')) {
     $variables['#attached']['library'][] = 'union_register/livereload';
   }
-
-  // Check if on a commerce page
-  $route_name = \Drupal::routeMatch()->getRouteName();
-  if (strpos($route_name, 'commerce_') === 0) {
-    $variables['attributes']['class'] = ['layout-container--commerce'];
-  }
 }
 
 /**

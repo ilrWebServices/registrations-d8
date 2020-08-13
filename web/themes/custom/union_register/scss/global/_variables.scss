@@ -3,7 +3,8 @@
 =============================================*/
 $cornell-red: #B31B1B;
 $white: white;
-$gray-lightest: #F7F7F7;
+$black: #222;
+$gray-lightest: #fbfbfb;
 $gray-light: darken($gray-lightest, 10%);
 $gray-medium: #ccc;
 $gray-dark: darken($gray-medium, 30%);
@@ -18,4 +19,4 @@ $color-breadcrumbs: $color-link;
 /*=============================================
 =            Misc. (Layout, etc.)            =
 =============================================*/
-$max-width--layout: 1160px;
+$max-width--layout: 1264px;

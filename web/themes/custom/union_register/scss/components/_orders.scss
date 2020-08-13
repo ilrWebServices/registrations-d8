@@ -56,20 +56,19 @@
 }
 
 .order-information {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  @include breakpoint(md) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-  .field--name-order-items {
-    grid-column: 1/-1;
-  }
-
-  .order-total-line {
-    text-align: left;
+    .field--name-order-items {
+      grid-column: 1/-1;
+    }
   }
 }
 
 .order-total-line-label {
   margin-right: var(--cu-ps-1);
+  display: inline-flex;
 
   &::after {
     content: ':';

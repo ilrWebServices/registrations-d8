@@ -1,15 +1,11 @@
 header {
   background: $white;
   padding: 1em 0;
-  width: 100%;
-  max-width: $max-width--layout;
-  justify-self: center;
+  border-bottom: 10px solid $cornell-red;
 }
 
-main {
-  width: 100%;
-  max-width: $max-width--layout;
-  justify-self: center;
+.layout-main {
+  margin-bottom: var(--cu-vr1);
 }
 
 aside.layout-sidebar-first {
@@ -19,19 +15,17 @@ aside.layout-sidebar-first {
 }
 
 footer {
-  background: $cornell_red;
   padding: 1em 0;
 }
 
+// This is the footer element in the order summary total view.
 main footer {
   background: none;
   margin-bottom: var(--cu-vr1);
 }
 
-footer div {
-  width: 100%;
-  max-width: $max-width--layout;
-  margin: 0 auto;
+.layout-footer {
+  border-top: 1px solid $gray-medium;
 }
 
 // Commerce regions

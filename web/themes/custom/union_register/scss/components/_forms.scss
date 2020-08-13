@@ -1,18 +1,13 @@
 .cu-input--submit {
   border-width: 2px;
   padding: var(--cu-vr-4) var(--cu-ps-1);
+  background: $white;
 }
 
 // Participant UI
 // @todo consider how to better integrate with union
 .field--name-participants.field--widget-inline-entity-form-complex {
   margin-bottom: 2rem;
-
-  .cu-fieldset {
-    border: 1px solid $cornell-red;
-    border-radius: 2px;
-    margin: 0;
-  }
 
   .ief-form-bottom.cu-fieldset {
     border: none;
@@ -47,3 +42,10 @@
   }
 }
 
+.cu-fieldset {
+  border: none;
+  background: $gray-lightest;
+  border: 1px solid $gray-light;
+  border-radius: 3px;
+  margin: 0 0 var(--cu-vr1);
+}

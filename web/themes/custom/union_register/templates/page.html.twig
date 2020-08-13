@@ -40,15 +40,21 @@
  */
 #}
 
+{% set main_attributes = create_attribute({'class':['layout-main']}) %}
+
+{% if page.sidebar_first %}
+  {% set main_attributes = main_attributes.addClass('layout-main--with-sidebar') %}
+{% endif %}
+
 <div{{ attributes.addClass('layout-container') }}>
 
-  <header role="banner">
+  <header class="layout-header" role="banner">
     {{ page.header }}
     {{ page.highlighted }}
     {{ page.help }}
   </header>
 
-  <main role="main">
+  <main role="main"{{ main_attributes}}>
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
     {{ page.content }}
   </main>
@@ -60,7 +66,7 @@
   {% endif %}
 
   {% if page.footer %}
-    <footer role="contentinfo">
+    <footer class="layout-footer" role="contentinfo">
       {{ page.footer }}
     </footer>
   {% endif %}

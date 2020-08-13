@@ -13,7 +13,6 @@
 
     li + li {
       &::before {
-        color: $color-breadcrumbs;
         content: "\0002f";
       }
 
@@ -23,7 +22,6 @@
     }
 
     a {
-      color: $color-breadcrumbs;
       text-decoration: none;
       display: flex;
       justify-content: center;

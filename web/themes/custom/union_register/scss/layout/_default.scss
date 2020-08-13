@@ -5,16 +5,15 @@ body {
 .layout-container {
   width: 100%;
   min-height: 100vh;
-  display: grid;
-  grid-row-gap: 1em;
-  grid-column-gap: 0;
-  grid-template-rows: [header] auto [body] 1fr [content-bottom] auto [footer] 100px;
-  grid-template-columns: [left-gutter] 1fr [content] 22fr [right-gutter] 1fr;
+  max-width: $max-width--layout;
+  margin: 0 auto;
+  padding: 0 var(--cu-ps1);
 
   @include breakpoint(md) {
+    display: grid;
     grid-column-gap: 2rem;
-    grid-template-columns: [left-gutter] 2fr [content] 9fr [sidebar] 3fr [right-gutter] 2fr;
-    justify-items: stretch;
+    grid-template-columns: 9fr 3fr;
+    grid-template-rows: auto 1fr auto;
   }
 
   // Partial fix for logged in users with the toolbar. A padding gets
@@ -24,40 +23,36 @@ body {
   }
 }
 
-header {
-  grid-row: header;
-  grid-column: 2 / -2;
+.layout-header,
+.layout-footer {
+  grid-column: 1/-1;
 }
 
-main {
-  grid-row: body;
-  grid-column: content;
+.layout-main {
+  grid-column: 1/-1;
+}
+
+.layout-main--with-sidebar {
+  grid-column: 1;
 }
 
 aside.layout-sidebar-first {
-  grid-row: content-bottom;
-  grid-column: content;
-
   @include breakpoint(md) {
-    grid-row: body;
-    grid-column: sidebar;
+    grid-column: 2;
   }
 
   > div:first-of-type {
     padding: var(--cu-vr0) var(--cu-ps1) var(--cu-vr1);
-    border: 1px solid #efefef;
+    border: 1px solid $gray-light;
     background: #fbfbfb;
     border-radius: 3px;
     margin-bottom: var(--cu-vr1);
   }
 }
 
-footer {
-  grid-row: footer;
-  grid-column: 1 / -1;
-}
-
 .region-header {
-  display: flex;
-  justify-content: space-between;
+  @include breakpoint(md) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
