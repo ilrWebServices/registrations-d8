@@ -426,12 +426,26 @@ function ilr_registrations_preprocess_user(&$variables) {
   }
 }
 
+/**
+ * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ */
 function ilr_registrations_block_view_commerce_cart_alter(array &$build, Drupal\Core\Block\BlockPluginInterface $block) {
   $build['#pre_render'][] = 'ilr_registrations_change_cart_build_content';
 }
 
+/**
+ * Pre-render callback for commerce cart block.
+ *
+ * @see ilr_registrations_block_view_commerce_cart_alter()
+ */
 function ilr_registrations_change_cart_build_content(array $build) {
   $build['content']['#icon']['#uri'] = "modules/contrib/commerce/icons/bebebe/cart.png";
-
   return $build;
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function ilr_registrations_menu_links_discovered_alter(&$links) {
+  $links['user.page']['title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Account Settings');
 }
