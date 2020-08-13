@@ -11,7 +11,7 @@ body {
   grid-template-rows: [header] auto [body] 1fr [content-bottom] auto [footer] 100px;
   grid-template-columns: [left-gutter] 1fr [content] 22fr [right-gutter] 1fr;
 
-  @include medium {
+  @include breakpoint(md) {
     grid-column-gap: 2rem;
     grid-template-columns: [left-gutter] 2fr [content] 9fr [sidebar] 3fr [right-gutter] 2fr;
     justify-items: stretch;
@@ -38,7 +38,7 @@ aside.layout-sidebar-first {
   grid-row: content-bottom;
   grid-column: content;
 
-  @include medium {
+  @include breakpoint(md) {
     grid-row: body;
     grid-column: sidebar;
   }
