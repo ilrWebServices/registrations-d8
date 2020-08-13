@@ -16,14 +16,14 @@
 <div class="checkout-complete">
   <p>Your order is complete.</p>
 
-  <h2>{{ 'Order number @number'|t({'@number': order_entity.getOrderNumber}) }}</h2>
+  <h2 class="cu-heading">{{ 'Order number @number'|t({'@number': order_entity.getOrderNumber}) }}</h2>
 
   {{ order_detail }}
 
   {% if payment_instructions %}
     <hr />
     <div class="checkout-complete__payment-instructions">
-      <h2>{{ 'Payment instructions'|t }}</h2>
+      <h2 class="cu-heading">{{ 'Payment instructions'|t }}</h2>
       {{ payment_instructions }}
     </div>
   {% endif %}
