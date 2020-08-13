@@ -15,10 +15,17 @@
 
 // Special case for the survey link block on the order completion page.
 #block-qualtrics-link {
-  float: right;
-  max-width: 50%;
+  padding: 0 var(--cu-ps1) var(--cu-vr1);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: var(--cu-vr1);
 
-  h2 {
-    margin-top: 0;
+  @include breakpoint(md) {
+    float: right;
+    max-width: 50%;
+  }
+
+  a {
+    color: #B31B1B;
   }
 }

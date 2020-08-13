@@ -42,6 +42,14 @@ aside.layout-sidebar-first {
     grid-row: body;
     grid-column: sidebar;
   }
+
+  > div:first-of-type {
+    padding: var(--cu-vr0) var(--cu-ps1) var(--cu-vr1);
+    border: 1px solid #efefef;
+    background: #fbfbfb;
+    border-radius: 3px;
+    margin-bottom: var(--cu-vr1);
+  }
 }
 
 footer {
