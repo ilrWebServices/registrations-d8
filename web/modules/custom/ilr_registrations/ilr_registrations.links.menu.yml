@@ -3,3 +3,10 @@ ilr_registrations.catalog:
   url: https://www.ilr.cornell.edu/programs/professional-programs/workshops-courses-training
   menu_name: footer
   weight: 15
+
+ilr_registrations.displayname:
+  title: '[USER DISPLAY NAME]'
+  url: 'route:<nolink>'
+  menu_name: main
+  class: Drupal\ilr_registrations\Plugin\Menu\DisplayNameMenuLink
+  weight: -15
