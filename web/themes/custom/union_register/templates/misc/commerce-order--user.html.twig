@@ -22,13 +22,13 @@
     {{ order.mail }}
     {% if order.shipping_information %}
       <div class="customer-information__shipping">
-        <h3>{{ 'Shipping information'|t }}</h3>
+        <h3 class="cu-heading">{{ 'Shipping information'|t }}</h3>
         {{ order.shipping_information }}
       </div>
     {% endif %}
     {% if order.billing_information %}
       <div class="customer-billing">
-        <h3>{{ 'Billing information'|t }}</h3>
+        <h3 class="cu-heading">{{ 'Billing information'|t }}</h3>
         {{ order.billing_information }}
       </div>
     {% endif %}

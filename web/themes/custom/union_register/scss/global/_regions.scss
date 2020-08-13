@@ -1,15 +1,40 @@
 header {
   background: $white;
   padding: 1em 0;
+  width: 100%;
+  max-width: $max-width--layout;
+  justify-self: center;
+}
+
+main {
+  width: 100%;
+  max-width: $max-width--layout;
+  justify-self: center;
 }
 
 aside.layout-sidebar-first {
-  @include breakpoint($medium) {
-    margin-top: 4.5rem;
+  @include breakpoint(md) {
+    margin-top: var(--cu-vr3);
   }
 }
 
 footer {
   background: $cornell_red;
-  padding: 1em;
+  padding: 1em 0;
+}
+
+main footer {
+  background: none;
+  margin-bottom: var(--cu-vr1);
+}
+
+footer div {
+  width: 100%;
+  max-width: $max-width--layout;
+  margin: 0 auto;
+}
+
+// Commerce regions
+.layout-region-checkout-secondary {
+  margin-top: var(--cu-vr1);
 }

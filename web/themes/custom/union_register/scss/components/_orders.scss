@@ -39,3 +39,48 @@
     }
   }
 }
+
+.checkout-complete,
+.customer-information {
+  .field {
+    margin-bottom: var(--cu-vr1);
+  }
+
+  .field--name-field-address {
+    margin: 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.order-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .field--name-order-items {
+    grid-column: 1/-1;
+  }
+
+  .order-total-line {
+    text-align: left;
+  }
+}
+
+.order-total-line-label {
+  margin-right: var(--cu-ps-1);
+
+  &::after {
+    content: ':';
+  }
+}
+
+.coupon-redemption-form__coupons table {
+  width: 100%;
+
+  .cu-input {
+    float: right;
+    margin: 0;
+  }
+}

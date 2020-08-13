@@ -3,6 +3,8 @@ global:
   css:
     theme:
       css/style.css: {}
+  dependencies:
+    - union_organizer/message
 livereload:
   remote: https://github.com/mklabs/tiny-lr
   version: 1.1.1
