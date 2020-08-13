@@ -2,4 +2,29 @@ ilr_registrations.catalog:
   title: 'Return to course catalog'
   url: https://www.ilr.cornell.edu/programs/professional-programs/workshops-courses-training
   menu_name: footer
+  weight: 0
+
+ilr_registrations.privacy:
+  title: 'Privacy policy'
+  url: https://www.ilr.cornell.edu/about-ilr/privacy-policy
+  menu_name: footer
+  weight: 5
+
+ilr_registrations.accessibility:
+  title: 'Web accessibility'
+  url: https://www.ilr.cornell.edu/web-accessibility
+  menu_name: footer
+  weight: 10
+
+ilr_registrations.copyright:
+  title: '© 2020 Cornell University | ILR School'
+  url: 'route:<nolink>'
+  menu_name: footer
   weight: 15
+
+ilr_registrations.displayname:
+  title: '[USER DISPLAY NAME]'
+  url: 'route:<nolink>'
+  menu_name: main
+  class: Drupal\ilr_registrations\Plugin\Menu\DisplayNameMenuLink
+  weight: -15
