@@ -444,6 +444,18 @@ function ilr_registrations_change_cart_build_content(array $build) {
 }
 
 /**
+ * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ *
+ * This adds the `user` cache context to the main menu, ensuring the correct
+ * user name is added to the main menu when the user is logged in.
+ */
+function  ilr_registrations_block_build_system_menu_block_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+  if ($block->getDerivativeId() === 'main') {
+    $build['#cache']['contexts'][] = 'user';
+  }
+}
+
+/**
  * Implements hook_menu_links_discovered_alter().
  */
 function ilr_registrations_menu_links_discovered_alter(&$links) {
