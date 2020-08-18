@@ -4,23 +4,6 @@ POST http://registrations.ilr.test/hooks/v1/salesforce-commerce HTTP/1.1
 content-type: application/json
 
 {
-  "pos_order_id": 18,
-  "sf_order_id": "a0x3J0000008yUNQAY",
-  "payments": [
-    {
-      "pos_payment_id": 0,
-      "sf_payment_id": ""
-    }
-  ],
-  "customer": {
-    "pos_customer_id": 29,
-    "sf_customer_contact_id": "0033J000009joTLQAY"
-  },
-  "participants": [
-    {
-      "pos_participant_id": 19,
-      "sf_participant_id": "a103J0000007nsBQAQ",
-      "sf_participant_contact_id": "0033J000009joTLQAY"
-    }
-  ]
+  "sf_order_id": "a0M3J000000GUUgUAO",
+  "pos_order_id": 122
 }
