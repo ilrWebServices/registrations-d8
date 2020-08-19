@@ -73,8 +73,7 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
    * {@inheritdoc}
    */
   public function processItem($data) {
-    // Verify that the salesforce order matches this commerce order by loading
-    // the order object from salesforce.
+    // Load the order object from salesforce.
     try {
       $sf_order_object = $this->sfapi->objectRead('Order__c', $data['sf_order_id']);
     }
