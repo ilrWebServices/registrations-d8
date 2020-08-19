@@ -4,3 +4,9 @@ coupon_enhancements:
     js/coupon_enhancements.js: {}
   dependencies:
     - core/jquery
+participant_edit_protect:
+  version: 1.x
+  js:
+    js/participant_edit_protect.js: {}
+  dependencies:
+    - core/jquery

@@ -237,10 +237,14 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  *
+ * Add the participant change protection js to the form.
  * Add the participant_ui js library when there is a registration form.
  * Add the default participant for logged_in users with previous registrations.
  */
 function ilr_registrations_form_registration_form_alter(&$form, FormStateInterface $form_state) {
+  // Add the js to protect edited, unsaved participant info from being lost.
+  $form['#attached']['library'][] = 'ilr_registrations/participant_edit_protect';
+
   // Check if the current user is authenticated
   $account = \Drupal::currentUser();
   if ($account->isAuthenticated() && isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput())) {
