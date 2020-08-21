@@ -62,7 +62,7 @@ class SalesforceCommerceWebhook extends ControllerBase {
   public function v1(Request $request) {
     $queue_item_id = $this->queue->createItem(json_decode($request->getContent(), TRUE));
 
-    $this->logger->notice('Incoming salesforce commerce webhook queued for processing: @data', [
+    $this->logger->notice('Incoming salesforce commerce webhook data queued for processing: @data', [
       '@data' => $request->getContent(),
     ]);
 
