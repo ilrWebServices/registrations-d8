@@ -20,7 +20,7 @@ use Drupal\salesforce\SelectQuery;
  * @QueueWorker(
  *   id = "salesforce_commerce_webhook_processor",
  *   title = @Translation("Salesforce Commerce webhook processor"),
- *   cron = {"time" = 10}
+ *   cron = {"time" = 120}
  * )
  */
 class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements ContainerFactoryPluginInterface {
