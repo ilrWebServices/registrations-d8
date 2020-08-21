@@ -78,20 +78,22 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
       $sf_order_object = $this->sfapi->objectRead('Order__c', $data['sf_order_id']);
     }
     catch (RestException $e) {
-      $response_body = $e->getResponseBody();
+      $response = $e->getResponse();
 
       // If this was a connection error, throw a generic exception so that this
-      // item will be retried.
-      if ($response_body === NULL) {
+      // item will be retried. The exception will be logged.
+      if ($response === NULL) {
         throw new \Exception($e->getMessage());
       }
       // If there was no connection error but there was some other error (e.g.,
       // the SF object was not found), just log it and return with no exception.
       // This will remove this queue item so that it will NOT be retried.
       else {
-        $this->logger->error('Incoming salesforce webhook order lookup error for @sfid: @response_body', [
+        $this->logger->error('Incoming salesforce webhook order lookup error for @sfid. Response code: @response_code. Response message: @response_message. Error message: @message', [
           '@sfid' => $data['sf_order_id'],
-          '@response_body' => $response_body,
+          '@response_code' => $response->getStatusCode(),
+          '@response_message' => $response->getReasonPhrase(),
+          '@message' => $e->getMessage(),
         ]);
         return;
       }
