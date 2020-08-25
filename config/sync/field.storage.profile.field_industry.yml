@@ -1,18 +1,18 @@
-uuid: e601d35f-0b58-4bd6-80ca-539c8302c13d
+uuid: 8f15798d-b378-476d-a1d1-49b40188e814
 langcode: en
 status: true
 dependencies:
   module:
+    - options
     - profile
 id: profile.field_industry
 field_name: field_industry
 entity_type: profile
-type: string
+type: list_string
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+  allowed_values: {  }
+  allowed_values_function: ilr_registrations_industry_options
+module: options
 locked: false
 cardinality: 1
 translatable: true
