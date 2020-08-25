@@ -346,15 +346,19 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
 
         // Set the values if there are matching field names.
         foreach ($keys as $key) {
-          if (isset($fields['field_' . $key])) {
-            if ($key == 'address') {
-              $billing_pane[$key]['widget'][0]['address']['#default_value'] = $customer_participant->get('field_' . $key)->getValue()[0];
-            } else {
+          if ($key === 'address' && isset($fields['field_' . $key])) {
+            $billing_pane[$key]['widget'][0]['address']['#default_value'] = $customer_participant->get('field_' . $key)->getValue()[0];
+          }
+          elseif (isset($fields[$key])) {
+            $field_def = $fields[$key]->getFieldDefinition();
+
+            if (in_array($field_def->getType(), ['string', 'telephone'])) {
               $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->get($key)->getString();
             }
-          }
-          elseif (strpos($key, '_email') > 0) {
-            $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->getMail();
+            elseif (in_array($field_def->getType(), ['list_string'])) {
+              // Note that options lists use an array as a default value.
+              $billing_pane[$key]['widget']['#default_value'] = [$customer_participant->get($key)->getString()];
+            }
           }
         }
       }
