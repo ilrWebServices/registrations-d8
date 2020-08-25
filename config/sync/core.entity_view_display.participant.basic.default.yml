@@ -13,6 +13,7 @@ dependencies:
     - field.field.participant.basic.field_phone
   module:
     - address
+    - options
     - user
 id: participant.basic.default
 targetEntityType: participant
@@ -50,10 +51,9 @@ content:
   field_industry:
     weight: 10
     label: above
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    type: string
+    type: list_default
     region: content
   field_is_cornell_employee:
     weight: 8
