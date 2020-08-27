@@ -6,7 +6,6 @@ dependencies:
     - commerce_order.commerce_order_type.registration
     - core.entity_form_mode.commerce_order.checkout
     - field.field.commerce_order.registration.field_payment_owner
-    - field.field.commerce_order.registration.field_salesforce_order_name
 id: commerce_order.registration.checkout
 targetEntityType: commerce_order
 bundle: registration
@@ -22,7 +21,6 @@ hidden:
   adjustments: true
   billing_profile: true
   cart: true
-  field_salesforce_order_name: true
   ip_address: true
   mail: true
   order_items: true
