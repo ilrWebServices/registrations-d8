@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.registration
-    - field.field.commerce_order.registration.field_salesforce_order_name
 id: order_to_reg_order
 label: 'Salesforce Order to Registration Commerce Order'
 weight: 10
@@ -25,7 +24,7 @@ drupal_bundle: registration
 field_mappings:
   -
     drupal_field_type: properties
-    drupal_field_value: field_salesforce_order_name
+    drupal_field_value: order_number
     salesforce_field: Name
     direction: sf_drupal
     id: 0
