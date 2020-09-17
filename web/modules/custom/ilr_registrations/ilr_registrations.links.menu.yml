@@ -17,9 +17,10 @@ ilr_registrations.accessibility:
   weight: 10
 
 ilr_registrations.copyright:
-  title: '© 2020 Cornell University | ILR School'
+  title: '[COPYRIGHT]'
   url: 'route:<nolink>'
   menu_name: footer
+  class: Drupal\ilr_registrations\Plugin\Menu\DisplayCopyrightMenuLink
   weight: 15
 
 ilr_registrations.displayname:
