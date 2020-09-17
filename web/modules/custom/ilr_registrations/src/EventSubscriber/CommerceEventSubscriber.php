@@ -2,12 +2,17 @@
 
 namespace Drupal\ilr_registrations\EventSubscriber;
 
+use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\commerce_product\Event\ProductEvents;
 use Drupal\commerce_product\Event\FilterVariationsEvent;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\address\Event\AddressEvents;
 use Drupal\address\Event\AddressFormatEvent;
+use Drupal\commerce_cart\Event\CartEntityAddEvent;
+use Drupal\commerce_cart\Event\CartEvents;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\StringTranslation\TranslationInterface;
 
 /**
  * Class EntityTypeSubscriber.
@@ -15,6 +20,28 @@ use Drupal\address\Event\AddressFormatEvent;
  * @package Drupal\ilr_registrations\EventSubscriber
  */
 class CommerceEventSubscriber implements EventSubscriberInterface {
+
+  use StringTranslationTrait;
+
+  /**
+   * The messenger.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+   /**
+   * Constructs a new CommerceEventSubscriber object.
+   *
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger.
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
+   *   The string translation.
+   */
+  public function __construct(MessengerInterface $messenger, TranslationInterface $string_translation) {
+    $this->messenger = $messenger;
+    $this->stringTranslation = $string_translation;
+  }
 
   /**
    * {@inheritdoc}
@@ -26,6 +53,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
     return [
       ProductEvents::FILTER_VARIATIONS => 'filterVariations',
       AddressEvents::ADDRESS_FORMAT => 'onAddressFormat',
+      CartEvents::CART_ENTITY_ADD => 'displayReturnToCatalogMessage',
     ];
   }
 
@@ -85,4 +113,18 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
     $event->setDefinition($definition);
   }
 
+  /**
+   * Displays a return to catalog message.
+   *
+   * @param \Drupal\commerce_cart\Event\CartEntityAddEvent $event
+   *   The add to cart event.
+   */
+  public function displayReturnToCatalogMessage(CartEntityAddEvent $event) {
+    $marketing_url = (getenv('MARKETING_SITE_HOSTNAME'))
+      ? getenv('MARKETING_SITE_HOSTNAME')
+      : 'https://www.ilr.cornell.edu';
+    $this->messenger->addMessage($this->t('Return to the <a href=":url">course catalog</a>.', [
+      ':url' => $marketing_url . '/programs/professional-education',
+    ]));
+  }
 }

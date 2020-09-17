@@ -1,6 +1,7 @@
 services:
   ilr_registrations_commerce_event_subscriber:
     class: Drupal\ilr_registrations\EventSubscriber\CommerceEventSubscriber
+    arguments: ['@messenger', '@string_translation']
     tags:
       - { name: event_subscriber }
   ilr_registrations_order_complete_subscriber:
