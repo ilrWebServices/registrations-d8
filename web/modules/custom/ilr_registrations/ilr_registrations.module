@@ -248,14 +248,26 @@ function ilr_registrations_form_registration_form_alter(&$form, FormStateInterfa
   // Add the js to protect edited, unsaved participant info from being lost.
   $form['#attached']['library'][] = 'ilr_registrations/participant_edit_protect';
 
-  // Check if the current user is authenticated
   $account = \Drupal::currentUser();
-  if ($account->isAuthenticated() && isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput())) {
+  if (isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput())) {
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $registration_storage = $entity_type_manager->getStorage('registration');
-    $registrations = $registration_storage->loadByProperties([
-      'user_id' => $account->id(),
-    ]);
+
+    // Check if the current user is authenticated
+    if ($account->isAuthenticated()) {
+      $registrations = $registration_storage->loadByProperties([
+        'user_id' => $account->id(),
+      ]);
+    }
+    // Check the erf session service for anonymous users.
+    elseif ($registration_ids = \Drupal::service('erf.session')->getRegistrationIds()) {
+      $registrations = $registration_storage->loadByProperties([
+        'id' => $registration_ids,
+      ]);
+    }
+    else {
+      $registrations = [];
+    }
 
     if (empty($registrations)) {
       return;
