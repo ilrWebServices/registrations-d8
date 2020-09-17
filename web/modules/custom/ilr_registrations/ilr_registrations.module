@@ -258,12 +258,15 @@ function ilr_registrations_form_registration_form_alter(&$form, FormStateInterfa
       $registrations = $registration_storage->loadByProperties([
         'user_id' => $account->id(),
       ]);
-    } // Check the cart provider service
-    elseif ($carts = \Drupal::service('commerce_cart.cart_provider')->getCarts($account)) {
-      $cart = reset($carts);
+    }
+    // Check the erf session service for anonymous users.
+    elseif ($registration_ids = \Drupal::service('erf.session')->getRegistrationIds()) {
       $registrations = $registration_storage->loadByProperties([
-        'commerce_order_item_id' => $cart->order_items->first()->entity->id(),
+        'id' => $registration_ids,
       ]);
+    }
+    else {
+      $registrations = [];
     }
 
     if (empty($registrations)) {
