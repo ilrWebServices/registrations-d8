@@ -413,6 +413,7 @@ function ilr_registrations_user_format_name_alter(&$name, $account) {
  * Implements hook_form_FORM_ID_alter().
  *
  * Updates the register button text for clarity.
+ * Adds a link back to the catalog if registration already in cart.
  */
 function ilr_registrations_form_registration_simple_class_embedded_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   if ($form_state->getFormObject()->getEntity()->isNew()) {
@@ -420,6 +421,19 @@ function ilr_registrations_form_registration_simple_class_embedded_form_alter(&$
   }
   else {
     $button_text = t('Update cart');
+
+    // Add a link back to the catalog if item already in cart.
+    $marketing_url = (getenv('MARKETING_SITE_HOSTNAME'))
+      ? getenv('MARKETING_SITE_HOSTNAME')
+      : 'https://www.ilr.cornell.edu';
+
+    $form['actions']['return'] = [
+      '#type' => 'link',
+      '#title' => t('Return to course catalog'),
+      '#attributes' => ['class' => ['cu-button']],
+      '#url' => Url::fromUri($marketing_url . '/programs/professional-education'),
+      '#weight' => 10,
+    ];
   }
 
   $form['actions']['submit']['#value'] = $button_text;

@@ -1,7 +1,13 @@
-.cu-input--submit {
+.cu-input--submit, .cu-button {
+  --cu-current-link-color: $black;
+
   border-width: 2px;
+  border-style: solid;
+  border-color: $cornell-red;
   padding: var(--cu-vr-4) var(--cu-ps-1);
   background: $white;
+  display: inline-block;
+  text-decoration: none;
 }
 
 // Participant UI
