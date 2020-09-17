@@ -1,7 +1,7 @@
 ilr_registrations.catalog:
   title: 'Return to course catalog'
-  url: https://www.ilr.cornell.edu/programs/professional-programs/workshops-courses-training
   menu_name: footer
+  class: Drupal\ilr_registrations\Plugin\Menu\DisplayCatalogMenuLink
   weight: 0
 
 ilr_registrations.privacy:
