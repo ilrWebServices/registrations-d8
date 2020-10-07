@@ -50,6 +50,7 @@ module:
   salesforce_jwt: 0
   salesforce_mapping: 0
   salesforce_pull: 0
+  samlauth: 0
   serialization: 0
   state_machine: 0
   system: 0
@@ -61,6 +62,7 @@ module:
   typed_data: 0
   union_organizer: 0
   user: 0
+  externalauth: 10
   views: 10
   minimal: 1000
 theme:
