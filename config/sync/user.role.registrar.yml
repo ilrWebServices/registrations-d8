@@ -1,0 +1,17 @@
+uuid: bf74f399-2b5d-4a49-a3ae-8b5d0d9786eb
+langcode: en
+status: true
+dependencies: {  }
+id: registrar
+label: Registrar
+weight: 3
+is_admin: null
+permissions:
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access registration administration pages'
+  - 'access toolbar'
+  - 'administer commerce_payment'
+  - 'administer registrations'
+  - 'view registration commerce_order'
+  - 'view the administration theme'
