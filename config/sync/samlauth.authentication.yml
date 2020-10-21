@@ -1,11 +1,42 @@
-security_authn_requests_sign: true
-security_logout_requests_sign: true
-security_logout_responses_sign: true
-strict: true
-security_messages_sign: true
-security_lowercase_url_encoding: true
+security_authn_requests_sign: false
+security_logout_requests_sign: false
+security_logout_responses_sign: false
+strict: false
+security_messages_sign: false
+security_lowercase_url_encoding: false
 request_set_name_id_policy: true
 security_want_name_id: true
-security_request_authn_context: true
+security_request_authn_context: false
 _core:
   default_config_hash: 3qI5Sabj5mdKmxHM6seoIC6obwDlSJYtF2FgltcnOkU
+login_menu_item_title: 'NetID log in'
+logout_menu_item_title: 'NetID log out'
+drupal_saml_login: false
+login_redirect_url: ''
+logout_redirect_url: ''
+sp_entity_id: automatically_configured_in_settings
+sp_name_id_format: ''
+sp_x509_certificate: ''
+sp_private_key: 'set via environment'
+sp_cert_folder: ''
+idp_entity_id: 'https://shibidp-test.cit.cornell.edu/idp/shibboleth'
+idp_single_sign_on_service: 'https://shibidp-test.cit.cornell.edu/idp/profile/SAML2/Redirect/SSO'
+idp_single_log_out_service: ''
+idp_change_password_service: ''
+idp_cert_type: single
+idp_x509_certificate: "MIIDXDCCAkSgAwIBAgIVAMKCR8IGXIOzO/yLt6e4sd7OMLgEMA0GCSqGSIb3DQEB\r\nBQUAMCcxJTAjBgNVBAMTHHNoaWJpZHAtdGVzdC5jaXQuY29ybmVsbC5lZHUwHhcN\r\nMTIwNjA3MTg0NjIyWhcNMzIwNjA3MTg0NjIyWjAnMSUwIwYDVQQDExxzaGliaWRw\r\nLXRlc3QuY2l0LmNvcm5lbGwuZWR1MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\r\nCgKCAQEAkhlf9EP399mqnBtGmPG9Vqu79Af2NZhhsT+LTMA1uhPZYv4RX/E4VD+I\r\nqce/EUP1ndPkGEwBnhrRT2ZegDpCmgo+EcED8cAh9AbwFTTitmBjxvErtJnS0ZBf\r\nMCLDcgOV1zM6bT5fF9SAIm0ZVSaeyQbNDwVDdwsBQHjAdg5vLd5VeYH9MI6enzdg\r\nBtPNSrEt3qZtCWl7ev8YQlWF3vZ+EoyDrWPZSOWzgR31QBs7mz13ABSveIri68Fg\r\nNth9ylgFS7VNUlAp6xx6BRnMgL1QzVMZ5F4PbSRDp3UBoS6PMHd+WFenJWPPh6Sh\r\nMyrInrJ4QAPfKC77tJW+GUXl4T4DqQIDAQABo38wfTBcBgNVHREEVTBTghxzaGli\r\naWRwLXRlc3QuY2l0LmNvcm5lbGwuZWR1hjNodHRwczovL3NoaWJpZHAtdGVzdC5j\r\naXQuY29ybmVsbC5lZHUvaWRwL3NoaWJib2xldGgwHQYDVR0OBBYEFF9RADnmBsO5\r\n0hD8T+MUFqIgWAOxMA0GCSqGSIb3DQEBBQUAA4IBAQBqYpfdK4XAYE56sYmq/vUK\r\nOSBcbO2Uy3R7oTGrDKxrZI7xC1jchaaTW6BXtg6wzTSn8Jo2M0gvQrWyxZgQDrXG\r\naL2TaPf5WjOWt/SsuJ+IShofS6ZWLkPCnrR0Ag9PwU58szw2jjUE4eJyv/dLDzhD\r\nHJ0EGastgSzRh1r3v2w8BYz1RHvjwESPB2HTgV1iuHwaIjaJxN39XyS6ZQzBj6sZ\r\n6Lem1R39zXmEvtVfCk9qgSKnbYulrrkIBzxllB34TUTKFs+Nz1j/sg2gj6Q5u9uW\r\n6mSm66mqn2E53r2CNHPTzWGwom5Mi9Z/DtOb2L/5jjxhFvCKxnEbIWm7XIe8qtqo"
+idp_x509_certificate_multi: ''
+unique_id_attribute: 'urn:oid:0.9.2342.19200300.100.1.1'
+map_users: true
+create_users: false
+sync_name: true
+sync_mail: false
+user_name_attribute: 'urn:oid:0.9.2342.19200300.100.1.1'
+user_mail_attribute: 'urn:oid:0.9.2342.19200300.100.1.3'
+security_assertions_encrypt: false
+security_logout_reuse_sigs: false
+security_signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#rsa-sha1'
+debug_log_saml_out: 0
+debug_log_saml_in: 0
+debug_log_in: 0
+debug_phpsaml: 0
