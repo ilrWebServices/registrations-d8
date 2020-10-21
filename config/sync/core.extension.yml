@@ -36,6 +36,7 @@ module:
   fixed_block_content: 0
   hal: 0
   ilr_registrations: 0
+  ilr_samlauth: 0
   inline_entity_form: 0
   key: 0
   link: 0
@@ -50,6 +51,7 @@ module:
   salesforce_jwt: 0
   salesforce_mapping: 0
   salesforce_pull: 0
+  samlauth: 0
   serialization: 0
   state_machine: 0
   system: 0
@@ -61,6 +63,7 @@ module:
   typed_data: 0
   union_organizer: 0
   user: 0
+  externalauth: 10
   views: 10
   minimal: 1000
 theme:
