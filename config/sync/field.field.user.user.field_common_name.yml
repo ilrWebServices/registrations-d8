@@ -1,0 +1,22 @@
+uuid: f594ff4c-57e7-41dc-8868-1a8a9dbd0d2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_common_name
+  module:
+    - user
+_core:
+  default_config_hash: CmKruW8ly6O6Nn7LfQttEifZwUxrHutMlSGUobgqziQ
+id: user.user.field_common_name
+field_name: field_common_name
+entity_type: user
+bundle: user
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

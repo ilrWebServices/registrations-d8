@@ -36,6 +36,7 @@ module:
   fixed_block_content: 0
   hal: 0
   ilr_registrations: 0
+  ilr_samlauth: 0
   inline_entity_form: 0
   key: 0
   link: 0
