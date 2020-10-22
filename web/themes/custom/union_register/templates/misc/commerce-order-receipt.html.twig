@@ -1,0 +1,34 @@
+{% if display_name %}
+  <p>Dear {{ display_name }},</p>
+{% endif %}
+
+<p>Thank you for registering for an ILR event.</p>
+
+<p>We have received your payment and we are processing your order. Once complete, you will receive emailed confirmation of your registration, including your registration confirmation number and instructions for attendance.</p>
+
+<p>Details of your order follow. If you have any questions, please email <a href="mailto:ilrcustomerservice@cornell.edu">ilrcustomerservice@cornell.edu</a> and reference order id {{ order_entity.getOrderNumber }}.</p>
+
+{% for registration in order_registrations %}
+  <p style="margin-bottom: 0;">{{ registration.label }}</p>
+  {% for participant in registration.participants %}
+    <p style="margin-bottom: 0;">
+      {{ participant }}
+    </p>
+  {% endfor %}
+{% endfor %}
+
+{% if totals.adjustments %}
+  <p>
+    {{ 'Total cost: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+  </p>
+  <p style="margin-bottom: 0;">Discounts applied:</p>
+  {% for adjustment in totals.adjustments %}
+  <p style="margin-bottom: 0;">
+    {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+  </p>
+  {% endfor %}
+{% endif %}
+
+<p style="font-size: 20px; padding-top: 15px; padding-bottom: 5px;">
+  {{ 'You paid: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
+</p>

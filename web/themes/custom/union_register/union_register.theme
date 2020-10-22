@@ -45,3 +45,39 @@ function union_register_preprocess_commerce_checkout_completion_message(&$variab
   $view_builder = \Drupal::entityTypeManager()->getViewBuilder('commerce_order');
   $variables['order_detail'] = $view_builder->view($variables['order_entity'], 'user');
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add variables to the checkout completion email template.
+ */
+function union_register_preprocess_commerce_order_receipt(&$variables) {
+  $entity_type_manager = \Drupal::service('entity_type.manager');
+  $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
+  $view_builder = $entity_type_manager->getViewBuilder('participant');
+  $account = \Drupal::currentUser();
+  $profile = $entity_type_manager->getStorage('profile')->loadDefaultByUser($account, 'customer', TRUE);
+  $registrations = $order_registration_manager->getOrderRegistrations($variables['order_entity']);
+  $order_registrations = [];
+
+  // If the customer profile has both a first and last name, add them as the
+  // display name.
+  if ($profile && $profile->address->given_name && $profile->address->family_name) {
+    $variables['display_name'] = $profile->address->given_name . ' ' . $profile->address->family_name;
+  }
+
+  foreach ($registrations as $registration) {
+    $registration_participants = [];
+
+    foreach ($registration->participants as $participant) {
+      $registration_participants[] = $view_builder->view($participant->entity, 'order_item');
+    }
+
+    $order_registrations[] = [
+      'label' => $registration->getSourceEntity()->label(),
+      'participants' => $registration_participants,
+    ];
+  }
+
+  $variables['order_registrations'] = $order_registrations;
+}
