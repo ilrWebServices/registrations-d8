@@ -13,7 +13,7 @@ ilr_registrations.serialized_order_controller_load:
     _controller: '\Drupal\ilr_registrations\Controller\SerializedOrderController::load'
     _title: 'Serialized Commerce Order'
   requirements:
-    _permission: 'access content'
+    _permission: 'administer commerce_payment'
 
 ilr_registrations.salesforce_commerce_webhook_v1:
   path: '/hooks/v1/salesforce-commerce'
