@@ -147,6 +147,10 @@ $settings['hash_salt'] = $settings['hash_salt'] ?? $platformsh->projectEntropy;
 // Set the deployment identifier, which is used by some Drupal cache systems.
 $settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
 
+// Set the swiftmailer sendmail_path on platform.
+// @see https://docs.platform.sh/development/email.html#swiftmailer
+$config['swiftmailer.transport']['sendmail_path'] = '/usr/sbin/sendmail';
+
 if ($platformsh->onProduction()) {
   // Switch the salesforce auth provider for production. Otherwise, we will use
   // the default for dev.
