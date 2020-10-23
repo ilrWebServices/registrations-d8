@@ -40,6 +40,7 @@ module:
   inline_entity_form: 0
   key: 0
   link: 0
+  mailsystem: 0
   node: 0
   options: 0
   page_cache: 0
@@ -54,6 +55,7 @@ module:
   samlauth: 0
   serialization: 0
   state_machine: 0
+  swiftmailer: 0
   system: 0
   taxonomy: 0
   telephone: 0

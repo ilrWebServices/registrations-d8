@@ -44,6 +44,7 @@
     "drupal/queue_ui": "^2.1",
     "drupal/salesforce": "^4.0",
     "drupal/samlauth": "^3.0",
+    "drupal/swiftmailer": "^2.0@beta",
     "drupal/token": "^1.5",
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-master",
