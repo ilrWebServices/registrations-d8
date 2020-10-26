@@ -6,12 +6,20 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
- use Drupal\Core\Url;
+use Drupal\Core\Url;
 
 /**
-  * Implements hook_form_BASE_FORM_ID_alter().
-  */
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * @todo: Implement a settings form to be able to manage this via the UI.
+ */
 function ilr_samlauth_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $ilr_samlauth_config = \Drupal::config('ilr_samlauth.settings');
+
+  if (!$ilr_samlauth_config->get('alter_login_form')) {
+    return;
+  }
+
   $form['saml_login_title'] = [
     '#markup' => '<h2>' . t('Cornell Users') . '</h2>',
     '#weight' => -3
