@@ -427,10 +427,18 @@ function ilr_registrations_user_format_name_alter(&$name, $account) {
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Updates the register button text for clarity.
- * Adds a link back to the catalog if registration already in cart.
+ * Alter the registration entity form for the type `simple_class`.
+ *
+ * - Removes participants and submit buttons when there are no class options.
+ * - Updates the register button text for clarity.
+ * - Adds a link back to the catalog if registration already in cart.
  */
 function ilr_registrations_form_registration_simple_class_embedded_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  if (empty($form['product_variation']['widget']['#options'])) {
+    $form['participants']['#access'] = FALSE;
+    $form['actions']['#access'] = FALSE;
+  }
+
   if ($form_state->getFormObject()->getEntity()->isNew()) {
     $button_text = t('Add to cart');
   }
