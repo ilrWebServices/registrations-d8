@@ -180,7 +180,7 @@ function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_
 /**
  * Implements hook_ENTITY_TYPE_presave().
  *
- * Store salesforce id data with class order items.
+ * Store class dates and salesforce id data with class order items.
  */
 function erf_commerce_commerce_order_item_presave(EntityInterface $order_item) {
   if ($order_item->bundle() !== 'class') {
@@ -190,6 +190,9 @@ function erf_commerce_commerce_order_item_presave(EntityInterface $order_item) {
   $sf_mapping_storage = \Drupal::service('entity_type.manager')->getStorage('salesforce_mapped_object');
   $class_product_variation = $order_item->getPurchasedEntity();
   $course_product = $class_product_variation->getProduct();
+
+  // Store a formatted version of the start date for use in email templates.
+  $order_item->setData('class_start_date', $class_product_variation->field_class_start->date->format('M j, Y'));
 
   $sf_variation_mapped_objects = $sf_mapping_storage->loadByEntity($class_product_variation);
 

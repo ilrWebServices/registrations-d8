@@ -53,31 +53,33 @@ function union_register_preprocess_commerce_checkout_completion_message(&$variab
  */
 function union_register_preprocess_commerce_order_receipt(&$variables) {
   $entity_type_manager = \Drupal::service('entity_type.manager');
-  $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
+  $registration_storage = $entity_type_manager->getStorage('registration');
   $view_builder = $entity_type_manager->getViewBuilder('participant');
-  $account = \Drupal::currentUser();
-  $profile = $entity_type_manager->getStorage('profile')->loadDefaultByUser($account, 'customer', TRUE);
-  $registrations = $order_registration_manager->getOrderRegistrations($variables['order_entity']);
-  $order_registrations = [];
+  $order_items = [];
+  $items = $variables['order_entity']->getItems();
+  $billing_profile = $variables['order_entity']->getBillingProfile();
+  $billing_address = $billing_profile->address->first()->getValue();
 
-  // If the customer profile has both a first and last name, add them as the
-  // display name.
-  if ($profile && $profile->address->given_name && $profile->address->family_name) {
-    $variables['display_name'] = $profile->address->given_name . ' ' . $profile->address->family_name;
-  }
+  // Use the billing profile first and last name as the display name.
+  $variables['display_name'] = $billing_address['given_name'] . ' ' . $billing_address['family_name'];
 
-  foreach ($registrations as $registration) {
-    $registration_participants = [];
+  foreach ($items as $item) {
+    $order_items[$item->id()]['commerce'] = $item;
 
-    foreach ($registration->participants as $participant) {
-      $registration_participants[] = $view_builder->view($participant->entity, 'order_item');
+    // Process registrations and participants for this item.
+    $participants = [];
+    $registrations = $registration_storage->loadByProperties([
+      'commerce_order_item_id' => $item->id(),
+    ]);
+
+    if (!empty($registrations)) {
+      $registration = reset($registrations);
+
+      foreach ($registration->participants->referencedEntities() as $participant) {
+        $order_items[$item->id()]['erf']['participants'][] = $view_builder->view($participant, 'order_item');
+      }
     }
-
-    $order_registrations[] = [
-      'label' => $registration->getSourceEntity()->label(),
-      'participants' => $registration_participants,
-    ];
   }
 
-  $variables['order_registrations'] = $order_registrations;
+  $variables['order_items'] = $order_items;
 }
