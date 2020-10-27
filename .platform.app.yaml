@@ -129,3 +129,12 @@ crons:
     # Run drush cron every five minutes
     spec: '*/5 * * * *'
     cmd: 'cd web ; drush core-cron'
+  snapshot:
+    # Take a snapshot automatically every night at 5am (UTC). See
+    # https://docs.platform.sh/administration/backup-and-restore.html#automated-backups
+    # for more info about API tokens and configuration.
+    spec: '0 5 * * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = master ]; then
+        platform snapshot:create --yes --no-wait
+      fi
