@@ -15,6 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_entity_type_alter().
@@ -480,6 +481,25 @@ function ilr_registrations_preprocess_user(&$variables) {
 
   if (!empty($profile)) {
     $variables['content']['customer_profile'] = $view_builder->view($profile);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Replace or modify messages.
+ */
+function ilr_registrations_preprocess_status_messages(&$variables) {
+  if (empty($variables['message_list']['error'])) {
+    return;
+  }
+
+  foreach ($variables['message_list']['error'] as $delta => $message) {
+    // Append a notice to the missing account message set in
+    // UserPasswordForm::validateForm().
+    if (strpos((string) $message, 'is not recognized as a username or an email address') !== FALSE) {
+      $variables['message_list']['error'][$delta] = Markup::create($message . '<br><br>' . t('If you had an account in our previous registration system, you will need to create a new one as part of your first registration.'));
+    }
   }
 }
 
