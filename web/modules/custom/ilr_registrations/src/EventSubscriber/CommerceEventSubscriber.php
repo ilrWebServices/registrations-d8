@@ -73,6 +73,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
       // Filter 'Class' product variations.
       if ($variation->bundle() === 'class') {
         // If a class has no end datetime, ignore it, which will display it.
+        // TODO Review this.
         if ($variation->field_class_end->isEmpty()) {
           continue;
         }
