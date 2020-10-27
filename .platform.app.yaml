@@ -138,3 +138,7 @@ crons:
       if [ "$PLATFORM_BRANCH" = master ]; then
         platform snapshot:create --yes --no-wait
       fi
+  unclog:
+    # Clear cron logs from watchdog every every 24 hours
+    spec: '0 6 * * *'
+    cmd: 'cd web ; drush watchdog-delete --type=cron'
