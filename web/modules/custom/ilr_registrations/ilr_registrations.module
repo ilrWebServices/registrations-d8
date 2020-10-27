@@ -1,8 +1,5 @@
 <?php
 
-use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\field\Entity\FieldStorageConfig;
-
 /**
  * @file
  * Contains ilr_registrations.module.
@@ -15,6 +12,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
 
 /**
