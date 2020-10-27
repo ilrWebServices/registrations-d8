@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
+    - field.field.commerce_product_variation.class.field_cancelled
     - field.field.commerce_product_variation.class.field_class_end
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
@@ -17,6 +18,16 @@ targetEntityType: commerce_product_variation
 bundle: class
 mode: default
 content:
+  field_cancelled:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_class_end:
     type: datetime_default
     weight: 2

@@ -1,0 +1,23 @@
+uuid: 310c8f81-ac4d-46f4-b3a7-9c84139ba845
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.class
+    - field.storage.commerce_product_variation.field_cancelled
+id: commerce_product_variation.class.field_cancelled
+field_name: field_cancelled
+entity_type: commerce_product_variation
+bundle: class
+label: Cancelled
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

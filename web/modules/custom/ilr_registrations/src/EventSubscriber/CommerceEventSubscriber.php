@@ -85,6 +85,11 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
         if ($end_datetime < $current_datetime) {
           $display = FALSE;
         }
+
+        // If a class is cancelled, do not display it.
+        if ($variation->field_cancelled->value) {
+          $display = FALSE;
+        }
       }
 
       if ($display) {

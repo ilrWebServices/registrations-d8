@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
     - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.class.field_cancelled
     - field.field.commerce_product_variation.class.field_class_end
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
@@ -42,6 +43,7 @@ content:
       link_to_entity: true
     third_party_settings: {  }
 hidden:
+  field_cancelled: true
   field_class_end: true
   field_class_price: true
   list_price: true

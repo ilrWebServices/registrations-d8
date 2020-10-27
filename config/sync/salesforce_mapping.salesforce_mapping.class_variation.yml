@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
+    - field.field.commerce_product_variation.class.field_cancelled
     - field.field.commerce_product_variation.class.field_class_end
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
@@ -84,6 +85,12 @@ field_mappings:
     salesforce_field: Class_Show_on_Web__c
     direction: sf_drupal
     id: 8
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_cancelled
+    salesforce_field: Is_Cancelled__c
+    direction: sf_drupal
+    id: 9
 push_limit: 0
 push_retries: 3
 push_frequency: 0
