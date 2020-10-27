@@ -16,6 +16,18 @@ ilr_registrations.accessibility:
   menu_name: footer
   weight: 10
 
+ilr_registrations.email:
+  title: 'Email Customer Service'
+  url: mailto:ILRCustomerService@cornell.edu
+  menu_name: footer
+  weight: 11
+
+ilr_registrations.telephone:
+  title: '866-470-1922'
+  url: tel:866-470-1922
+  menu_name: footer
+  weight: 12
+
 ilr_registrations.copyright:
   title: '[COPYRIGHT]'
   url: 'route:<nolink>'
