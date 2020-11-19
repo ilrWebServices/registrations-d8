@@ -98,7 +98,7 @@ section of composer.json:
 ## Updating Drupal core
 
 ```
-$ composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies
+$ composer update drupal/core "drupal/core-*" --with-all-dependencies
 ```
 
 Then run `git diff` to determine if any of the scaffolding files have changed.
