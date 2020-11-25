@@ -1,0 +1,7 @@
+name: 'Commerce CardConnect CardPointe Hosted Payment Page'
+type: module
+description: 'Commerce 2.x payment gateway plugin for CardConnect CardPointe Hosted Payment Page (HPP)'
+package: 'Commerce (contrib)'
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - commerce:commerce_payment
