@@ -3,6 +3,7 @@
 namespace Drupal\commerce_cardconnect_hpp\Plugin\Commerce\PaymentGateway;
 
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -28,6 +29,30 @@ use Drupal\commerce_price\Price;
  * )
  */
 class CardPointeHPP extends OffsitePaymentGatewayBase {
+
+  /**
+   * The logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected $logger;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    $instance = new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('plugin.manager.commerce_payment_type'),
+      $container->get('plugin.manager.commerce_payment_method_type'),
+      $container->get('datetime.time')
+    );
+    $instance->logger = $container->get('logger.factory')->get('commerce_cardpointe_hpp');
+    return $instance;
+  }
 
   /**
    * {@inheritdoc}
@@ -91,6 +116,10 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
    * {@inheritdoc}
    */
   public function onNotify(Request $request) {
+    $this->logger->info('Webhook data received: @data', [
+      '@data' => $request->getContent(),
+    ]);
+
     $data = json_decode($request->getContent());
     $error_messages = [];
 
@@ -103,7 +132,13 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
     }
 
     if ($error_messages) {
-      return new JsonResponse(['error' => implode("\t", $error_messages)], 500);
+      $error_messages_string = implode("\t", $error_messages);
+
+      $this->logger->error('Webhook data error: @error', [
+        '@error' => $error_messages_string,
+      ]);
+
+      return new JsonResponse(['error' => $error_messages_string], 500);
     }
 
     $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
@@ -117,6 +152,10 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
     ]);
     $payment->set('state', 'completed');
     $payment->save();
+
+    $this->logger->info('Payment created for order @order_id.', [
+      '@order_id' => $data->invoice,
+    ]);
 
     return new JsonResponse();
   }
