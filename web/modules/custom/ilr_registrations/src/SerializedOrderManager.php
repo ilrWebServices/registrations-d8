@@ -111,9 +111,14 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       foreach ($commerce_payments as $commerce_payment) {
         $payment_gateway = $commerce_payment->getPaymentGateway();
 
-        // Note that this function makes a remote call to the FreedomPay API.
-        // @todo Deal with possible remote transaction retrieval failure.
-        $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
+        if ($payment_gateway->getPluginId() === 'freedompay_hpp') {
+          // Note that this function makes a remote call to the FreedomPay API.
+          // @todo Deal with possible remote transaction retrieval failure.
+          $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
+        }
+        else {
+          $transaction = NULL;
+        }
 
         $payments[] = [
           "payment_type" => $payment_gateway->getPluginId(), //"freedompay_cc",
