@@ -14,16 +14,19 @@ This module integrates [Drupal Commerce][] and the CardConnect [CardPointe Hoste
 - In addition to required fields like _Name_ and _Display name_, be sure to select _CardPointe HPP (Hosted Payment Page)_ as the _Plugin_ and enter a _Merchant ID_ and a _Pay link_. These values are obtained from CardConnect.
 - Note the `machine_name` of the new payment gateway. You'll need it later to update the CardPointe HPP webhook settings.
 - Configure the rest of the payment gateway and save it.
+- Configure your CardPointe HPP _Webhook URL_ and _Return to Website URL_ settings at https://SUBDOMAIN.securepayments.cardpointe.com/admin/hpp, where SUBDOMAIN is a unique identifier for your hosted payment page.
 
-## Notification URL
+## Webhook URL
 
-To ensure that payments are properly added to orders, you must update your CardPointe HPP settings to configure a _Webhook URL_. 
+This module provides webhook support for completed offsite payments. The webhook ensures that payments are automatically added to orders for approved credit card transactions.
 
-Since the CardPointe HPP is hosted on a separate site from your Drupal Commerce site, approved payment notifications are posted back to Drupal via a webhook when transactions are completed.
+Commerce Payment automatically provides a webhook URL endpoint at `/payment/notify/PAYMENT_GATEWAY_MACHINE_NAME`. To update this setting in your CardPointe HPP, visit _Connect > Notifications_ and enter the full URL in the _Webhook URL_ field (e.g. https://example.com/payment/notify/PAYMENT_GATEWAY_MACHINE_NAME). Be sure to replace `PAYMENT_GATEWAY_MACHINE_NAME` with the machine name of the payment gateway you added above.
 
-Commerce Payment automatically provides notification URL endpoints at `/payment/notify/PAYMENT_GATEWAY_MACHINE_NAME`.
+## Return to Website URL
 
-Use the full URL of this endpoint (e.g. https://example.com/payment/notify/PAYMENT_GATEWAY_MACHINE_NAME) to configure the _Webhook URL_ in your CardPointe HPP. Be sure to replace `PAYMENT_GATEWAY_MACHINE_NAME` with the machine name of the payment gateway you added above.
+This module provides a return URL for use in your CardPointe HPP configuration. This URL will redirect users to their completed order upon completion of their offsite payment.
+
+The return URL path is `/commerce-cardconnect/cardpointe-hpp/payment-return`. To update this setting in your CardPointe HPP, visit _Connect > Notifications_ and enter the full URL in the _Return to Website URL_ field (e.g. https://example.com/commerce-cardconnect/cardpointe-hpp/payment-return). Be sure to click the _Save notification settings_ button.
 
 
 [Drupal Commerce]: https://docs.drupalcommerce.org/commerce2
