@@ -40,6 +40,13 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
   protected $logger;
 
   /**
+   * A shared tempstore for `cardpointe_hpp`.
+   *
+   * @var \Drupal\Core\TempStore\SharedTempStore
+   */
+  protected $tempstore_shared;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -53,6 +60,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       $container->get('datetime.time')
     );
     $instance->logger = $container->get('logger.factory')->get('commerce_cardpointe_hpp');
+    $instance->tempstore_shared = $container->get('tempstore.shared')->get('cardpointe_hpp');
     return $instance;
   }
 
@@ -185,13 +193,11 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       '@order_id' => $order->id(),
     ]);
 
-    $tempstore_shared = \Drupal::service('tempstore.shared')->get('cardpointe_hpp');
-
     // Add a record of this payment for this user to the shared tempstore. The
     // commerce_cardconnect_hpp.cardpointe_hpp.payment_return route will be able
     // to use this information to redirect a user returning from the hosted
     // payment page to the completed order.
-    $tempstore_shared->set('cardpointe_hpp_transaction_id_for_user:' . $order->getCustomer()->id(), $data['gatewayTransactionId']);
+    $this->tempstore_shared->set('cardpointe_hpp_transaction_id_for_user:' . $order->getCustomer()->id(), $data['gatewayTransactionId']);
 
     return new JsonResponse();
   }
