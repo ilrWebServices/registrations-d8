@@ -8,6 +8,8 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\commerce_price\Price;
+use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\commerce_payment\Exception\PaymentGatewayException;
 
 /**
  * Provides the CardPointe HPP offsite Checkout payment gateway.
@@ -183,7 +185,27 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       '@order_id' => $order->id(),
     ]);
 
+    $tempstore_shared = \Drupal::service('tempstore.shared')->get('cardpointe_hpp');
+
+    // Add a record of this payment for this user to the shared tempstore. The
+    // commerce_cardconnect_hpp.cardpointe_hpp.payment_return route will be able
+    // to use this information to redirect a user returning from the hosted
+    // payment page to the completed order.
+    $tempstore_shared->set('cardpointe_hpp_transaction_id_for_user:' . $order->getCustomer()->id(), $data['gatewayTransactionId']);
+
     return new JsonResponse();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function onReturn(OrderInterface $order, Request $request) {
+    // Ensure that the order is paid in full with the cardpointe_hpp gateway.
+    if (!$order->isPaid()) {
+      // Throw a PaymentGatewayException if the order is not fully paid (a
+      // payment should have been created in onNotify()).
+      throw new PaymentGatewayException('Order ID ' . $order->id() . ' not completed because it is not paid in full.');
+    }
   }
 
 }
