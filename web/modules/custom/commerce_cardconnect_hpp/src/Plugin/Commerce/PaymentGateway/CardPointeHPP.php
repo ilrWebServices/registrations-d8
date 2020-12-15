@@ -116,19 +116,39 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
    * {@inheritdoc}
    */
   public function onNotify(Request $request) {
-    $this->logger->info('Webhook data received: @data', [
-      '@data' => $request->getContent(),
-    ]);
-
-    $data = json_decode($request->getContent());
+    $json = $request->get('json');
     $error_messages = [];
 
-    if (empty($data->merchantId) || $data->merchantId !== $this->configuration['merchant_id']) {
+    if ($json) {
+      $this->logger->info('Webhook json data received: @data', [
+        '@data' => $json,
+      ]);
+
+      $data = json_decode($json, TRUE);
+    }
+    else {
+      $error_messages[] = 'Missing `json` parameter.';
+      $data = [];
+    }
+
+    if (empty($data['merchantId']) || $data['merchantId'] !== $this->configuration['merchant_id']) {
       $error_messages[] = 'Missing or invalid MID.';
     }
 
-    if (empty($data->invoice)) {
+    if (empty($data['invoice'])) {
       $error_messages[] = 'Missing invoice.';
+    }
+
+    // Load the order.
+    $order = $this->entityTypeManager->getStorage('commerce_order')->loadByProperties([
+      'order_id' => $data['invoice']
+    ]);
+
+    if ($order) {
+      $order = reset($order);
+    }
+    else {
+      $error_messages[] = 'No such order.';
     }
 
     if ($error_messages) {
@@ -143,18 +163,24 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
 
     $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
     $payment = $payment_storage->create([
-      'state' => 'authorization',
-      'amount' => new Price($data->total, 'USD'),
+      'amount' => new Price($data['total'], 'USD'),
       'payment_gateway' => $this->entityId,
-      'order_id' => $data->invoice,
-      'remote_id' => $data->token,
+      'order_id' => $order->id(),
+      'remote_id' => $data['gatewayTransactionId'],
       'authorized' => $this->time->getRequestTime(),
     ]);
-    $payment->set('state', 'completed');
+
+    if ($data['responseText'] === 'Approval') {
+      $payment->set('state', 'completed');
+    }
+    else {
+      $payment->set('state', 'authorization');
+    }
+
     $payment->save();
 
     $this->logger->info('Payment created for order @order_id.', [
-      '@order_id' => $data->invoice,
+      '@order_id' => $order->id(),
     ]);
 
     return new JsonResponse();
