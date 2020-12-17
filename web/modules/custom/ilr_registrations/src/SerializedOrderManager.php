@@ -116,6 +116,16 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           // @todo Deal with possible remote transaction retrieval failure.
           $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
         }
+        else if ($payment_gateway->getPluginId() === 'cardpointe_hpp') {
+          $data = json_decode($commerce_payment->data->value, TRUE);
+          $transaction = [];
+          $transaction['CardIssuer'] = $data['cardType'];
+          $transaction['MaskedCardNumber'] = $data['number'];
+          $transaction['NameOnCard'] = $data['billFName'] . ' ' . $data['billLName'];
+          // TODO: Fix this legacy structure once Salesforce webhook is refactored.
+          $transaction['AuthResponse']['FreewayResponse']['AuthorizationCode'] = $data['authCode'];
+          $transaction['cardpoint_hpp'] = $data;
+        }
         else {
           $transaction = NULL;
         }

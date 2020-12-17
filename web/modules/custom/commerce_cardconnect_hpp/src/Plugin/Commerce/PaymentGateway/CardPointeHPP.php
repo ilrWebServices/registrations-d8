@@ -21,6 +21,7 @@ use Drupal\commerce_payment\Exception\PaymentGatewayException;
  *   forms = {
  *     "offsite-payment" = "Drupal\commerce_cardconnect_hpp\PluginForm\HppCheckoutForm",
  *   },
+ *   payment_type = "payment_cardpointe_hpp",
  *   payment_method_types = {"credit_card"},
  *   credit_card_types = {
  *     "mastercard", "visa", "amex",
@@ -178,6 +179,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       'order_id' => $order->id(),
       'remote_id' => $data['gatewayTransactionId'],
       'authorized' => $this->time->getRequestTime(),
+      'data' => $json,
     ]);
 
     if ($data['responseText'] === 'Approval') {
