@@ -1,6 +1,6 @@
 uuid: d3daf451-f0e9-4265-aa98-82a49dabb88f
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - commerce_freedompay
