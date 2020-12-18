@@ -19,14 +19,14 @@ class CardpointeHppController extends ControllerBase {
    *
    * @var \Drupal\Core\TempStore\SharedTempStore
    */
-  protected $tempstore_shared;
+  protected $tempstoreShared;
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     $instance = new static();
-    $instance->tempstore_shared = $container->get('tempstore.shared')->get('cardpointe_hpp');
+    $instance->tempstoreShared = $container->get('tempstore.shared')->get('cardpointe_hpp');
     return $instance;
   }
 
@@ -38,7 +38,7 @@ class CardpointeHppController extends ControllerBase {
       throw new AccessDeniedHttpException('User was anonymous');
     }
 
-    $remote_payment_id = $this->tempstore_shared->get('cardpointe_hpp_transaction_id_for_user:' . $this->currentUser()->id());
+    $remote_payment_id = $this->tempstoreShared->get('cardpointe_hpp_transaction_id_for_user:' . $this->currentUser()->id());
 
     if (!$remote_payment_id) {
       throw new AccessDeniedHttpException('Recently created payment for user ' . $this->currentUser()->id() . ' not found');
@@ -51,11 +51,10 @@ class CardpointeHppController extends ControllerBase {
       throw new AccessDeniedHttpException('Remote payment ' . $remote_payment_id . ' not found');
     }
 
-    $order = $payment->getOrder();
-
-    // Redirect to /checkout/ORDER_ID/payment/return.
+    // Redirect to /checkout/{commerce_order}/{step}/return, which should call
+    // the onReturn() method for the payment gateway.
     return $this->redirect('commerce_payment.checkout.return', [
-      'commerce_order' => $order->id(),
+      'commerce_order' => $payment->getOrder()->id(),
       'step' => 'payment',
     ], [], 307);
   }

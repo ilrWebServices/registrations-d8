@@ -2,10 +2,12 @@
 
 namespace Drupal\commerce_cardconnect_hpp\PluginForm;
 
-use Drupal\commerce_payment\Exception\PaymentGatewayException;
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Cardpointe HPP payment checkout form.
+ */
 class HppCheckoutForm extends PaymentOffsiteForm {
 
   /**

@@ -45,7 +45,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
    *
    * @var \Drupal\Core\TempStore\SharedTempStore
    */
-  protected $tempstore_shared;
+  protected $tempstoreShared;
 
   /**
    * {@inheritdoc}
@@ -61,7 +61,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       $container->get('datetime.time')
     );
     $instance->logger = $container->get('logger.factory')->get('commerce_cardpointe_hpp');
-    $instance->tempstore_shared = $container->get('tempstore.shared')->get('cardpointe_hpp');
+    $instance->tempstoreShared = $container->get('tempstore.shared')->get('cardpointe_hpp');
     return $instance;
   }
 
@@ -87,7 +87,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       '#title' => $this->t('Merchant ID'),
       '#default_value' => $this->configuration['merchant_id'],
       '#required' => TRUE,
-      '#description' => $this->t('Your merchant ID will be used to verify completed payments.')
+      '#description' => $this->t('Your merchant ID will be used to verify completed payments.'),
     ];
 
     $form['pay_link'] = [
@@ -95,14 +95,14 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
       '#title' => $this->t('Pay link'),
       '#default_value' => $this->configuration['pay_link'],
       '#required' => TRUE,
-      '#description' => $this->t('Enter the Pay Link custom URL for your hosted payment page here.')
+      '#description' => $this->t('Enter the Pay Link custom URL for your hosted payment page here.'),
     ];
 
     $form['mini'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Mini form'),
       '#default_value' => $this->configuration['mini'],
-      '#description' => $this->t('Use the mini form to request the customer\'s payment card data without the billing information.')
+      '#description' => $this->t("Use the mini form to request the customer's payment card data without the billing information."),
     ];
 
     return $form;
@@ -152,7 +152,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
 
     // Load the order.
     $order = $this->entityTypeManager->getStorage('commerce_order')->loadByProperties([
-      'order_id' => $data['invoice']
+      'order_id' => $data['invoice'],
     ]);
 
     if ($order) {
@@ -199,7 +199,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
     // commerce_cardconnect_hpp.cardpointe_hpp.payment_return route will be able
     // to use this information to redirect a user returning from the hosted
     // payment page to the completed order.
-    $this->tempstore_shared->set('cardpointe_hpp_transaction_id_for_user:' . $order->getCustomer()->id(), $data['gatewayTransactionId']);
+    $this->tempstoreShared->set('cardpointe_hpp_transaction_id_for_user:' . $order->getCustomer()->id(), $data['gatewayTransactionId']);
 
     return new JsonResponse();
   }
