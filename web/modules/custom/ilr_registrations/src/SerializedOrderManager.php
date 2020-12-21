@@ -111,9 +111,24 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       foreach ($commerce_payments as $commerce_payment) {
         $payment_gateway = $commerce_payment->getPaymentGateway();
 
-        // Note that this function makes a remote call to the FreedomPay API.
-        // @todo Deal with possible remote transaction retrieval failure.
-        $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
+        if ($payment_gateway->getPluginId() === 'freedompay_hpp') {
+          // Note that this function makes a remote call to the FreedomPay API.
+          // @todo Deal with possible remote transaction retrieval failure.
+          $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
+        }
+        else if ($payment_gateway->getPluginId() === 'cardpointe_hpp') {
+          $data = json_decode($commerce_payment->data->value, TRUE);
+          $transaction = [];
+          $transaction['CardIssuer'] = $data['cardType'];
+          $transaction['MaskedCardNumber'] = $data['number'];
+          $transaction['NameOnCard'] = $data['billFName'] . ' ' . $data['billLName'];
+          // TODO: Fix this legacy structure once Salesforce webhook is refactored.
+          $transaction['AuthResponse']['FreewayResponse']['AuthorizationCode'] = $data['authCode'];
+          $transaction['cardpoint_hpp'] = $data;
+        }
+        else {
+          $transaction = NULL;
+        }
 
         $payments[] = [
           "payment_type" => $payment_gateway->getPluginId(), //"freedompay_cc",

@@ -1,0 +1,26 @@
+uuid: 4b02a376-a208-4eb9-8235-8d41301faf49
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cardconnect_hpp
+id: cardpointe_hpp_registrations
+label: 'CardPointe HPP Registrations'
+weight: null
+plugin: cardpointe_hpp
+configuration:
+  merchant_id: set_via_env
+  pay_link: 'https://ilrwebreg.securepayments.cardpointe.com/pay'
+  mini: '1'
+  display_label: 'CardPointe HPP'
+  mode: live
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+conditions:
+  -
+    plugin: order_type
+    configuration:
+      bundles:
+        - registration
+conditionOperator: AND

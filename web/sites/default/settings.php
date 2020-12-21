@@ -804,6 +804,18 @@ $config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations'
 $config['commerce_payment.commerce_payment_gateway.freedompay_hpp_registrations']['configuration']['mode'] = getenv('FREEDOMPAY_MODE_REG');
 
 /**
+ * CardConnect CardPointe HPP settings.
+ *
+ * Some bogus values are stored in config, and the real values come from
+ * the web server environment (or the .env file, generally only used by
+ * developers).
+ */
+if (getenv('CARDPOINTE_HPP_PAY_LINK')) {
+  $config['commerce_payment.commerce_payment_gateway.cardpointe_hpp_registrations']['configuration']['pay_link'] = getenv('CARDPOINTE_HPP_PAY_LINK');
+}
+$config['commerce_payment.commerce_payment_gateway.cardpointe_hpp_registrations']['configuration']['merchant_id'] = getenv('CARDPOINTE_HPP_MERCHANT_ID');
+
+/**
  * Miscellaneous overrides.
  */
 if (getenv('MARKETING_SITE_HOSTNAME')) {

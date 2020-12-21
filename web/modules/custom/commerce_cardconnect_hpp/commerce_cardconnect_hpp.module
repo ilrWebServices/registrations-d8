@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains commerce_cardconnect_hpp.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function commerce_cardconnect_hpp_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the commerce_cardconnect_hpp module.
+    case 'help.page.commerce_cardconnect_hpp':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Commerce 2.x payment gateway plugin for CardConnect CardPointe Hosted Payment Page') . '</p>';
+      return $output;
+
+    default:
+  }
+}

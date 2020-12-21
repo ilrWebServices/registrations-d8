@@ -1,0 +1,18 @@
+# CardPointe HPP webhook notification test
+
+# You can use this file to test an HTTP POST to the CardPointe HPP webhook
+# endpoint. This file is formatted for the VS Code Rest Client extension. See
+# https://github.com/Huachao/vscode-restclient
+
+@BASE_URL = http://registrations.ilr.test
+@ORDER_ID = 6
+@TOTAL = 199
+@MERCHANT_ID = {{$dotenv CARDPOINTE_HPP_MERCHANT_ID}}
+@DATE = {{$datetime iso8601}}
+
+###
+
+POST {{BASE_URL}}/payment/notify/cardpointe_hpp_registrations
+Content-Type: application/x-www-form-urlencoded
+
+json=%7B%0A%20%20%22paymentType%22%3A%20%22CC%22%2C%0A%20%20%22type%22%3A%20%22Pay%22%2C%0A%20%20%22ipAddress%22%3A%20%2298.252.9.143%22%2C%0A%20%20%22token%22%3A%20%229477709629051443%22%2C%0A%20%20%22referer%22%3A%20%22http%253A%252F%252Fregistrations.ilr.test%252Fcheckout%252F6%252Fpayment%22%2C%0A%20%20%22btnID%22%3A%20%22submitBtn%22%2C%0A%20%20%22baseTotal%22%3A%20%221495%22%2C%0A%20%20%22overallTotal%22%3A%20%221495.00%22%2C%0A%20%20%22mini%22%3A%20%221%22%2C%0A%20%20%22invoice%22%3A%20%22{{ORDER_ID}}%22%2C%0A%20%20%22total%22%3A%20%22{{TOTAL}}%22%2C%0A%20%20%22existingCard%22%3A%20%22N%22%2C%0A%20%20%22number%22%3A%20%22***1443%22%2C%0A%20%20%22expirationDateMonth%22%3A%20%2203%22%2C%0A%20%20%22expirationDateYear%22%3A%20%222022%22%2C%0A%20%20%22billFName%22%3A%20%22Barney%22%2C%0A%20%20%22billLName%22%3A%20%22Rubble%22%2C%0A%20%20%22cardType%22%3A%20%22Visa%22%2C%0A%20%20%22gatewayTransactionId%22%3A%20%22123456789012%22%2C%0A%20%20%22avsResponseCode%22%3A%20%22Z%22%2C%0A%20%20%22cvvResponseCode%22%3A%20%22M%22%2C%0A%20%20%22authCode%22%3A%20%22PPS009%22%2C%0A%20%20%22responseCode%22%3A%20%2200%22%2C%0A%20%20%22responseText%22%3A%20%22Approval%22%2C%0A%20%20%22responseProc%22%3A%20%22FNOR%22%2C%0A%20%20%22URL%22%3A%20%22ilrwebreg.securepayments.cardpointe.com%22%2C%0A%20%20%22merchantId%22%3A%20%22{{MERCHANT_ID}}%22%2C%0A%20%20%22date%22%3A%20%22{{DATE}}%22%0A%7D

@@ -5,6 +5,7 @@ module:
   block_content: 0
   breakpoint: 0
   commerce: 0
+  commerce_cardconnect_hpp: 0
   commerce_cart: 0
   commerce_checkout: 0
   commerce_checkout_order_fields: 0
