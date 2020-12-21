@@ -69,6 +69,8 @@
     "files": ["load.environment.php"]
   },
   "scripts": {
+    "cs": "phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
+    "cbf": "phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
     "sync-dev": "drush sql:drop && drush sql:sync @register.develop @self && ./post_sync_fix_triggers.php",
     "sync-update": "drush updatedb --no-post-updates && drush config:import && drush updatedb"
   },
