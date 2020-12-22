@@ -51,8 +51,7 @@
     "drush/drush": "^10",
     "firebase/php-jwt": "^5.2",
     "platformsh/config-reader": "^2.2",
-    "vlucas/phpdotenv": "^4.1",
-    "zaporylie/composer-drupal-optimizations": "^1.0"
+    "vlucas/phpdotenv": "^4.1"
   },
   "require-dev": {
     "drupal/core-dev": "^8.9"
