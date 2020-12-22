@@ -94,9 +94,6 @@
       "drupal/core": "-p2"
     },
     "patches": {
-      "drupal/inline_entity_form": {
-        "Field name/label disappears when I create a new entity inline": "https://www.drupal.org/files/issues/2020-08-04/inline_entity_form-no_label_required_field_with_no_entries-2842744-27-D8.patch"
-      },
       "drupal/commerce": {
         "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
         "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-08-27/2689919-26_commerce_Order-Items-Table-formatter-select-view-no-post-update.patch"
