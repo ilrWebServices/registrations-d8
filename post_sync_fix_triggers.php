@@ -14,14 +14,17 @@ try {
 
 $definer = '`' . getenv('MYSQL_USER') . '`@`' . getenv('MYSQL_HOSTNAME') . '`';
 
-$get_triggers_stmt = $dbh->prepare('SELECT * FROM INFORMATION_SCHEMA.TRIGGERS WHERE DEFINER = ?');
-$get_triggers_stmt->execute(['mysql@%']);
+$get_triggers_stmt = $dbh->prepare('SELECT * FROM INFORMATION_SCHEMA.TRIGGERS WHERE DEFINER != ?');
+$get_triggers_stmt->execute([$definer]);
 
 while ($row = $get_triggers_stmt->fetchObject()) {
   $result = $dbh->query('SHOW CREATE TRIGGER ' . $row->TRIGGER_NAME, PDO::FETCH_ASSOC);
+  if (!$result) {
+    continue;
+  }
   $trigger_def_row = $result->fetch();
   $drop = 'DROP TRIGGER ' . $row->TRIGGER_NAME;
-  $create = preg_replace('|^CREATE DEFINER="mysql"@"%"|', "CREATE DEFINER=$definer", $trigger_def_row["SQL Original Statement"]);
+  $create = preg_replace('|^CREATE DEFINER=[^ ]|', "CREATE DEFINER=$definer", $trigger_def_row["SQL Original Statement"]);
   $dbh->exec($drop);
   $dbh->exec($create);
 }
