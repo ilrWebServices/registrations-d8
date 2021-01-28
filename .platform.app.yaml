@@ -147,3 +147,10 @@ crons:
     # Clear cron logs from watchdog every every 24 hours
     spec: '0 6 * * *'
     cmd: 'cd web ; drush watchdog-delete --type=cron'
+  renewcert:
+    # Force a redeploy at 5 am (UTC) on the 28th of every month.
+    spec: '0 5 28 * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = master ]; then
+        platform redeploy --yes --no-wait
+      fi
