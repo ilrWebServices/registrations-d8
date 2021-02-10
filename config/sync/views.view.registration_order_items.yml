@@ -345,10 +345,10 @@ display:
           entity_field: commerce_order_item_id
           plugin_id: standard
       arguments:
-        order_id:
-          id: order_id
+        order_item_id:
+          id: order_item_id
           table: commerce_order_item
-          field: order_id
+          field: order_item_id
           relationship: commerce_order_item_id
           group_type: group
           admin_label: ''
@@ -380,7 +380,7 @@ display:
           break_phrase: false
           not: false
           entity_type: commerce_order_item
-          entity_field: order_id
+          entity_field: order_item_id
           plugin_id: numeric
       display_extenders: {  }
     cache_metadata:
