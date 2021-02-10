@@ -87,6 +87,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  balance: true
   billing_profile: true
   changed: true
   order_number: true
