@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd6991991124409d87888dd2a7b103b6",
+    "content-hash": "42615e57c4eeebd8c35af569f42460e5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -176,16 +176,16 @@
         },
         {
             "name": "commerceguys/addressing",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/addressing.git",
-                "reference": "2450ca97631042faf786855db206a2e48fb7dbb7"
+                "reference": "6df5c0eea9d1f370095585eef1b08f4dff73d51f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/2450ca97631042faf786855db206a2e48fb7dbb7",
-                "reference": "2450ca97631042faf786855db206a2e48fb7dbb7",
+                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/6df5c0eea9d1f370095585eef1b08f4dff73d51f",
+                "reference": "6df5c0eea9d1f370095585eef1b08f4dff73d51f",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,11 @@
                 "localization",
                 "postal"
             ],
-            "time": "2020-11-29T18:48:07+00:00"
+            "support": {
+                "issues": "https://github.com/commerceguys/addressing/issues",
+                "source": "https://github.com/commerceguys/addressing/tree/v1.1.1"
+            },
+            "time": "2020-12-05T18:16:35+00:00"
         },
         {
             "name": "commerceguys/intl",
@@ -275,6 +279,10 @@
                 }
             ],
             "description": "Internationalization library powered by CLDR data.",
+            "support": {
+                "issues": "https://github.com/commerceguys/intl/issues",
+                "source": "https://github.com/commerceguys/intl/tree/v1.0.7"
+            },
             "time": "2020-10-04T20:58:22+00:00"
         },
         {
@@ -1992,9 +2000,6 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": {
-                    "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2113,17 +2118,17 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",
-                "reference": "8.x-2.21"
+                "reference": "8.x-2.24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.21.zip",
-                "reference": "8.x-2.21",
-                "shasum": "3b38b58458e26f14cc4c203cda3f01ac84296909"
+                "url": "https://ftp.drupal.org/files/projects/commerce-8.x-2.24.zip",
+                "reference": "8.x-2.24",
+                "shasum": "ebe1b58bc87446ad1edbfd62ed8fffb8583b68fb"
             },
             "require": {
                 "commerceguys/intl": "^1.0.0",
@@ -2155,16 +2160,12 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": {
-                    "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
-                    "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2019-08-27/2689919-26_commerce_Order-Items-Table-formatter-select-view-no-post-update.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2197,7 +2198,7 @@
         },
         {
             "name": "drupal/commerce_cart",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
@@ -2207,8 +2208,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2245,7 +2246,7 @@
         },
         {
             "name": "drupal/commerce_checkout",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_cart": "*",
@@ -2255,8 +2256,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2319,8 +2320,7 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "patches_applied": []
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
@@ -2348,7 +2348,7 @@
         },
         {
             "name": "drupal/commerce_number_pattern",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_store": "*",
@@ -2357,8 +2357,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2395,7 +2395,7 @@
         },
         {
             "name": "drupal/commerce_order",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_number_pattern": "*",
@@ -2409,8 +2409,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2447,7 +2447,7 @@
         },
         {
             "name": "drupal/commerce_price",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/core": "^8.8 || ^9"
@@ -2455,8 +2455,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2493,7 +2493,7 @@
         },
         {
             "name": "drupal/commerce_product",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
@@ -2503,8 +2503,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2541,7 +2541,7 @@
         },
         {
             "name": "drupal/commerce_store",
-            "version": "2.21.0",
+            "version": "2.24.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
@@ -2550,8 +2550,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.21",
-                    "datestamp": "1600787975",
+                    "version": "8.x-2.24",
+                    "datestamp": "1612808406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3843,8 +3843,7 @@
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
                     }
-                },
-                "patches_applied": []
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
