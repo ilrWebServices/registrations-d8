@@ -377,7 +377,7 @@ display:
             type: none
             fail: 'not found'
           validate_options: {  }
-          break_phrase: false
+          break_phrase: true
           not: false
           entity_type: commerce_order_item
           entity_field: order_item_id
