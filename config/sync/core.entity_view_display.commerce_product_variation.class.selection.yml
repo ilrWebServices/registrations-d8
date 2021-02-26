@@ -10,6 +10,7 @@ dependencies:
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
+    - field.field.commerce_product_variation.class.field_full
   module:
     - address
     - datetime
@@ -38,6 +39,7 @@ hidden:
   field_cancelled: true
   field_class_end: true
   field_class_price: true
+  field_full: true
   list_price: true
   price: true
   product_id: true

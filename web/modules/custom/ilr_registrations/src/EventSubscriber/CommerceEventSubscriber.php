@@ -91,6 +91,11 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
         if ($variation->field_cancelled->value) {
           $display = FALSE;
         }
+
+        // If a class is full, do not display it.
+        if ($variation->field_full->value) {
+          $display = FALSE;
+        }
       }
 
       if ($display) {

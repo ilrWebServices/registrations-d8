@@ -9,6 +9,7 @@ dependencies:
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
+    - field.field.commerce_product_variation.class.field_full
   module:
     - address
     - commerce_price
@@ -64,6 +65,16 @@ content:
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
+  field_full:
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   price:
     label: above
     type: commerce_price_default

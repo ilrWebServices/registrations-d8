@@ -9,6 +9,7 @@ dependencies:
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
+    - field.field.commerce_product_variation.class.field_full
     - field.storage.commerce_product_variation.field_class_location
   module:
     - address
@@ -36,61 +37,67 @@ field_mappings:
     drupal_field_value: product_id
     salesforce_field: Course__c
     direction: sf_drupal
-    id: 0
+    id: 1
   -
     drupal_field_type: properties
     drupal_field_value: title
     salesforce_field: Name
     direction: sf_drupal
-    id: 1
+    id: 2
   -
     drupal_field_type: properties
     drupal_field_value: field_class_price
     salesforce_field: Event_Class_Fee__c
     direction: sf_drupal
-    id: 2
+    id: 3
   -
     drupal_field_type: properties
     drupal_field_value: sku
     salesforce_field: Id
     direction: sf_drupal
-    id: 3
+    id: 4
   -
     drupal_field_type: properties
     drupal_field_value: field_class_start
     salesforce_field: Start__c
     direction: sf_drupal
-    id: 4
+    id: 5
   -
     drupal_field_type: properties
     drupal_field_value: field_class_end
     salesforce_field: End__c
     direction: sf_drupal
-    id: 5
+    id: 6
   -
     drupal_field_type: properties_extended
     drupal_field_value: field_class_location.locality
     salesforce_field: Event_Location_City__c
     direction: sf_drupal
-    id: 6
+    id: 7
   -
     drupal_field_type: properties_extended
     drupal_field_value: field_class_location.administrative_area
     salesforce_field: Event_Location_State__c
     direction: sf_drupal
-    id: 7
+    id: 8
   -
     drupal_field_type: properties
     drupal_field_value: status
     salesforce_field: Class_Show_on_Web__c
     direction: sf_drupal
-    id: 8
+    id: 9
   -
     drupal_field_type: properties
     drupal_field_value: field_cancelled
     salesforce_field: Is_Cancelled__c
     direction: sf_drupal
-    id: 9
+    id: 10
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_full
+    salesforce_field: Is_Full__c
+    direction: sf_drupal
+    id: 11
 push_limit: 0
 push_retries: 3
 push_frequency: 0
