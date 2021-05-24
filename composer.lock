@@ -4623,12 +4623,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/union_organizer.git",
-                "reference": "3b34bd422fe96a79793d356dba2e6695ba49aca1"
+                "reference": "ba44675a0618c773cfbb1bba789c989521dfb010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/3b34bd422fe96a79793d356dba2e6695ba49aca1",
-                "reference": "3b34bd422fe96a79793d356dba2e6695ba49aca1",
+                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/ba44675a0618c773cfbb1bba789c989521dfb010",
+                "reference": "ba44675a0618c773cfbb1bba789c989521dfb010",
                 "shasum": ""
             },
             "default-branch": true,
@@ -4645,7 +4645,7 @@
                 "issues": "https://github.com/ilrWebServices/union_organizer/issues",
                 "source": "https://github.com/ilrWebServices/union_organizer.git"
             },
-            "time": "2020-12-23T20:28:53+00:00"
+            "time": "2021-04-08T21:30:12+00:00"
         },
         {
             "name": "drush/drush",
