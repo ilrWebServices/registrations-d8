@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cef6af57555faf5bba95d8e96cd090b4",
+    "content-hash": "7f99567131f9ec5e9ac224ece1d3582c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3672,30 +3672,32 @@
         },
         {
             "name": "drupal/erf",
-            "version": "1.0.0-alpha9",
+            "version": "2.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "8.x-1.0-alpha9"
+                "reference": "2.0.0-alpha2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/erf-8.x-1.0-alpha9.zip",
-                "reference": "8.x-1.0-alpha9",
-                "shasum": "eb8a7f2dd73c07fda4684f985aaa297385ca8021"
+                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha2.zip",
+                "reference": "2.0.0-alpha2",
+                "shasum": "f37597d459c0404183fafd62970e62779b5fca6f"
             },
             "require": {
-                "drupal/core": "~8.0",
+                "drupal/core": "^8.8 || ^9",
                 "drupal/inline_entity_form": "^1.0-rc4"
             },
             "require-dev": {
+                "drupal/commerce_cart": "*",
+                "drupal/commerce_order": "*",
                 "drupal/commerce_product": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-alpha9",
-                    "datestamp": "1621875405",
+                    "version": "2.0.0-alpha2",
+                    "datestamp": "1621959013",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
