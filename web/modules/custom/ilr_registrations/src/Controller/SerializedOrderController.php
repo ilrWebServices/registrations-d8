@@ -9,7 +9,7 @@ use Drupal\commerce_order\Entity\OrderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Class SerializedOrderController.
+ * Controller used to return a JSON serialized commerce order.
  */
 class SerializedOrderController extends ControllerBase {
 
@@ -44,7 +44,8 @@ class SerializedOrderController extends ControllerBase {
    * @todo Verify hardcoded fields on the billing profile (e.g.
    * field_organization and the name fields).
    *
-   * @return JsonResponse A full serialized order object.
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   A full serialized order object.
    */
   public function load(OrderInterface $commerce_order) {
     $serializable_order = $this->serializedOrderManager->getObjectForOrder($commerce_order);

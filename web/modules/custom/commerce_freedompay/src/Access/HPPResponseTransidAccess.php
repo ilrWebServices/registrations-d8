@@ -33,13 +33,15 @@ class HPPResponseTransidAccess implements AccessInterface {
   /**
    * Checks access for requests to this controller.
    *
-   * @see commerce_freedompay.routing.yml
-   *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Run access checks for this account.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The request object.
    *
    * @return \Drupal\Core\Access\AccessResultInterface
    *   The access result.
+   *
+   * @see commerce_freedompay.routing.yml
    */
   public function access(AccountInterface $account, Request $request) {
     $transid = $request->query->get('transid');

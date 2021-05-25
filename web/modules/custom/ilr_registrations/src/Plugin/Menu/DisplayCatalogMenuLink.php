@@ -5,6 +5,9 @@ namespace Drupal\ilr_registrations\Plugin\Menu;
 use Drupal\Core\Menu\MenuLinkDefault;
 use Drupal\Core\Url;
 
+/**
+ * Creates a catalog menu link from an environment variable.
+ */
 class DisplayCatalogMenuLink extends MenuLinkDefault {
 
   /**

@@ -5,7 +5,7 @@ namespace Drupal\ilr_registrations;
 use Drupal\commerce_order\Entity\OrderInterface;
 
 /**
- * Interface SerializedOrderManagerInterface.
+ * Interface for the serialized order manager service.
  */
 interface SerializedOrderManagerInterface {
 
@@ -15,8 +15,9 @@ interface SerializedOrderManagerInterface {
    * Stuff such as payments, discounts, customer info, mapped salesforce ids,
    * and attached registration info.
    *
-   * @return array An array that follows the schema from
-   * https://github.com/ilrWebServices/ilr-salesforce-bridge-api/blob/master/salesforce-webhook-request-schema.json
+   * @return array
+   *   An array that follows the schema from
+   *   https://github.com/ilrWebServices/ilr-salesforce-bridge-api/blob/master/salesforce-webhook-request-schema.json
    */
   public function getObjectForOrder(OrderInterface $order);
 

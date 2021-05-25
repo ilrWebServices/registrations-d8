@@ -7,7 +7,6 @@ use Drupal\ilr_registrations\SerializedOrderManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Queue\QueueFactory;
 use Drupal\state_machine\Event\WorkflowTransitionEvent;
-use Drupal\salesforce\Rest\RestException;
 
 /**
  * Class EntityTypeSubscriber.
@@ -66,6 +65,9 @@ class OrderCompleteSubscriber implements EventSubscriberInterface {
     return $events;
   }
 
+  /**
+   * React to a commerce order when placed.
+   */
   public function onOrderPlace(WorkflowTransitionEvent $event) {
     $order = $event->getEntity();
     $serialized_order = $this->serializedOrderManager->getObjectForOrder($order);

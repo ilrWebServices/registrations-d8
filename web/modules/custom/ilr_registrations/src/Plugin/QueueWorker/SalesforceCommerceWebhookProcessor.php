@@ -28,11 +28,15 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
   use LoggerChannelTrait;
 
   /**
+   * The entity type manager.
+   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
+   * The salesforce rest client.
+   *
    * @var \Drupal\salesforce\Rest\RestClientInterface
    */
   protected $sfapi;
@@ -49,7 +53,6 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
-   *
    * @param \Drupal\salesforce\Rest\RestClientInterface $sfapi
    *   The salesforce rest client.
    */
@@ -99,9 +102,8 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
       }
     }
 
-    // TODO Maybe verify that $data['pos_order_id'] is the same as
+    // @todo Maybe verify that $data['pos_order_id'] is the same as
     // $sf_order_object->field('Order_ID__c']?
-
     // Load the commerce order. Note that this Drupal entity id is stored in
     // Salesforce in the `Order_ID__c` field on Order_c objects.
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($sf_order_object->field('Order_ID__c'));
@@ -110,9 +112,8 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
     $order_mapping = $this->entityTypeManager->getStorage('salesforce_mapping')->load('order_to_reg_order');
     $this->createMapping($order_mapping, $sf_order_object, $order);
 
-    // TODO Maybe verify $data['customer']['sf_customer_contact_id'] is
+    // @todo Maybe verify $data['customer']['sf_customer_contact_id'] is
     // $sf_order_object->field('Purchaser__c').
-
     // Map the salesforce customer contact to the Drupal user for the order
     // billing profile user (not the billing profile entity itself).
     $sf_customer_contact_object = $this->sfapi->objectRead('Contact', $sf_order_object->field('Purchaser__c'));
@@ -122,7 +123,7 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
 
     // Map the salesforce participants to the Drupal participant entities and,
     // if set, their associated user entities.
-    // TODO Refactor if we ever use other participant types.
+    // @todo Refactor if we ever use other participant types.
     $participant_mapping = $this->entityTypeManager->getStorage('salesforce_mapping')->load('basic_participant');
 
     // Get SF EXECED_Application__c for this Order_c.
@@ -142,7 +143,8 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
         $participant = $this->entityTypeManager->getStorage('participant')->load((int) $sf_participant->field('POS_Participant_Id__c'));
         $this->createMapping($participant_mapping, $sf_participant, $participant);
 
-        // If this participant was linked to a user, map that user to the salesforce contact.
+        // If this participant was linked to a user, map that user to the
+        // salesforce contact.
         if (!$participant->uid->isEmpty()) {
           $sf_participant_contact_object = $this->sfapi->objectRead('Contact', $sf_participant->field('Contact__c'));
           $this->createMapping($contact_mapping, $sf_participant_contact_object, $participant->uid->entity);
@@ -150,7 +152,7 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
       }
     }
 
-    // TODO Map the salesforce payment(s) to Commerce payment(s).
+    // @todo Map the salesforce payment(s) to Commerce payment(s).
   }
 
   /**
@@ -158,14 +160,10 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
    *
    * @param \Drupal\salesforce_mapping\Entity\SalesforceMapping $mapping
    *   A salesforce mapping config entity.
-   *
    * @param \Drupal\salesforce\SObject $sf_object
    *   A salesforce object.
-   *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   A Drupal entity. E.g., commerce_order, user, or participant.
-   *
-   * @return null
    */
   protected function createMapping(SalesforceMapping $mapping, SObject $sf_object, EntityInterface $entity) {
     $mapped_object_storage = $this->entityTypeManager->getStorage('salesforce_mapped_object');
