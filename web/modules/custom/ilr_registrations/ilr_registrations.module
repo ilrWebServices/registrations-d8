@@ -184,7 +184,7 @@ function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_
  *
  * Store class dates and salesforce id data with class order items.
  */
-function erf_commerce_commerce_order_item_presave(EntityInterface $order_item) {
+function ilr_registrations_commerce_order_item_presave(EntityInterface $order_item) {
   if ($order_item->bundle() !== 'class') {
     return;
   }
