@@ -1,12 +1,12 @@
 <?php
 
-use Drupal\Core\Block\BlockPluginInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 /**
  * @file
  * Contains ilr_registrations.module.
  */
 
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\commerce_price\Price;
 use Drupal\commerce_store\Entity\Store;
@@ -17,6 +17,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
+use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
 
 /**
  * Implements hook_entity_type_alter().
@@ -516,17 +517,7 @@ function ilr_registrations_preprocess_status_messages(&$variables) {
  * Implements hook_block_view_BASE_BLOCK_ID_alter().
  */
 function ilr_registrations_block_view_commerce_cart_alter(array &$build, BlockPluginInterface $block) {
-  $build['#pre_render'][] = 'ilr_registrations_change_cart_build_content';
-}
-
-/**
- * Pre-render callback for commerce cart block.
- *
- * @see ilr_registrations_block_view_commerce_cart_alter()
- */
-function ilr_registrations_change_cart_build_content(array $build) {
-  $build['content']['#icon']['#uri'] = "modules/contrib/commerce/icons/bebebe/cart.png";
-  return $build;
+  $build['#pre_render'][] = [IlrRegistrationsBlockAlter::class, 'preRender'];
 }
 
 /**
