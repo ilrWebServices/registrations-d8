@@ -2,6 +2,7 @@
 
 namespace Drupal\ilr_registrations\EventSubscriber;
 
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\commerce_product\Event\ProductEvents;
@@ -80,7 +81,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
 
         // Note: Watch out for timezones, DST, and other gotchas.
         $end_datetime = $variation->field_class_end->first()->get('value')->getDateTime();
-        $current_datetime = new DrupalDateTime('now', DATETIME_STORAGE_TIMEZONE);
+        $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
 
         // If the end date in the past, don't display it.
         if ($end_datetime < $current_datetime) {
