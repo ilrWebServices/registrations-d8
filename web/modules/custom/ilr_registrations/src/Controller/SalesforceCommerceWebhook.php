@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Class SalesforceCommerceWebhook.
+ * Controller for the incoming salesforce return webhook.
  */
 class SalesforceCommerceWebhook extends ControllerBase {
 
@@ -58,6 +58,7 @@ class SalesforceCommerceWebhook extends ControllerBase {
    *   The request with the salesforce mapping payload.
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   A JSON-encoded status response.
    */
   public function v1(Request $request) {
     $queue_item_id = $this->queue->createItem(json_decode($request->getContent(), TRUE));

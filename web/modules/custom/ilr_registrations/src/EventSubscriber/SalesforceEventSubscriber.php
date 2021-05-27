@@ -8,7 +8,7 @@ use Drupal\salesforce_mapping\Event\SalesforceQueryEvent;
 use Drupal\salesforce_mapping\Event\SalesforcePullEvent;
 
 /**
- * Class SalesforceEventSubscriber.
+ * Event subscriber for salesforce pull events.
  */
 class SalesforceEventSubscriber implements EventSubscriberInterface {
 

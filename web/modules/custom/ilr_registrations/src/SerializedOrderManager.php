@@ -92,11 +92,13 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "job_title" => $billing_profile->field_job_title->value,
         "industry" => $billing_profile->field_industry->value,
         "phone" => $billing_profile->field_phone->value,
-        "additional_fields" => [], // @todo
+        // @todo Add additional customer fields as necessary.
+        "additional_fields" => [],
       ],
       "payment_owner" => $order->hasField('field_payment_owner') ? $order->field_payment_owner->value : NULL,
       "order_total" => (float) $order->getTotalPaid()->getNumber(),
-      "order_items" => [], // Set below.
+      // Set below.
+      "order_items" => [],
     ];
 
     // Process payments.
@@ -116,13 +118,13 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           // @todo Deal with possible remote transaction retrieval failure.
           $transaction = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
         }
-        else if ($payment_gateway->getPluginId() === 'cardpointe_hpp') {
+        elseif ($payment_gateway->getPluginId() === 'cardpointe_hpp') {
           $data = json_decode($commerce_payment->data->value, TRUE);
           $transaction = [];
           $transaction['CardIssuer'] = $data['cardType'];
           $transaction['MaskedCardNumber'] = $data['number'];
           $transaction['NameOnCard'] = $data['billFName'] . ' ' . $data['billLName'];
-          // TODO: Fix this legacy structure once Salesforce webhook is refactored.
+          // @todo Fix this legacy structure once Salesforce webhook is refactored.
           $transaction['AuthResponse']['FreewayResponse']['AuthorizationCode'] = $data['authCode'];
           $transaction['cardpoint_hpp'] = $data;
         }
@@ -131,7 +133,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         }
 
         $payments[] = [
-          "payment_type" => $payment_gateway->getPluginId(), //"freedompay_cc",
+        // "freedompay_cc",
+          "payment_type" => $payment_gateway->getPluginId(),
           "payment_id" => $commerce_payment->id(),
           "amount" => (float) $commerce_payment->getAmount()->getNumber(),
           "transaction_id" => $commerce_payment->getRemoteId(),
@@ -190,7 +193,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             $participant_contact_sfid = NULL;
           }
 
-          // @todo - handle participants even if there is not an address field
+          // @todo handle participants even if there is not an address field
           $address_value = $participant->field_address->getValue();
           $address = reset($address_value);
           $participants[] = [
@@ -214,7 +217,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             "accessible_accommodation" => $participant->hasField('field_accessible_accommodation') ? $participant->field_accessible_accommodation->value : NULL,
             "is_cornell_employee" => $participant->hasField('field_is_cornell_employee') ? ($participant->field_is_cornell_employee->value ? 'true' : 'false') : NULL,
             "apply_to_certificate" => "",
-            'additional_fields' => [], // @todo
+            // @todo Add additional participant fields as necessary.
+            'additional_fields' => [],
           ];
         }
       }
@@ -229,12 +233,14 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         "discounted_total" => (float) $item->getAdjustedTotalPrice()->getNumber(),
         "product" => [
           "product_type" => "registration",
-          "x_product_type_subtype" => $item->bundle(), // Not in the spec, but maybe still useful.
-          "additional_fields" => [], // @todo
+          // Not in the spec, but maybe still useful.
+          "x_product_type_subtype" => $item->bundle(),
+          // @todo Add additional product fields as necessary.
+          "additional_fields" => [],
           "course_id" => $item->getData('sf_course_id'),
           "class_id" => $item->getData('sf_class_id'),
           "participants" => $participants,
-        ]
+        ],
       ];
     }
 

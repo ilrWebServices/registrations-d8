@@ -24,7 +24,8 @@ content:
     weight: 2
     region: content
     label: hidden
-    settings: {  }
+    settings:
+      field_settings: {  }
     third_party_settings: {  }
   field_class_start:
     type: datetime_default

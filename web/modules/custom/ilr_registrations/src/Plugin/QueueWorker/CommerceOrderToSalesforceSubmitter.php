@@ -5,12 +5,8 @@ namespace Drupal\ilr_registrations\Plugin\QueueWorker;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Logger\LoggerChannelTrait;
-// use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\salesforce\Rest\RestClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-// use Drupal\salesforce_mapping\Entity\SalesforceMapping;
-// use Drupal\salesforce\SObject;
-// use Drupal\Core\Entity\EntityInterface;
 use Drupal\salesforce\Rest\RestException;
 
 /**
@@ -27,6 +23,8 @@ class CommerceOrderToSalesforceSubmitter extends QueueWorkerBase implements Cont
   use LoggerChannelTrait;
 
   /**
+   * The salesforce rest client.
+   *
    * @var \Drupal\salesforce\Rest\RestClientInterface
    */
   protected $sfapi;

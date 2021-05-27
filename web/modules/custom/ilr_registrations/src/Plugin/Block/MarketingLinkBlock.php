@@ -28,7 +28,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
   protected $entityTypeManager;
 
   /**
-   * Drupal\Core\Routing\CurrentRouteMatch definition
+   * Drupal\Core\Routing\CurrentRouteMatch definition.
    *
    * @var \Drupal\Core\Routing\CurrentRouteMatch
    */
@@ -43,6 +43,10 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
    *   The plugin_id for the plugin instance.
    * @param string $plugin_definition
    *   The plugin implementation definition.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   * @param \Drupal\Core\Routing\CurrentRouteMatch $current_route_match
+   *   The current route match service.
    */
   public function __construct(
     array $configuration,
@@ -126,7 +130,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     $mapped_object_storage = $this->entityTypeManager->getStorage('salesforce_mapped_object');
     $mapped_objects = $mapped_object_storage->loadByProperties([
       'drupal_entity__target_id' => $product->id(),
-      'salesforce_mapping' => 'course_product'
+      'salesforce_mapping' => 'course_product',
     ]);
 
     $mapped_object = reset($mapped_objects);
@@ -146,7 +150,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
         'contexts' => [
           'url.path',
         ],
-      ]
+      ],
     ];
 
     return $build;

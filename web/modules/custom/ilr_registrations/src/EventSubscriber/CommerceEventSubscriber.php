@@ -2,6 +2,7 @@
 
 namespace Drupal\ilr_registrations\EventSubscriber;
 
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\commerce_product\Event\ProductEvents;
@@ -30,7 +31,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
    */
   protected $messenger;
 
-   /**
+  /**
    * Constructs a new CommerceEventSubscriber object.
    *
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
@@ -58,8 +59,8 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * React to a list of classes for a course product before they can be added
-   * to a cart.
+   * React to a list of classes for a course product before they can be added to
+   * a cart.
    *
    * @param \Drupal\commerce_product\Event\FilterVariationsEvent $event
    *   Commerce product FilterVariationsEvent event.
@@ -73,14 +74,14 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
       // Filter 'Class' product variations.
       if ($variation->bundle() === 'class') {
         // If a class has no end datetime, ignore it, which will display it.
-        // TODO Review this.
+        // @todo Review this.
         if ($variation->field_class_end->isEmpty()) {
           continue;
         }
 
         // Note: Watch out for timezones, DST, and other gotchas.
         $end_datetime = $variation->field_class_end->first()->get('value')->getDateTime();
-        $current_datetime = new DrupalDateTime('now', DATETIME_STORAGE_TIMEZONE);
+        $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
 
         // If the end date in the past, don't display it.
         if ($end_datetime < $current_datetime) {
@@ -111,7 +112,7 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
    *
    * I would never in a million years have guessed how to display the middle
    * name field in address fields if not for this Commerce documentation:
-   * https://docs.drupalcommerce.org/commerce2/developer-guide/customers/addresses/address-formats
+   * https://docs.drupalcommerce.org/commerce2/developer-guide/customers/addresses/address-formats.
    */
   public function onAddressFormat(AddressFormatEvent $event) {
     $definition = $event->getDefinition();
@@ -138,4 +139,5 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
       ':url' => $marketing_url . '/programs/professional-education',
     ]));
   }
+
 }
