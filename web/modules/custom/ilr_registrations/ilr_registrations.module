@@ -514,6 +514,29 @@ function ilr_registrations_preprocess_status_messages(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_field().
+ *
+ * Make the product variation title a link to the variation. We do this here
+ * because Drupal 9.1.x and up can't use the link to entity option in the title
+ * stringformatter because product variations don't have canonical link
+ * templates.
+ *
+ * @see
+ * Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter::viewElements()
+ */
+function ilr_registrations_preprocess_field__commerce_product_variation__title(&$variables) {
+  $variables['items'][0]['content'] = [
+    '#type' => 'link',
+    '#title' => [
+      '#type' => 'inline_template',
+      '#template' => '{{ value|nl2br }}',
+      '#context' => ['value' => $variables['element']['#items']->value],
+    ],
+    '#url' => $variables['element']['#object']->toUrl(),
+  ];
+}
+
+/**
  * Implements hook_block_view_BASE_BLOCK_ID_alter().
  */
 function ilr_registrations_block_view_commerce_cart_alter(array &$build, BlockPluginInterface $block) {
