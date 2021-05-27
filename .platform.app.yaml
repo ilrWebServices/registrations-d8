@@ -20,9 +20,9 @@ relationships:
 #    redis: 'rediscache:redis'
 
 # Add additional PHP extensions.
-# runtime:
-#     extensions:
-#         - redis
+runtime:
+  extensions:
+    - apcu
 
 variables:
   php:
