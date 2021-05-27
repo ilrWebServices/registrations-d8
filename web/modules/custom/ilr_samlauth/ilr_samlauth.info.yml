@@ -4,6 +4,5 @@ description: 'Standard glue code for ILR SamlAuth implementation'
 core: 8.x
 package: 'ILR'
 core_version_requirement: ^8 || ^9
-package: 'ILR'
 dependencies:
   - samlauth
