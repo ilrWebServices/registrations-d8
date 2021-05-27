@@ -11,7 +11,6 @@ _core:
   default_config_hash: 3qI5Sabj5mdKmxHM6seoIC6obwDlSJYtF2FgltcnOkU
 login_menu_item_title: 'NetID log in'
 logout_menu_item_title: 'NetID log out'
-drupal_saml_login: false
 login_redirect_url: ''
 logout_redirect_url: ''
 sp_entity_id: automatically_configured_in_settings
@@ -40,3 +39,6 @@ debug_log_saml_out: 0
 debug_log_saml_in: 0
 debug_log_in: 0
 debug_phpsaml: 0
+drupal_login_roles: {  }
+map_users_name: true
+map_users_mail: true
