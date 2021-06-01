@@ -1,0 +1,66 @@
+uuid: ce3c0898-462f-45f7-bec9-65794117e7ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_checkout_order_fields
+    - commerce_payment
+    - commerce_promotion
+    - email_registration
+    - ilr_registrations
+id: registration_no_order_lock
+label: 'Registration without Order Lock'
+plugin: multistep_no_lock
+configuration:
+  display_checkout_progress: true
+  display_checkout_progress_breadcrumb_links: 0
+  panes:
+    email_registration_login:
+      allow_guest_checkout: false
+      allow_registration: true
+      step: login
+      weight: '0'
+    contact_information:
+      double_entry: false
+      step: order_information
+      weight: '1'
+    payment_information:
+      step: order_information
+      weight: '2'
+    'order_fields:checkout':
+      wrapper_element: container
+      display_label: 'Order fields'
+      step: order_information
+      weight: '3'
+    payment_process:
+      capture: true
+      step: payment
+      weight: '4'
+    completion_register:
+      step: complete
+      weight: '5'
+    completion_message:
+      message:
+        value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
+        format: plain_text
+      step: complete
+      weight: '6'
+    order_summary:
+      view: registration_checkout_order_summary
+      step: _sidebar
+      weight: '7'
+    coupon_redemption:
+      allow_multiple: false
+      step: _sidebar
+      weight: '8'
+    review:
+      step: _disabled
+      weight: '9'
+    login:
+      allow_guest_checkout: true
+      allow_registration: false
+      step: _disabled
+      weight: '10'
+    email_registration_completion_registration:
+      step: _disabled
+      weight: '11'

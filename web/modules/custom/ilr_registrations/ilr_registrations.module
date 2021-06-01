@@ -308,12 +308,14 @@ function ilr_registrations_form_views_form_registration_cart_form_default_alter(
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_BASE_FORM_ID_alter().
  *
  * Update the fieldset label for the payment_information pane.
  * Set default values based on the first participant.
+ *
+ * @TODO Consider limiting this to orders of the 'registration' type.
  */
-function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state) {
+function ilr_registrations_form_commerce_checkout_flow_alter(&$form, FormStateInterface $form_state) {
   // Set the payment info fieldset label.
   $form['payment_information']['#title'] = t('Account info');
 
