@@ -2,7 +2,6 @@ uuid: 141e6d4a-6ca5-40f9-801c-894e29a5c1ae
 langcode: en
 status: true
 dependencies:
-  config: {  }
   module:
     - commerce_order
     - commerce_price
@@ -630,8 +629,7 @@ display:
         - url.query_args
         - user
         - user.permissions
-      tags:
-        - 'config:field.storage.commerce_order.order_items'
+      tags: {  }
   order_page:
     display_plugin: page
     id: order_page
@@ -659,5 +657,4 @@ display:
         - url.query_args
         - user
         - user.permissions
-      tags:
-        - 'config:field.storage.commerce_order.order_items'
+      tags: {  }
