@@ -48,6 +48,7 @@ class CardpointeHppController extends ControllerBase {
     $payment = $this->entityTypeManager()->getStorage('commerce_payment')->loadByRemoteId($remote_payment_id);
 
     if (!$payment) {
+      // @todo Redirect to a dedicated 'Your order is being processed' page and log this instead.
       throw new AccessDeniedHttpException('Remote payment ' . $remote_payment_id . ' not found');
     }
 
