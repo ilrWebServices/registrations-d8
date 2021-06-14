@@ -13,14 +13,11 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
-{% set logo_src =  '/' ~ directory ~ '/images/ilr-cornell-lockup-75.svg' %}
 
 {% block content %}
   {% include '@union/_ilr-lockup.twig' with {
     logo_link: path('<front>'),
-    logo_alt: 'Logo for the ILR School, Celebrating 75 Years',
-    logo_src: logo_src,
-    logo_width: 400,
+    logo_alt: 'Logo for the ILR School at Cornell Universty',
   } only %}
 
   {# @todo Place site-specific branding here, like a logo or some text, and set the lockup link above to www.ilr.cornell.edu. #}
