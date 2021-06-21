@@ -99,6 +99,9 @@
       },
       "drupal/address": {
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
+      },
+      "drupal/salesforce": {
+        "Mapping UI not using SalesforceMappingLocalTask Derivative": "https://git.drupalcode.org/project/salesforce/-/commit/432994274e2e0ac458a5284ddfd48be61ac942c8.diff"
       }
     }
   }
