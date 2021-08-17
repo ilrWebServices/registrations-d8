@@ -77,7 +77,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         // Drupal user from the profile. This should probably be renamed
         // `customer_user_id`.
         'customer_profile_id' => $customer->id(),
-        "contact_sfid" => $customer_contact_sfid,
+        "contact_sfid" => NULL, // Temporarily stop sending the salesforce id per request from DE.
         "email" => $order->uid->entity->getEmail(),
         "first_name" => $billing_address['given_name'],
         "middle_name" => $billing_address['additional_name'],
@@ -198,7 +198,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           $address = reset($address_value);
           $participants[] = [
             'participant_id' => $participant->id(),
-            "contact_sfid" => $participant_contact_sfid,
+            "contact_sfid" => NULL, // Temporarily stop sending the salesforce id per request from DE.
             'email' => $participant->mail->value,
             "first_name" => $address['given_name'],
             "middle_name" => $address['additional_name'],
