@@ -70,8 +70,29 @@
   "scripts": {
     "cs": "phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
     "cbf": "phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
-    "sync-dev": "drush sql:drop && drush sql:sync @register.develop @self && ./post_sync_fix_triggers.php",
-    "sync-update": "drush cr && drush updatedb --no-post-updates && drush config:import && drush updatedb"
+    "sync-dev": [
+      "drush sql:drop -y",
+      "drush sql:sync @register.develop @self -y",
+      "./post_sync_fix_triggers.php"
+    ],
+    "sync-prod": [
+      "drush sql:drop -y",
+      "drush sql:sync @register.master @self -y",
+      "./post_sync_fix_triggers.php",
+      "drush sfrvk ilr_marketing_jwt_oauth"
+    ],
+    "sync-update": [
+      "drush cr",
+      "drush updatedb --no-post-updates -y",
+      "drush config:import -y",
+      "drush updatedb -y",
+      "@sf-dev"
+    ],
+    "sf-dev": [
+      "drush sfrvk ilr_marketing_jwt_oauth",
+      "drush sfrt ilr_marketing_jwt_oauth_dev",
+      "drush sflp"
+    ]
   },
   "extra": {
     "drupal-scaffold": {
@@ -101,7 +122,8 @@
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
       },
       "drupal/salesforce": {
-        "Mapping UI not using SalesforceMappingLocalTask Derivative": "https://git.drupalcode.org/project/salesforce/-/commit/432994274e2e0ac458a5284ddfd48be61ac942c8.diff"
+        "Mapping UI not using SalesforceMappingLocalTask Derivative": "https://git.drupalcode.org/project/salesforce/-/commit/432994274e2e0ac458a5284ddfd48be61ac942c8.diff",
+        "Issue #3102133: Refresh identity whenever token is refreshed": "https://git.drupalcode.org/project/salesforce/-/commit/bdf17e50c41c1390c12aeaf6d97719c36617f865.diff"
       }
     }
   }
