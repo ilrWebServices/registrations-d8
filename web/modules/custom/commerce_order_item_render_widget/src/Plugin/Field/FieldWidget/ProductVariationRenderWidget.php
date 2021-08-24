@@ -121,7 +121,7 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
   public function settingsSummary() {
     $summary = parent::settingsSummary();
     $summary[] = $this->t('Display mode: @mode', [
-      '@mode' => $this->displayModes[$this->getSetting('display_mode')]['label']
+      '@mode' => $this->displayModes[$this->getSetting('display_mode')]['label'],
     ]);
 
     return $summary;
@@ -160,6 +160,7 @@ class ProductVariationRenderWidget extends ProductVariationWidgetBase implements
       '#prefix' => '<div id="' . $wrapper_id . '">',
       '#suffix' => '</div>',
     ];
+    // phpcs:ignore
     $parents = array_merge($element['#field_parents'], [$items->getName(), $delta]);
     $user_input = (array) NestedArray::getValue($form_state->getUserInput(), $parents);
     if (!empty($user_input)) {

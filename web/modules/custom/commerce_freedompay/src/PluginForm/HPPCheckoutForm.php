@@ -5,8 +5,14 @@ namespace Drupal\commerce_freedompay\PluginForm;
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Offsite payment form for FreedomPay HPP.
+ */
 class HPPCheckoutForm extends PaymentOffsiteForm {
 
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
 
@@ -41,4 +47,5 @@ class HPPCheckoutForm extends PaymentOffsiteForm {
       PaymentOffsiteForm::REDIRECT_GET
     );
   }
+
 }

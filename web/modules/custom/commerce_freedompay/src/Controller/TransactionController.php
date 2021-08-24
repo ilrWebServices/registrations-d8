@@ -6,6 +6,9 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\commerce_payment\Entity\PaymentInterface;
 
+/**
+ * FreedomPay transaction controller.
+ */
 class TransactionController extends ControllerBase {
 
   /**
@@ -18,7 +21,7 @@ class TransactionController extends ControllerBase {
     $transaction = $payment_gateway->getPlugin()->getTransaction($transid);
 
     return [
-      '#markup' => '<pre>' . print_r($transaction, TRUE) . '</pre>'
+      '#markup' => '<pre>' . print_r($transaction, TRUE) . '</pre>',
     ];
   }
 

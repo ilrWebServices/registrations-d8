@@ -2,6 +2,7 @@
 
 namespace Drupal\commerce_freedompay\Plugin\Commerce\PaymentGateway;
 
+use GuzzleHttp\Exception\ClientException;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OffsitePaymentGatewayBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -99,9 +100,9 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
    */
   public function defaultConfiguration() {
     return [
-        'store_id' => '',
-        'terminal_id' => '',
-      ] + parent::defaultConfiguration();
+      'store_id' => '',
+      'terminal_id' => '',
+    ] + parent::defaultConfiguration();
   }
 
   /**
@@ -170,7 +171,7 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
     // Get the transaction from Freedompay.
     $hpp_transaction = $this->getTransaction($transid);
 
-    if (!empty($hpp_transaction['AuthResponse']['AuthorizationDecision'])){
+    if (!empty($hpp_transaction['AuthResponse']['AuthorizationDecision'])) {
       $payment->remote_state = $hpp_transaction['AuthResponse']['AuthorizationDecision'];
 
       if ($hpp_transaction['AuthResponse']['AuthorizationDecision'] === 'ACCEPT') {
@@ -183,7 +184,6 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
     if ($payment->getState()->getId() !== 'completed') {
       // The AuthResponse.AuthorizationDecision was one of REJECT, FAILURE, or
       // ERROR, so throw a payment failure exception.
-
       // @todo Maybe delete the payment at this point? If the user tries to pay
       // again, a new transaction (and thus payment) will be created, so this
       // one is basically an orphan.
@@ -246,8 +246,9 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
    * The returned transaction ID and payment form URL can be used to create and
    * complete a payment.
    *
-   * @return array|FALSE The reply object from Freedompay as an array or FALSE
-   *   if there was an error. The array will contain the following keys:
+   * @return array|false
+   *   The reply object from Freedompay as an array or FALSE if there was an
+   *   error. The array will contain the following keys:
    *   - CheckoutUrl: URL of HPP page
    *   - TransactionId: GUID string (36 chars) containing transaction ID
    *   - ResponseMessage: Error message string if an error occurs (Empty unless
@@ -264,15 +265,15 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
 
     try {
       $response = $this->httpClient->post($this->getApiUrl() . '/createTransaction', [
-          RequestOptions::JSON => $create_transaction_data
+        RequestOptions::JSON => $create_transaction_data,
       ]);
     }
-    catch (\GuzzleHttp\Exception\ClientException $e) {
+    catch (ClientException $e) {
       $this->logger->alert('Could not create a transaction.');
       return FALSE;
     }
 
-    $response_array = json_decode($response->getBody(), true);
+    $response_array = json_decode($response->getBody(), TRUE);
 
     if (!empty($response_array['ResponseMessage'])) {
       $this->logger->alert($response_array['ResponseMessage']);
@@ -288,9 +289,10 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
    * The returned transaction ID and payment form URL can be used to create and
    * complete a payment.
    *
-   * @return array|FALSE The CheckoutDetailsResponse object from Freedompay as
-   *   an array or FALSE if there was an error. The array will contain the
-   *   following keys (among others):
+   * @return array|false
+   *   The CheckoutDetailsResponse object from Freedompay as an array or FALSE
+   *   if there was an error. The array will contain the following keys (among
+   *   others):
    *   - OriginalRequest: Data from the original request
    *   - MaskedCardNumber: The masked card number on file associated with the
    *     token. Only populated if the transaction has successfully been
@@ -306,15 +308,15 @@ class FreedomPayHPP extends OffsitePaymentGatewayBase {
   public function getTransaction($transid) {
     try {
       $response = $this->httpClient->post($this->getApiUrl() . '/getTransaction', [
-          RequestOptions::JSON => $transid
+        RequestOptions::JSON => $transid,
       ]);
     }
-    catch (\GuzzleHttp\Exception\ClientException $e) {
+    catch (ClientException $e) {
       $this->logger->alert('Could not get a transaction.');
       return FALSE;
     }
 
-    $response_array = json_decode($response->getBody(), true);
+    $response_array = json_decode($response->getBody(), TRUE);
 
     if (!empty($response_array['ResponseMessage'])) {
       $this->logger->alert($response_array['ResponseMessage']);

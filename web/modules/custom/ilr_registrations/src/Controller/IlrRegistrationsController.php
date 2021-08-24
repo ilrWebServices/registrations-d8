@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class IlrRegistrationsController extends ControllerBase {
 
   /**
-   * Callback for /class/{salesforce_class_id}
+   * Callback for /class/{salesforce_class_id}.
    */
   public function sfIdRedirect($salesforce_id, Request $request) {
     $mapped_object_storage = $this->entityTypeManager()->getStorage('salesforce_mapped_object');

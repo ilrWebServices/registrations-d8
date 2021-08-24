@@ -3,8 +3,6 @@
 namespace Drupal\commerce_freedompay\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Url;
 use Drupal\Core\Routing\TrustedRedirectResponse;
@@ -23,8 +21,11 @@ use Drupal\Core\Routing\TrustedRedirectResponse;
 class HPPCallbackController extends ControllerBase {
 
   /**
-   * Callback for /commerce-freedompay/return, /commerce-freedompay/success, and
-   * /commerce-freedompay/fail .
+   * Callback for the freedompay paths.
+   *
+   * - /commerce-freedompay/return
+   * - /commerce-freedompay/success
+   * - /commerce-freedompay/fail
    */
   public function return(Request $request) {
     $response = $this->getReturnResponse($request, 'commerce_payment.checkout.return');
@@ -55,7 +56,7 @@ class HPPCallbackController extends ControllerBase {
       'step' => 'payment',
     ], [
       'query' => [
-        'transid' => $request->query->get('transid')
+        'transid' => $request->query->get('transid'),
       ],
       'absolute' => TRUE,
     ]);
@@ -69,4 +70,3 @@ class HPPCallbackController extends ControllerBase {
   }
 
 }
-

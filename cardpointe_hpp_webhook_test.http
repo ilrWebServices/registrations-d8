@@ -5,14 +5,19 @@
 # https://github.com/Huachao/vscode-restclient
 
 @BASE_URL = http://registrations.ilr.test
-@ORDER_ID = 6
-@TOTAL = 199
+#@BASE_URL = https://registration.ilr.cornell.edu
+@ORDER_ID = 637
+@TOTAL = 500
 @MERCHANT_ID = {{$dotenv CARDPOINTE_HPP_MERCHANT_ID}}
+@GATEWAY_TRANSACTION_ID = 158378730395
 @DATE = {{$datetime iso8601}}
 
 ###
 
+# CardPointe is unique in that it urlencodes the json as a form parameter. This
+# data was created and modified in boop.app, although care must be taken to NOT
+# encode the curly brackets around variable names.
 POST {{BASE_URL}}/payment/notify/cardpointe_hpp_registrations
 Content-Type: application/x-www-form-urlencoded
 
-json=%7B%0A%20%20%22paymentType%22%3A%20%22CC%22%2C%0A%20%20%22type%22%3A%20%22Pay%22%2C%0A%20%20%22ipAddress%22%3A%20%2298.252.9.143%22%2C%0A%20%20%22token%22%3A%20%229477709629051443%22%2C%0A%20%20%22referer%22%3A%20%22http%253A%252F%252Fregistrations.ilr.test%252Fcheckout%252F6%252Fpayment%22%2C%0A%20%20%22btnID%22%3A%20%22submitBtn%22%2C%0A%20%20%22baseTotal%22%3A%20%221495%22%2C%0A%20%20%22overallTotal%22%3A%20%221495.00%22%2C%0A%20%20%22mini%22%3A%20%221%22%2C%0A%20%20%22invoice%22%3A%20%22{{ORDER_ID}}%22%2C%0A%20%20%22total%22%3A%20%22{{TOTAL}}%22%2C%0A%20%20%22existingCard%22%3A%20%22N%22%2C%0A%20%20%22number%22%3A%20%22***1443%22%2C%0A%20%20%22expirationDateMonth%22%3A%20%2203%22%2C%0A%20%20%22expirationDateYear%22%3A%20%222022%22%2C%0A%20%20%22billFName%22%3A%20%22Barney%22%2C%0A%20%20%22billLName%22%3A%20%22Rubble%22%2C%0A%20%20%22cardType%22%3A%20%22Visa%22%2C%0A%20%20%22gatewayTransactionId%22%3A%20%22123456789012%22%2C%0A%20%20%22avsResponseCode%22%3A%20%22Z%22%2C%0A%20%20%22cvvResponseCode%22%3A%20%22M%22%2C%0A%20%20%22authCode%22%3A%20%22PPS009%22%2C%0A%20%20%22responseCode%22%3A%20%2200%22%2C%0A%20%20%22responseText%22%3A%20%22Approval%22%2C%0A%20%20%22responseProc%22%3A%20%22FNOR%22%2C%0A%20%20%22URL%22%3A%20%22ilrwebreg.securepayments.cardpointe.com%22%2C%0A%20%20%22merchantId%22%3A%20%22{{MERCHANT_ID}}%22%2C%0A%20%20%22date%22%3A%20%22{{DATE}}%22%0A%7D
+json=%7B%0A%20%20%22paymentType%22%3A%20%22CC%22%2C%0A%20%20%22type%22%3A%20%22Pay%22%2C%0A%20%20%22ipAddress%22%3A%20%2296.10.5.34%22%2C%0A%20%20%22token%22%3A%20%224111111111111111%22%2C%0A%20%20%22referer%22%3A%20%22https%253A%252F%252Fregistration.ilr.cornell.edu%252F%22%2C%0A%20%20%22btnID%22%3A%20%22submitBtn%22%2C%0A%20%20%22baseTotal%22%3A%20%220%22%2C%0A%20%20%22overallTotal%22%3A%20%220%22%2C%0A%20%20%22mini%22%3A%20%221%22%2C%0A%20%20%22invoice%22%3A%20%22{{ORDER_ID}}%22%2C%0A%20%20%22total%22%3A%20%22{{TOTAL}}%22%2C%0A%20%20%22existingCard%22%3A%20%22N%22%2C%0A%20%20%22number%22%3A%20%22***0000%22%2C%0A%20%20%22expirationDateMonth%22%3A%20%2207%22%2C%0A%20%20%22expirationDateYear%22%3A%20%222024%22%2C%0A%20%20%22billFName%22%3A%20%22Manual%22%2C%0A%20%20%22billLName%22%3A%20%22API%22%2C%0A%20%20%22cardType%22%3A%20%22Visa%22%2C%0A%20%20%22gatewayTransactionId%22%3A%20%22{{GATEWAY_TRANSACTION_ID}}%22%2C%0A%20%20%22avsResponseCode%22%3A%20%22N%22%2C%0A%20%20%22cvvResponseCode%22%3A%20%22M%22%2C%0A%20%20%22authCode%22%3A%200%2C%0A%20%20%22responseCode%22%3A%20%22000%22%2C%0A%20%20%22responseText%22%3A%20%22Approval%22%2C%0A%20%20%22responseProc%22%3A%20%22RPCT%22%2C%0A%20%20%22URL%22%3A%20%22ilrwebreg.securepayments.cardpointe.com%22%2C%0A%20%20%22merchantId%22%3A%20%22{{MERCHANT_ID}}%22%2C%0A%20%20%22date%22%3A%20%22{{DATE}}%22%0A%7D

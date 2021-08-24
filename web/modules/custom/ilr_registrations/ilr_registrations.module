@@ -5,6 +5,8 @@
  * Contains ilr_registrations.module.
  */
 
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\commerce_price\Price;
 use Drupal\commerce_store\Entity\Store;
@@ -15,6 +17,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
+use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
 
 /**
  * Implements hook_entity_type_alter().
@@ -182,7 +185,7 @@ function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_
  *
  * Store class dates and salesforce id data with class order items.
  */
-function erf_commerce_commerce_order_item_presave(EntityInterface $order_item) {
+function ilr_registrations_commerce_order_item_presave(EntityInterface $order_item) {
   if ($order_item->bundle() !== 'class') {
     return;
   }
@@ -511,20 +514,33 @@ function ilr_registrations_preprocess_status_messages(&$variables) {
 }
 
 /**
- * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ * Implements hook_preprocess_field().
+ *
+ * Make the product variation title a link to the variation. We do this here
+ * because Drupal 9.1.x and up can't use the link to entity option in the title
+ * stringformatter because product variations don't have canonical link
+ * templates.
+ *
+ * @see
+ * Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter::viewElements()
  */
-function ilr_registrations_block_view_commerce_cart_alter(array &$build, Drupal\Core\Block\BlockPluginInterface $block) {
-  $build['#pre_render'][] = 'ilr_registrations_change_cart_build_content';
+function ilr_registrations_preprocess_field__commerce_product_variation__title(&$variables) {
+  $variables['items'][0]['content'] = [
+    '#type' => 'link',
+    '#title' => [
+      '#type' => 'inline_template',
+      '#template' => '{{ value|nl2br }}',
+      '#context' => ['value' => $variables['element']['#items']->value],
+    ],
+    '#url' => $variables['element']['#object']->toUrl(),
+  ];
 }
 
 /**
- * Pre-render callback for commerce cart block.
- *
- * @see ilr_registrations_block_view_commerce_cart_alter()
+ * Implements hook_block_view_BASE_BLOCK_ID_alter().
  */
-function ilr_registrations_change_cart_build_content(array $build) {
-  $build['content']['#icon']['#uri'] = "modules/contrib/commerce/icons/bebebe/cart.png";
-  return $build;
+function ilr_registrations_block_view_commerce_cart_alter(array &$build, BlockPluginInterface $block) {
+  $build['#pre_render'][] = [IlrRegistrationsBlockAlter::class, 'preRender'];
 }
 
 /**
@@ -533,7 +549,7 @@ function ilr_registrations_change_cart_build_content(array $build) {
  * This adds the `user` cache context to the main menu, ensuring the correct
  * user name is added to the main menu when the user is logged in.
  */
-function  ilr_registrations_block_build_system_menu_block_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+function ilr_registrations_block_build_system_menu_block_alter(array &$build, BlockPluginInterface $block) {
   if ($block->getDerivativeId() === 'main') {
     $build['#cache']['contexts'][] = 'user';
   }
@@ -543,7 +559,7 @@ function  ilr_registrations_block_build_system_menu_block_alter(array &$build, \
  * Implements hook_menu_links_discovered_alter().
  */
 function ilr_registrations_menu_links_discovered_alter(&$links) {
-  $links['user.page']['title'] = new \Drupal\Core\StringTranslation\TranslatableMarkup('Account Settings');
+  $links['user.page']['title'] = new TranslatableMarkup('Account Settings');
 }
 
 /**
