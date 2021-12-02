@@ -1,0 +1,12 @@
+uuid: bbfc929f-4eda-4b4f-968c-8e87af5dc64a
+langcode: en
+status: true
+dependencies: {  }
+id: groat_alpern_awards_ticket
+label: 'Groat Alpern Awards Ticket'
+description: ''
+variationType: groat_alpern_awards_ticket_level
+multipleVariations: true
+injectVariationFields: false
+traits: {  }
+locked: false
