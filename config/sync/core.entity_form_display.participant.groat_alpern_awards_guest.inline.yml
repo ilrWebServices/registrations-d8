@@ -47,7 +47,7 @@ content:
     weight: 0
     settings:
       size: 100
-      placeholder: 'email address'
+      placeholder: ''
     region: content
     third_party_settings: {  }
 hidden:
