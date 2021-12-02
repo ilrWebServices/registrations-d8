@@ -12,7 +12,7 @@ configuration:
   merchant_id: set_via_env
   pay_link: 'https://ilrwebreg.securepayments.cardpointe.com/pay'
   mini: 1
-  display_label: 'CardPointe HPP (Alumni)'
+  display_label: 'Credit Card'
   mode: live
   payment_method_types:
     - credit_card
