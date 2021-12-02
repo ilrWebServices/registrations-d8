@@ -1,0 +1,19 @@
+uuid: 7024f62a-e889-4ece-9de0-2db15aeb4472
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.storage.participant.field_other_school
+id: participant.groat_alpern_awards_guest.field_other_school
+field_name: field_other_school
+entity_type: participant
+bundle: groat_alpern_awards_guest
+label: School
+description: '(If not ILR.)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

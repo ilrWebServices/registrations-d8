@@ -1,0 +1,59 @@
+uuid: 89b8d18d-ccba-4d88-ad7b-a416fae48115
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - erf.registration_type.groat_alpern_awards
+    - field.field.registration.groat_alpern_awards.participants
+    - field.field.registration.groat_alpern_awards.product_variation
+  module:
+    - erf_commerce
+    - inline_entity_form
+id: registration.groat_alpern_awards.default
+targetEntityType: registration
+bundle: groat_alpern_awards
+mode: default
+content:
+  locked:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
+    third_party_settings: {  }
+  participants:
+    type: inline_entity_form_complex
+    weight: 10
+    settings:
+      form_mode: inline
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      match_operator: CONTAINS
+      override_labels: false
+      collapsible: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+      revision: false
+    third_party_settings: {  }
+    region: content
+  product_variation:
+    type: rendered_variations
+    weight: 0
+    settings:
+      variation_view_mode: cart
+    third_party_settings: {  }
+    region: content
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

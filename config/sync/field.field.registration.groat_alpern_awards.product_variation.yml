@@ -1,0 +1,21 @@
+uuid: a9d322da-737c-42e3-9cd7-d1a45afdb4e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.groat_alpern_awards
+    - field.storage.registration.product_variation
+id: registration.groat_alpern_awards.product_variation
+field_name: product_variation
+entity_type: registration
+bundle: groat_alpern_awards
+label: 'Ticket Level'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: erf_commerce_variation
+  handler_settings: {  }
+field_type: entity_reference

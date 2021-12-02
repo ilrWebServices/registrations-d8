@@ -1,0 +1,62 @@
+uuid: ae7fb41b-8786-444e-9b3e-22d47368a4c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.field.participant.groat_alpern_awards_guest.field_address
+    - field.field.participant.groat_alpern_awards_guest.field_class_year
+    - field.field.participant.groat_alpern_awards_guest.field_degree
+    - field.field.participant.groat_alpern_awards_guest.field_other_school
+  module:
+    - address
+id: participant.groat_alpern_awards_guest.default
+targetEntityType: participant
+bundle: groat_alpern_awards_guest
+mode: default
+content:
+  field_address:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_class_year:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_degree:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_other_school:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  mail:
+    type: email_default
+    weight: -10
+    settings:
+      size: 100
+      placeholder: 'email address'
+    region: content
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: -9
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

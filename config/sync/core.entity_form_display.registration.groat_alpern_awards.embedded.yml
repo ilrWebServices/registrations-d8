@@ -1,0 +1,45 @@
+uuid: 7d30ce93-ad44-4e31-964e-2ff2bea146f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - core.entity_form_mode.registration.embedded
+    - erf.registration_type.groat_alpern_awards
+    - field.field.registration.groat_alpern_awards.participants
+    - field.field.registration.groat_alpern_awards.product_variation
+  module:
+    - erf_commerce
+    - inline_entity_form
+id: registration.groat_alpern_awards.embedded
+targetEntityType: registration
+bundle: groat_alpern_awards
+mode: embedded
+content:
+  participants:
+    type: inline_entity_form_complex
+    weight: 1
+    settings:
+      form_mode: inline
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      match_operator: CONTAINS
+      override_labels: false
+      collapsible: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+      revision: false
+    third_party_settings: {  }
+    region: content
+  product_variation:
+    type: rendered_variations
+    weight: 0
+    region: content
+    settings:
+      variation_view_mode: selection
+    third_party_settings: {  }
+hidden:
+  locked: true
+  user_id: true

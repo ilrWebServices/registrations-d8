@@ -1,0 +1,29 @@
+uuid: 5b983444-9fdc-4000-ae69-b5fc317ae64b
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - erf.registration_type.groat_alpern_awards
+    - field.storage.registration.participants
+id: registration.groat_alpern_awards.participants
+field_name: participants
+entity_type: registration
+bundle: groat_alpern_awards
+label: Attendees
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:participant'
+  handler_settings:
+    target_bundles:
+      groat_alpern_awards_guest: groat_alpern_awards_guest
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

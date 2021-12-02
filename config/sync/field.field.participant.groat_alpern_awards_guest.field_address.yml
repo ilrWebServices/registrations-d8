@@ -1,0 +1,42 @@
+uuid: 903679a1-f443-4554-9f89-7cdb39f9adb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.storage.participant.field_address
+  module:
+    - address
+id: participant.groat_alpern_awards_guest.field_address
+field_name: field_address
+entity_type: participant
+bundle: groat_alpern_awards_guest
+label: Info
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    additionalName:
+      override: hidden
+    addressLine1:
+      override: hidden
+    addressLine2:
+      override: hidden
+    postalCode:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: hidden
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

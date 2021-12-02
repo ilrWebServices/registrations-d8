@@ -1,0 +1,64 @@
+uuid: 34f579b6-673c-4fb6-8657-67e60af756d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.field.participant.groat_alpern_awards_guest.field_address
+    - field.field.participant.groat_alpern_awards_guest.field_class_year
+    - field.field.participant.groat_alpern_awards_guest.field_degree
+    - field.field.participant.groat_alpern_awards_guest.field_other_school
+  module:
+    - address
+    - options
+    - user
+id: participant.groat_alpern_awards_guest.default
+targetEntityType: participant
+bundle: groat_alpern_awards_guest
+mode: default
+content:
+  field_address:
+    weight: 1
+    label: above
+    settings:
+      field_settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_class_year:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_degree:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_other_school:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  mail:
+    label: hidden
+    type: email_mailto
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
