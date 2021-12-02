@@ -11,7 +11,7 @@ third_party_settings:
     cart_block_view: commerce_cart_block
     cart_expiration: {  }
   commerce_checkout:
-    checkout_flow: registration
+    checkout_flow: groat_alpern_awards
 label: 'Groat Alpern Awards'
 id: groat_alpern_awards
 workflow: order_default
