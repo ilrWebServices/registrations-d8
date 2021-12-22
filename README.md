@@ -152,6 +152,12 @@ Union Components are integrated into the theme using the [Union Organizer][] mod
 
 If you set `LIVERELOAD=1` in your `.env` file and reload your browser while `npm start` is running, changes to stylesheets will reload automatically in your browser.
 
+### Key Concepts
+
+##
+
+ERF Commerce hides the product variation reference basefield on the product and adds a product_variation reference field to the _registration_. This effectively moves the variation selection and cart functionality to registration crud hooks in erf_commerce.
+
 
 [Composer template for Drupal projects]: https://github.com/drupal-composer/drupal-project
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
