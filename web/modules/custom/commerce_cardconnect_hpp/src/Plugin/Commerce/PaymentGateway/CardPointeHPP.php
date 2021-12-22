@@ -175,7 +175,7 @@ class CardPointeHPP extends OffsitePaymentGatewayBase {
     $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
     $payment = $payment_storage->create([
       'amount' => new Price($data['total'], 'USD'),
-      'payment_gateway' => $this->entityId,
+      'payment_gateway' => $this->parentEntity->id(),
       'order_id' => $order->id(),
       'remote_id' => $data['gatewayTransactionId'],
       'authorized' => $this->time->getRequestTime(),
