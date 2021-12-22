@@ -14,6 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Link;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
@@ -295,6 +296,19 @@ function ilr_registrations_form_registration_form_alter(&$form, FormStateInterfa
     $last_registration = end($registrations);
     $most_recent_participant = $last_registration->participants->first()->entity;
     $form['participants']['widget']['form']['inline_entity_form']['#default_value'] = $most_recent_participant->createDuplicate();
+  }
+
+  /** @var \Drupal\Core\Menu\MenuLinkManager $menu_link_manager */
+  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+
+  $email_url = Url::fromUri($menu_link_manager->getDefinition('ilr_registrations.email')['url']);
+  $phone_url = Url::fromUri($menu_link_manager->getDefinition('ilr_registrations.telephone')['url']);
+
+  if (isset($form['erf_commerce_locked_cart_notice'])) {
+    $form['erf_commerce_locked_cart_notice']['#context']['message'] = t('It looks like you started the payment process, which locked your cart. Did your payment succeed? If so, please contact customer support by @email or by calling @phone. Otherwise, reset your cart to try again.', [
+      '@email' => Link::fromTextAndUrl(t('email'), $email_url)->toString(),
+      '@phone' => Link::fromTextAndUrl($menu_link_manager->getDefinition('ilr_registrations.telephone')['title'], $phone_url)->toString(),
+    ]);
   }
 }
 

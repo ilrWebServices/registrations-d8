@@ -7,5 +7,6 @@ dependencies:
 third_party_settings:
   erf_commerce:
     cart_redirect: true
+    participants_as_quantity: true
 id: simple_class
 label: 'Simple Class'

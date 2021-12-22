@@ -3459,17 +3459,17 @@
         },
         {
             "name": "drupal/erf",
-            "version": "2.0.0-alpha2",
+            "version": "2.0.0-alpha4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "2.0.0-alpha2"
+                "reference": "2.0.0-alpha4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha2.zip",
-                "reference": "2.0.0-alpha2",
-                "shasum": "f37597d459c0404183fafd62970e62779b5fca6f"
+                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha4.zip",
+                "reference": "2.0.0-alpha4",
+                "shasum": "30cdf8ef09c9165936b8c3761067f65a71226ee8"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3483,8 +3483,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha2",
-                    "datestamp": "1621959013",
+                    "version": "2.0.0-alpha4",
+                    "datestamp": "1640124817",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
