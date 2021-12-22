@@ -2,6 +2,7 @@ uuid: 141e6d4a-6ca5-40f9-801c-894e29a5c1ae
 langcode: en
 status: true
 dependencies:
+  config: {  }
   module:
     - commerce_order
     - commerce_price
@@ -577,7 +578,7 @@ display:
           tokenize: false
           content:
             value: 'You have not placed any orders with us yet.'
-            format: plain_text
+            format: basic_html
           plugin_id: text
       relationships: {  }
       arguments:
@@ -629,7 +630,8 @@ display:
         - url.query_args
         - user
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.commerce_order.order_items'
   order_page:
     display_plugin: page
     id: order_page
@@ -657,4 +659,5 @@ display:
         - url.query_args
         - user
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.commerce_order.order_items'
