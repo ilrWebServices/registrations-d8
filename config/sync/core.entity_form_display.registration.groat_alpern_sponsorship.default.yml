@@ -1,18 +1,18 @@
-uuid: 89b8d18d-ccba-4d88-ad7b-a416fae48115
+uuid: f5e341ee-0767-4135-92cd-4273932850b6
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
-    - erf.registration_type.groat_alpern_awards
-    - field.field.registration.groat_alpern_awards.participants
-    - field.field.registration.groat_alpern_awards.product_variation
+    - erf.registration_type.groat_alpern_sponsorship
+    - field.field.registration.groat_alpern_sponsorship.participants
+    - field.field.registration.groat_alpern_sponsorship.product_variation
   module:
     - erf_commerce
     - inline_entity_form
-id: registration.groat_alpern_awards.default
+id: registration.groat_alpern_sponsorship.default
 targetEntityType: registration
-bundle: groat_alpern_awards
+bundle: groat_alpern_sponsorship
 mode: default
 content:
   locked:

@@ -1,4 +1,4 @@
-uuid: c1750136-88b7-43b5-95d3-f113e9ebaede
+uuid: 17261191-b6c3-4853-a282-c35ad01a2a32
 langcode: en
 status: true
 dependencies:
@@ -8,5 +8,5 @@ third_party_settings:
   erf_commerce:
     cart_redirect: true
     participants_as_quantity: false
-id: groat_alpern_awards
-label: 'Groat Alpern Awards'
+id: groat_alpern_sponsorship
+label: 'Groat Alpern Sponsorship'

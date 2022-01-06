@@ -1,14 +1,14 @@
-uuid: a9d322da-737c-42e3-9cd7-d1a45afdb4e2
+uuid: 3055baf9-c04d-4c02-8984-344baf9ff951
 langcode: en
 status: true
 dependencies:
   config:
-    - erf.registration_type.groat_alpern_awards
+    - erf.registration_type.groat_alpern_sponsorship
     - field.storage.registration.product_variation
-id: registration.groat_alpern_awards.product_variation
+id: registration.groat_alpern_sponsorship.product_variation
 field_name: product_variation
 entity_type: registration
-bundle: groat_alpern_awards
+bundle: groat_alpern_sponsorship
 label: 'Ticket Level'
 description: ''
 required: true

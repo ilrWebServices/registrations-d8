@@ -1,24 +1,24 @@
-uuid: 7d30ce93-ad44-4e31-964e-2ff2bea146f9
+uuid: 51bc30ed-e03f-4caa-b43b-49cb1c0b9cba
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.participant.inline
     - core.entity_form_mode.registration.embedded
-    - erf.registration_type.groat_alpern_awards
-    - field.field.registration.groat_alpern_awards.participants
-    - field.field.registration.groat_alpern_awards.product_variation
+    - erf.registration_type.groat_alpern_sponsorship
+    - field.field.registration.groat_alpern_sponsorship.participants
+    - field.field.registration.groat_alpern_sponsorship.product_variation
   module:
     - erf_commerce
     - inline_entity_form
-id: registration.groat_alpern_awards.embedded
+id: registration.groat_alpern_sponsorship.embedded
 targetEntityType: registration
-bundle: groat_alpern_awards
+bundle: groat_alpern_sponsorship
 mode: embedded
 content:
   participants:
     type: inline_entity_form_complex
-    weight: 1
+    weight: 10
     settings:
       form_mode: inline
       label_singular: ''
@@ -36,10 +36,10 @@ content:
   product_variation:
     type: rendered_variations
     weight: 0
-    region: content
     settings:
       variation_view_mode: selection
     third_party_settings: {  }
+    region: content
 hidden:
   locked: true
   user_id: true
