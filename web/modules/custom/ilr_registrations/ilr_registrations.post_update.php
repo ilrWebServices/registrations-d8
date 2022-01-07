@@ -121,6 +121,8 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
   ]);
   $sponsor_fifteen_variation->save();
 
+  $payable_check_term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', 'bdc560f0-3d85-42fe-9280-cad431cb032f');
+
   $product_storage->create([
     'uid' => 1,
     'type' => 'groat_alpern_awards_ticket',
@@ -133,5 +135,6 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
       $sponsor_fifteen_variation,
     ],
     'field_registration_type' => 'groat_alpern_sponsorship',
+    'field_tags' => [['target_id' => $payable_check_term->id()]],
   ])->save();
 }
