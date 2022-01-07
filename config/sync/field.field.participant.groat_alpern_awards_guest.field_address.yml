@@ -24,6 +24,8 @@ settings:
   field_overrides:
     additionalName:
       override: hidden
+    organization:
+      override: required
     addressLine1:
       override: hidden
     addressLine2:
