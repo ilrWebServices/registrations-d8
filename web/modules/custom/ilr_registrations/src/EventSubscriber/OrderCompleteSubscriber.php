@@ -70,15 +70,18 @@ class OrderCompleteSubscriber implements EventSubscriberInterface {
    */
   public function onOrderPlace(WorkflowTransitionEvent $event) {
     $order = $event->getEntity();
-    $serialized_order = $this->serializedOrderManager->getObjectForOrder($order);
 
-    // Queue the serialized order for submission to the WebReg webhook on
-    // Salesforce.
-    $queue_item_id = $this->queue->createItem($serialized_order);
+    if ($order->bundle() === 'registration') {
+      $serialized_order = $this->serializedOrderManager->getObjectForOrder($order);
 
-    $this->logger->notice('Outgoing Salesforce WebReg webhook request queued for order @order_id', [
-      '@order_id' => $order->id(),
-    ]);
+      // Queue the serialized order for submission to the WebReg webhook on
+      // Salesforce.
+      $queue_item_id = $this->queue->createItem($serialized_order);
+
+      $this->logger->notice('Outgoing Salesforce WebReg webhook request queued for order @order_id', [
+        '@order_id' => $order->id(),
+      ]);
+    }
   }
 
 }
