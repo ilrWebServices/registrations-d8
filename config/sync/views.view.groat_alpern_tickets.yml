@@ -25,7 +25,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'view groat_alpern_awards_ticket commerce_product'
+          perm: 'view commerce_product'
       cache:
         type: tag
         options: {  }
