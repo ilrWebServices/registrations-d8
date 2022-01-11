@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.participant.inline
     - core.entity_form_mode.registration.embedded
     - erf.registration_type.groat_alpern_sponsorship
+    - field.field.registration.groat_alpern_sponsorship.field_full_name
     - field.field.registration.groat_alpern_sponsorship.participants
     - field.field.registration.groat_alpern_sponsorship.product_variation
   module:
@@ -16,9 +17,17 @@ targetEntityType: registration
 bundle: groat_alpern_sponsorship
 mode: embedded
 content:
+  field_full_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   participants:
     type: inline_entity_form_complex
-    weight: 10
+    weight: 2
     settings:
       form_mode: inline
       label_singular: ''

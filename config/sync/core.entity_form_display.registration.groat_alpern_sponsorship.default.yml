@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_form_mode.participant.inline
     - erf.registration_type.groat_alpern_sponsorship
+    - field.field.registration.groat_alpern_sponsorship.field_full_name
     - field.field.registration.groat_alpern_sponsorship.participants
     - field.field.registration.groat_alpern_sponsorship.product_variation
   module:
@@ -15,16 +16,24 @@ targetEntityType: registration
 bundle: groat_alpern_sponsorship
 mode: default
 content:
+  field_full_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   locked:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 4
     region: content
     third_party_settings: {  }
   participants:
     type: inline_entity_form_complex
-    weight: 10
+    weight: 3
     settings:
       form_mode: inline
       label_singular: ''
@@ -41,14 +50,14 @@ content:
     region: content
   product_variation:
     type: rendered_variations
-    weight: 0
+    weight: 1
     settings:
       variation_view_mode: cart
     third_party_settings: {  }
     region: content
   user_id:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
