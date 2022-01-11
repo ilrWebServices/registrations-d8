@@ -49,7 +49,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
   // Ten year grad single ticket.
   $single_ten_variation = $product_variation_storage->create([
     'type' => 'groat_alpern_awards_ticket_level',
-    'title' => 'Groat Alpern Single Ticket (ten years)',
+    'title' => 'Groat Alpern Awards Ticket (\'12 - \'19 Graduate)',
     'sku' => 'groat-single-ten',
     'price' => new \Drupal\commerce_price\Price('100', 'USD'),
     'field_ticket_limit' => 10,
@@ -59,7 +59,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
   $product_storage->create([
     'uid' => 1,
     'type' => 'groat_alpern_awards_ticket',
-    'title' => 'Groat Alpern Single Ticket (ten years)',
+    'title' => 'Groat Alpern Awards Ticket (\'12 - \'19 Graduate)',
     'stores' => [$store],
     'variations' => [$single_ten_variation],
     'field_registration_type' => 'groat_alpern_single',
@@ -68,7 +68,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
   // Recent grad single ticket.
   $single_recent_variation = $product_variation_storage->create([
     'type' => 'groat_alpern_awards_ticket_level',
-    'title' => 'Groat Alpern Single Ticket (recent)',
+    'title' => 'Groat Alpern Single Ticket (\'20 - \'21 Graduate)',
     'sku' => 'groat-single-recent',
     'price' => new \Drupal\commerce_price\Price('50', 'USD'),
     'field_ticket_limit' => 10,
@@ -78,7 +78,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
   $product_storage->create([
     'uid' => 1,
     'type' => 'groat_alpern_awards_ticket',
-    'title' => 'Groat Alpern Single Ticket (recent)',
+    'title' => 'Groat Alpern Single Ticket (\'20 - \'21 Graduate)',
     'stores' => [$store],
     'variations' => [$single_recent_variation],
     'field_registration_type' => 'groat_alpern_single',
