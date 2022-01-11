@@ -33,7 +33,7 @@ content:
     third_party_settings: {  }
   participants:
     type: inline_entity_form_complex
-    weight: 3
+    weight: 2
     settings:
       form_mode: inline
       label_singular: ''
@@ -57,12 +57,12 @@ content:
     region: content
   user_id:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
 hidden: {  }
