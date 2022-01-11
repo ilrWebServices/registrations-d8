@@ -15,7 +15,7 @@ third_party_settings:
 label: 'Groat Alpern Awards'
 id: groat_alpern_awards
 workflow: order_default
-numberPattern: null
+numberPattern: groat_alpern_tickets
 refresh_mode: customer
 refresh_frequency: 300
 sendReceipt: true

@@ -1,0 +1,13 @@
+uuid: 29577362-65f8-4eaf-a7f3-5a48a1c69c65
+langcode: en
+status: true
+dependencies: {  }
+id: groat_alpern_tickets
+label: 'Groat Alpern Tickets'
+targetEntityType: commerce_order
+plugin: yearly
+configuration:
+  pattern: 'GROAT-[pattern:year]-[pattern:number]'
+  initial_number: 1
+  padding: 0
+  per_store_sequence: true
