@@ -1,0 +1,23 @@
+uuid: 7742ebf4-8a1f-478d-bf7d-d19ed64b1f37
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.groat_alpern_awards
+    - core.entity_form_mode.commerce_order.checkout
+id: commerce_order.groat_alpern_awards.checkout
+targetEntityType: commerce_order
+bundle: groat_alpern_awards
+mode: checkout
+content: {  }
+hidden:
+  adjustments: true
+  billing_profile: true
+  cart: true
+  ip_address: true
+  mail: true
+  order_items: true
+  order_number: true
+  state: true
+  store_id: true
+  uid: true

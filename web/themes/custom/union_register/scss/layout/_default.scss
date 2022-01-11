@@ -41,7 +41,7 @@ aside.layout-sidebar-first {
     grid-column: 2;
   }
 
-  > div:first-of-type {
+  .region-sidebar-first > div {
     padding: var(--cu-vr0) var(--cu-ps1) var(--cu-vr1);
     border: 1px solid $gray-light;
     background: #fbfbfb;

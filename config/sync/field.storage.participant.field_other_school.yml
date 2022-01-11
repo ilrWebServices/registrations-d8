@@ -1,0 +1,21 @@
+uuid: e52773b8-fe8e-4d79-a50f-ab6d0f44c19c
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_other_school
+field_name: field_other_school
+entity_type: participant
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

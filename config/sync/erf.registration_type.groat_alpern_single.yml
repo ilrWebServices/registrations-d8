@@ -1,0 +1,12 @@
+uuid: a5de9f03-4775-42e5-b68c-e1c5fb178b47
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf_commerce
+third_party_settings:
+  erf_commerce:
+    cart_redirect: true
+    participants_as_quantity: true
+id: groat_alpern_single
+label: 'Groat Alpern Single'

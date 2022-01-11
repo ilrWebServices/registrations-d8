@@ -1,0 +1,19 @@
+uuid: f774ef8b-871a-496a-b9c8-868708a57652
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.groat_alpern_sponsorship
+    - field.storage.registration.field_full_name
+id: registration.groat_alpern_sponsorship.field_full_name
+field_name: field_full_name
+entity_type: registration
+bundle: groat_alpern_sponsorship
+label: 'Sponsor name'
+description: 'Enter your name, or the name of your company.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

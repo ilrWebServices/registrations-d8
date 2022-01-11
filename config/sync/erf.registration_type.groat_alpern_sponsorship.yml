@@ -1,0 +1,12 @@
+uuid: 17261191-b6c3-4853-a282-c35ad01a2a32
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf_commerce
+third_party_settings:
+  erf_commerce:
+    cart_redirect: true
+    participants_as_quantity: false
+id: groat_alpern_sponsorship
+label: 'Groat Alpern Sponsorship'

@@ -1,0 +1,21 @@
+uuid: 854f39dd-bfc2-4328-9846-08eafecd8df2
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.storage.participant.field_degree
+  module:
+    - options
+id: participant.groat_alpern_awards_guest.field_degree
+field_name: field_degree
+entity_type: participant
+bundle: groat_alpern_awards_guest
+label: Degree
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

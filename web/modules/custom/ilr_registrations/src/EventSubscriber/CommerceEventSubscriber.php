@@ -132,6 +132,10 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
    *   The add to cart event.
    */
   public function displayReturnToCatalogMessage(CartEntityAddEvent $event) {
+    if ($event->getCart()->type->target_id !== 'registration') {
+      return;
+    }
+
     $marketing_url = (getenv('MARKETING_SITE_HOSTNAME'))
       ? getenv('MARKETING_SITE_HOSTNAME')
       : 'https://www.ilr.cornell.edu';

@@ -1,0 +1,32 @@
+uuid: c4d6cf7e-26e8-466d-b558-19623bf7e6c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.groat_alpern_tickets
+  module:
+    - commerce_product
+    - views
+  theme:
+    - union_register
+id: union_register_groat_products
+theme: union_register
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:groat_alpern_tickets-block_1'
+settings:
+  id: 'views_block:groat_alpern_tickets-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  product_type:
+    id: product_type
+    bundles:
+      groat_alpern_awards_ticket: groat_alpern_awards_ticket
+    negate: false
+    context_mapping:
+      product: '@commerce_product.product_route_context:commerce_product'

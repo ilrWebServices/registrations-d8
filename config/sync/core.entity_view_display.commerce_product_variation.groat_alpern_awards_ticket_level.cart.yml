@@ -1,0 +1,27 @@
+uuid: 146371c5-14df-4133-8493-45eb60035738
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.groat_alpern_awards_ticket_level
+    - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.groat_alpern_awards_ticket_level.field_ticket_limit
+id: commerce_product_variation.groat_alpern_awards_ticket_level.cart
+targetEntityType: commerce_product_variation
+bundle: groat_alpern_awards_ticket_level
+mode: cart
+content:
+  title:
+    type: string
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_ticket_limit: true
+  list_price: true
+  price: true
+  product_id: true
+  sku: true

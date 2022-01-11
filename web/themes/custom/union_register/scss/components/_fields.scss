@@ -3,3 +3,26 @@
     font-weight: 400;
   }
 }
+
+.checkout-pane-order-summary .views-field-total-price__number {
+  text-align: right;
+  margin-bottom: var(--cu-vr1);
+}
+
+.views-field-participants .field--name-field-address p {
+  margin: 0;
+}
+
+.order-total-line {
+  padding: 0;
+}
+
+.groat-product-list {
+  list-style-position: inside;
+  text-indent: -1.25em;
+  padding: 0 0 0 1.25em;
+
+  div {
+    display: inline;
+  }
+}

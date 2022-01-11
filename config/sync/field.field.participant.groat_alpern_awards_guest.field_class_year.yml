@@ -1,0 +1,21 @@
+uuid: 8811cb55-5fab-4097-8060-704a46ed70fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.groat_alpern_awards_guest
+    - field.storage.participant.field_class_year
+  module:
+    - options
+id: participant.groat_alpern_awards_guest.field_class_year
+field_name: field_class_year
+entity_type: participant
+bundle: groat_alpern_awards_guest
+label: 'Class year'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

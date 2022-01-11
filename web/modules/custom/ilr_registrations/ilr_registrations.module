@@ -114,7 +114,7 @@ function ilr_registrations_commerce_product_presave(EntityInterface $product) {
   }
 
   // Check that the product has the `field_tags` field.
-  if ($product->isNew() && $product->hasField('field_tags')) {
+  if ($product->isNew() && $product->hasField('field_tags') && $product->field_tags->isEmpty()) {
     $product_tags_vid = 'product_tags';
 
     // Get the 'Discount Eligible' term.

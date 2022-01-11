@@ -1,0 +1,33 @@
+uuid: adcd141f-0fc1-439e-9d65-974c696f8c65
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+    - options
+id: participant.field_degree
+field_name: field_degree
+entity_type: participant
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: BS
+      label: BS
+    -
+      value: MPS
+      label: MPS
+    -
+      value: MS
+      label: MS
+    -
+      value: MILR
+      label: MILR
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

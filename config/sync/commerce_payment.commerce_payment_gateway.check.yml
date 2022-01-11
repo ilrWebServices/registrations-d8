@@ -1,0 +1,24 @@
+uuid: 58b234bb-8157-4c4e-9475-e7257240da82
+langcode: en
+status: true
+dependencies: {  }
+id: check
+label: Check
+weight: null
+plugin: manual
+configuration:
+  instructions:
+    value: ''
+    format: plain_text
+  display_label: Check
+  mode: n/a
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+conditions:
+  -
+    plugin: order_product_category
+    configuration:
+      terms:
+        - bdc560f0-3d85-42fe-9280-cad431cb032f
+conditionOperator: AND
