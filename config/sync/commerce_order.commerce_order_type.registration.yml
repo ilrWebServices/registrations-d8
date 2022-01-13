@@ -9,6 +9,9 @@ third_party_settings:
   commerce_cart:
     cart_form_view: registration_cart_form
     cart_block_view: commerce_cart_block
+    cart_expiration:
+      unit: day
+      number: 60
   commerce_checkout:
     checkout_flow: registration
 label: Registration
