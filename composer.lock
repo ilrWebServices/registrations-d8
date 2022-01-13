@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d5711dc54a01e2964c7ee1147e62b63",
+    "content-hash": "e12f94fe3c20d07847bebcf4a699647b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3459,17 +3459,17 @@
         },
         {
             "name": "drupal/erf",
-            "version": "2.0.0-alpha4",
+            "version": "2.0.0-alpha5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "2.0.0-alpha4"
+                "reference": "2.0.0-alpha5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha4.zip",
-                "reference": "2.0.0-alpha4",
-                "shasum": "30cdf8ef09c9165936b8c3761067f65a71226ee8"
+                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha5.zip",
+                "reference": "2.0.0-alpha5",
+                "shasum": "ac99f9aeaf2e9b220545c9a7d896b3982763f432"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3483,8 +3483,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha4",
-                    "datestamp": "1640124817",
+                    "version": "2.0.0-alpha5",
+                    "datestamp": "1642088626",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -13408,5 +13408,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
