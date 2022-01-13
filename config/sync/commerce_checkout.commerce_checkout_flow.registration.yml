@@ -12,6 +12,7 @@ label: Registration
 plugin: multistep_default
 configuration:
   display_checkout_progress: true
+  display_checkout_progress_breadcrumb_links: false
   panes:
     email_registration_login:
       allow_guest_checkout: false
@@ -29,6 +30,11 @@ configuration:
       capture: true
       step: payment
       weight: 3
+    coupon_redemption:
+      allow_multiple: false
+      step: order_information
+      weight: 5
+      capture: true
     completion_register:
       step: complete
       weight: 4
@@ -38,6 +44,9 @@ configuration:
       step: order_information
       weight: 4
     completion_message:
+      message:
+        value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
+        format: plain_text
       step: complete
       weight: 5
     order_summary:
@@ -47,11 +56,6 @@ configuration:
     review:
       step: _disabled
       weight: 7
-    coupon_redemption:
-      allow_multiple: false
-      step: _sidebar
-      weight: 10
-      capture: true
     email_registration_completion_registration:
       step: _disabled
       weight: 10

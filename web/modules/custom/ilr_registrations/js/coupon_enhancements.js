@@ -5,7 +5,7 @@
 
 Drupal.behaviors.ilr_registrations_govt_nonprofit_helper = {
   attach: function (context, settings) {
-    var $codeInput = $('input[data-drupal-selector="edit-sidebar-coupon-redemption-form-code"]', context);
+    var $codeInput = $('input[data-drupal-selector="edit-coupon-redemption-form-code"]', context);
 
     if ($codeInput.length) {
       // Add a simple checkbox sibling element.
@@ -14,7 +14,7 @@ Drupal.behaviors.ilr_registrations_govt_nonprofit_helper = {
 
       $helperCheckbox.on('click', function(ev) {
         $codeInput.val('GOV\'T/NONPROFIT').trigger('focus');
-        $('input[data-drupal-selector="edit-sidebar-coupon-redemption-form-apply"]').trigger('mousedown');
+        $('input[data-drupal-selector="edit-coupon-redemption-form-apply"]').trigger('mousedown');
       });
     }
   }
