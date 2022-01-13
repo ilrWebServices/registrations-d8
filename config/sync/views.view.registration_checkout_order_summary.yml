@@ -191,7 +191,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Participants
+          label: ''
           exclude: false
           alter:
             alter_text: false
