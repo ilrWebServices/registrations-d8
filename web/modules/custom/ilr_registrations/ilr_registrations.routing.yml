@@ -10,7 +10,7 @@ ilr_registrations.sf_id_redirect:
 ilr_registrations.single_product_registration:
   path: '/single-product-registration/{commerce_product_variation}'
   defaults:
-    _controller: '\Drupal\ilr_registrations\Controller\IlrRegistrationsController::singleProductRegistration'
+    _form: '\Drupal\ilr_registrations\Form\SingleProductRegistrationForm'
     _title: 'Single Product Registration'
   requirements:
     _permission: 'view commerce_product'
