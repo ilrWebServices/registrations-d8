@@ -7,6 +7,14 @@ ilr_registrations.sf_id_redirect:
     _permission: 'view commerce_product'
     salesforce_id: '[a-zA-Z0-9]{15}|[a-zA-Z0-9]{18}'
 
+ilr_registrations.single_product_registration:
+  path: '/single-product-registration/{commerce_product_variation}'
+  defaults:
+    _controller: '\Drupal\ilr_registrations\Controller\IlrRegistrationsController::singleProductRegistration'
+    _title: 'Single Product Registration'
+  requirements:
+    _permission: 'view commerce_product'
+
 ilr_registrations.serialized_order_controller_load:
   path: '/admin/commerce/orders/{commerce_order}/serialized'
   defaults:

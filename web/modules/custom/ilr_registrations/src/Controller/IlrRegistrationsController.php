@@ -54,4 +54,43 @@ class IlrRegistrationsController extends ControllerBase {
     return $response;
   }
 
+  /**
+   * Callback for /single-product-registration/{commerce_product_variation}.
+   */
+  public function singleProductRegistration(ProductVariationInterface $commerce_product_variation, Request $request) {
+    if ($commerce_product_variation->bundle() !== 'class') {
+      throw new NotFoundHttpException();
+    }
+
+    /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
+    $product = $commerce_product_variation->product_id->entity;
+
+    if (!$product->hasField('registration_type')) {
+      throw new NotFoundHttpException();
+    }
+
+    /** @var \Drupal\field\Entity\FieldConfig $field_definition */
+    $field_definition = $product->getFieldDefinition('registration_type');
+
+    if ($field_definition->getType() !== 'entity_reference') {
+      throw new NotFoundHttpException();
+    }
+
+    $participant = $this->entityTypeManager()->getStorage('participant')->create([
+      'type' => 'basic',
+      'mail' => 'auto-single-registration@cornell.edu',
+    ]);
+
+    $registration = $this->entityTypeManager()->getStorage('registration')->create([
+      'type' => $product->registration_type->target_id,
+      'entity_type' => $product->getEntityTypeId(),
+      'entity_id' => $product->id(),
+      'participants' => [$participant],
+      'product_variation' => [$commerce_product_variation],
+    ]);
+
+    $registration->save();
+    dump($registration);
+  }
+
 }
