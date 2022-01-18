@@ -13,7 +13,7 @@ entity_type: participant
 bundle: groat_alpern_awards_guest
 label: 'Class year'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
