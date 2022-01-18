@@ -12,7 +12,7 @@ entity_type: registration
 bundle: groat_alpern_single
 label: Attendees
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
