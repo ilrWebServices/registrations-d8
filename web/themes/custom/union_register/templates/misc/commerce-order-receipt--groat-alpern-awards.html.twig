@@ -4,7 +4,7 @@
 
 <p>We have received your payment and we are processing your order.</p>
 
-<p>Details of your order follow. If you have any questions, please email bw485@cornell.edu and reference order id {{ order_entity.getOrderNumber }}.</p>
+<p>Details of your order follow. If you have any questions, please email groat-alpern@cornell.edu and reference order id {{ order_entity.getOrderNumber }}.</p>
 
 {% for order_item_id, order_item in order_items %}
   <p style="margin-bottom: 0; font-weight: bold">{{ order_item.commerce.label }}: {{ order_item.commerce.getData('class_start_date') }}</p>
