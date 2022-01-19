@@ -70,6 +70,16 @@
   padding: var(--cu-vr0) var(--cu-vr0) 0;
 }
 
+.cu-input-list__item--radio,
+.cu-input-list__item--checkbox {
+  align-items: flex-start;
+  margin-bottom: var(--cu-vr0);
+
+  .cu-input {
+    margin-top: var(--cu-ps-2);
+  }
+}
+
 // Hide the radio button when there is only one variation available.
 .field--widget-rendered-variations .cu-input-list__item {
   margin-left: 0;
