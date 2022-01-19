@@ -1,0 +1,23 @@
+uuid: e41d1c04-de4e-48fd-a371-b8246728ffe0
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.groat_alpern_awards_ticket_level
+    - field.storage.commerce_product_variation.field_recent_grad_price
+  module:
+    - commerce_price
+id: commerce_product_variation.groat_alpern_awards_ticket_level.field_recent_grad_price
+field_name: field_recent_grad_price
+entity_type: commerce_product_variation
+bundle: groat_alpern_awards_ticket_level
+label: 'Recent grad price (within 10 years)'
+description: 'For grads within the last ten years.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_currencies:
+    - USD
+field_type: commerce_price
