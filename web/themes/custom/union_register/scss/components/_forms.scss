@@ -69,3 +69,18 @@
   margin-bottom: var(--cu-vr1);
   padding: var(--cu-vr0) var(--cu-vr0) 0;
 }
+
+// Hide the radio button when there is only one variation available.
+.field--widget-rendered-variations .cu-input-list__item {
+  margin-left: 0;
+
+  &:only-child {
+    .cu-label {
+      margin-left: 0;
+    }
+
+    .cu-input--radio {
+      display: none;
+    }
+  }
+}
