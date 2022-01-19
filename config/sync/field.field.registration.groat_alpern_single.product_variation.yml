@@ -9,7 +9,7 @@ id: registration.groat_alpern_single.product_variation
 field_name: product_variation
 entity_type: registration
 bundle: groat_alpern_single
-label: 'Ticket Level'
+label: 'Ticket Info'
 description: ''
 required: true
 translatable: true
