@@ -6,7 +6,7 @@ dependencies:
     - erf_commerce
 third_party_settings:
   erf_commerce:
-    cart_redirect: false
+    cart_redirect: true
     participants_as_quantity: true
 id: groat_alpern_single
 label: 'Groat Alpern Single'
