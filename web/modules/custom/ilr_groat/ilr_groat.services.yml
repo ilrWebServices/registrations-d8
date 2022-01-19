@@ -1,0 +1,5 @@
+services:
+  groat_discount:
+    class: '\Drupal\ilr_groat\GroatDiscountOrderProcessor'
+    tags:
+      - { name: commerce_order.order_processor, priority: 300 }

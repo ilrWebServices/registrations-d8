@@ -1,0 +1,6 @@
+alumni_discount:
+  label: 'Alumni discount'
+  singular_label: 'discount'
+  plural_label: 'discounts'
+  has_ui: TRUE
+  weight: 10

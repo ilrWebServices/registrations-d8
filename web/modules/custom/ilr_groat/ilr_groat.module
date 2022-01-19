@@ -5,6 +5,7 @@
  * Contains ilr_groat.module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -35,4 +36,50 @@ function ilr_groat_form_registration_groat_alpern_single_embedded_form_alter(&$f
   }
 
   $form['actions']['submit']['#value'] = $button_text;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Note that this may be called by ilr_groat_participant_update(), so don't add
+ * other code here without extreme caution.
+ */
+function ilr_groat_registration_update(EntityInterface $registration) {
+  if ($registration->commerce_order_item_id->isEmpty()) {
+    return;
+  }
+
+  $order_item = $registration->commerce_order_item_id->entity;
+  $product_variation = $order_item->getPurchasedEntity();
+
+  if ($product_variation->getSku() !== 'groat-single-full') {
+    return;
+  }
+
+  // Trigger a cart/order refresh.
+  $order_item->order_id->entity->save();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Refresh the cart if a groat participant (attendee) changes the grad year.
+ */
+function ilr_groat_participant_update(EntityInterface $participant) {
+  if ($participant->field_class_year->value !== $participant->original->field_class_year->value) {
+    $registration_storage = \Drupal::service('entity_type.manager')->getStorage('registration');
+
+    $registrations = $registration_storage->loadByProperties([
+      'participants' => $participant->id(),
+    ]);
+
+    if (empty($registrations)) {
+      return;
+    }
+
+    $registration = reset($registrations);
+
+    // Call the registration update hook to refresh the cart.
+    ilr_groat_registration_update($registration);
+  }
 }
