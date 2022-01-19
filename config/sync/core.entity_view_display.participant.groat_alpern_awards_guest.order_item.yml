@@ -11,13 +11,14 @@ dependencies:
     - field.field.participant.groat_alpern_awards_guest.field_other_school
   module:
     - address
+    - ilr_groat
 id: participant.groat_alpern_awards_guest.order_item
 targetEntityType: participant
 bundle: groat_alpern_awards_guest
 mode: order_item
 content:
   field_address:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       field_settings:
@@ -36,8 +37,14 @@ content:
     third_party_settings: {  }
     type: address_default
     region: content
+  field_class_year:
+    type: integer_year
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  field_class_year: true
   field_degree: true
   field_other_school: true
   mail: true
