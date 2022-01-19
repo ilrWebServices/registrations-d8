@@ -588,6 +588,7 @@ $settings['locale_custom_strings_en'][''] = [
   'The provided coupon code is invalid.' => 'The provided discount code is invalid.',
   'Please provide a coupon code.' => 'Please provide a discount code.',
   'Home' => 'Account Home',
+  'Create @type_singular' => 'Save @type_singular',
 ];
 
 /**
