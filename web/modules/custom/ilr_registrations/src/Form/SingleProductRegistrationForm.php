@@ -64,10 +64,27 @@ class SingleProductRegistrationForm extends FormBase {
 
     $form_state->set('commerce_product_variation', $commerce_product_variation);
 
+    $form['registering_for'] = [
+      '#type' => 'radios',
+      '#options' => [
+        'single' => 'Registering myself',
+        'multiple' => 'Registering multiple people'
+      ],
+      '#default_value' => 'single',
+      '#required' => TRUE,
+    ];
+
     $form['email'] = [
       '#type' => 'email',
       '#title' => 'Email address',
-      '#required' => TRUE,
+      '#states' => [
+        'visible' => [
+          ':input[name="registering_for"]' => ['value' => 'single'],
+        ],
+        'required' => [
+          [':input[name="registering_for"]' => ['value' => 'single']],
+        ],
+      ],
     ];
 
     $form['submit'] = [
@@ -82,31 +99,46 @@ class SingleProductRegistrationForm extends FormBase {
   /**
    * {@inheritdoc}
    */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+    if ($values['registering_for'] === 'single' && empty($values['email'])) {
+      $form_state->setErrorByName('email', $this->t('Please include your email address'));
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $route_provider = \Drupal::service('router.route_provider');
     $commerce_product_variation = $form_state->get('commerce_product_variation');
     $product = $commerce_product_variation->product_id->entity;
 
-    $participant = $this->entityTypeManager->getStorage('participant')->create([
-      'type' => 'basic',
-      'mail' => $form_state->getValue('email'),
-    ]);
+    if ($form_state->getValue('registering_for') === 'multiple') {
+      $form_state->setRedirect('entity.commerce_product.canonical', [
+        'commerce_product' => $product->id(),
+      ],
+      ['query' => ['v' => $commerce_product_variation->id()]]);
+    }
+    else {
+      $participant = $this->entityTypeManager->getStorage('participant')->create([
+        'type' => 'basic',
+        'mail' => $form_state->getValue('email'),
+      ]);
 
-    $registration = $this->entityTypeManager->getStorage('registration')->create([
-      'type' => $product->registration_type->target_id,
-      'entity_type' => $product->getEntityTypeId(),
-      'entity_id' => $product->id(),
-      'participants' => [$participant],
-      'product_variation' => [$commerce_product_variation],
-    ]);
+      $registration = $this->entityTypeManager->getStorage('registration')->create([
+        'type' => $product->registration_type->target_id,
+        'entity_type' => $product->getEntityTypeId(),
+        'entity_id' => $product->id(),
+        'participants' => [$participant],
+        'product_variation' => [$commerce_product_variation],
+      ]);
 
-    // @todo Check for existing registration in cart and prevent dupes.
-    $registration->save();
+      // @todo Check for existing registration in cart and prevent dupes.
+      $registration->save();
 
-    $route_provider = \Drupal::service('router.route_provider');
-    $cart_route = $route_provider->getRouteByName('commerce_cart.page');
-    $form_state->setRedirect($cart_route);
-
-    // dump($registration); die();
+      $form_state->setRedirect('commerce_cart.page');
+    }
   }
 
 }
