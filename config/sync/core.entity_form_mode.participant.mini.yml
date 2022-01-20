@@ -1,0 +1,10 @@
+uuid: 67cd1bca-b178-401c-9d38-51236706256c
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.mini
+label: Mini
+targetEntityType: participant
+cache: true

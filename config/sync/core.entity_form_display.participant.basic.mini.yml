@@ -1,0 +1,46 @@
+uuid: 3ec6de86-965a-4a37-bfbe-18e52a78001f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.mini
+    - erf.participant_type.basic
+    - field.field.participant.basic.field_accessible_accommodation
+    - field.field.participant.basic.field_address
+    - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_industry
+    - field.field.participant.basic.field_is_cornell_employee
+    - field.field.participant.basic.field_job_title
+    - field.field.participant.basic.field_phone
+id: participant.basic.mini
+targetEntityType: participant
+bundle: basic
+mode: mini
+content:
+  creator_uid:
+    type: entity_reference_autocomplete
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  mail:
+    type: email_default
+    weight: 0
+    settings:
+      size: 100
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden:
+  field_accessible_accommodation: true
+  field_address: true
+  field_dietary_restrictions: true
+  field_industry: true
+  field_is_cornell_employee: true
+  field_job_title: true
+  field_phone: true
+  uid: true
