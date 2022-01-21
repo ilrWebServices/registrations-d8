@@ -7,6 +7,7 @@ dependencies:
     - commerce_payment
     - commerce_promotion
     - email_registration
+    - ilr_registrations
 id: registration
 label: Registration
 plugin: multistep_default
@@ -29,38 +30,41 @@ configuration:
     payment_process:
       capture: true
       step: payment
-      weight: 3
-    coupon_redemption:
-      allow_multiple: false
-      step: order_information
-      weight: 5
-      capture: true
+      weight: 6
     completion_register:
       step: complete
-      weight: 4
+      weight: 7
     'order_fields:checkout':
       wrapper_element: container
       display_label: 'Order fields'
       step: order_information
-      weight: 4
+      weight: 3
     completion_message:
       message:
         value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
         format: plain_text
       step: complete
-      weight: 5
+      weight: 8
+    coupon_redemption:
+      allow_multiple: false
+      step: order_information
+      weight: 4
+      capture: true
     order_summary:
       view: registration_checkout_order_summary
       step: _sidebar
-      weight: 6
+      weight: 9
     review:
       step: _disabled
-      weight: 7
+      weight: 10
     email_registration_completion_registration:
       step: _disabled
-      weight: 10
+      weight: 11
+    participant_info:
+      step: review
+      weight: 5
     login:
       allow_guest_checkout: true
       allow_registration: false
       step: _disabled
-      weight: 11
+      weight: 12
