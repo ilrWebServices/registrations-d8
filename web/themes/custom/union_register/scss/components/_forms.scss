@@ -94,3 +94,13 @@
     }
   }
 }
+
+.participant--hide-prefilled {
+  .field--type-address,
+  .field--type-telephone,
+  .field--type-email,
+  .field--name-field-job-title,
+  .field--name-field-industry {
+    display: none;
+  }
+}

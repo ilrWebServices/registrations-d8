@@ -5,6 +5,7 @@
  * Contains ilr_registrations.module.
  */
 
+use Drupal\address\Plugin\Field\FieldWidget\AddressDefaultWidget;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Entity\EntityInterface;
@@ -328,12 +329,14 @@ function ilr_registrations_form_views_form_registration_cart_form_default_alter(
  * Set default values based on the first participant.
  */
 function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state) {
-  // Set the payment info fieldset label.
-  $form['payment_information']['#title'] = t('Account info');
-
   // Get the order for this checkout multistep form.
   $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
   $order = $form_state->getFormObject()->getOrder();
+
+  // Set the payment info fieldset label.
+  $form['payment_information']['#title'] = t('Account info for @email', [
+    '@email' => $order->getCustomer()->mail->value,
+  ]);
 
   // If we're on the billing pane, make some alterations below.
   if (isset($form['payment_information']['billing_information'])) {
@@ -373,28 +376,29 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
         }
       }
 
-      if ($customer_participant) {
-        $fields = $customer_participant->getFields();
-        $keys = array_keys($billing_pane);
+      // @todo Restrict auto-fill to non `register` type orders.
+      // if ($customer_participant) {
+      //   $fields = $customer_participant->getFields();
+      //   $keys = array_keys($billing_pane);
 
-        // Set the values if there are matching field names.
-        foreach ($keys as $key) {
-          if ($key === 'address' && isset($fields['field_' . $key])) {
-            $billing_pane[$key]['widget'][0]['address']['#default_value'] = $customer_participant->get('field_' . $key)->getValue()[0];
-          }
-          elseif (isset($fields[$key])) {
-            $field_def = $fields[$key]->getFieldDefinition();
+      //   // Set the values if there are matching field names.
+      //   foreach ($keys as $key) {
+      //     if ($key === 'address' && isset($fields['field_' . $key])) {
+      //       $billing_pane[$key]['widget'][0]['address']['#default_value'] = $customer_participant->get('field_' . $key)->getValue()[0];
+      //     }
+      //     elseif (isset($fields[$key])) {
+      //       $field_def = $fields[$key]->getFieldDefinition();
 
-            if (in_array($field_def->getType(), ['string', 'telephone'])) {
-              $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->get($key)->getString();
-            }
-            elseif (in_array($field_def->getType(), ['list_string'])) {
-              // Note that options lists use an array as a default value.
-              $billing_pane[$key]['widget']['#default_value'] = [$customer_participant->get($key)->getString()];
-            }
-          }
-        }
-      }
+      //       if (in_array($field_def->getType(), ['string', 'telephone'])) {
+      //         $billing_pane[$key]['widget'][0]['value']['#default_value'] = $customer_participant->get($key)->getString();
+      //       }
+      //       elseif (in_array($field_def->getType(), ['list_string'])) {
+      //         // Note that options lists use an array as a default value.
+      //         $billing_pane[$key]['widget']['#default_value'] = [$customer_participant->get($key)->getString()];
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -619,4 +623,22 @@ function ilr_registrations_industry_options(FieldStorageConfig $definition, Cont
   ];
 
   return $options;
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (isset($context['widget']) && $context['widget'] instanceof AddressDefaultWidget) {
+    $element['#type'] = 'container';
+  }
+  // Add a css class to widget form elements for all fields of type mytype.
+  // $field_definition = $context['items']
+  //   ->getFieldDefinition();
+  // if ($field_definition
+  //   ->getType() == 'mytype') {
+
+  //   // Be sure not to overwrite existing attributes.
+  //   $element['#attributes']['class'][] = 'myclass';
+  // }
 }
