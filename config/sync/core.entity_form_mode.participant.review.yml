@@ -1,0 +1,10 @@
+uuid: b6df3ca4-c72e-4f5e-8a5a-3773b727be08
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.review
+label: Review
+targetEntityType: participant
+cache: true

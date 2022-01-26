@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.participant.inline
+    - core.entity_form_mode.participant.mini
     - core.entity_form_mode.registration.embedded
     - erf.registration_type.simple_class
     - field.field.registration.simple_class.participants
@@ -20,15 +20,16 @@ content:
     type: inline_entity_form_complex
     weight: 2
     settings:
-      form_mode: inline
+      form_mode: mini
       label_singular: ''
       label_plural: ''
+      allow_new: true
+      match_operator: CONTAINS
+      revision: false
       override_labels: false
       collapsible: false
       collapsed: false
-      allow_new: true
       allow_existing: false
-      match_operator: CONTAINS
       allow_duplicate: false
     third_party_settings: {  }
     region: content

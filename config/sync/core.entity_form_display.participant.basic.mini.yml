@@ -1,9 +1,9 @@
-uuid: 125dd940-7436-46cf-94f7-15b7ab1d1a8c
+uuid: 3ec6de86-965a-4a37-bfbe-18e52a78001f
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.participant.order_item
+    - core.entity_form_mode.participant.mini
     - erf.participant_type.basic
     - field.field.participant.basic.field_accessible_accommodation
     - field.field.participant.basic.field_address
@@ -12,43 +12,32 @@ dependencies:
     - field.field.participant.basic.field_is_cornell_employee
     - field.field.participant.basic.field_job_title
     - field.field.participant.basic.field_phone
-  module:
-    - address
-id: participant.basic.order_item
+id: participant.basic.mini
 targetEntityType: participant
 bundle: basic
-mode: order_item
+mode: mini
 content:
-  field_address:
-    type: address_default
-    weight: 0
-    region: content
-    label: hidden
+  creator_uid:
+    type: entity_reference_autocomplete
+    weight: 4
     settings:
-      field_settings:
-        givenName: givenName
-        familyName: familyName
-        additionalName: 0
-        organization: 0
-        addressLine1: 0
-        addressLine2: 0
-        postalCode: 0
-        sortingCode: 0
-        dependentLocality: 0
-        locality: 0
-        administrativeArea: 0
-        country: 0
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
     third_party_settings: {  }
   mail:
-    type: basic_string
-    weight: 1
+    type: email_default
+    weight: 0
+    settings:
+      size: 100
+      placeholder: ''
     region: content
-    label: hidden
-    settings: {  }
     third_party_settings: {  }
 hidden:
-  creator_uid: true
   field_accessible_accommodation: true
+  field_address: true
   field_dietary_restrictions: true
   field_industry: true
   field_is_cornell_employee: true

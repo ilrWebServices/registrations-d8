@@ -1,0 +1,78 @@
+uuid: 9df31331-2821-4b97-8963-37c63ea4560f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.review
+    - erf.participant_type.basic
+    - field.field.participant.basic.field_accessible_accommodation
+    - field.field.participant.basic.field_address
+    - field.field.participant.basic.field_dietary_restrictions
+    - field.field.participant.basic.field_industry
+    - field.field.participant.basic.field_is_cornell_employee
+    - field.field.participant.basic.field_job_title
+    - field.field.participant.basic.field_phone
+  module:
+    - address
+    - telephone
+id: participant.basic.review
+targetEntityType: participant
+bundle: basic
+mode: review
+content:
+  creator_uid:
+    type: entity_reference_autocomplete
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  field_accessible_accommodation:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_address:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_industry:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_is_cornell_employee:
+    weight: 5
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_job_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+hidden:
+  field_dietary_restrictions: true
+  mail: true
+  uid: true

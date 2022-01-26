@@ -94,3 +94,21 @@
     }
   }
 }
+
+.participant--hide-prefilled {
+  .field--type-address,
+  .field--type-telephone,
+  .field--type-email,
+  .field--name-field-job-title,
+  .field--name-field-industry {
+    display: none;
+  }
+}
+
+.checkout-pane-participant-info .cu-heading {
+  margin-top: var(--cu-vr1);
+}
+
+.checkout-pane-participant-info .cu-fieldset {
+  margin-bottom: var(--cu-vr2);
+}
