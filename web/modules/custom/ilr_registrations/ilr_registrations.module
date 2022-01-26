@@ -333,6 +333,10 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
   $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
   $order = $form_state->getFormObject()->getOrder();
 
+  if (isset($form['#step_id']) && $form['#step_id'] === 'review' && $order->bundle() === 'registration') {
+    $form['#title'] = t('Participant details');
+  }
+
   // Set the payment info fieldset label.
   $form['payment_information']['#title'] = t('Account info for @email', [
     '@email' => $order->getCustomer()->mail->value,
@@ -376,7 +380,7 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
         }
       }
 
-      // @todo Restrict auto-fill to non `register` type orders.
+      // @todo Restrict auto-fill to non `register` type orders or remove this and participant pre-filling and enable reusable billing profiles.
       // if ($customer_participant) {
       //   $fields = $customer_participant->getFields();
       //   $keys = array_keys($billing_pane);

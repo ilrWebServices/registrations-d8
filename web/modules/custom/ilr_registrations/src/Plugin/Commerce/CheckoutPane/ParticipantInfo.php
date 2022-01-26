@@ -40,7 +40,7 @@ class ParticipantInfo extends CheckoutPaneBase {
         ];
 
         $pane_form[$form_group] = [
-          '#markup' => '<h3 class="cu-heading">' . $order_item->label() . '</h3>',
+          '#markup' => '<h3 class="cu-heading">For <em>' . $order_item->label() . '</em></h3>',
         ];
 
         foreach ($registration->participants->referencedEntities() as $delta => $participant) {
@@ -68,8 +68,8 @@ class ParticipantInfo extends CheckoutPaneBase {
           // $pane_form[$form_group]['participant_' . $participant->id()] = [
           $pane_form[$form_group][$delta] = [
             '#type' => 'fieldset',
-            '#title' => 'Participant info for ' . $participant->label(),
-            '#description' => 'For ' . $order_item->label(),
+            '#title' => $participant->label(),
+            // '#description' => $order_item->label(),
             '#open' => !$is_billing,
           ];
 
@@ -78,7 +78,7 @@ class ParticipantInfo extends CheckoutPaneBase {
             '#entity_type' => 'participant',
             '#bundle' => $participant->bundle(),
             '#default_value' => $participant,
-            '#form_mode' => 'inline',
+            '#form_mode' => 'review',
             '#save_entity' => TRUE,
             '#op' => 'edit',
             '#ief_id' => 'participant_subform-' . $participant->id(),
