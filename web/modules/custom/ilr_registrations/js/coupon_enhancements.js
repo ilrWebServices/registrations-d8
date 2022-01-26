@@ -1,10 +1,15 @@
 /**
  * Enhancements for the coupon/discount code checkout form.
  */
-(function ($) {
+(function ($, document) {
 
 Drupal.behaviors.ilr_registrations_govt_nonprofit_helper = {
+
   attach: function (context, settings) {
+    if (context != document) {
+      return;
+    }
+
     var $codeInput = $('input[data-drupal-selector="edit-coupon-redemption-form-code"]', context);
 
     if ($codeInput.length) {
@@ -20,4 +25,4 @@ Drupal.behaviors.ilr_registrations_govt_nonprofit_helper = {
   }
 }
 
-}(jQuery));
+}(jQuery, document));
