@@ -9,7 +9,7 @@ id: participant.basic.field_is_cornell_employee
 field_name: field_is_cornell_employee
 entity_type: participant
 bundle: basic
-label: 'Are you a Cornell employee?'
+label: 'Is a Cornell employee'
 description: ''
 required: false
 translatable: false

@@ -9,7 +9,7 @@ id: participant.basic.field_accessible_accommodation
 field_name: field_accessible_accommodation
 entity_type: participant
 bundle: basic
-label: 'Do you need an accessibility accommodation to ensure full participation?'
+label: 'Please describe any accessibility accommodations needed to ensure full participation'
 description: ''
 required: false
 translatable: false
