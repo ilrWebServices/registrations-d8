@@ -21,8 +21,6 @@ mode: order_item
 content:
   field_address:
     type: address_default
-    weight: 0
-    region: content
     label: hidden
     settings:
       field_settings:
@@ -39,6 +37,8 @@ content:
         administrativeArea: 0
         country: 0
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   creator_uid: true
   field_accessible_accommodation: true

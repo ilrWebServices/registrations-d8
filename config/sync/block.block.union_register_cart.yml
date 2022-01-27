@@ -16,12 +16,12 @@ plugin: commerce_cart
 settings:
   id: commerce_cart
   label: Cart
-  provider: commerce_cart
   label_display: visible
+  provider: commerce_cart
   dropdown: false
 visibility:
   request_path:
     id: request_path
-    pages: "/checkout/*\r\n/cart"
     negate: true
     context_mapping: {  }
+    pages: "/checkout/*\r\n/cart"

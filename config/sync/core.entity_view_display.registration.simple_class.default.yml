@@ -14,12 +14,12 @@ bundle: simple_class
 mode: default
 content:
   user_id:
-    label: hidden
     type: author
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   participants: true
   product_variation: true

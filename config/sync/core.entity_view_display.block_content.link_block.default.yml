@@ -15,22 +15,22 @@ bundle: link_block
 mode: default
 content:
   body:
-    weight: 1
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   field_links:
-    weight: 2
+    type: link
     label: hidden
     settings:
       trim_length: 120
-      rel: nofollow
       url_only: false
       url_plain: false
+      rel: nofollow
       target: '0'
     third_party_settings: {  }
-    type: link
+    weight: 2
     region: content
 hidden: {  }

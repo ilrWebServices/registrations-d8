@@ -1,5 +1,93 @@
-uuid: 8c975f53-9158-4d23-bc99-1c9564141b6f
 langcode: en
+id: class_variation
+label: 'Class Variation'
+weight: 1
+type: salesforce_mapping
+key: ''
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: false
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: 'Synchronized_with_Web__c = TRUE'
+sync_triggers:
+  pull_create: true
+  pull_update: true
+  pull_delete: false
+salesforce_object_type: EXECED_Event_Class__c
+drupal_entity_type: commerce_product_variation
+drupal_bundle: class
+field_mappings:
+  -
+    drupal_field_type: RelatedIDs
+    drupal_field_value: product_id
+    direction: sf_drupal
+    salesforce_field: Course__c
+    id: 0
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 1
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_class_price
+    direction: sf_drupal
+    salesforce_field: Event_Class_Fee__c
+    id: 2
+  -
+    drupal_field_type: properties
+    drupal_field_value: sku
+    direction: sf_drupal
+    salesforce_field: Id
+    id: 3
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_class_start
+    direction: sf_drupal
+    salesforce_field: Start__c
+    id: 4
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_class_end
+    direction: sf_drupal
+    salesforce_field: End__c
+    id: 5
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_class_location.locality
+    direction: sf_drupal
+    salesforce_field: Event_Location_City__c
+    id: 6
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_class_location.administrative_area
+    direction: sf_drupal
+    salesforce_field: Event_Location_State__c
+    id: 7
+  -
+    drupal_field_type: properties
+    drupal_field_value: status
+    direction: sf_drupal
+    salesforce_field: Class_Show_on_Web__c
+    id: 8
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_cancelled
+    direction: sf_drupal
+    salesforce_field: Is_Cancelled__c
+    id: 9
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_full
+    direction: sf_drupal
+    salesforce_field: Is_Full__c
+    id: 10
 status: true
 dependencies:
   config:
@@ -14,92 +102,4 @@ dependencies:
   module:
     - address
     - salesforce_pull
-id: class_variation
-label: 'Class Variation'
-weight: 1
-type: salesforce_mapping
-key: ''
-async: false
-push_standalone: false
-pull_standalone: false
-pull_trigger_date: LastModifiedDate
-pull_where_clause: 'Synchronized_with_Web__c = TRUE'
-sync_triggers:
-  pull_create: true
-  pull_update: true
-  pull_delete: false
-salesforce_object_type: EXECED_Event_Class__c
-drupal_entity_type: commerce_product_variation
-drupal_bundle: class
-field_mappings:
-  -
-    drupal_field_type: RelatedIDs
-    drupal_field_value: product_id
-    salesforce_field: Course__c
-    direction: sf_drupal
-    id: 0
-  -
-    drupal_field_type: properties
-    drupal_field_value: title
-    salesforce_field: Name
-    direction: sf_drupal
-    id: 1
-  -
-    drupal_field_type: properties
-    drupal_field_value: field_class_price
-    salesforce_field: Event_Class_Fee__c
-    direction: sf_drupal
-    id: 2
-  -
-    drupal_field_type: properties
-    drupal_field_value: sku
-    salesforce_field: Id
-    direction: sf_drupal
-    id: 3
-  -
-    drupal_field_type: properties
-    drupal_field_value: field_class_start
-    salesforce_field: Start__c
-    direction: sf_drupal
-    id: 4
-  -
-    drupal_field_type: properties
-    drupal_field_value: field_class_end
-    salesforce_field: End__c
-    direction: sf_drupal
-    id: 5
-  -
-    drupal_field_type: properties_extended
-    drupal_field_value: field_class_location.locality
-    salesforce_field: Event_Location_City__c
-    direction: sf_drupal
-    id: 6
-  -
-    drupal_field_type: properties_extended
-    drupal_field_value: field_class_location.administrative_area
-    salesforce_field: Event_Location_State__c
-    direction: sf_drupal
-    id: 7
-  -
-    drupal_field_type: properties
-    drupal_field_value: status
-    salesforce_field: Class_Show_on_Web__c
-    direction: sf_drupal
-    id: 8
-  -
-    drupal_field_type: properties
-    drupal_field_value: field_cancelled
-    salesforce_field: Is_Cancelled__c
-    direction: sf_drupal
-    id: 9
-  -
-    drupal_field_type: properties
-    drupal_field_value: field_full
-    salesforce_field: Is_Full__c
-    direction: sf_drupal
-    id: 10
-push_limit: 0
-push_retries: 3
-push_frequency: 0
-pull_frequency: 0
-always_upsert: false
+uuid: 8c975f53-9158-4d23-bc99-1c9564141b6f

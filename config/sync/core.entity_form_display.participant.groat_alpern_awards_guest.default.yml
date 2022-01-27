@@ -16,47 +16,47 @@ bundle: groat_alpern_awards_guest
 mode: default
 content:
   field_address:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
     type: address_default
+    weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_class_year:
+    type: options_select
     weight: 7
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_degree:
+    type: options_select
     weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_other_school:
+    type: string_textfield
     weight: 6
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   mail:
     type: email_default
     weight: -10
-    settings:
-      size: 100
-      placeholder: ''
     region: content
+    settings:
+      placeholder: ''
+      size: 100
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
     weight: -9
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
 hidden: {  }

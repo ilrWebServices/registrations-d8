@@ -21,28 +21,28 @@ mode: cart
 content:
   field_class_location:
     type: address_default
-    weight: 2
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_class_start:
     type: datetime_default
-    weight: 1
-    region: content
     label: hidden
     settings:
       timezone_override: ''
       format_type: event_summary
     third_party_settings: {  }
+    weight: 1
+    region: content
   title:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: true
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_cancelled: true
   field_class_end: true

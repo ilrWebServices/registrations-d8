@@ -18,8 +18,8 @@ plugin: 'views_block:groat_alpern_tickets-block_1'
 settings:
   id: 'views_block:groat_alpern_tickets-block_1'
   label: 'Purchase Additional Tickets'
-  provider: views
   label_display: visible
+  provider: views
   views_label: 'Purchase Additional Tickets'
   items_per_page: none
 visibility:

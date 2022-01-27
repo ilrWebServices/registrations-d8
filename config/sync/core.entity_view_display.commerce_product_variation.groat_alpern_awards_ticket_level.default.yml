@@ -15,50 +15,50 @@ bundle: groat_alpern_awards_ticket_level
 mode: default
 content:
   field_new_grad_price:
-    weight: 2
+    type: commerce_price_default
     label: above
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
-    type: commerce_price_default
+    weight: 2
     region: content
   field_recent_grad_price:
-    weight: 3
+    type: commerce_price_default
     label: above
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
-    type: commerce_price_default
+    weight: 3
     region: content
   field_ticket_limit:
-    weight: 1
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 1
     region: content
   list_price:
-    label: above
     type: commerce_price_default
+    label: above
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
     weight: -1
     region: content
+  price:
+    type: commerce_price_default
+    label: above
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
-  price:
-    label: above
-    type: commerce_price_default
     weight: 0
     region: content
-    settings:
-      strip_trailing_zeroes: false
-      currency_display: symbol
-    third_party_settings: {  }
 hidden:
   product_id: true
   sku: true

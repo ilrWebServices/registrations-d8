@@ -15,22 +15,22 @@ bundle: link_block
 mode: default
 content:
   body:
+    type: text_textarea_with_summary
     weight: 1
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
-    type: text_textarea_with_summary
-    region: content
   field_links:
+    type: link_default
     weight: 2
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   info:
     type: string_textfield
     weight: 0

@@ -21,29 +21,29 @@ content:
       display_label: true
     third_party_settings: {  }
   participants:
+    type: inline_entity_form_complex
     weight: 0
+    region: content
     settings:
       form_mode: inline
+      override_labels: false
       label_singular: ''
       label_plural: ''
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      override_labels: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   user_id:
     type: entity_reference_autocomplete
     weight: 5
+    region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
-    region: content
     third_party_settings: {  }
 hidden: {  }

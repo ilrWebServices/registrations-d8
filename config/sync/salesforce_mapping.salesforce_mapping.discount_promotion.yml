@@ -1,19 +1,18 @@
-uuid: 016d8f80-e8a0-4fc4-8648-ba1bddd62c08
 langcode: en
-status: true
-dependencies:
-  module:
-    - commerce_promotion
-    - salesforce_pull
 id: discount_promotion
 label: 'Discount Promotion'
 weight: 2
 type: salesforce_mapping
 key: ''
+always_upsert: false
 async: false
 push_standalone: false
 pull_standalone: false
 pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
 pull_where_clause: ''
 sync_triggers:
   pull_create: true
@@ -26,29 +25,30 @@ field_mappings:
   -
     drupal_field_type: properties
     drupal_field_value: name
-    salesforce_field: Name
     direction: sf_drupal
+    salesforce_field: Name
     id: 0
   -
     drupal_field_type: properties
     drupal_field_value: description
-    salesforce_field: Discount_Description__c
     direction: sf_drupal
+    salesforce_field: Discount_Description__c
     id: 1
   -
     drupal_field_type: properties
     drupal_field_value: start_date
-    salesforce_field: Discount_Start_Date__c
     direction: sf_drupal
+    salesforce_field: Discount_Start_Date__c
     id: 2
   -
     drupal_field_type: properties
     drupal_field_value: end_date
-    salesforce_field: Discount_End_Date__c
     direction: sf_drupal
+    salesforce_field: Discount_End_Date__c
     id: 3
-push_limit: 0
-push_retries: 3
-push_frequency: 0
-pull_frequency: 0
-always_upsert: false
+status: true
+dependencies:
+  module:
+    - commerce_promotion
+    - salesforce_pull
+uuid: 016d8f80-e8a0-4fc4-8648-ba1bddd62c08

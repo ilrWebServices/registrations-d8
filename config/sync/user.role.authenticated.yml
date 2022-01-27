@@ -1,7 +1,13 @@
 uuid: 8d447583-db07-4066-a8d0-aa482492d2dd
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - commerce_checkout
+    - commerce_order
+    - commerce_product
+    - erf
+    - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated

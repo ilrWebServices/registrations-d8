@@ -9,14 +9,14 @@ label: 'CardPointe HPP Registrations'
 weight: null
 plugin: cardpointe_hpp
 configuration:
-  merchant_id: set_via_env
-  pay_link: 'https://ilrwebreg.securepayments.cardpointe.com/pay'
-  mini: '1'
   display_label: 'CardPointe HPP'
   mode: live
   payment_method_types:
     - credit_card
   collect_billing_information: true
+  merchant_id: set_via_env
+  pay_link: 'https://ilrwebreg.securepayments.cardpointe.com/pay'
+  mini: '1'
 conditions:
   -
     plugin: order_type

@@ -16,13 +16,13 @@ plugin: marketing_link_block
 settings:
   id: marketing_link_block
   label: 'Marketing link block'
-  provider: ilr_registrations
   label_display: '0'
+  provider: ilr_registrations
   marketing_site_url: 'https://www.ilr.cornell.edu'
   link_text: 'Return to course details.'
 visibility:
   request_path:
     id: request_path
-    pages: '/product/*'
     negate: false
     context_mapping: {  }
+    pages: '/product/*'

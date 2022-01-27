@@ -5,6 +5,7 @@ dependencies: {  }
 id: dev
 label: Development
 description: ''
+weight: 0
 folder: ../config/dev
 module:
   field_ui: 0
@@ -14,4 +15,3 @@ blacklist: {  }
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: true
-weight: 0

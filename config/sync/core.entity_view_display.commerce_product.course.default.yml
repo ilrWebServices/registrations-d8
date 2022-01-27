@@ -18,27 +18,27 @@ bundle: course
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: -4
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: -4
     region: content
   registration_type:
     type: registration_form
-    weight: 0
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  title:
-    label: hidden
-    type: string
-    weight: -5
+    weight: 0
     region: content
+  title:
+    type: string
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: -5
+    region: content
 hidden:
   created: true
   field_course_number: true

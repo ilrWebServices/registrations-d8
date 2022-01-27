@@ -20,44 +20,44 @@ bundle: class
 mode: default
 content:
   field_cancelled:
+    type: boolean_checkbox
     weight: 25
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_class_end:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
     type: datetime_default
+    weight: 11
     region: content
-  field_class_location:
-    weight: 20
     settings: {  }
     third_party_settings: {  }
+  field_class_location:
     type: address_default
+    weight: 20
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_class_price:
+    type: number
     weight: 15
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_class_start:
+    type: datetime_default
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_full:
+    type: boolean_checkbox
     weight: 100
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   list_price:
     type: commerce_list_price
     weight: -1

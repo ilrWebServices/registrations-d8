@@ -7,52 +7,52 @@ dependencies:
     - commerce_payment
     - commerce_promotion
     - email_registration
-id: registration
 label: Registration
+id: registration
 plugin: multistep_default
 configuration:
   display_checkout_progress: true
   display_checkout_progress_breadcrumb_links: false
   panes:
     email_registration_login:
-      allow_guest_checkout: false
-      allow_registration: true
       step: login
       weight: 0
+      allow_guest_checkout: false
+      allow_registration: true
     contact_information:
-      double_entry: false
       step: order_information
       weight: 1
+      double_entry: false
     payment_information:
       step: order_information
       weight: 2
     payment_process:
-      capture: true
       step: payment
       weight: 3
+      capture: true
     coupon_redemption:
-      allow_multiple: false
       step: order_information
       weight: 5
+      allow_multiple: false
       capture: true
     completion_register:
       step: complete
       weight: 4
     'order_fields:checkout':
-      wrapper_element: container
-      display_label: 'Order fields'
       step: order_information
       weight: 4
+      wrapper_element: container
+      display_label: 'Order fields'
     completion_message:
+      step: complete
+      weight: 5
       message:
         value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
         format: plain_text
-      step: complete
-      weight: 5
     order_summary:
-      view: registration_checkout_order_summary
       step: _sidebar
       weight: 6
+      view: registration_checkout_order_summary
     review:
       step: _disabled
       weight: 7
@@ -60,7 +60,7 @@ configuration:
       step: _disabled
       weight: 10
     login:
-      allow_guest_checkout: true
-      allow_registration: false
       step: _disabled
       weight: 11
+      allow_guest_checkout: true
+      allow_registration: false

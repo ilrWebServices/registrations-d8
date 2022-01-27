@@ -16,76 +16,76 @@ bundle: registration
 mode: default
 content:
   completed:
-    label: above
     type: timestamp
-    weight: 0
-    region: content
+    label: above
     settings:
       date_format: html_date
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_payment_owner:
-    weight: 11
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 11
     region: content
   ip_address:
-    label: above
     type: string
-    weight: 0
-    region: content
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  mail:
-    label: above
-    type: basic_string
     weight: 0
     region: content
+  mail:
+    type: basic_string
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   order_items:
     type: commerce_order_item_table
-    weight: 0
     label: above
     settings:
       order_item_view: registration_order_items
     third_party_settings: {  }
-    region: content
-  placed:
-    label: above
-    type: timestamp
     weight: 0
     region: content
+  placed:
+    type: timestamp
+    label: above
     settings:
       date_format: html_date
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
   state:
-    label: hidden
     type: state_transition_form
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
     weight: 10
     region: content
-    settings: {  }
-    third_party_settings: {  }
   total_price:
-    label: hidden
     type: commerce_order_total_summary
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   uid:
-    label: above
     type: author
-    weight: 0
-    region: content
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   balance: true
   billing_profile: true

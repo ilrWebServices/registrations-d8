@@ -2,9 +2,9 @@ uuid: fe3fc1a2-7919-482f-8a01-0075b2f19eeb
 langcode: en
 status: true
 dependencies: {  }
-label: 'Groat Alpern Awards Item'
 id: groat_alpern_awards_item
-purchasableEntityType: commerce_product_variation
-orderType: groat_alpern_awards
+label: 'Groat Alpern Awards Item'
 traits: {  }
 locked: false
+purchasableEntityType: commerce_product_variation
+orderType: groat_alpern_awards

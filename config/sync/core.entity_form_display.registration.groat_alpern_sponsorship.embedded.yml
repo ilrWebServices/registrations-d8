@@ -28,27 +28,27 @@ content:
   participants:
     type: inline_entity_form_complex
     weight: 2
+    region: content
     settings:
       form_mode: inline
       override_labels: true
       label_singular: attendee
       label_plural: attendees
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    region: content
   product_variation:
     type: rendered_variations
     weight: 1
+    region: content
     settings:
       variation_view_mode: selection
     third_party_settings: {  }
-    region: content
 hidden:
   locked: true
   user_id: true

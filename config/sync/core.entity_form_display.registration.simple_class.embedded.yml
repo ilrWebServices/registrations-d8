@@ -19,26 +19,26 @@ content:
   participants:
     type: inline_entity_form_complex
     weight: 2
+    region: content
     settings:
       form_mode: inline
+      override_labels: false
       label_singular: ''
       label_plural: ''
-      override_labels: false
-      collapsible: false
-      collapsed: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
+      collapsible: false
+      collapsed: false
     third_party_settings: {  }
-    region: content
   product_variation:
     type: rendered_variations
     weight: 0
+    region: content
     settings:
       variation_view_mode: selection
     third_party_settings: {  }
-    region: content
 hidden:
   locked: true
   user_id: true

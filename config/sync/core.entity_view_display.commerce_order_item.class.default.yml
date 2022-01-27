@@ -10,15 +10,15 @@ bundle: class
 mode: default
 content:
   created:
-    label: hidden
     type: timestamp
-    weight: 0
-    region: content
+    label: hidden
     settings:
       date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   adjustments: true
   purchased_entity: true

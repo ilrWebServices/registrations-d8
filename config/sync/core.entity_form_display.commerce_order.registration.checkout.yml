@@ -12,11 +12,11 @@ bundle: registration
 mode: checkout
 content:
   field_payment_owner:
+    type: options_buttons
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_buttons
-    region: content
 hidden:
   adjustments: true
   billing_profile: true

@@ -16,27 +16,27 @@ bundle: groat_alpern_awards_ticket
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   field_registration_type:
-    weight: 2
+    type: registration_form
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: registration_form
+    weight: 2
     region: content
   title:
-    label: hidden
     type: string
-    weight: 0
-    region: content
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_tags: true

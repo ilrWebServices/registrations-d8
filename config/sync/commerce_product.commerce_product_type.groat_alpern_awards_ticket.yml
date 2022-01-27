@@ -4,9 +4,9 @@ status: true
 dependencies: {  }
 id: groat_alpern_awards_ticket
 label: 'Groat Alpern Awards Ticket'
+traits: {  }
+locked: false
 description: ''
 variationType: groat_alpern_awards_ticket_level
 multipleVariations: true
 injectVariationFields: false
-traits: {  }
-locked: false

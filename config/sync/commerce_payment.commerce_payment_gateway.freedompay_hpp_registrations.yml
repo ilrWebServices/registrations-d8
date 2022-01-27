@@ -9,13 +9,13 @@ label: 'FreedomPay HPP Registrations'
 weight: null
 plugin: freedompay_hpp
 configuration:
-  store_id: 'set via environment'
-  terminal_id: 'set via environment'
   display_label: 'Secure Payment Page'
   mode: test
   payment_method_types:
     - credit_card
   collect_billing_information: true
+  store_id: 'set via environment'
+  terminal_id: 'set via environment'
 conditions:
   -
     plugin: order_product_type

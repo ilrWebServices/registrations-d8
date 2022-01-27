@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: groat_alpern_awards_ticket_level
 label: 'Groat Alpern Awards Ticket Level'
-orderItemType: groat_alpern_awards_item
-generateTitle: false
 traits: {  }
 locked: false
+orderItemType: groat_alpern_awards_item
+generateTitle: false

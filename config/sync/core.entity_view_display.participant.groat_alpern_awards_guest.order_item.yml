@@ -18,7 +18,7 @@ bundle: groat_alpern_awards_guest
 mode: order_item
 content:
   field_address:
-    weight: 0
+    type: address_default
     label: hidden
     settings:
       field_settings:
@@ -35,15 +35,15 @@ content:
         administrativeArea: 0
         country: 0
     third_party_settings: {  }
-    type: address_default
+    weight: 0
     region: content
   field_class_year:
     type: integer_year
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   field_degree: true
   field_other_school: true

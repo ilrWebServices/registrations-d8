@@ -15,12 +15,12 @@ mode: cart
 content:
   title:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_new_grad_price: true
   field_recent_grad_price: true

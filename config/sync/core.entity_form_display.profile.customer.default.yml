@@ -9,12 +9,12 @@ dependencies:
     - field.field.profile.customer.field_job_title
     - field.field.profile.customer.field_phone
     - profile.type.customer
-  enforced:
-    module:
-      - commerce_order
   module:
     - address
     - telephone
+  enforced:
+    module:
+      - commerce_order
 _core:
   default_config_hash: 7mnnVkJkUSPhil9xoiTfdTivMqxCUloT_71AHWNUbJg
 id: profile.customer.default
@@ -29,26 +29,26 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_industry:
+    type: options_select
     weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_job_title:
+    type: string_textfield
     weight: 5
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_phone:
+    type: telephone_default
     weight: 3
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: telephone_default
-    region: content
 hidden:
   field_email: true
   is_default: true

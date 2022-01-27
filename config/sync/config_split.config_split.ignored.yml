@@ -5,6 +5,7 @@ dependencies: {  }
 id: ignored
 label: Ignored
 description: 'Import and export some config (e.g. custom registration and participant types) from/to a database table. This prevents it from being exported to .yml files.'
+weight: 1
 folder: ''
 module: {  }
 theme: {  }
@@ -14,4 +15,3 @@ graylist:
   - 'erf.registration_type.*'
 graylist_dependents: true
 graylist_skip_equal: true
-weight: 1

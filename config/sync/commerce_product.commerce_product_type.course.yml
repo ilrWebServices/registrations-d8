@@ -4,9 +4,9 @@ status: true
 dependencies: {  }
 id: course
 label: Course
+traits: {  }
+locked: true
 description: 'A course pulled from Salesforce. In general, these are not added or edited manually.'
 variationType: class
 multipleVariations: true
 injectVariationFields: false
-traits: {  }
-locked: true

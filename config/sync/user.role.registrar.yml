@@ -1,7 +1,14 @@
 uuid: bf74f399-2b5d-4a49-a3ae-8b5d0d9786eb
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - commerce
+    - commerce_order
+    - commerce_payment
+    - erf
+    - system
+    - toolbar
 id: registrar
 label: Registrar
 weight: 3

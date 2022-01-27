@@ -1,115 +1,46 @@
-uuid: 141e6d4a-6ca5-40f9-801c-894e29a5c1ae
+uuid: f9c4585a-1f79-4276-8d0b-1d937421bcb0
 langcode: en
 status: true
 dependencies:
-  config: {  }
   module:
-    - commerce_order
-    - commerce_price
+    - commerce
+    - commerce_promotion
+    - commerce_store
     - options
-    - state_machine
     - user
-_core:
-  default_config_hash: 7JgxufVuoI85hhzx2nEYWCRafRc7zuYgqkY9WryFKgo
-id: commerce_user_orders
-label: 'User orders'
+id: commerce_promotions
+label: Promotions
 module: views
-description: 'Display a list of placed orders for a user.'
-tag: Commerce
-base_table: commerce_order
-base_field: order_id
+description: ''
+tag: ''
+base_table: commerce_promotion_field_data
+base_field: promotion_id
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: Orders
+      title: Promotions
       fields:
-        order_id:
-          id: order_id
-          table: commerce_order
-          field: order_id
+        name:
+          id: name
+          table: commerce_promotion_field_data
+          field: name
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: commerce_order
-          entity_field: order_id
+          entity_type: null
+          entity_field: name
           plugin_id: field
-          label: ID
-          exclude: true
+          label: Name
+          exclude: false
           alter:
             alter_text: false
             text: ''
             make_link: false
             path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        order_number:
-          id: order_number
-          table: commerce_order
-          field: order_number
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: null
-          entity_field: order_number
-          plugin_id: field
-          label: 'Order number'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: 'user/{{ arguments.uid }}/orders/{{ order_id }}'
             absolute: false
             external: false
             replace_spaces: false
@@ -146,10 +77,10 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: string
-          settings:
-            link_to_entity: false
+          settings: {  }
           group_column: value
-          group_columns: {  }
+          group_columns:
+            entity_id: entity_id
           group_rows: true
           delta_limit: 0
           delta_offset: 0
@@ -158,15 +89,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        order_items:
-          id: order_items
-          table: commerce_order__order_items
-          field: order_items_target_id
+        offer__target_plugin_id:
+          id: offer__target_plugin_id
+          table: commerce_promotion_field_data
+          field: offer__target_plugin_id
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: offer
           plugin_id: field
-          label: Items
+          label: 'Offer type'
           exclude: false
           alter:
             alter_text: false
@@ -207,31 +140,30 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
+          click_sort_column: target_plugin_id
+          type: commerce_plugin_item_default
+          settings: {  }
+          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
           delta_offset: 0
           delta_reversed: false
           delta_first_last: false
-          multi_type: ul
+          multi_type: separator
           separator: ', '
           field_api_classes: false
-        placed:
-          id: placed
-          table: commerce_order
-          field: placed
+        usage_limit:
+          id: usage_limit
+          table: commerce_promotion_field_data
+          field: usage_limit
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: commerce_order
-          entity_field: placed
+          entity_type: commerce_promotion
+          entity_field: usage_limit
           plugin_id: field
-          label: Date
+          label: Usage
           exclude: false
           alter:
             alter_text: false
@@ -273,140 +205,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
-          settings:
-            date_format: short
-            custom_date_format: ''
-            timezone: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        total_price__number:
-          id: total_price__number
-          table: commerce_order
-          field: total_price__number
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: commerce_order
-          entity_field: total_price
-          plugin_id: field
-          label: Total
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: number
-          type: commerce_price_default
-          settings:
-            strip_trailing_zeroes: false
-            currency_display: symbol
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        state:
-          id: state
-          table: commerce_order
-          field: state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: commerce_order
-          entity_field: state
-          plugin_id: field
-          label: State
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: list_default
+          type: commerce_usage_limit
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -418,16 +217,261 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        usage_limit_customer:
+          id: usage_limit_customer
+          table: commerce_promotion_field_data
+          field: usage_limit_customer
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: usage_limit_customer
+          plugin_id: field
+          label: 'Per customer limit'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: commerce_usage_limit
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        start_date:
+          id: start_date
+          table: commerce_promotion_field_data
+          field: start_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: start_date
+          plugin_id: field
+          label: 'Start date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: commerce_store_datetime
+          settings:
+            date_format: medium
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        end_date:
+          id: end_date
+          table: commerce_promotion_field_data
+          field: end_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: end_date
+          plugin_id: field
+          label: 'End date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: commerce_store_datetime
+          settings:
+            date_format: medium
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        operations:
+          id: operations
+          table: commerce_promotion
+          field: operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          plugin_id: entity_operations
+          label: Operations
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: false
       pager:
         type: full
         options:
           offset: 0
-          items_per_page: 25
+          items_per_page: 50
           total_pages: null
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: ››
+            previous: ‹‹
             first: '« First'
             last: 'Last »'
           expose:
@@ -443,7 +487,7 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -452,9 +496,9 @@ display:
       access:
         type: perm
         options:
-          perm: 'view own commerce_order'
+          perm: 'access commerce_promotion overview'
       cache:
-        type: tag
+        type: none
         options: {  }
       empty:
         area:
@@ -467,79 +511,134 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: 'You have not placed any orders with us yet.'
+            value: 'There are no promotions yet.'
             format: basic_html
           tokenize: false
-      sorts: {  }
-      arguments:
-        uid:
-          id: uid
-          table: commerce_order
-          field: uid
+      sorts:
+        status:
+          id: status
+          table: commerce_promotion_field_data
+          field: status
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: commerce_order
-          entity_field: uid
-          plugin_id: numeric
-          default_action: 'not found'
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          default_argument_skip_url: false
-          summary_options:
-            base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: default_summary
-          specify_validation: true
-          validate:
-            type: commerce_current_user
-            fail: 'not found'
-          validate_options:
-            admin_permission: 'administer commerce_order'
-          break_phrase: false
-          not: false
-      filters:
-        state:
-          id: state
-          table: commerce_order
-          field: state
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: commerce_order
-          entity_field: state
-          plugin_id: state_machine_state
-          operator: 'not in'
-          value:
-            draft: draft
-          group: 1
-          exposed: false
+          entity_type: commerce_promotion
+          entity_field: status
+          plugin_id: standard
+          order: DESC
           expose:
-            operator_id: ''
             label: ''
+            field_identifier: status
+          exposed: false
+        weight:
+          id: weight
+          table: commerce_promotion_field_data
+          field: weight
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: weight
+          exposed: false
+        promotion_id:
+          id: promotion_id
+          table: commerce_promotion_field_data
+          field: promotion_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: promotion_id
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: promotion_id
+          exposed: false
+      arguments: {  }
+      filters:
+        name:
+          id: name
+          table: commerce_promotion_field_data
+          field: name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: name
+          plugin_id: string
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: Name
             description: ''
             use_operator: false
-            operator: ''
+            operator: name_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: name
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              store_admin: '0'
+              api_consumer: '0'
+              customer_service: '0'
+              site_admin: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        offer__target_plugin_id:
+          id: offer__target_plugin_id
+          table: commerce_promotion_field_data
+          field: offer__target_plugin_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: offer
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: offer__target_plugin_id_op
+            label: 'Offer type'
+            description: ''
+            use_operator: false
+            operator: offer__target_plugin_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: offer__target_plugin_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -553,6 +652,104 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+          reduce_duplicates: false
+        code:
+          id: code
+          table: commerce_promotion_coupon
+          field: code
+          relationship: coupons_target_id
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion_coupon
+          entity_field: code
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: code_op
+            label: 'Coupon code'
+            description: ''
+            use_operator: false
+            operator: code_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: code
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              store_admin: '0'
+              api_consumer: '0'
+              customer_service: '0'
+              site_admin: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        status:
+          id: status
+          table: commerce_promotion_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: commerce_promotion
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Status
+            description: ''
+            use_operator: false
+            operator: status_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: status
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              store_admin: '0'
+              api_consumer: '0'
+              customer_service: '0'
+              site_admin: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: table
         options:
@@ -560,43 +757,58 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            order_number: order_number
-            placed: placed
-            total_price__number: total_price__number
-            state: state
-          default: placed
+            name: name
+            offer__target_plugin_id: offer__target_plugin_id
+            usage_limit: usage_limit
+            usage_limit_customer: usage_limit_customer
+            start_date: start_date
+            end_date: end_date
+            operations: operations
+          default: '-1'
           info:
-            order_number:
+            name:
               sortable: true
-              default_sort_order: desc
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            created:
+            offer__target_plugin_id:
               sortable: true
-              default_sort_order: desc
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            placed:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            total_price__number:
+            usage_limit:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            state:
+            usage_limit_customer:
               sortable: true
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            start_date:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            end_date:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
               align: ''
               separator: ''
               empty_column: false
@@ -604,7 +816,7 @@ display:
           override: true
           sticky: false
           summary: ''
-          empty_table: false
+          empty_table: true
           caption: ''
           description: ''
       row:
@@ -617,7 +829,20 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        coupons_target_id:
+          id: coupons_target_id
+          table: commerce_promotion__coupons
+          field: coupons_target_id
+          relationship: none
+          group_type: group
+          admin_label: Coupon
+          entity_type: commerce_promotion
+          entity_field: coupons
+          plugin_id: standard
+          required: false
+      use_ajax: false
+      group_by: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -628,28 +853,30 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - user.permissions
-      tags:
-        - 'config:field.storage.commerce_order.order_items'
-  order_page:
-    id: order_page
-    display_title: 'User orders'
+      tags: {  }
+  admin:
+    id: admin
+    display_title: Page
     display_plugin: page
     position: 1
     display_options:
-      display_description: ''
       display_extenders: {  }
-      path: user/%user/orders
+      path: admin/commerce/promotions/list
       menu:
-        type: tab
-        title: Orders
+        type: 'default tab'
+        title: List
         description: ''
         weight: 0
         expanded: false
-        menu_name: account
+        menu_name: main
         parent: ''
         context: '0'
+      tab_options:
+        type: normal
+        title: List
+        description: ''
+        weight: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -657,7 +884,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - user.permissions
-      tags:
-        - 'config:field.storage.commerce_order.order_items'
+      tags: {  }

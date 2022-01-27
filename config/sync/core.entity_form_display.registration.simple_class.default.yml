@@ -25,34 +25,34 @@ content:
   participants:
     type: inline_entity_form_complex
     weight: 2
+    region: content
     settings:
       form_mode: inline
+      override_labels: false
       label_singular: ''
       label_plural: ''
-      override_labels: false
-      collapsible: false
-      collapsed: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
+      collapsible: false
+      collapsed: false
     third_party_settings: {  }
-    region: content
   product_variation:
     type: rendered_variations
     weight: 0
+    region: content
     settings:
       variation_view_mode: cart
     third_party_settings: {  }
-    region: content
   user_id:
     type: entity_reference_autocomplete
     weight: 5
     region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
-      match_limit: 10
     third_party_settings: {  }
 hidden: {  }

@@ -13,10 +13,10 @@ content:
   mail:
     type: email_default
     weight: -10
-    settings:
-      size: 100
-      placeholder: 'email address'
     region: content
+    settings:
+      placeholder: 'email address'
+      size: 100
     third_party_settings: {  }
 hidden:
   creator_uid: true

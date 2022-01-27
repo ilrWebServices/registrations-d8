@@ -17,39 +17,39 @@ mode: selection
 content:
   field_new_grad_price:
     type: commerce_price_default
+    label: inline
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
     weight: 2
     region: content
-    label: inline
-    settings:
-      strip_trailing_zeroes: false
-      currency_display: symbol
-    third_party_settings: {  }
   field_recent_grad_price:
     type: commerce_price_default
-    weight: 3
-    region: content
     label: inline
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
-  price:
-    label: hidden
-    type: commerce_price_default
-    weight: 1
+    weight: 3
     region: content
+  price:
+    type: commerce_price_default
+    label: hidden
     settings:
       strip_trailing_zeroes: false
       currency_display: symbol
     third_party_settings: {  }
+    weight: 1
+    region: content
   title:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_ticket_limit: true
   list_price: true

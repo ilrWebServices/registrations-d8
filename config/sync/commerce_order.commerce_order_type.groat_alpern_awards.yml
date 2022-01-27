@@ -7,20 +7,20 @@ dependencies:
     - commerce_checkout
 third_party_settings:
   commerce_cart:
-    cart_form_view: registration_cart_form
     cart_block_view: commerce_cart_block
+    cart_form_view: registration_cart_form
     cart_expiration:
-      unit: day
       number: 60
+      unit: day
   commerce_checkout:
     checkout_flow: groat_alpern_awards
-label: 'Groat Alpern Awards'
 id: groat_alpern_awards
+label: 'Groat Alpern Awards'
+traits: {  }
+locked: false
 workflow: order_default
 numberPattern: groat_alpern_tickets
 refresh_mode: customer
 refresh_frequency: 300
 sendReceipt: true
 receiptBcc: groat-alpern@cornell.edu
-traits: {  }
-locked: false

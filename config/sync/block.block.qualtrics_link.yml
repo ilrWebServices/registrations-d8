@@ -18,12 +18,12 @@ plugin: 'fixed_block_content:order_completion_survey'
 settings:
   id: 'fixed_block_content:order_completion_survey'
   label: 'Order Completion Survey'
-  provider: fixed_block_content
   label_display: '0'
+  provider: fixed_block_content
   view_mode: ''
 visibility:
   request_path:
     id: request_path
-    pages: '/checkout/*/complete'
     negate: false
     context_mapping: {  }
+    pages: '/checkout/*/complete'

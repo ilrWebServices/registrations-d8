@@ -1,18 +1,18 @@
-uuid: 5eb91dfb-d3e9-40f4-80c6-f896dfa0104f
 langcode: en
-status: true
-dependencies:
-  config:
-    - erf.participant_type.basic
 id: basic_participant
 label: 'Basic Participant'
 weight: 10
 type: salesforce_mapping
 key: null
+always_upsert: null
 async: false
 push_standalone: false
 pull_standalone: false
 pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
 pull_where_clause: ''
 sync_triggers:
   pull_create: false
@@ -22,8 +22,8 @@ salesforce_object_type: EXECED_Participant__c
 drupal_entity_type: participant
 drupal_bundle: basic
 field_mappings: {  }
-push_limit: 0
-push_retries: 3
-push_frequency: 0
-pull_frequency: 0
-always_upsert: null
+status: true
+dependencies:
+  config:
+    - erf.participant_type.basic
+uuid: 5eb91dfb-d3e9-40f4-80c6-f896dfa0104f

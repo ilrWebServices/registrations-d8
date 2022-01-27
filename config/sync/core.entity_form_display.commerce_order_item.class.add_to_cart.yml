@@ -16,9 +16,9 @@ content:
   purchased_entity:
     type: product_variation_render_widget
     weight: -1
+    region: content
     settings:
       display_mode: cart
-    region: content
     third_party_settings: {  }
   quantity:
     type: commerce_quantity
