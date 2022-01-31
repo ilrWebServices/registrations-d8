@@ -17,3 +17,7 @@ services:
   ilr_registrations.serialized_order:
     class: Drupal\ilr_registrations\SerializedOrderManager
     arguments: ['@entity_type.manager', '@config.factory', '@request_stack']
+  serializer.encoder.csv:
+    class: Symfony\Component\Serializer\Encoder\CsvEncoder
+    tags:
+      - { name: encoder, priority: 20, format: 'csv' }
