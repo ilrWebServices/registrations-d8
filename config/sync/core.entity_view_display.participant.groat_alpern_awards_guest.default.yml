@@ -11,7 +11,6 @@ dependencies:
   module:
     - address
     - options
-    - user
 id: participant.groat_alpern_awards_guest.default
 targetEntityType: participant
 bundle: groat_alpern_awards_guest
@@ -19,46 +18,52 @@ mode: default
 content:
   field_address:
     type: address_default
-    label: above
-    settings:
-      field_settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_class_year:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_degree:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_other_school:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  mail:
-    type: email_mailto
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: -10
-    region: content
-  uid:
-    type: author
-    label: hidden
-    settings: {  }
+    settings:
+      field_settings:
+        givenName: givenName
+        familyName: familyName
+        organization: organization
+        additionalName: 0
+        addressLine1: 0
+        addressLine2: 0
+        postalCode: 0
+        sortingCode: 0
+        dependentLocality: 0
+        locality: 0
+        administrativeArea: 0
+        country: 0
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+  field_class_year:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_degree:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_other_school:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  mail:
+    type: email_mailto
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  uid: true
