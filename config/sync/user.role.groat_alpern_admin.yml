@@ -1,0 +1,23 @@
+uuid: ea1f4fb6-19b5-4a0e-9aff-ed4c60f1905a
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce
+    - commerce_order
+    - erf
+    - system
+    - toolbar
+id: groat_alpern_admin
+label: 'Groat & Alpern Admin'
+weight: 4
+is_admin: null
+permissions:
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access registration administration pages'
+  - 'access toolbar'
+  - 'administer registrations'
+  - 'create groat_alpern_awards commerce_order'
+  - 'view groat_alpern_awards commerce_order'
+  - 'view the administration theme'
