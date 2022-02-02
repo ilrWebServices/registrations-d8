@@ -1,0 +1,25 @@
+uuid: 2dc9efab-31be-4230-8980-b2731dadb78d
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.groat_alpern_single
+    - field.field.registration.groat_alpern_single.participants
+    - field.field.registration.groat_alpern_single.product_variation
+id: registration.groat_alpern_single.default
+targetEntityType: registration
+bundle: groat_alpern_single
+mode: default
+content:
+  participants:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  product_variation: true
+  user_id: true
