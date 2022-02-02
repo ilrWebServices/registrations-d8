@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e12f94fe3c20d07847bebcf4a699647b",
+    "content-hash": "7e70cd33c5816407a1c29dc1a6d3eeb6",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3438,17 +3438,11 @@
         },
         {
             "name": "drupal/erf",
-            "version": "2.0.0-alpha6",
+            "version": "dev-2.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "2.0.0-alpha6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/erf-2.0.0-alpha6.zip",
-                "reference": "2.0.0-alpha6",
-                "shasum": "2f572f3ec47b185f295c6a1e3b21044760a161c5"
+                "reference": "12697a3da1505d7f7ce63bf8dc4d41af77c36c13"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3461,12 +3455,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
                 "drupal": {
-                    "version": "2.0.0-alpha6",
-                    "datestamp": "1643651455",
+                    "version": "2.x-dev",
+                    "datestamp": "1643837221",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -13441,6 +13438,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/email_registration": 5,
+        "drupal/erf": 20,
         "drupal/swiftmailer": 10,
         "drupal/typed_data": 15,
         "drupal/union_organizer": 20
