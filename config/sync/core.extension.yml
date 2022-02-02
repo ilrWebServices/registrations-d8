@@ -52,6 +52,7 @@ module:
   path_alias: 0
   profile: 0
   queue_ui: 0
+  rest: 0
   salesforce: 0
   salesforce_jwt: 0
   salesforce_logger: 0

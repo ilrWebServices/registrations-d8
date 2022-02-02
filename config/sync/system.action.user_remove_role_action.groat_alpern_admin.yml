@@ -1,0 +1,14 @@
+uuid: 3040c883-6ac6-4598-a706-7c9a09c8554e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.groat_alpern_admin
+  module:
+    - user
+id: user_remove_role_action.groat_alpern_admin
+label: 'Remove the Groat &amp; Alpern Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: groat_alpern_admin

@@ -1,4 +1,4 @@
-uuid: bf74f399-2b5d-4a49-a3ae-8b5d0d9786eb
+uuid: ea1f4fb6-19b5-4a0e-9aff-ed4c60f1905a
 langcode: en
 status: true
 dependencies:
@@ -9,9 +9,9 @@ dependencies:
     - erf
     - system
     - toolbar
-id: registrar
-label: Registrar
-weight: 3
+id: groat_alpern_admin
+label: 'Groat & Alpern Admin'
+weight: 4
 is_admin: null
 permissions:
   - 'access commerce administration pages'
@@ -20,6 +20,7 @@ permissions:
   - 'access toolbar'
   - 'administer commerce_payment'
   - 'administer registrations'
+  - 'create groat_alpern_awards commerce_order'
   - 'view commerce_order'
-  - 'view registration commerce_order'
+  - 'view groat_alpern_awards commerce_order'
   - 'view the administration theme'

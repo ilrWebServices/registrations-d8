@@ -1,0 +1,14 @@
+uuid: 21f22f4b-645a-4f2b-8033-d35bb5f39ad7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.groat_alpern_admin
+  module:
+    - user
+id: user_add_role_action.groat_alpern_admin
+label: 'Add the Groat &amp; Alpern Admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: groat_alpern_admin

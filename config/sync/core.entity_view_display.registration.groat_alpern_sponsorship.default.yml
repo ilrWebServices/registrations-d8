@@ -1,0 +1,41 @@
+uuid: 491388fa-8aad-4de6-b1ce-8e793455ef02
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.groat_alpern_sponsorship
+    - field.field.registration.groat_alpern_sponsorship.field_full_name
+    - field.field.registration.groat_alpern_sponsorship.participants
+    - field.field.registration.groat_alpern_sponsorship.product_variation
+id: registration.groat_alpern_sponsorship.default
+targetEntityType: registration
+bundle: groat_alpern_sponsorship
+mode: default
+content:
+  field_full_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  participants:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  product_variation:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  user_id: true
