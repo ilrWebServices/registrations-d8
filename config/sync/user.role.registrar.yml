@@ -20,5 +20,6 @@ permissions:
   - 'access toolbar'
   - 'administer commerce_payment'
   - 'administer registrations'
+  - 'view commerce_order'
   - 'view registration commerce_order'
   - 'view the administration theme'
