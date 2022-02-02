@@ -22,11 +22,29 @@ function ilr_groat_class_year_options(FieldStorageDefinitionInterface $definitio
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Alter the registration entity form for the type `groat_alpern_awards`.
+ * Alter the registration entity form for the type `groat_alpern_single`.
  *
  * - Updates the register button text for clarity.
  */
 function ilr_groat_form_registration_groat_alpern_single_embedded_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  if ($form_state->getFormObject()->getEntity()->isNew()) {
+    $button_text = t('Add to cart');
+  }
+  else {
+    $button_text = t('Update cart');
+  }
+
+  $form['actions']['submit']['#value'] = $button_text;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the registration entity form for the type `groat_alpern_sponsorship`.
+ *
+ * - Updates the register button text for clarity.
+ */
+function ilr_groat_form_registration_groat_alpern_sponsorship_embedded_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
   if ($form_state->getFormObject()->getEntity()->isNew()) {
     $button_text = t('Add to cart');
   }
