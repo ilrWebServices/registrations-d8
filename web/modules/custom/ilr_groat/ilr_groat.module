@@ -86,3 +86,33 @@ function ilr_groat_participant_update(FieldableEntityInterface $participant) {
     ilr_groat_registration_update($registration);
   }
 }
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Re-enable the participants field on locked groat_alpern registrations, but
+ * only for admins.
+ */
+function ilr_groat_form_registration_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var \Drupal\erf\Entity\RegistrationInterface $registration */
+  $registration = $form_state->getFormObject()->getEntity();
+
+  $is_groat_admin = in_array('groat_alpern_admin', \Drupal::currentUser()->getRoles());
+
+  if ($is_groat_admin && $registration->bundle() === 'groat_alpern_sponsorship' && !empty($form['participants']['#disabled'])) {
+    $form['participants']['#disabled'] = FALSE;
+    $form['field_full_name']['#disabled'] = FALSE;
+  }
+
+  if ($is_groat_admin && $registration->bundle() === 'groat_alpern_single' && !empty($form['participants']['#disabled'])) {
+    $form['participants']['#disabled'] = FALSE;
+    $form['participants']['widget']['actions']['ief_add']['#disabled'] = TRUE;
+
+    foreach (array_keys($form['participants']['widget']['entities']) as $key) {
+      if (!is_numeric($key)) {
+        continue;
+      }
+      $form['participants']['widget']['entities'][$key]['actions']['ief_entity_remove']['#disabled'] = TRUE;
+    }
+  }
+}

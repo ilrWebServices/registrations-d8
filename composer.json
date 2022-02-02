@@ -131,6 +131,9 @@
       "drupal/salesforce": {
         "Mapping UI not using SalesforceMappingLocalTask Derivative": "https://git.drupalcode.org/project/salesforce/-/commit/432994274e2e0ac458a5284ddfd48be61ac942c8.diff",
         "Issue #3102133: Refresh identity whenever token is refreshed": "https://git.drupalcode.org/project/salesforce/-/commit/bdf17e50c41c1390c12aeaf6d97719c36617f865.diff"
+      },
+      "drupal/erf": {
+        "Revert update and delete access control for participants in locked registrations": "https://git.drupalcode.org/project/erf/-/commit/50f90b4d8f77a80fb80aa6d672f9590e679585d0.diff"
       }
     }
   }
