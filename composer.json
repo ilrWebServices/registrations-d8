@@ -134,6 +134,9 @@
       },
       "drupal/erf": {
         "Revert update and delete access control for participants in locked registrations": "https://git.drupalcode.org/project/erf/-/commit/50f90b4d8f77a80fb80aa6d672f9590e679585d0.diff"
+      },
+      "drupal/samlauth": {
+        "Translate error messages": "https://git.drupalcode.org/project/samlauth/-/commit/d8320a3de08c5cafc0f081ef54b4ca5222f60103.diff"
       }
     }
   }

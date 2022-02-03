@@ -556,6 +556,7 @@ $settings['locale_custom_strings_en'][''] = [
   'Please provide a coupon code.' => 'Please provide a discount code.',
   'Home' => 'Account Home',
   'Create @type_singular' => 'Save @type_singular',
+  'No existing user account matches the SAML ID provided. This authentication service is not configured to create new accounts.' => 'Your linked NetID account has not been created yet. Please contact an administrator.',
 ];
 
 /**
