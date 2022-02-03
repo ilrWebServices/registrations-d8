@@ -134,3 +134,43 @@ function ilr_groat_form_registration_form_alter(&$form, FormStateInterface $form
     }
   }
 }
+
+/**
+ * Implements hook_inline_entity_form_table_fields_alter().
+ *
+ * @see \Drupal\inline_entity_form\InlineFormInterface::getTableFields()
+ */
+function ilr_groat_inline_entity_form_table_fields_alter(array &$fields, array $context) {
+  if (in_array('groat_alpern_awards_guest', $context['allowed_bundles'])) {
+    $fields['label']['label'] = t('Email');
+
+    $fields['field_address'] = [
+      'type' => 'field',
+      'label' => t('Name'),
+      'weight' => -1,
+      'display_options' => [
+        'settings' => [
+          'field_settings' => [
+            'givenName' => 'givenName',
+            'familyName' => 'familyName',
+            'organization' => 0,
+            'additionalName' => 0,
+            'organization' => 0,
+            'addressLine1' => 0,
+            'addressLine2' => 0,
+            'postalCode' => 0,
+            'sortingCode' => 0,
+            'dependentLocality' => 0,
+            'locality' => 0,
+          ],
+        ],
+      ],
+    ];
+
+    $fields['field_class_year'] = [
+      'type' => 'field',
+      'label' => t('Year'),
+      'weight' => 2,
+    ];
+  }
+}
