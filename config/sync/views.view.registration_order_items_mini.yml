@@ -1,4 +1,4 @@
-uuid: 9ee59a2f-50bb-4c3e-94e3-4fe03a43ab19
+uuid: 1454ae51-aaff-40fe-b66c-029209a4d84e
 langcode: en
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
     - commerce_order
     - commerce_price
     - erf
-id: registration_order_items
-label: 'Registration order items'
+id: registration_order_items_mini
+label: 'Registration order items mini'
 module: views
 description: ''
 tag: commerce_order_item_table
@@ -258,7 +258,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_entity_view
           settings:
-            view_mode: default
+            view_mode: order_item
           group_column: target_id
           group_columns: {  }
           group_rows: true
