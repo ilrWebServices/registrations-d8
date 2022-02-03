@@ -31,9 +31,9 @@ map_users: false
 map_users_name: true
 map_users_mail: true
 map_users_roles:
+  registrar: registrar
+  groat_alpern_admin: groat_alpern_admin
   administrator: '0'
-  registrar: '0'
-  groat_alpern_admin: '0'
 create_users: false
 sync_name: true
 sync_mail: true
