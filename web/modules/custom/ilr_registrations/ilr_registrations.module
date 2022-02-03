@@ -5,6 +5,7 @@
  * Contains ilr_registrations.module.
  */
 
+use Drupal\address\Plugin\Field\FieldWidget\AddressDefaultWidget;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Entity\EntityInterface;
@@ -633,4 +634,13 @@ function ilr_registrations_form_user_login_form_alter(&$form, FormStateInterface
     '#prefix' => '<sub>',
     '#suffix' => '</sub>',
   ];
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (isset($context['widget']) && $context['widget'] instanceof AddressDefaultWidget) {
+    $element['#type'] = 'container';
+  }
 }
