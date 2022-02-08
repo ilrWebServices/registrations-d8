@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e70cd33c5816407a1c29dc1a6d3eeb6",
+    "content-hash": "94937ff93eed25dc768fd292c226e776",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3442,7 +3442,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "12697a3da1505d7f7ce63bf8dc4d41af77c36c13"
+                "reference": "99451f95c539b9c84ec2e1b02cd0da345f9497cc"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3460,7 +3460,7 @@
                 },
                 "drupal": {
                     "version": "2.x-dev",
-                    "datestamp": "1643837221",
+                    "datestamp": "1644273365",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."

@@ -2,6 +2,8 @@ uuid: bf74f399-2b5d-4a49-a3ae-8b5d0d9786eb
 langcode: en
 status: true
 dependencies:
+  config:
+    - erf.registration_type.simple_class
   module:
     - commerce
     - commerce_order
@@ -19,7 +21,9 @@ permissions:
   - 'access registration administration pages'
   - 'access toolbar'
   - 'administer commerce_payment'
-  - 'administer registrations'
-  - 'view commerce_order'
+  - 'delete simple_class registrations'
+  - 'edit simple_class registrations'
+  - 'update registration commerce_order'
   - 'view registration commerce_order'
+  - 'view simple_class registrations'
   - 'view the administration theme'

@@ -777,49 +777,10 @@ display:
           plugin_id: bundle
           value:
             groat_alpern_awards_guest: groat_alpern_awards_guest
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
-        locked:
-          id: locked
-          table: registration
-          field: locked
-          relationship: reverse__registration__participants
-          group_type: group
-          admin_label: ''
-          entity_type: registration
-          entity_field: locked
-          plugin_id: boolean
-          operator: '='
-          value: '1'
           group: 1
-          exposed: false
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         created:
           id: created
           table: registration
@@ -867,6 +828,97 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        locked:
+          id: locked
+          table: registration
+          field: locked
+          relationship: reverse__registration__participants
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: locked
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        commerce_order_item_id:
+          id: commerce_order_item_id
+          table: registration
+          field: commerce_order_item_id
+          relationship: reverse__registration__participants
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: commerce_order_item_id
+          plugin_id: numeric
+          operator: empty
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
       style:
         type: table
         options:

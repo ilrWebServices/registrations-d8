@@ -2,6 +2,10 @@ uuid: e6584109-07bf-4809-a3d4-b09e53613e19
 langcode: en
 status: true
 dependencies:
+  config:
+    - erf.registration_type.groat_alpern_single
+    - erf.registration_type.groat_alpern_sponsorship
+    - erf.registration_type.simple_class
   module:
     - commerce_checkout
     - commerce_product
@@ -16,6 +20,8 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access content'
-  - 'add registrations'
+  - 'create groat_alpern_single registrations'
+  - 'create groat_alpern_sponsorship registrations'
+  - 'create simple_class registrations'
   - 'manage own registrations'
   - 'view commerce_product'
