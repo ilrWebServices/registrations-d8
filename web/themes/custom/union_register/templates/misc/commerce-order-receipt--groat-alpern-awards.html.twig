@@ -9,6 +9,7 @@
 {% for order_item_id, order_item in order_items %}
   <p style="margin-bottom: 0; font-weight: bold">{{ order_item.commerce.label }}: {{ order_item.commerce.getData('class_start_date') }}</p>
 
+  {# TODO Hide this if there are no participants. #}
   <p>Participant(s):</p>
 
   <ul>
@@ -37,3 +38,10 @@
 <p style="font-weight: bold; padding-top: 15px; padding-bottom: 5px;">
   {{ 'Your total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
 </p>
+
+{# Add payment instructions if the payment gateway for this order has any. #}
+{% if payment_instructions %}
+  <hr>
+  <p style="margin-bottom: 0; font-weight: bold">{{ 'Payment instructions'|t }}</p>
+  {{ payment_instructions }}
+{% endif %}
