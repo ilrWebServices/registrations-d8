@@ -13,7 +13,7 @@ configuration:
     - credit_card
   collect_billing_information: true
   instructions:
-    value: ''
+    value: "Make check payable to \"Cornell ILR School\" with \"Groat & Alpern\" in memo line.\r\n\r\nMail check to:\r\nBetsy Wiggers\r\nCornell University\r\nIves Hall East\r\nIthaca, NY 14853"
     format: plain_text
 conditions:
   -
