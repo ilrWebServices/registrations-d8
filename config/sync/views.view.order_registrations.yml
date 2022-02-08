@@ -303,7 +303,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'administer registrations'
+          perm: 'access commerce_order overview'
       cache:
         type: tag
         options: {  }

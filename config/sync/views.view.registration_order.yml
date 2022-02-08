@@ -170,7 +170,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'view commerce_order'
+          perm: 'access commerce_order overview'
       cache:
         type: tag
         options: {  }
