@@ -42,7 +42,7 @@ configuration:
       step: complete
       weight: 5
       message:
-        value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
+        value: 'You can view your order on your account page when logged in.'
         format: plain_text
     order_summary:
       step: _sidebar
