@@ -30,11 +30,6 @@ configuration:
       step: payment
       weight: 3
       capture: true
-    coupon_redemption:
-      step: order_information
-      weight: 5
-      allow_multiple: false
-      capture: true
     completion_register:
       step: complete
       weight: 4
@@ -47,8 +42,13 @@ configuration:
       step: complete
       weight: 5
       message:
-        value: "Your order number is [commerce_order:order_number].\r\nYou can view your order on your account page when logged in."
+        value: "Thank you for registering! To help us serve you and other students better, please take a moment and complete a brief survey.\r\n\r\nhttps://cornell.ca1.qualtrics.com/jfe/form/SV_7QYzJqW9XJ5lAO1"
         format: plain_text
+    coupon_redemption:
+      step: order_information
+      weight: 5
+      allow_multiple: false
+      capture: true
     order_summary:
       step: _sidebar
       weight: 6

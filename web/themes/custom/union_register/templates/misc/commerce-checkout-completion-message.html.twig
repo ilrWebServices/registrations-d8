@@ -5,6 +5,7 @@
  *
  * Available variables:
  * - order_entity: The order entity.
+ * - message: The completion message.
  * - payment_instructions: The payment instructions, if provided.
  * - home_link: A link to the home page for the order's user.
  * - order_detail: The completed commerce_order, as would be viewed at
@@ -14,7 +15,14 @@
  */
 #}
 <div class="checkout-complete">
-  <p>Your order is complete.</p>
+  <div class="checkout-complete__order">
+    <h2 class="cu-heading">{{ 'Order number @number'|t({'@number': order_entity.getOrderNumber}) }}</h2>
+    {{ order_detail }}
+  </div>
+
+  <div class="checkout-complete__message">
+    {{- message -}}
+  </div>
 
   {% if payment_instructions %}
     <div class="checkout-complete__payment-instructions">
@@ -22,8 +30,4 @@
       {{ payment_instructions }}
     </div>
   {% endif %}
-
-  <h2 class="cu-heading">{{ 'Order number @number'|t({'@number': order_entity.getOrderNumber}) }}</h2>
-
-  {{ order_detail }}
 </div>
