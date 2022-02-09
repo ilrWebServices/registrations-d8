@@ -86,7 +86,10 @@
   }
 }
 
-.checkout-complete__payment-instructions {
-  float: right;
-  max-width: 50%;
+@media (min-width: 769px) {
+  .checkout-complete__order {
+    float: left;
+    max-width: 50%;
+    margin-right: 1em;
+  }
 }
