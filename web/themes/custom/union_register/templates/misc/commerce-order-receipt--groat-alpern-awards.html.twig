@@ -1,15 +1,15 @@
 <p>Dear {{ display_name }},</p>
 
-<p>Thank you for registering for ILR's {{ 'now' | date('Y') }} Groat Alpern celebration.</p>
-
-<p>We have received your payment and we are processing your order.</p>
+<p>Thank you for registering for ILR's Groat Alpern celebration.</p>
 
 <p>Details of your order follow. If you have any questions, please email groat-alpern@cornell.edu and reference order id {{ order_entity.getOrderNumber }}.</p>
 
 {% for order_item_id, order_item in order_items %}
-  <p style="margin-bottom: 0; font-weight: bold">{{ order_item.commerce.label }}: {{ order_item.commerce.getData('class_start_date') }}</p>
+  <p style="margin-bottom: 0; font-weight: bold">{{ order_item.commerce.label }}</p>
 
-  <p>Participant(s):</p>
+  {# Hide if there are no participants. #}
+  {% if order_item.erf.participants %}
+  <p>{% trans %}Attendee(s){% endtrans %}</p>
 
   <ul>
   {% for participant in order_item.erf.participants %}
@@ -18,6 +18,7 @@
   </li>
   {% endfor %}
   </ul>
+  {% endif %}
 {% endfor %}
 
 <hr>
@@ -37,3 +38,10 @@
 <p style="font-weight: bold; padding-top: 15px; padding-bottom: 5px;">
   {{ 'Your total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
 </p>
+
+{# Add payment instructions if the payment gateway for this order has any. #}
+{% if payment_instructions %}
+  <hr>
+  <p style="margin-bottom: 0; font-weight: bold">{{ 'Payment instructions'|t }}</p>
+  {{ payment_instructions }}
+{% endif %}

@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\HasPaymentInstructionsInterface;
 use Drupal\Core\Link;
 
 /**
@@ -82,4 +83,20 @@ function union_register_preprocess_commerce_order_receipt(&$variables) {
   }
 
   $variables['order_items'] = $order_items;
+
+  /** @var \Drupal\commerce_payment\Entity\PaymentGatewayInterface $payment_gateway */
+  $payment_gateway = $variables['order_entity']->get('payment_gateway')->entity;
+  /** @var \Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\HasPaymentInstructionsInterface $payment_gateway_plugin */
+  $payment_gateway_plugin = $payment_gateway->getPlugin();
+  if ($payment_gateway_plugin instanceof HasPaymentInstructionsInterface) {
+    $payment_storage = \Drupal::entityTypeManager()->getStorage('commerce_payment');
+    $payments = $payment_storage->loadMultipleByOrder($variables['order_entity']);
+    $payments = array_filter($payments, function ($payment) use ($payment_gateway) {
+      return $payment->getPaymentGatewayId() == $payment_gateway->id();
+    });
+    $payment = reset($payments);
+    if ($payment) {
+      $variables['payment_instructions'] = $payment_gateway_plugin->buildPaymentInstructions($payment);
+    }
+  }
 }
