@@ -9,6 +9,11 @@ services:
     arguments: ['@ilr_registrations.serialized_order', '@logger.factory', '@queue']
     tags:
       - { name: event_subscriber }
+  ilr_registrations_order_create_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\OrderCreateSubscriber
+    arguments: ['@request_stack']
+    tags:
+      - { name: event_subscriber }
   ilr_registrations_salesforce_event_subscriber:
     class: Drupal\ilr_registrations\EventSubscriber\SalesforceEventSubscriber
     arguments: []
