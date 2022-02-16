@@ -23,6 +23,9 @@ settings:
     -
       value: MILR
       label: MILR
+    -
+      value: PhD
+      label: PhD
   allowed_values_function: ''
 module: options
 locked: false
