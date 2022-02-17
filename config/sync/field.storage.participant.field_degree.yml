@@ -26,6 +26,9 @@ settings:
     -
       value: PhD
       label: PhD
+    -
+      value: MD
+      label: MD
   allowed_values_function: ''
 module: options
 locked: false

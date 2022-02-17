@@ -25,7 +25,7 @@ settings:
     additionalName:
       override: hidden
     organization:
-      override: required
+      override: optional
     addressLine1:
       override: hidden
     addressLine2:
