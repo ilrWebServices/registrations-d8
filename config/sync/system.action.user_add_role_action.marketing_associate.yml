@@ -1,0 +1,14 @@
+uuid: a04d82b7-8d49-4450-8d54-dd39eea6061d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.marketing_associate
+  module:
+    - user
+id: user_add_role_action.marketing_associate
+label: 'Add the Marketing associate role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: marketing_associate

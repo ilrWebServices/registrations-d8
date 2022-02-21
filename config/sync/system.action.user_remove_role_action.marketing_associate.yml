@@ -1,0 +1,14 @@
+uuid: f7b6c015-e179-4754-a60d-cf1e191b912a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.marketing_associate
+  module:
+    - user
+id: user_remove_role_action.marketing_associate
+label: 'Remove the Marketing associate role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: marketing_associate

@@ -1,0 +1,15 @@
+uuid: ba481d18-d3a5-49e5-bfc6-09ace341459b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - toolbar
+id: marketing_associate
+label: 'Marketing associate'
+weight: 5
+is_admin: null
+permissions:
+  - 'access site reports'
+  - 'access toolbar'
+  - 'view the administration theme'
