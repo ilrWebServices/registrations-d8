@@ -258,7 +258,7 @@ function ilr_registrations_form_registration_form_alter(&$form, FormStateInterfa
   $form['#attached']['library'][] = 'ilr_registrations/participant_edit_protect';
 
   $account = \Drupal::currentUser();
-  if (isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput())) {
+  if (isset($form['participants']['widget']['form']['inline_entity_form']) && empty($form_state->getUserInput()) && !$account->hasPermission('access registration administration pages')) {
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $registration_storage = $entity_type_manager->getStorage('registration');
 
