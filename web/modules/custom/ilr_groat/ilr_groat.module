@@ -56,6 +56,25 @@ function ilr_groat_form_registration_groat_alpern_sponsorship_embedded_form_alte
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Lock new groat registrations created without a source entity (e.g. not
+ * embedded). These are most likely created by Groat Admins as comps. If left
+ * unlocked, they will appear on the embedded form if those same admins try to
+ * purchase tickets for others. Note that other code in this module will allow
+ * those same admins to edit the participants of locked registrations as needed.
+ *
+ * @param \Drupal\erf\Entity\RegistrationInterface $registration
+ */
+function ilr_groat_registration_presave(FieldableEntityInterface $registration) {
+  $is_groat_registration = strpos($registration->bundle(), 'groat_alpern_') === 0;
+
+  if ($is_groat_registration && $registration->isNew() && !$registration->getSourceEntity()) {
+    $registration->locked = TRUE;
+  }
+}
+
+/**
  * Implements hook_ENTITY_TYPE_update().
  *
  * Note that this may be called by ilr_groat_participant_update(), so don't add
