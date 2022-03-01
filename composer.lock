@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94937ff93eed25dc768fd292c226e776",
+    "content-hash": "b2cfab9f0953928cb9c059a6bb27817c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4054,17 +4054,17 @@
         },
         {
             "name": "drupal/samlauth",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/samlauth.git",
-                "reference": "8.x-3.4"
+                "reference": "8.x-3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/samlauth-8.x-3.4.zip",
-                "reference": "8.x-3.4",
-                "shasum": "9549c562e219569d31e245e2d095c8f382e03099"
+                "url": "https://ftp.drupal.org/files/projects/samlauth-8.x-3.5.zip",
+                "reference": "8.x-3.5",
+                "shasum": "e946370743bbc6c72f495dcb17b93bc6decd4d88"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -4074,8 +4074,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.4",
-                    "datestamp": "1641333384",
+                    "version": "8.x-3.5",
+                    "datestamp": "1646002610",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
