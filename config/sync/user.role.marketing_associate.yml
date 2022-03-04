@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
+    - commerce
+    - commerce_order
     - system
     - toolbar
 id: marketing_associate
@@ -10,6 +12,8 @@ label: 'Marketing associate'
 weight: 5
 is_admin: null
 permissions:
+  - 'access commerce administration pages'
   - 'access site reports'
   - 'access toolbar'
+  - 'view commerce_order'
   - 'view the administration theme'
