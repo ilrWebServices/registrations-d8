@@ -7,7 +7,10 @@
     type: upstream
     upstream: "register:http"
     cache:
-      enabled: false
+      enabled: true
+      # Base the cache on the session cookie, custom Drupal cookies, and the
+      # persistent parameter cookie. Ignore all other cookies.
+      cookies: ['/^SS?ESS/', '/^Drupal.visitor/', '/^pvp_stored_variables$/']
     redirects:
       paths:
         '^/pay/(success|fail|cancel).*\.htm$':
