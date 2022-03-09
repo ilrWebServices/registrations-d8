@@ -104,7 +104,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     // Add any stored UTM codes if they exist in the order data. See
     // OrderCreateSubscriber::onOrderCreate().
     if ($utm_codes = $order->getData('utm_codes')) {
-      $response['customer']['additional_fields']['utm_codes'] = $utm_codes;
+      // $response['customer']['additional_fields']['utm_codes'] = $utm_codes;
     }
 
     // Process payments.
