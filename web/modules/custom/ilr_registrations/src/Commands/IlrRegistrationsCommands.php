@@ -67,13 +67,13 @@ class IlrRegistrationsCommands extends DrushCommands {
       return;
     }
 
+    // @todo Only queue if the order is complete!
     if ($order->bundle() === 'registration') {
       $serialized_order = $this->serializedOrderManager->getObjectForOrder($order);
 
       // Queue the serialized order for submission to the WebReg webhook on
       // Salesforce.
       $this->queue->createItem($serialized_order);
-
 
       $this->io()->success(dt('Outgoing Salesforce WebReg webhook request queued for order @order_id.', [
         '@order_id' => $order_id,
