@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - commerce_cardconnect_api
-id: cardpointe_gateway_tokenizer
-label: 'CardPointe Gateway Tokenizer'
+id: cardpointe_gateway_tokenizer_alumni
+label: 'CardPointe Gateway Tokenizer (Alumni)'
 weight: null
 plugin: cardpointe_api
 configuration:
@@ -24,5 +24,4 @@ conditions:
     configuration:
       bundles:
         - groat_alpern_awards
-        - registration
 conditionOperator: AND
