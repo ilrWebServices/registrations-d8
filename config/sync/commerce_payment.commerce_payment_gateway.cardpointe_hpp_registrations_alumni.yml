@@ -1,6 +1,6 @@
 uuid: 51cb7339-3fff-4408-9eb3-9c0ee6add98f
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - commerce_cardconnect_hpp

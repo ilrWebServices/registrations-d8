@@ -1,0 +1,11 @@
+{
+  "name": "drupal/commerce_cardconnect_api",
+  "type": "drupal-module",
+  "description": "Provides Commerce integration for CardPointe Cardconnect API using the iFrame tokenizer",
+  "homepage": "https://www.drupal.org/project/commerce_cardconnect_api",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/commerce": "~2",
+    "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0"
+  }
+}

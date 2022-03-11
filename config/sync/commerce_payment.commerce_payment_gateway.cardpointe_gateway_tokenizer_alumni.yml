@@ -1,0 +1,27 @@
+uuid: e9857646-f746-423a-9739-65aa20264d86
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cardconnect_api
+id: cardpointe_gateway_tokenizer_alumni
+label: 'CardPointe Gateway Tokenizer (Alumni)'
+weight: null
+plugin: cardpointe_api
+configuration:
+  display_label: 'CardPointe Gateway API'
+  mode: test
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  cp_user: 'set in env'
+  cp_pass: 'set in env'
+  cp_site: fts
+  cp_merchant_id: 'set in env'
+conditions:
+  -
+    plugin: order_type
+    configuration:
+      bundles:
+        - groat_alpern_awards
+conditionOperator: AND
