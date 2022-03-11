@@ -1,0 +1,16 @@
+# config/schema/commerce_cardconnect_api.schema.yml
+commerce_payment.commerce_payment_gateway.plugin.commerce_cardconnect_api:
+  type: commerce_payment_gateway_configuration
+  mapping:
+    cp_user:
+      type: string
+      label: 'CardPointe API username'
+    cp_pass:
+      type: string
+      label: 'CardPointe API password'
+    cp_site:
+      type: string
+      label: 'CardPointe API site'
+    cp_merchant_id:
+      type: string
+      label: 'Merchant ID'

@@ -1,6 +1,6 @@
 uuid: 4b02a376-a208-4eb9-8235-8d41301faf49
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - commerce_cardconnect_hpp
@@ -16,7 +16,7 @@ configuration:
   collect_billing_information: true
   merchant_id: set_via_env
   pay_link: 'https://ilrwebreg.securepayments.cardpointe.com/pay'
-  mini: '1'
+  mini: 1
 conditions:
   -
     plugin: order_type

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2cfab9f0953928cb9c059a6bb27817c",
+    "content-hash": "18f03c88078245c4e785cb73cf1fae2c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5178,6 +5178,47 @@
                 "source": "https://github.com/mtibben/html2text/tree/4.3.1"
             },
             "time": "2020-04-16T23:44:31+00:00"
+        },
+        {
+            "name": "ilrwebservices/cardpointe-gateway-rest-api-client",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/cardpointe-gateway-rest-api-client.git",
+                "reference": "e653230d8a56721e7486de557ff35bb0de26e083"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/cardpointe-gateway-rest-api-client/zipball/e653230d8a56721e7486de557ff35bb0de26e083",
+                "reference": "e653230d8a56721e7486de557ff35bb0de26e083",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": ">=6.0",
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CardPointeGateway\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP library for the CardPointe Gateway API",
+            "homepage": "https://github.com/ilrWebServices/cardpointe-gateway-rest-api-client",
+            "keywords": [
+                "api",
+                "cardpointe"
+            ],
+            "support": {
+                "issues": "https://github.com/ilrWebServices/cardpointe-gateway-rest-api-client/issues",
+                "source": "https://github.com/ilrWebServices/cardpointe-gateway-rest-api-client/tree/1.0.0"
+            },
+            "time": "2022-03-11T17:56:40+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
