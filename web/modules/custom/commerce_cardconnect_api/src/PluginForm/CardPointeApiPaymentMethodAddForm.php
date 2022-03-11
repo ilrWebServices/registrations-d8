@@ -28,6 +28,12 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
         'invalidexpiryevent' => 'true',
         'autofocus' => 'true',
         'inactivityto' => '10',
+        'css' => '
+          body{margin:0;padding-left:2px;}
+          .error{border-color:#b31b1b;}
+          input{border-radius:3px;border-style:solid;border-style-width:1px;border-color:#ccc;padding:.5em;margin:.5em 0 1em; font-size: 1.2em;}
+          label{font-family:sans-serif;font-weight:300;}
+          select{margin-bottom:1em;font-size:1.2em;padding:.25em}',
       ],
     ]);
 
@@ -53,7 +59,7 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
           }
         }, false);
       </script>
-      <iframe id="tokenFrame" name="tokenFrame" src="{{ url }}" frameborder="0" scrolling="no"></iframe>
+      <iframe id="tokenFrame" name="tokenFrame" src="{{ url }}" height="300px" width="100%" scrolling="no"></iframe>
       JSC,
       '#context' => [
         'url' => $tokenizer_url->toString(),

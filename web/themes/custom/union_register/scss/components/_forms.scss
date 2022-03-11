@@ -98,3 +98,10 @@
     }
   }
 }
+
+.cu-form iframe {
+  border: none;
+  border-top: 2px solid #ccc;
+  padding-top: var(--cu-vr1);
+  margin: var(--cu-vr1) 0 0 -2px;
+}
