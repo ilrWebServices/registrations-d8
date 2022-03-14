@@ -106,6 +106,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     $this->assertPaymentState($payment, ['new']);
     $this->assertPaymentMethod($payment_method);
 
+    /** @var \Drupal\commerce_price\NumberFormatter $number_formatter */
+    $number_formatter = \Drupal::service('commerce_price.number_formatter');
+
     // Perform the API request(s), throwing exceptions as needed.
     try {
       $is_live = $this->getMode() === 'live';
@@ -118,7 +121,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
       // The 'Payment process' pane settings determine the 'capture' value.
       $data = [
         'merchid' => $this->configuration['cp_merchant_id'],
-        'amount' => $order->getTotalPrice()->getNumber(),
+        'amount' => $number_formatter->format($payment->getAmount()->getNumber(), ['minimum_fraction_digits' => 2]),
         'expiry' => $payment_method->card_exp_year->value . $payment_method->card_exp_month->value,
         'account' => $payment_method->remote_id->value,
         'orderid' => $order->id(),
