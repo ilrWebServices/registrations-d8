@@ -1,6 +1,7 @@
 .cu-input--submit.button, .cu-button {
   --cu-current-link-color: $black;
 
+  color: $black; // This fixes the white text issue in iOS 15.
   border-width: 2px;
   border-style: solid;
   border-color: $cornell-red;
