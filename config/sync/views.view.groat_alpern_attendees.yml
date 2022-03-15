@@ -729,15 +729,17 @@ display:
             field_degree: '0'
             field_other_school: '0'
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
-          items_per_page: 100
+          items_per_page: 500
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -746,6 +748,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       exposed_form:
         type: basic
         options:
