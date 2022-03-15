@@ -60,9 +60,14 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
         }, false);
       </script>
       <iframe id="tokenFrame" name="tokenFrame" src="{{ url }}" height="300px" width="100%" scrolling="no"></iframe>
+      <noscript>
+        <p>{{ no_js_message }}</p>
+        <style>#tokenFrame{display:none;}
+      </noscript>
       JSC,
       '#context' => [
         'url' => $tokenizer_url->toString(),
+        'no_js_message' => $this->t('JavaScript is required for credit card payment.'),
       ],
     ];
 
