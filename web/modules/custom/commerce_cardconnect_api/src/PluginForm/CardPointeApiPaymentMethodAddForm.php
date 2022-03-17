@@ -13,6 +13,8 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
    * {@inheritdoc}
    */
   protected function buildCreditCardForm(array $element, FormStateInterface $form_state) {
+    $standalone_form = $form_state->getBuildInfo()['form_id'] === 'commerce_payment_method_add_form';
+
     /** @var \Drupal\commerce_cardconnect_api\Plugin\Commerce\PaymentGateway\CardPointeApi $plugin */
     $plugin = $this->plugin;
 
@@ -92,12 +94,13 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
       ],
     ];
 
-    // Revisit once we decide to implement reusable stored payment methods and
-    // https://www.drupal.org/project/commerce/issues/2871483 lands.
-    // $element['save_card'] = [
-    //   '#type' => 'checkbox',
-    //   '#title' => $this->t('Save card'),
-    // ];
+    // Revisit if https://www.drupal.org/i/2871483 lands.
+    $element['reusable'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Save card'),
+      '#default_value' => $standalone_form,
+      '#disabled' => $standalone_form,
+    ];
 
     $element['#weight'] = 20;
 
@@ -130,7 +133,7 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
     $this->entity->remote_id = $values['token'];
     $this->entity->card_exp_month = substr($values['expiry'], 4);
     $this->entity->card_exp_year = substr($values['expiry'], 0, 4);
-    $this->entity->reusable = 0;
+    $this->entity->setReusable((bool) $values['reusable']);
   }
 
 }
