@@ -9,6 +9,7 @@ use Drupal\commerce_payment\Exception\AuthenticationException;
 use Drupal\commerce_payment\Exception\DeclineException;
 use Drupal\commerce_payment\Exception\InvalidResponseException;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OnsitePaymentGatewayBase;
+use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsUpdatingStoredPaymentMethodsInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -25,6 +26,7 @@ use GuzzleHttp\Exception\ServerException;
  *   display_label = @Translation("CardPointe Gateway API"),
  *   forms = {
  *     "add-payment-method" = "Drupal\commerce_cardconnect_api\PluginForm\CardPointeApiPaymentMethodAddForm",
+ *     "edit-payment-method" = "Drupal\commerce_cardconnect_api\PluginForm\CardPointeApiPaymentMethodEditForm",
  *   },
  *   payment_method_types = {"credit_card"},
  *   credit_card_types = {
@@ -32,7 +34,7 @@ use GuzzleHttp\Exception\ServerException;
  *   }
  * )
  */
-class CardPointeApi extends OnsitePaymentGatewayBase {
+class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsUpdatingStoredPaymentMethodsInterface {
 
   public function defaultConfiguration() {
     return [
@@ -195,7 +197,15 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
    * {@inheritdoc}
    */
   public function createPaymentMethod(PaymentMethodInterface $payment_method, array $payment_details) {
+    // During checkout, $payment_method is created in
+    // Drupal\commerce_payment\Plugin\Commerce\CheckoutPane\PaymentInformation::buildPaymentMethodForm(). Even if is is not saved here, it appears that it is saved in ::submitPaneForm(). Perhaps after `$this->order->set('payment_method', $payment_method);` and when the order is saved?
     $payment_method->save();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function updatePaymentMethod(PaymentMethodInterface $payment_method) {
 
   }
 
