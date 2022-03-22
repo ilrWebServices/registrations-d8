@@ -136,7 +136,18 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
         'orderid' => $order->id(),
         'capture' => $capture ? 'Y' : 'N',
         'email' => $order->getEmail(),
+        'userfields' => [
+          [
+            'payment_gateway' => $payment_method->getPaymentGateway()->label(),
+          ],
+        ],
       ];
+
+      foreach ($order->getItems() as $item) {
+        $data['userfields'][] = [
+          'item_' . $item->id() => $item->label(),
+        ];
+      }
 
       if ($billing_profile) {
         /** @var \Drupal\address\Plugin\Field\FieldType\AddressItem $billing_address */
