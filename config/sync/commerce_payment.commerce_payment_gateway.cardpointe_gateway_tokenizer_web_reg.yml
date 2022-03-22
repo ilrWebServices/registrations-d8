@@ -1,0 +1,27 @@
+uuid: 236002af-c214-4b17-acb5-bdd7499c3ad3
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cardconnect_api
+id: cardpointe_gateway_tokenizer_web_reg
+label: 'CardPointe Gateway Tokenizer (Web Reg)'
+weight: null
+plugin: cardpointe_api
+configuration:
+  display_label: 'CardPointe Gateway API'
+  mode: test
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  cp_user: 'set in env'
+  cp_pass: 'set in env'
+  cp_site: fts
+  cp_merchant_id: 'set in env'
+conditions:
+  -
+    plugin: order_type
+    configuration:
+      bundles:
+        - summer_debate_camp
+conditionOperator: AND
