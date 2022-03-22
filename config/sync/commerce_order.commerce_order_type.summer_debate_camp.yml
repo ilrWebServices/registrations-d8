@@ -11,7 +11,7 @@ third_party_settings:
     cart_form_view: registration_cart_form
     cart_expiration: {  }
   commerce_checkout:
-    checkout_flow: registration
+    checkout_flow: summer_debate_camp
 id: summer_debate_camp
 label: 'Summer Debate Camp'
 traits: {  }
