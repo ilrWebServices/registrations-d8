@@ -1,0 +1,57 @@
+uuid: a6184626-cce3-410e-8eb8-1f4845c73c88
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.summer_debate_camp
+  module:
+    - commerce_order
+    - inline_entity_form
+id: commerce_order.summer_debate_camp.default
+targetEntityType: commerce_order
+bundle: summer_debate_camp
+mode: default
+content:
+  adjustments:
+    type: commerce_adjustment_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  billing_profile:
+    type: commerce_billing_profile
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  cart:
+    type: boolean_checkbox
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  order_items:
+    type: inline_entity_form_complex
+    weight: 0
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'order item'
+      label_plural: 'order items'
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+hidden:
+  ip_address: true
+  mail: true
+  order_number: true
+  state: true
+  store_id: true
+  uid: true
