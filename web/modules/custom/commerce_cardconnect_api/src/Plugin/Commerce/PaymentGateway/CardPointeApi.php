@@ -172,6 +172,12 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
         $this->messenger()->addError($this->t('Please check your card number.'));
       }
 
+      if (!$is_live) {
+        $this->messenger()->addError($this->t('Testing mode response text: @resptext', [
+          '@resptext' => $response['resptext'],
+        ]));
+      }
+
       throw new DeclineException('CardConnect API rejection response: ' . $response['resptext']);
     }
     elseif ($response['respstat'] === 'B') {
