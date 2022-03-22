@@ -1,0 +1,59 @@
+uuid: 3047e15a-d2d7-438d-8dd2-22eb0aa9da5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - erf.registration_type.international_summer_debate_camp
+    - field.field.registration.international_summer_debate_camp.participants
+    - field.field.registration.international_summer_debate_camp.product_variation
+  module:
+    - erf_commerce
+    - inline_entity_form
+id: registration.international_summer_debate_camp.default
+targetEntityType: registration
+bundle: international_summer_debate_camp
+mode: default
+content:
+  locked:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  participants:
+    type: inline_entity_form_complex
+    weight: 10
+    region: content
+    settings:
+      form_mode: inline
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  product_variation:
+    type: rendered_variations
+    weight: 0
+    region: content
+    settings:
+      variation_view_mode: cart
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 4c6071ec-86d8-45ec-8721-9636c6a79c4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_parent_guardian_email
+id: participant.summer_debate_camper.field_parent_guardian_email
+field_name: field_parent_guardian_email
+entity_type: participant
+bundle: summer_debate_camper
+label: 'Parent/Guardian email'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

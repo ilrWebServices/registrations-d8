@@ -1,0 +1,21 @@
+uuid: d109c304-6ae2-4c14-a80e-0f9c91bc4ba9
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_parent_guardian_name
+field_name: field_parent_guardian_name
+entity_type: participant
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

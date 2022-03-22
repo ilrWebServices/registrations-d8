@@ -1,0 +1,29 @@
+uuid: 45178905-61ea-4233-9453-bb253fed96c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - erf.registration_type.international_summer_debate_camp
+    - field.storage.registration.participants
+id: registration.international_summer_debate_camp.participants
+field_name: participants
+entity_type: registration
+bundle: international_summer_debate_camp
+label: Participants
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:participant'
+  handler_settings:
+    target_bundles:
+      summer_debate_camper: summer_debate_camper
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

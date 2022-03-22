@@ -1,0 +1,62 @@
+uuid: 0f564093-8dbd-4043-9cb0-e9424f972b95
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.field.participant.summer_debate_camper.field_experience
+    - field.field.participant.summer_debate_camper.field_parent_guardian_email
+    - field.field.participant.summer_debate_camper.field_parent_guardian_name
+    - field.field.participant.summer_debate_camper.field_student_name
+  module:
+    - user
+id: participant.summer_debate_camper.default
+targetEntityType: participant
+bundle: summer_debate_camper
+mode: default
+content:
+  field_experience:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_parent_guardian_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_parent_guardian_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_student_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  mail:
+    type: email_mailto
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -10
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
