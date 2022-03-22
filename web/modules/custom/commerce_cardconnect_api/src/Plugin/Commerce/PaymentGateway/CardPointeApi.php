@@ -49,6 +49,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     $form['cp_user'] = [
       '#type' => 'textfield',
       '#title' => $this->t('CardPointe API username'),
+      '#description' => $this->t('For production only. The username is configured automatically in test mode as per @link.', [
+        '@link' => Link::fromTextAndUrl($this->t('the API Developer Guide'), Url::fromUri('https://developer.cardpointe.com/guides/cardpointe-gateway#uat-api-credentials'))->toString(),
+      ]),
       '#default_value' => $this->configuration['cp_user'],
       '#required' => TRUE,
     ];
@@ -56,6 +59,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     $form['cp_pass'] = [
       '#type' => 'textfield',
       '#title' => $this->t('CardPointe API password'),
+      '#description' => $this->t('For production only. The password is configured automatically in test mode as per @link.', [
+        '@link' => Link::fromTextAndUrl($this->t('the API Developer Guide'), Url::fromUri('https://developer.cardpointe.com/guides/cardpointe-gateway#uat-api-credentials'))->toString(),
+      ]),
       '#default_value' => $this->configuration['cp_pass'],
       '#required' => TRUE,
     ];
