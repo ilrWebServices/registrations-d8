@@ -1,0 +1,10 @@
+uuid: 8f0f6014-9ce3-448c-8c25-edd4863c80ae
+langcode: en
+status: true
+dependencies: {  }
+id: summer_debate_camp_item
+label: 'Summer Debate Camp Item'
+traits: {  }
+locked: false
+purchasableEntityType: commerce_product_variation
+orderType: summer_debate_camp

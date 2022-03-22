@@ -1,0 +1,24 @@
+uuid: 66a34e10-c297-40dd-921c-ea60899e8e80
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+    - commerce_checkout
+third_party_settings:
+  commerce_cart:
+    cart_block_view: commerce_cart_block
+    cart_form_view: registration_cart_form
+    cart_expiration: {  }
+  commerce_checkout:
+    checkout_flow: registration
+id: summer_debate_camp
+label: 'Summer Debate Camp'
+traits: {  }
+locked: false
+workflow: order_default
+numberPattern: summer_debate_camp_order_number
+refresh_mode: customer
+refresh_frequency: 300
+sendReceipt: true
+receiptBcc: aor4@cornell.edu
