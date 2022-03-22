@@ -1,0 +1,36 @@
+uuid: 0ae5791a-17b4-44d0-a226-a9c6ac9a7f64
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_item_type.summer_debate_camp_item
+    - core.entity_form_mode.commerce_order_item.add_to_cart
+  module:
+    - commerce_order
+id: commerce_order_item.summer_debate_camp_item.add_to_cart
+targetEntityType: commerce_order_item
+bundle: summer_debate_camp_item
+mode: add_to_cart
+content:
+  purchased_entity:
+    type: entity_reference_autocomplete
+    weight: -1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  quantity:
+    type: commerce_quantity
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      step: '1'
+    third_party_settings: {  }
+hidden:
+  adjustments: true
+  created: true
+  unit_price: true

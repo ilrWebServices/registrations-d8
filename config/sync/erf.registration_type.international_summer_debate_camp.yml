@@ -1,0 +1,12 @@
+uuid: 8173d9b4-ebdc-4842-810c-863331b71e7f
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf_commerce
+third_party_settings:
+  erf_commerce:
+    cart_redirect: true
+    participants_as_quantity: true
+id: international_summer_debate_camp
+label: 'International Summer Debate Camp'

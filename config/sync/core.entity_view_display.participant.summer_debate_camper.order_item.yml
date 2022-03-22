@@ -1,0 +1,30 @@
+uuid: 428f327b-9608-4e7b-9323-4a00425d14c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.participant.order_item
+    - erf.participant_type.summer_debate_camper
+    - field.field.participant.summer_debate_camper.field_experience
+    - field.field.participant.summer_debate_camper.field_parent_guardian_email
+    - field.field.participant.summer_debate_camper.field_parent_guardian_name
+    - field.field.participant.summer_debate_camper.field_student_name
+id: participant.summer_debate_camper.order_item
+targetEntityType: participant
+bundle: summer_debate_camper
+mode: order_item
+content:
+  field_student_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_experience: true
+  field_parent_guardian_email: true
+  field_parent_guardian_name: true
+  mail: true
+  uid: true

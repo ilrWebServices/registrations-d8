@@ -1,0 +1,23 @@
+uuid: 45f59ffd-efb4-43f7-a7bf-312df8a6739f
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.summer_debate_camp
+    - core.entity_form_mode.commerce_order.checkout
+id: commerce_order.summer_debate_camp.checkout
+targetEntityType: commerce_order
+bundle: summer_debate_camp
+mode: checkout
+content: {  }
+hidden:
+  adjustments: true
+  billing_profile: true
+  cart: true
+  ip_address: true
+  mail: true
+  order_items: true
+  order_number: true
+  state: true
+  store_id: true
+  uid: true

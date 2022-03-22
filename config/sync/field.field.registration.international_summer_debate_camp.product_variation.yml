@@ -1,0 +1,21 @@
+uuid: c1cf5970-28ac-4210-82e4-fb753e8d1796
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.international_summer_debate_camp
+    - field.storage.registration.product_variation
+id: registration.international_summer_debate_camp.product_variation
+field_name: product_variation
+entity_type: registration
+bundle: international_summer_debate_camp
+label: 'Summer Debate Camp Cost'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: erf_commerce_variation
+  handler_settings: {  }
+field_type: entity_reference

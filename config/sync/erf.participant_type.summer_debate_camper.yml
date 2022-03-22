@@ -1,0 +1,7 @@
+uuid: 8c7f8a14-1b86-448d-badb-cb21fc41c659
+langcode: en
+status: true
+dependencies: {  }
+id: summer_debate_camper
+label: 'Summer Debate Camper'
+reference_user: false

@@ -1,0 +1,47 @@
+<p>Dear {{ display_name }},</p>
+
+<p>Thank you for registering for the Cornell International Summer Debate Camp.</p>
+
+<p>Details of your order follow. If you have any questions, please email Camp Director Armands Revelins (aor4@cornell.edu) and reference order id {{ order_entity.getOrderNumber }}.</p>
+
+{% for order_item_id, order_item in order_items %}
+  <p style="margin-bottom: 0; font-weight: bold">{{ order_item.commerce.label }}</p>
+
+  {# Hide if there are no participants. #}
+  {% if order_item.erf.participants %}
+  <p>{% trans %}Participant(s){% endtrans %}</p>
+
+  <ul>
+  {% for participant in order_item.erf.participants %}
+  <li>
+    {{ participant }}
+  </li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+{% endfor %}
+
+<hr>
+
+{% if totals.adjustments %}
+  <p>
+    {{ 'Total cost: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+  </p>
+  <p style="margin-bottom: 0;">Discounts applied:</p>
+  {% for adjustment in totals.adjustments %}
+  <p style="margin-bottom: 0;">
+    {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+  </p>
+  {% endfor %}
+{% endif %}
+
+<p style="font-weight: bold; padding-top: 15px; padding-bottom: 5px;">
+  {{ 'Your total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
+</p>
+
+{# Add payment instructions if the payment gateway for this order has any. #}
+{% if payment_instructions %}
+  <hr>
+  <p style="margin-bottom: 0; font-weight: bold">{{ 'Payment instructions'|t }}</p>
+  {{ payment_instructions }}
+{% endif %}

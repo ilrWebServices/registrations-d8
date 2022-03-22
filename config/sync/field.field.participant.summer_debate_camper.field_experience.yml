@@ -1,0 +1,19 @@
+uuid: 4e403b26-6fc0-4a1a-bea5-fea2f43c789b
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_experience
+id: participant.summer_debate_camper.field_experience
+field_name: field_experience
+entity_type: participant
+bundle: summer_debate_camper
+label: Experience
+description: 'Describe the student''s past experience with debate, including format. <em>Note: No experience required or expected for camp.</em>'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

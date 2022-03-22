@@ -1,0 +1,18 @@
+uuid: 1a739735-a5d5-4385-afb1-34806264aa2f
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_parent_guardian_email
+field_name: field_parent_guardian_email
+entity_type: participant
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

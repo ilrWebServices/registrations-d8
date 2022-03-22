@@ -1,0 +1,43 @@
+uuid: c28ec261-d8f0-4826-9001-8f3e7308ee16
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.summer_debate_camp
+    - field.field.commerce_product.summer_debate_camp.body
+    - field.field.commerce_product.summer_debate_camp.field_registration_type
+  module:
+    - erf
+    - text
+id: commerce_product.summer_debate_camp.default
+targetEntityType: commerce_product
+bundle: summer_debate_camp
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_registration_type:
+    type: registration_form
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true
+  variations: true

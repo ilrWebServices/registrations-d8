@@ -1,0 +1,19 @@
+uuid: 8769e151-1779-4b2d-bcf2-5d55f84b7fb8
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_experience
+field_name: field_experience
+entity_type: participant
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
