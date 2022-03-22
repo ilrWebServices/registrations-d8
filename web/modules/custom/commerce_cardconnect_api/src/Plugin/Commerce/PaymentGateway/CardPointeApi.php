@@ -141,8 +141,8 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
       if ($billing_profile) {
         /** @var \Drupal\address\Plugin\Field\FieldType\AddressItem $billing_address */
         $billing_address = $billing_profile->get('address')->first();
-
         $data['name'] = $billing_address->getGivenName() . ' ' . $billing_address->getFamilyName();
+        $data['postal'] = $billing_address->getPostalCode();
       }
 
       $client_response = $client->post('auth', ['json' => $data]);
