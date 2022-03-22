@@ -3442,7 +3442,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "1611cfa6a2cb307ebc30a6aaa4778885139e6a53"
+                "reference": "878076c6a8f0a30301e1df9c00ed73e666587577"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3460,7 +3460,7 @@
                 },
                 "drupal": {
                     "version": "2.x-dev",
-                    "datestamp": "1644273670",
+                    "datestamp": "1646086701",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
