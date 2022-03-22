@@ -1,0 +1,24 @@
+uuid: d7283cea-7548-4245-9994-d20d87f1c999
+langcode: en
+status: true
+dependencies: {  }
+id: check_summer_debate
+label: 'Check (Summer Debate Camp)'
+weight: null
+plugin: manual
+configuration:
+  display_label: Check
+  mode: n/a
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  instructions:
+    value: "Please send your payment to:\r\n\r\nArmands Revelins\r\nc/o Cornell Speech and Debate Program, Cornell University\r\n309 Ives Hall, Ithaca NY 14853"
+    format: plain_text
+conditions:
+  -
+    plugin: order_product_type
+    configuration:
+      product_types:
+        - summer_debate_camp
+conditionOperator: AND
