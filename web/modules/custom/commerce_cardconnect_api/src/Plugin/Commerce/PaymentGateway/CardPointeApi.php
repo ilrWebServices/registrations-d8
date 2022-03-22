@@ -121,7 +121,10 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
       // The 'Payment process' pane settings determine the 'capture' value.
       $data = [
         'merchid' => $this->configuration['cp_merchant_id'],
-        'amount' => $number_formatter->format($payment->getAmount()->getNumber(), ['minimum_fraction_digits' => 2]),
+        'amount' => $number_formatter->format($payment->getAmount()->getNumber(), [
+          'minimum_fraction_digits' => 2,
+          'use_grouping' => FALSE,
+        ]),
         'expiry' => $payment_method->card_exp_year->value . $payment_method->card_exp_month->value,
         'account' => $payment_method->remote_id->value,
         'orderid' => $order->id(),
