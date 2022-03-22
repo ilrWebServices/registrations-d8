@@ -1,0 +1,88 @@
+uuid: d468cd73-20ed-4d58-a805-f52b6bc0d92c
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_type.summer_debate_camp
+  module:
+    - commerce_order
+    - state_machine
+    - user
+id: commerce_order.summer_debate_camp.default
+targetEntityType: commerce_order
+bundle: summer_debate_camp
+mode: default
+content:
+  completed:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  ip_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  mail:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  order_items:
+    type: commerce_order_item_table
+    label: above
+    settings:
+      order_item_view: registration_order_items
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  placed:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  state:
+    type: state_transition_form
+    label: hidden
+    settings:
+      require_confirmation: true
+      use_modal: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  total_price:
+    type: commerce_order_total_summary
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  uid:
+    type: author
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  balance: true
+  billing_profile: true
+  changed: true
+  order_number: true
+  store_id: true
+  total_paid: true
