@@ -140,6 +140,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
           [
             'payment_gateway' => $payment_method->getPaymentGateway()->label(),
           ],
+          [
+            'order_url' => $order->toUrl('canonical', ['absolute' => TRUE])->toString(),
+          ],
         ],
       ];
 
