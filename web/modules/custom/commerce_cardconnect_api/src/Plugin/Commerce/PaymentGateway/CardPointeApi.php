@@ -221,7 +221,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
    * {@inheritdoc}
    */
   public function createPaymentMethod(PaymentMethodInterface $payment_method, array $payment_details) {
-
+    $payment_method->save();
   }
 
   /**
