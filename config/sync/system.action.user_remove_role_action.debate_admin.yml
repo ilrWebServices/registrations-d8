@@ -1,0 +1,14 @@
+uuid: e058adc7-cd6f-4f87-b4be-3a771796d425
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.debate_admin
+  module:
+    - user
+id: user_remove_role_action.debate_admin
+label: 'Remove the Debate Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: debate_admin

@@ -1,0 +1,25 @@
+uuid: 52d9a9a4-186b-4b81-a40d-eac4eb8ee44d
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.international_summer_debate_camp
+  module:
+    - commerce
+    - commerce_order
+    - commerce_payment
+    - erf
+    - system
+    - toolbar
+id: debate_admin
+label: 'Debate Admin'
+weight: 6
+is_admin: null
+permissions:
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access toolbar'
+  - 'administer commerce_payment'
+  - 'view international_summer_debate_camp registrations'
+  - 'view summer_debate_camp commerce_order'
+  - 'view the administration theme'

@@ -1,0 +1,14 @@
+uuid: fb85c7b9-0c47-4d04-a444-8760925f778f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.debate_admin
+  module:
+    - user
+id: user_add_role_action.debate_admin
+label: 'Add the Debate Admin role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: debate_admin
