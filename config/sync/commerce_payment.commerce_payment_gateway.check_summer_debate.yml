@@ -13,7 +13,7 @@ configuration:
     - credit_card
   collect_billing_information: true
   instructions:
-    value: "Please send your payment to:\r\n\r\nArmands Revelins\r\nc/o Cornell Speech and Debate Program, Cornell University\r\n309 Ives Hall, Ithaca NY 14853"
+    value: "Please send your payment to:\r\n\r\nArmands Revelins\r\nc/o Cornell Speech and Debate Program, Cornell University\r\n615b Ives Hall, Ithaca NY 14853"
     format: plain_text
 conditions:
   -
