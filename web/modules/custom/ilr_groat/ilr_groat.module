@@ -5,6 +5,7 @@
  * Contains ilr_groat.module.
  */
 
+use Drupal\Component\Utility\DiffArray;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -73,7 +74,14 @@ function ilr_groat_registration_update(FieldableEntityInterface $registration) {
     return;
   }
 
-  // Trigger a cart/order refresh.
+  // Bail if only owner is changing. See erf_user_login().
+  $changes = array_keys(DiffArray::diffAssocRecursive($registration->toArray(), $registration->original->toArray()));
+  if ($changes === ['user_id', 'changed']) {
+    return;
+  }
+
+  // Trigger a cart/order refresh to perform adjustments. See
+  // GroatDiscountOrderProcessor::process().
   $order_item->order_id->entity->save();
 }
 
@@ -81,6 +89,8 @@ function ilr_groat_registration_update(FieldableEntityInterface $registration) {
  * Implements hook_ENTITY_TYPE_update().
  *
  * Refresh the cart if a groat participant (attendee) changes the grad year.
+ * It's rare, but this can happen independently of a registration save, such as
+ * the participant edit form.
  */
 function ilr_groat_participant_update(FieldableEntityInterface $participant) {
   if (!$participant->hasField('field_class_year')) {
@@ -100,7 +110,10 @@ function ilr_groat_participant_update(FieldableEntityInterface $participant) {
 
     $registration = reset($registrations);
 
-    // Call the registration update hook to refresh the cart.
+    // Call the registration update hook to refresh the cart. Since we are,
+    // possibly wrongly, hijacking a hook implementation, we must manually add
+    // the original value. We just use a clone of the same registration here.
+    $registration->original = clone $registration;
     ilr_groat_registration_update($registration);
   }
 }
