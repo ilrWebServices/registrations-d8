@@ -87,8 +87,8 @@
     "files": ["load.environment.php"]
   },
   "scripts": {
-    "cs": "phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
-    "cbf": "phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
+    "cs": "phpcs --extensions=php,module,install --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
+    "cbf": "phpcbf --extensions=php,module,install --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
     "sync-dev": [
       "drush sql:drop -y",
       "drush sql:sync @register.develop @self -y",
