@@ -5,7 +5,7 @@ dependencies: {  }
 id: check_summer_debate
 label: 'Check (Summer Debate Camp)'
 weight: null
-plugin: manual
+plugin: manual_with_remote_id
 configuration:
   display_label: Check
   mode: n/a

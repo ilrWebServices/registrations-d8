@@ -5,7 +5,7 @@ dependencies: {  }
 id: check
 label: Check
 weight: null
-plugin: manual
+plugin: manual_with_remote_id
 configuration:
   display_label: Check
   mode: n/a
