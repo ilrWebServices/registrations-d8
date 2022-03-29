@@ -59,10 +59,13 @@ function union_register_preprocess_commerce_order_receipt(&$variables) {
   $order_items = [];
   $items = $variables['order_entity']->getItems();
   $billing_profile = $variables['order_entity']->getBillingProfile();
-  $billing_address = $billing_profile->address->first()->getValue();
 
-  // Use the billing profile first and last name as the display name.
-  $variables['display_name'] = $billing_address['given_name'] . ' ' . $billing_address['family_name'];
+  if ($billing_profile) {
+    $billing_address = $billing_profile->address->first()->getValue();
+
+    // Use the billing profile first and last name as the display name.
+    $variables['display_name'] = $billing_address['given_name'] . ' ' . $billing_address['family_name'];
+  }
 
   foreach ($items as $item) {
     $order_items[$item->id()]['commerce'] = $item;
