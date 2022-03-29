@@ -13,7 +13,7 @@ configuration:
   mode: n/a
   payment_method_types:
     - credit_card
-  collect_billing_information: true
+  collect_billing_information: false
   instructions:
     value: ''
     format: plain_text
