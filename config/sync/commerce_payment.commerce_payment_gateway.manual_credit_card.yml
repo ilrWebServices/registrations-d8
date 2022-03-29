@@ -1,0 +1,31 @@
+uuid: 67324844-445b-458d-8664-19ee8da9da28
+langcode: en
+status: true
+dependencies:
+  module:
+    - ilr_commerce_manual_payment
+id: manual_credit_card
+label: 'Manual Credit Card'
+weight: null
+plugin: manual_with_remote_id
+configuration:
+  display_label: 'Manual Credit Card'
+  mode: n/a
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  instructions:
+    value: ''
+    format: plain_text
+conditions:
+  -
+    plugin: order_type
+    configuration:
+      bundles:
+        - groat_alpern_awards
+  -
+    plugin: user_role
+    configuration:
+      roles:
+        groat_alpern_admin: groat_alpern_admin
+conditionOperator: AND
