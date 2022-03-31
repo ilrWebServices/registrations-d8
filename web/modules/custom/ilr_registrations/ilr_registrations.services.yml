@@ -31,3 +31,8 @@ services:
     arguments: ['@entity_type.manager', '@ilr_registrations.serialized_order', '@queue']
     tags:
       - { name: drush.command }
+  ilr_registrations.payments.query_access_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\PaymentsQueryAccessSubscriber
+    arguments: ['@entity_type.bundle.info', '@database']
+    tags:
+      - { name: event_subscriber, priority: 100 }
