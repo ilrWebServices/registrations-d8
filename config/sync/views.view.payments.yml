@@ -800,12 +800,24 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
+        type: perm
+        options:
+          perm: 'view any commerce_payment_method'
+      cache:
         type: none
         options: {  }
-      cache:
-        type: tag
-        options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'No payments available.'
+          tokenize: false
       sorts:
         completed:
           id: completed
@@ -1057,6 +1069,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags: {  }
   csv_export:
     id: csv_export
@@ -1746,6 +1759,7 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
+        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -1785,4 +1799,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.permissions
       tags: {  }
