@@ -1,7 +1,9 @@
 uuid: 58b234bb-8157-4c4e-9475-e7257240da82
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - ilr_commerce_manual_payment
 id: check
 label: Check
 weight: null
@@ -17,13 +19,13 @@ configuration:
     format: plain_text
 conditions:
   -
-    plugin: order_customer_role
-    configuration:
-      roles:
-        - groat_alpern_admin
-  -
     plugin: order_product_category
     configuration:
       terms:
         - bdc560f0-3d85-42fe-9280-cad431cb032f
+  -
+    plugin: user_role
+    configuration:
+      roles:
+        groat_alpern_admin: groat_alpern_admin
 conditionOperator: OR
