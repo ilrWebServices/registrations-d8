@@ -819,15 +819,15 @@ display:
           content: 'No payments available.'
           tokenize: false
       sorts:
-        completed:
-          id: completed
-          table: commerce_payment
-          field: completed
-          relationship: none
+        created:
+          id: created
+          table: commerce_order
+          field: created
+          relationship: order_id
           group_type: group
           admin_label: ''
-          entity_type: commerce_payment
-          entity_field: completed
+          entity_type: commerce_order
+          entity_field: created
           plugin_id: date
           order: DESC
           expose:
