@@ -16,7 +16,7 @@ class ManualPaymentAddForm extends CommerceManualPaymentAddForm {
     $form['remote_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Remote ID'),
-      '#description' => $this->t('The Remote ID can be used to store useful information about the payment, such as the check number.'),
+      '#description' => $this->t('The Remote ID can be used to store useful information about the payment, such as the check number or Cardpointe payment ID.'),
       '#states' => [
         'visible' => [
           ':input[name="payment[received]"]' => ['checked' => TRUE],

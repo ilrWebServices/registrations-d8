@@ -20,7 +20,7 @@ class PaymentReceiveForm extends CommercePaymentReceiveForm {
     $form['remote_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Remote ID'),
-      '#description' => $this->t('The Remote ID can be used to store useful information about the payment, such as the check number.'),
+      '#description' => $this->t('The Remote ID can be used to store useful information about the payment, such as the check number or Cardpointe payment ID.'),
       '#default_value' => $payment->getRemoteId(),
       '#required' => FALSE,
     ];

@@ -26,6 +26,7 @@ module:
   config_split: 0
   config_update: 0
   config_update_ui: 0
+  date_popup: 0
   datetime: 0
   dblog: 0
   dynamic_entity_reference: 0

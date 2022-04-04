@@ -20,6 +20,8 @@ permissions:
   - 'access commerce_order overview'
   - 'access toolbar'
   - 'administer commerce_payment'
+  - 'manage own commerce_payment_method'
+  - 'view any commerce_payment_method'
   - 'view international_summer_debate_camp registrations'
   - 'view summer_debate_camp commerce_order'
   - 'view the administration theme'
