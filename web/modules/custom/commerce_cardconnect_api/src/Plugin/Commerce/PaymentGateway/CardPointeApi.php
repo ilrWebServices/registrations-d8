@@ -8,7 +8,10 @@ use Drupal\commerce_payment\Entity\PaymentMethodInterface;
 use Drupal\commerce_payment\Exception\AuthenticationException;
 use Drupal\commerce_payment\Exception\DeclineException;
 use Drupal\commerce_payment\Exception\InvalidResponseException;
+use Drupal\commerce_payment\Exception\PaymentGatewayException;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OnsitePaymentGatewayBase;
+use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsRefundsInterface;
+use Drupal\commerce_price\Price;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -32,7 +35,7 @@ use GuzzleHttp\Exception\ServerException;
  *   }
  * )
  */
-class CardPointeApi extends OnsitePaymentGatewayBase {
+class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsInterface {
 
   public function defaultConfiguration() {
     return [
@@ -217,6 +220,41 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
       $payment->setAvsResponseCodeLabel($avs_response_code_label);
     }
 
+    $payment->save();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function refundPayment(PaymentInterface $payment, Price $amount = NULL) {
+    $this->assertPaymentState($payment, ['completed', 'partially_refunded']);
+
+    // If not specified, refund the entire amount.
+    $amount = $amount ?: $payment->getAmount();
+    $this->assertRefundAmount($payment, $amount);
+
+    // Perform the refund request here, throw an exception if it fails.
+    // try {
+    //   $remote_id = $payment->getRemoteId();
+    //   $decimal_amount = $amount->getNumber();
+    //   $result = $this->api->transaction()->refund($remote_id, $decimal_amount);
+    // }
+    // catch (\Exception $e) {
+    //   $this->logger->log('error', 'Error message about the failure');
+    //   throw new PaymentGatewayException('Error message about the failure');
+    // }
+
+    // Determine whether payment has been fully or partially refunded.
+    $old_refunded_amount = $payment->getRefundedAmount();
+    $new_refunded_amount = $old_refunded_amount->add($amount);
+    if ($new_refunded_amount->lessThan($payment->getAmount())) {
+      $payment->setState('partially_refunded');
+    }
+    else {
+      $payment->setState('refunded');
+    }
+
+    $payment->setRefundedAmount($new_refunded_amount);
     $payment->save();
   }
 
