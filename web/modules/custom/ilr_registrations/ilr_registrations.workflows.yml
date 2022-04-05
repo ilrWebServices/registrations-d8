@@ -1,0 +1,20 @@
+order_cancelable:
+  id: order_default
+  group: commerce_order
+  label: 'Default, with cancelable completed'
+  states:
+    draft:
+      label: Draft
+    completed:
+      label: Completed
+    canceled:
+      label: Canceled
+  transitions:
+    place:
+      label: 'Place order'
+      from: [draft]
+      to: completed
+    cancel:
+      label: 'Cancel order'
+      from: [draft, completed]
+      to: canceled

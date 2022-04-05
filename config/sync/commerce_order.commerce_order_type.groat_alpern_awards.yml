@@ -5,6 +5,7 @@ dependencies:
   module:
     - commerce_cart
     - commerce_checkout
+    - ilr_registrations
 third_party_settings:
   commerce_cart:
     cart_block_view: commerce_cart_block
@@ -18,7 +19,7 @@ id: groat_alpern_awards
 label: 'Groat Alpern Awards'
 traits: {  }
 locked: false
-workflow: order_default
+workflow: order_cancelable
 numberPattern: groat_alpern_tickets
 refresh_mode: customer
 refresh_frequency: 300
