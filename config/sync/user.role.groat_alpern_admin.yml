@@ -22,6 +22,8 @@ permissions:
   - 'access registration administration pages'
   - 'access toolbar'
   - 'administer commerce_payment'
+  - 'create groat_alpern_single registrations'
+  - 'create groat_alpern_sponsorship registrations'
   - 'delete groat_alpern_single registrations'
   - 'delete groat_alpern_sponsorship registrations'
   - 'edit groat_alpern_single registrations'
