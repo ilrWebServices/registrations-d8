@@ -23,5 +23,6 @@ conditions:
     plugin: order_type
     configuration:
       bundles:
+        - registration
         - summer_debate_camp
 conditionOperator: AND
