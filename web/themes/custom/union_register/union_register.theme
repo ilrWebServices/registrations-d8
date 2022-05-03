@@ -90,7 +90,7 @@ function union_register_preprocess_commerce_order_receipt(&$variables) {
   /** @var \Drupal\commerce_payment\Entity\PaymentGatewayInterface $payment_gateway */
   $payment_gateway = $variables['order_entity']->get('payment_gateway')->entity;
   /** @var \Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\HasPaymentInstructionsInterface $payment_gateway_plugin */
-  $payment_gateway_plugin = $payment_gateway->getPlugin();
+  $payment_gateway_plugin = $payment_gateway ? $payment_gateway->getPlugin() : NULL;
   if ($payment_gateway_plugin instanceof HasPaymentInstructionsInterface) {
     $payment_storage = \Drupal::entityTypeManager()->getStorage('commerce_payment');
     $payments = $payment_storage->loadMultipleByOrder($variables['order_entity']);
