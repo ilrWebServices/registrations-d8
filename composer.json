@@ -126,7 +126,8 @@
       "drupal/commerce": {
         "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
         "Allow the view in the OrderItemTable formatter to be configured": "https://www.drupal.org/files/issues/2021-02-10/2689919-31_commerce_Order-Items-Table-formatter-select-view-no-post-update.patch",
-        "Add block visibility conditions for store type and product type": "https://www.drupal.org/files/issues/2020-05-16/commerce-2918708-11.patch"
+        "Add block visibility conditions for store type and product type": "https://www.drupal.org/files/issues/2020-05-16/commerce-2918708-11.patch",
+        "Fix conditional build of payment method add form in the payment information pane": "patches/commerce-payment_info_pane_method_zero_total.patch"
       },
       "drupal/address": {
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
