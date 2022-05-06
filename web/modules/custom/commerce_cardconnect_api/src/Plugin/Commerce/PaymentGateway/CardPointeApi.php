@@ -237,4 +237,33 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     $payment_method->delete();
   }
 
+  /**
+   * Get CardPointe API transaction info for a given retref.
+   *
+   * @return array|false
+   *   The response data from a transaction inquiry. See
+   *   https://developer.cardpointe.com/cardconnect-api?lang=xml#inquire-response
+   */
+  public function getTransaction($retref) {
+    try {
+      // @todo Refactor this to a method to use here and in createPayment().
+      $is_live = $this->getMode() === 'live';
+      $client = new CardPointeGatewayRestClient([
+        'cp_user' => $is_live ? $this->configuration['cp_user'] : 'testing',
+        'cp_pass' => $is_live ? $this->configuration['cp_pass'] : 'testing123',
+        'cp_site' => $this->configuration['cp_site'] . ($is_live ? '' : '-uat'),
+      ]);
+
+      $response = $client->get(strtr('inquire/<retref>/<merchid>', [
+        '<retref>' => (int) $retref,
+        '<merchid>' => $this->configuration['cp_merchant_id'],
+      ]));
+    }
+    catch (ClientException $e) {
+      return FALSE;
+    }
+
+    return $response->getData();
+  }
+
 }
