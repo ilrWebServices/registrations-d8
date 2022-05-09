@@ -135,18 +135,17 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           $transaction['cardpoint_hpp'] = $data;
         }
         elseif ($payment_gateway->getPluginId() === 'cardpointe_api') {
-          // Note that this function makes a remote call to the CardPointe API.
-          // @todo Deal with possible remote transaction retrieval failure.
-          $transaction_data = $payment_gateway->getPlugin()->getTransaction($commerce_payment->getRemoteId());
-          $payment_method = $commerce_payment->payment_method->entity;
+          $payment_method = $commerce_payment->getPaymentMethod();
+
+          /** @var \Drupal\address\Plugin\Field\FieldType\AddressItem $payment_method_billing_address */
+          $payment_method_billing_address = $payment_method->getBillingProfile()->get('address')->first();
+
           $transaction = [];
           $transaction['CardIssuer'] = $payment_method->card_type->value;
           $transaction['MaskedCardNumber'] = $payment_method->card_number->value;
-          $transaction['NameOnCard'] = $transaction_data['name'] ?? 'MISSING NAME';
-          // @todo Fix this legacy structure once Salesforce webhook is refactored.
-          $transaction['AuthResponse']['FreewayResponse']['AuthorizationCode'] = $transaction_data['authcode'] ?? 'ERROR';
-          $transaction['AuthCode'] = $transaction_data['authcode'] ?? 'ERROR';
-          $transaction['cardpoint_api'] = $transaction_data;
+          $transaction['NameOnCard'] = $payment_method_billing_address->getGivenName() . ' ' . $payment_method_billing_address->getFamilyName();
+          // @todo Fix this if Salesforce webhook is ever refactored.
+          $transaction['AuthResponse']['FreewayResponse']['AuthorizationCode'] = $commerce_payment->authcode ? $commerce_payment->authcode->value : '---';
         }
         else {
           $transaction = NULL;
