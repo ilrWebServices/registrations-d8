@@ -1,0 +1,7 @@
+commerce_cardconnect_api.transaction:
+  path: '/admin/commerce-cardpointe-api/transaction/{commerce_payment}'
+  defaults:
+    _title: 'CardPointe Transaction Details'
+    _controller: '\Drupal\commerce_cardconnect_api\Controller\TransactionController::viewTransaction'
+  requirements:
+    _permission: 'administer commerce_payment'
