@@ -26,6 +26,7 @@ use GuzzleHttp\Exception\ServerException;
  *   forms = {
  *     "add-payment-method" = "Drupal\commerce_cardconnect_api\PluginForm\CardPointeApiPaymentMethodAddForm",
  *   },
+ *   payment_type = "payment_cardpointe",
  *   payment_method_types = {"credit_card"},
  *   credit_card_types = {
  *     "mastercard", "visa", "amex",
@@ -211,6 +212,12 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     $payment->setRemoteId($response['retref']);
     $payment->setAuthorizedTime(\Drupal::time()->getRequestTime());
     $payment->setAvsResponseCode($response['avsresp']);
+
+    // This payment gateway uses a custom payment type with an authcode field.
+    // @see Drupal\commerce_cardconnect_api\Plugin\Commerce\PaymentType\PaymentCardpointe
+    if (!empty($response['authcode'])) {
+      $payment->set('authcode', $response['authcode']);
+    }
 
     if (!$payment_method->card_type->isEmpty()) {
       $avs_response_code_label = $this->buildAvsResponseCodeLabel($response['avsresp'], $payment_method->card_type->value);

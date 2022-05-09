@@ -1,0 +1,16 @@
+<?php
+
+use Drupal\entity\BundleFieldDefinition;
+
+/**
+ * Install authcode bundle field storage definition for commerce_payment.
+ */
+function commerce_cardconnect_api_update_9101() {
+  $field_storage_definition = BundleFieldDefinition::create('string')
+    ->setTargetEntityTypeId('commerce_payment')
+    ->setTargetBundle('payment_cardpointe')
+    ->setSetting('max_length', 6);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('authcode', 'commerce_payment', 'commerce_cardconnect_api', $field_storage_definition);
+}
