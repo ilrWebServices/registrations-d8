@@ -42,6 +42,7 @@ module:
   hal: 0
   ilr_commerce_manual_payment: 0
   ilr_groat: 0
+  ilr_outreach_discounts: 0
   ilr_registrations: 0
   ilr_samlauth: 0
   inline_entity_form: 0

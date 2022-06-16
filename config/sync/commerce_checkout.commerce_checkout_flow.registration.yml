@@ -7,6 +7,7 @@ dependencies:
     - commerce_payment
     - commerce_promotion
     - email_registration
+    - ilr_outreach_discounts
 label: Registration
 id: registration
 plugin: multistep_default
@@ -45,10 +46,13 @@ configuration:
         value: "Thank you for registering! To help us serve you and other students better, please take a moment and complete a brief survey.\r\n\r\nhttps://cornell.ca1.qualtrics.com/jfe/form/SV_7QYzJqW9XJ5lAO1"
         format: plain_text
     coupon_redemption:
+      step: _disabled
+      weight: 5
+      allow_multiple: false
+    ilr_outreach_discount_redemption:
       step: order_information
       weight: 5
       allow_multiple: false
-      capture: true
     order_summary:
       step: _sidebar
       weight: 6
