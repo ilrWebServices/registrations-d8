@@ -33,7 +33,6 @@
     "drupal/commerce_checkout_order_fields": "^1.0",
     "drupal/config_split": "^1.4",
     "drupal/config_update": "^1.7",
-    "drupal/console": "^1.0.2",
     "drupal/core-composer-scaffold": "^9.0.0",
     "drupal/core-recommended": "^9.0.0",
     "drupal/date_popup": "^1.1",
