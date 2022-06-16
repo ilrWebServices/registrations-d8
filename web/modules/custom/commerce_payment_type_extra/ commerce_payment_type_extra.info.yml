@@ -1,0 +1,7 @@
+name: 'Commerce Payment Type Extra'
+type: module
+description: 'Commerce 2.x payment type like payment_default, but with a serialized data field.'
+package: 'Commerce (contrib)'
+core_version_requirement: ^9
+dependencies:
+  - commerce:commerce_payment
