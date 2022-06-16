@@ -42,7 +42,7 @@
     "drupal/erf": "^2.x-dev",
     "drupal/fixed_block_content": "^1.0",
     "drupal/key": "^1.14",
-    "drupal/queue_ui": "^2.1",
+    "drupal/queue_ui": "^3.0",
     "drupal/salesforce": "^4.0",
     "drupal/samlauth": "^3.0",
     "drupal/swiftmailer": "^2.0@beta",
