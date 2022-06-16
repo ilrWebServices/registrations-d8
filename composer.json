@@ -26,7 +26,7 @@
     }
   ],
   "require": {
-    "composer/installers": "^1.2",
+    "composer/installers": "^2",
     "cweagans/composer-patches": "^1.6.5",
     "drupal/admin_toolbar": "^3.0.0",
     "drupal/commerce": "^2.15",
