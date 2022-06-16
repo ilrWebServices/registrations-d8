@@ -80,6 +80,18 @@ To add a module for developer use only, which will prevent its installation on t
 $ composer require --dev drupal/devel:~1.0
 ```
 
+To update a module, run:
+
+```
+$ composer update --with-dependencies "drupal/MODULNAME"
+```
+
+[Commerce is special][], though. Note the asterisk at the end of the module name:
+
+```
+$ composer update --with-dependencies "drupal/commerce*"
+```
+
 ## Patching Contributed modules
 
 If you need to apply patches (depending on the project being modified, a pull
@@ -101,7 +113,7 @@ section of composer.json:
 ## Updating Drupal core
 
 ```
-$ composer update drupal/core "drupal/core-*" --with-all-dependencies
+$ composer update "drupal/core-*" --with-all-dependencies
 ```
 
 Then run `git diff` to determine if any of the scaffolding files have changed.
@@ -157,6 +169,7 @@ If you set `LIVERELOAD=1` in your `.env` file and reload your browser while `npm
 [Drush launcher]: https://github.com/drush-ops/drush-launcher
 [git submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 [OAuth JWT Bearer Token flow documentation]: https://www.drupal.org/docs/8/modules/salesforce-suite/create-a-oauth-jwt-bearer-token-flow-connected-app-4x
+[Commerce is special]: https://docs.drupalcommerce.org/commerce2/developer-guide/install-update/updating
 [composer-patches]: https://github.com/cweagans/composer-patches
 [Union Component Library]: https://github.com/ilrWebServices/union
 [Union Organizer]: https://github.com/ilrWebServices/union_organizer

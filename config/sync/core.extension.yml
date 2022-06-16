@@ -48,6 +48,7 @@ module:
   key: 0
   link: 0
   mailsystem: 0
+  mysql: 0
   node: 0
   options: 0
   page_cache: 0
