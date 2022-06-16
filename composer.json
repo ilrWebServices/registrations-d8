@@ -43,7 +43,7 @@
     "drupal/fixed_block_content": "^1.0",
     "drupal/key": "^1.14",
     "drupal/queue_ui": "^3.0",
-    "drupal/salesforce": "^4.0",
+    "drupal/salesforce": "^5.0",
     "drupal/samlauth": "^3.0",
     "drupal/swiftmailer": "^2.0@beta",
     "drupal/token": "^1.5",
@@ -131,10 +131,6 @@
       },
       "drupal/address": {
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
-      },
-      "drupal/salesforce": {
-        "Mapping UI not using SalesforceMappingLocalTask Derivative": "https://git.drupalcode.org/project/salesforce/-/commit/432994274e2e0ac458a5284ddfd48be61ac942c8.diff",
-        "Issue #3102133: Refresh identity whenever token is refreshed": "https://git.drupalcode.org/project/salesforce/-/commit/bdf17e50c41c1390c12aeaf6d97719c36617f865.diff"
       }
     }
   }
