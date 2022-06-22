@@ -3,14 +3,13 @@
 namespace Drupal\ilr_outreach_discounts\Plugin\Commerce\InlineForm;
 
 use Drupal\commerce\Plugin\Commerce\InlineForm\InlineFormBase;
-use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\ilr_outreach_discounts\IlrOutreachDiscount;
 use Drupal\salesforce\Rest\RestClient;
 use Drupal\salesforce\SelectQuery;
-use Drupal\salesforce\SFID;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -221,19 +220,31 @@ class DiscountRedemption extends InlineFormBase {
     foreach ($order->getItems() as $item) {
       // @see ilr_registrations_commerce_order_item_presave() for 'sf_class_id'.
       if ($discount_code_object = $this->getEligibleClassDiscount($item->getData('sf_class_id'), $discount_code)) {
+        $eligible_discount = new IlrOutreachDiscount;
+        $eligible_discount->code = $discount_code;
+        $eligible_discount->universal = $discount_code_object->field('Universal__c');
+
         if ($discount_code_object->field('Discount_Type__c') === 'Individual_Percentage') {
-          $eligible_discounts[$discount_code] = [
-            'type' => 'percentage',
-            'value' => $discount_code_object->field('Discount_Percent__c') / -100,
-          ];
+          $eligible_discount->type = 'percentage';
+          $eligible_discount->value =  $discount_code_object->field('Discount_Percent__c') / -100;
         }
         else {
-          $eligible_discounts[$discount_code] = [
-            'type' => 'amount',
-            'value' => $discount_code_object->field('Discount_Amount__c') * -1,
-          ];
+          $eligible_discount->type = 'amount';
+          $eligible_discount->value = $discount_code_object->field('Discount_Amount__c') * -1;
         }
-        $eligible_discounts[$discount_code]['applies_to'][] = $item->getData('sf_class_id');
+
+        // Only store 'eligible' rules for this discount code. `appliesTo`
+        // should end up as an array of Salesforce class object IDs for which
+        // this non-universal code applies.
+        if ($discount_classes = $discount_code_object->field('Discount_Classes__r')) {
+          foreach ($discount_classes['records'] as $discount_class) {
+            if ($discount_class['Eligible__c']) {
+              $eligible_discount->appliesTo[] = $discount_class['Class__c'];
+            }
+          }
+        }
+
+        $eligible_discounts[$discount_code] = $eligible_discount;
       }
     }
 
@@ -328,7 +339,7 @@ class DiscountRedemption extends InlineFormBase {
       'Discount_Start_Date__c',
       'Expiry_Date__c',
       'Universal__c',
-      "(SELECT Id, Name, Class__c, Eligible__c FROM Discount_Classes__r WHERE Class__c = '$class_sf_id')",
+      "(SELECT Id, Name, Class__c, Eligible__c FROM Discount_Classes__r)",
     ];
     $soql_query->addCondition('Name', "'" . addslashes($discount_code) . "'");
     $results = $this->client->query($soql_query);
@@ -358,8 +369,8 @@ class DiscountRedemption extends InlineFormBase {
     // If there are 'rules' for this discount/class combo.
     elseif (($rules = $discount_code_object->field('Discount_Classes__r')) && isset($rules['records'])) {
       foreach ($rules['records'] as $rule) {
-        // If any rule is not eligible, this discount is not eligible.
-        if ($rule['Eligible__c'] === FALSE) {
+        // If any rule for this class is not eligible, this discount is not eligible.
+        if ($rule['Class__c'] === $class_sf_id && $rule['Eligible__c'] === FALSE) {
           // dump('not eligible by rule');
           return FALSE;
         }
@@ -375,7 +386,6 @@ class DiscountRedemption extends InlineFormBase {
       return FALSE;
     }
 
-    // dump($discount_code_object); die();
     return $discount_code_object;
   }
 
