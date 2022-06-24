@@ -33,6 +33,7 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
           continue;
         }
 
+        // @todo Consider preventing adjustments greater than the item price.
         if ($discount->type === 'percentage') {
           $adjustment_amount = $order_item->getUnitPrice()->multiply($discount->value)->multiply($order_item->getQuantity());
         }
