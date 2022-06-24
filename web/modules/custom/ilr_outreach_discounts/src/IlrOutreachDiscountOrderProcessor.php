@@ -41,14 +41,9 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
           $adjustment_amount = (new Price($discount->value, 'USD'))->multiply($order_item->getQuantity());
         }
 
-        $label = $this->t('@discount_code discount for @class', [
-          '@discount_code' => $discount->code,
-          '@class' => $order_item->label(),
-        ]);
-
         $order_item->addAdjustment(new Adjustment([
           'type' => 'ilr_outreach_discount',
-          'label' => $label,
+          'label' => $discount->code . ' ' . $this->t('discount for') . ' ' . $order_item->label(),
           // This source_id is a hacky CSV. This allows us to parse out the sfid
           // and code for serializing.
           'source_id' => $discount->sfid . ',' . $discount->code . ',' . $order_item->id(),
