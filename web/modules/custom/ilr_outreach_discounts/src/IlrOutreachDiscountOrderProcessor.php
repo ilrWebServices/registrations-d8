@@ -28,6 +28,11 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
           continue;
         }
 
+        // Also skip items that are excluded from universal discounts.
+        if ($discount->universal && in_array($order_item->getData('sf_class_id'), $discount->excludes)) {
+          continue;
+        }
+
         if ($discount->type === 'percentage') {
           $adjustment_amount = $order_item->getUnitPrice()->multiply($discount->value)->multiply($order_item->getQuantity());
         }

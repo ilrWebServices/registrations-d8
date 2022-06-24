@@ -45,4 +45,11 @@ class IlrOutreachDiscount {
    */
   public $appliesTo = [];
 
+  /**
+   * The Salesforce Class IDs the discount cannot apply to.
+   *
+   * @var array
+   */
+  public $excludes = [];
+
 }

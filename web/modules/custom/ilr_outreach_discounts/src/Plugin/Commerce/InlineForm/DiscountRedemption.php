@@ -241,6 +241,9 @@ class DiscountRedemption extends InlineFormBase {
             if ($discount_class['Eligible__c']) {
               $eligible_discount->appliesTo[] = $discount_class['Class__c'];
             }
+            else {
+              $eligible_discount->excludes[] = $discount_class['Class__c'];
+            }
           }
         }
 
