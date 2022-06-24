@@ -99,6 +99,17 @@
   }
 }
 
+.ilr-outreach-discount-applied-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--cu-vr-1);
+
+  input {
+    margin-bottom: 0;
+  }
+}
+
 @media (min-width: 769px) {
   .checkout-complete__order {
     float: left;

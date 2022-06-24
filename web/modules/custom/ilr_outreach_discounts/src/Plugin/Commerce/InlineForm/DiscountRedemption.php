@@ -155,6 +155,11 @@ class DiscountRedemption extends InlineFormBase {
     foreach ($ilr_outreach_discounts as $discount_code => $discount) {
       $index++;
 
+      $inline_form['discounts'][$index] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['ilr-outreach-discount-applied-item']],
+      ];
+
       $inline_form['discounts'][$index]['code'] = [
         '#plain_text' => $discount_code,
       ];
