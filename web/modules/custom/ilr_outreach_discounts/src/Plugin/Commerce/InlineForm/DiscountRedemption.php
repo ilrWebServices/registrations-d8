@@ -352,8 +352,10 @@ class DiscountRedemption extends InlineFormBase {
     $results = $this->client->query($soql_query);
 
     if ($results->size()) {
+      $discount_records = $results->records();
+
       /** @var \Drupal\salesforce\SObject $discount_code_object */
-      $discount_code_object = reset($results->records());
+      $discount_code_object = reset($discount_records);
     }
     else {
       $error = 'No such discount code.';
