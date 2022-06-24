@@ -358,6 +358,17 @@ class DiscountRedemption extends InlineFormBase {
     $discount_start_date = new \DateTime($discount_code_object->field('Discount_Start_Date__c'));
     $discount_end_date = new \DateTime($discount_code_object->field('Expiry_Date__c'));
     $now_date = new \DateTime('now');
+    $rules_for_class = [];
+
+    // Gather the rules for only this class. We collect all of the rules,
+    // including those for other classes, so the orderprocessor can see them.
+    if (($rules = $discount_code_object->field('Discount_Classes__r')) && isset($rules['records'])) {
+      foreach ($rules['records'] as $rule) {
+        if ($rule['Class__c'] === $class_sf_id) {
+          $rules_for_class[] = $rule;
+        }
+      }
+    }
 
     // If there is a discount start date and it's in the future, not eligible.
     if ($discount_code_object->field('Discount_Start_Date__c') && $discount_start_date > $now_date) {
@@ -370,11 +381,11 @@ class DiscountRedemption extends InlineFormBase {
       return FALSE;
     }
     // If there are 'rules' for this discount/class combo.
-    elseif (($rules = $discount_code_object->field('Discount_Classes__r')) && isset($rules['records'])) {
-      foreach ($rules['records'] as $rule) {
+    elseif ($rules_for_class) {
+      foreach ($rules_for_class as $rule) {
         // If any rule for this class is not eligible, this discount is not eligible.
-        if ($rule['Class__c'] === $class_sf_id && $rule['Eligible__c'] === FALSE) {
           // dump('not eligible by rule');
+        if ($rule['Eligible__c'] === FALSE) {
           return FALSE;
         }
       }
