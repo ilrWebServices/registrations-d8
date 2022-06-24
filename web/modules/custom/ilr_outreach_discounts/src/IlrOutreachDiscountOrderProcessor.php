@@ -32,7 +32,7 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
           $adjustment_amount = $order_item->getUnitPrice()->multiply($discount->value)->multiply($order_item->getQuantity());
         }
         else {
-          $adjustment_amount = $order_item->getUnitPrice()->add(new Price($discount->value, 'USD'))->multiply($order_item->getQuantity());
+          $adjustment_amount = (new Price($discount->value, 'USD'))->multiply($order_item->getQuantity());
         }
 
         // Universal discounts apply to every item in the order, so they can
