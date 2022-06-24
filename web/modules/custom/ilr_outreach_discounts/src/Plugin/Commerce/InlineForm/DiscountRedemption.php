@@ -215,11 +215,15 @@ class DiscountRedemption extends InlineFormBase {
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($this->configuration['order_id']);
 
     $eligible_discounts = [];
+    $messages = [];
 
     /** @var \Drupal\commerce_order\Entity\OrderItem $item */
     foreach ($order->getItems() as $item) {
       // @see ilr_registrations_commerce_order_item_presave() for 'sf_class_id'.
-      if ($discount_code_object = $this->getEligibleClassDiscount($item->getData('sf_class_id'), $discount_code)) {
+      $error = '';
+      $discount_code_object = $this->getEligibleClassDiscount($item->getData('sf_class_id'), $discount_code, $error);
+
+      if ($discount_code_object) {
         $eligible_discount = new IlrOutreachDiscount;
         $eligible_discount->code = $discount_code;
         $eligible_discount->universal = $discount_code_object->field('Universal__c');
@@ -249,10 +253,15 @@ class DiscountRedemption extends InlineFormBase {
 
         $eligible_discounts[$discount_code] = $eligible_discount;
       }
+      else {
+        $messages[] = $error;
+      }
     }
 
     if (empty($eligible_discounts)) {
-      $form_state->setErrorByName($discount_code_path, $this->t('The provided discount code is invalid.'));
+      foreach ($messages as $message) {
+        $form_state->setErrorByName($discount_code_path, $message);
+      }
       return;
     }
 
@@ -330,7 +339,7 @@ class DiscountRedemption extends InlineFormBase {
    *   Discount info if class is eligible for this discount. FALSE if class is
    *   not eligible.
    */
-  protected function getEligibleClassDiscount(string $class_sf_id, string $discount_code) {
+  protected function getEligibleClassDiscount(string $class_sf_id, string $discount_code, string &$error = NULL) {
     // Get the discount code, along with any discount class 'rule' records.
     $soql_query = new SelectQuery('EXECED_Discount_Code__c');
     $soql_query->fields = [
@@ -352,6 +361,7 @@ class DiscountRedemption extends InlineFormBase {
       $discount_code_object = reset($results->records());
     }
     else {
+      $error = 'No such discount code.';
       return FALSE;
     }
 
@@ -372,31 +382,31 @@ class DiscountRedemption extends InlineFormBase {
 
     // If there is a discount start date and it's in the future, not eligible.
     if ($discount_code_object->field('Discount_Start_Date__c') && $discount_start_date > $now_date) {
-      // dump('discount has not started yet');
+      $error = 'Discount currently ineligible.';
       return FALSE;
     }
     // If there is a discount end date and it's in the past, not eligible.
-      // dump('discount expired');
     elseif ($discount_code_object->field('Discount_End_Date__c') && $discount_end_date < $now_date) {
+      $error = 'Discount no longer eligible.';
       return FALSE;
     }
     // If there are 'rules' for this discount/class combo.
     elseif ($rules_for_class) {
       foreach ($rules_for_class as $rule) {
         // If any rule for this class is not eligible, this discount is not eligible.
-          // dump('not eligible by rule');
         if ($rule['Eligible__c'] === FALSE) {
+          $error = 'Discount not eligible for class ' . $class_sf_id;
           return FALSE;
         }
       }
     }
     // There are no rules for this discount/class combo.
     elseif (!$discount_code_object->field('Universal__c')) {
-      // dump('not universal');
       return FALSE;
     }
     elseif (!in_array($discount_code_object->field('Discount_Type__c'), ['Individual_Percentage', 'Individual_Amount'])) {
       // Unusable discount type.
+      $error = 'Discount not applicable.';
       return FALSE;
     }
 
