@@ -342,13 +342,13 @@ class DiscountRedemption extends InlineFormBase {
       'Discount_Amount__c',
       'Discount_Percent__c',
       'Discount_Type__c',
-      'Discount_Start_Date__c',
-      'Discount_End_Date__c',
       'Universal__c',
       "(SELECT Id, Name, Class__c, Eligible__c FROM Discount_Classes__r)",
     ];
     $soql_query->addCondition('Name', "'" . addslashes($discount_code) . "'");
     $soql_query->addCondition('Discount_Type__c', ['Individual_Percentage', 'Individual_Amount']);
+    $soql_query->addCondition('Discount_Start_Date__c', 'TODAY', '<=');
+    $soql_query->addCondition('Discount_End_Date__c', 'TODAY', '>=');
     $results = $this->client->query($soql_query);
 
     if ($results->size()) {
@@ -362,9 +362,6 @@ class DiscountRedemption extends InlineFormBase {
       return FALSE;
     }
 
-    $discount_start_date = new \DateTime($discount_code_object->field('Discount_Start_Date__c'));
-    $discount_end_date = new \DateTime($discount_code_object->field('Discount_End_Date__c'));
-    $now_date = new \DateTime('now');
     $rules_for_class = [];
 
     // Gather the rules for only this class. We collect all of the rules,
@@ -377,18 +374,8 @@ class DiscountRedemption extends InlineFormBase {
       }
     }
 
-    // If there is a discount start date and it's in the future, not eligible.
-    if ($discount_code_object->field('Discount_Start_Date__c') && $discount_start_date > $now_date) {
-      $error = 'Discount currently ineligible.';
-      return FALSE;
-    }
-    // If there is a discount end date and it's in the past, not eligible.
-    elseif ($discount_code_object->field('Discount_End_Date__c') && $discount_end_date < $now_date) {
-      $error = 'Discount no longer eligible.';
-      return FALSE;
-    }
     // If there are 'rules' for this discount/class combo.
-    elseif ($rules_for_class) {
+    if ($rules_for_class) {
       foreach ($rules_for_class as $rule) {
         // If any rule for this class is not eligible, this discount is not eligible.
         if ($rule['Eligible__c'] === FALSE) {
