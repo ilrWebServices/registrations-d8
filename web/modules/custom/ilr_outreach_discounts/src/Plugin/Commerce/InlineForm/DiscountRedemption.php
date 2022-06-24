@@ -354,6 +354,7 @@ class DiscountRedemption extends InlineFormBase {
       "(SELECT Id, Name, Class__c, Eligible__c FROM Discount_Classes__r)",
     ];
     $soql_query->addCondition('Name', "'" . addslashes($discount_code) . "'");
+    $soql_query->addCondition('Discount_Type__c', ['Individual_Percentage', 'Individual_Amount']);
     $results = $this->client->query($soql_query);
 
     if ($results->size()) {
@@ -402,10 +403,6 @@ class DiscountRedemption extends InlineFormBase {
     }
     // There are no rules for this discount/class combo.
     elseif (!$discount_code_object->field('Universal__c')) {
-      return FALSE;
-    }
-    elseif (!in_array($discount_code_object->field('Discount_Type__c'), ['Individual_Percentage', 'Individual_Amount'])) {
-      // Unusable discount type.
       $error = 'Discount not applicable.';
       return FALSE;
     }
