@@ -226,6 +226,7 @@ class DiscountRedemption extends InlineFormBase {
       if ($discount_code_object) {
         $eligible_discount = new IlrOutreachDiscount;
         $eligible_discount->code = $discount_code;
+        $eligible_discount->sfid = $discount_code_object->id();
         $eligible_discount->universal = $discount_code_object->field('Universal__c');
 
         if ($discount_code_object->field('Discount_Type__c') === 'Individual_Percentage') {

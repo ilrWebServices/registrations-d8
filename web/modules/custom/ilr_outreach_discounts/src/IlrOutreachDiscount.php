@@ -18,6 +18,13 @@ class IlrOutreachDiscount {
   public $code;
 
   /**
+   * The discount code Salesforce ID.
+   *
+   * @var string
+   */
+  public $sfid;
+
+  /**
    * The discount type ('percentage' or 'amount').
    *
    * @var string

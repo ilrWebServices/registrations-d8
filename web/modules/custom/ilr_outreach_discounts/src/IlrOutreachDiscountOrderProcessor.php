@@ -40,26 +40,17 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
           $adjustment_amount = (new Price($discount->value, 'USD'))->multiply($order_item->getQuantity());
         }
 
-        // Universal discounts apply to every item in the order, so they can
-        // have a simple label and a source_id that groups them together.
-        if ($discount->universal) {
-          $label = $this->t('@discount_code discount', [
-            '@discount_code' => $discount->code,
-          ]);
-          $source_id = $discount->code;
-        }
-        else {
-          $label = $this->t('@discount_code discount for @class', [
-            '@discount_code' => $discount->code,
-            '@class' => $order_item->label(),
-          ]);
-          $source_id = $discount->code . '_' . $order_item->id();
-        }
+        $label = $this->t('@discount_code discount for @class', [
+          '@discount_code' => $discount->code,
+          '@class' => $order_item->label(),
+        ]);
 
         $order_item->addAdjustment(new Adjustment([
           'type' => 'ilr_outreach_discount',
           'label' => $label,
-          'source_id' => $source_id,
+          // This source_id is a hacky CSV. This allows us to parse out the sfid
+          // and code for serializing.
+          'source_id' => $discount->sfid . ',' . $discount->code . ',' . $order_item->id(),
           'amount' => $adjustment_amount,
           'percentage' => ($discount->type === 'percentage') ? (string) $discount->value : NULL,
         ]));
