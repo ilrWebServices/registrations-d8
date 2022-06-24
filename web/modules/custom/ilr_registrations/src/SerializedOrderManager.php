@@ -170,25 +170,39 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
 
       // Process discounts for this item.
       foreach ($item_adjustments as $item_adjustment) {
-        $promotions = $promotion_storage->loadByProperties([
-          'promotion_id' => $item_adjustment->getSourceId(),
-        ]);
+        if ($item_adjustment->getType() === 'promotion') {
+          $promotions = $promotion_storage->loadByProperties([
+            'promotion_id' => $item_adjustment->getSourceId(),
+          ]);
 
-        if (!empty($promotions)) {
-          foreach ($promotions as $promotion) {
-            $sf_promo_mapped_objects = $sf_mapping_storage->loadByEntity($promotion);
-            $sf_promo_mapped_object = reset($sf_promo_mapped_objects);
+          if (!empty($promotions)) {
+            foreach ($promotions as $promotion) {
+              $sf_promo_mapped_objects = $sf_mapping_storage->loadByEntity($promotion);
+              $sf_promo_mapped_object = reset($sf_promo_mapped_objects);
 
-            $discount = [
-              "sfid" => $sf_promo_mapped_object->sfid(),
-              "code" => $promotion->label(),
-              "type" => $item_adjustment->getPercentage() ? 'percentage' : 'fixed_amount',
-              "amount" => (float) $item_adjustment->getAmount()->getNumber(),
-              "percentage" => (float) $item_adjustment->getPercentage(),
-            ];
+              $discount = [
+                "sfid" => $sf_promo_mapped_object->sfid(),
+                "code" => $promotion->label(),
+                "type" => $item_adjustment->getPercentage() ? 'percentage' : 'fixed_amount',
+                "amount" => (float) $item_adjustment->getAmount()->getNumber(),
+                "percentage" => (float) $item_adjustment->getPercentage(),
+              ];
 
-            $discounts[] = $discount;
+              $discounts[] = $discount;
+            }
           }
+        }
+        elseif ($item_adjustment->getType() === 'ilr_outreach_discount') {
+          list($sfid, $code) = explode(',', $item_adjustment->getSourceId());
+          $discount = [
+            "sfid" => $sfid,
+            "code" => $code,
+            "type" => $item_adjustment->getPercentage() ? 'percentage' : 'fixed_amount',
+            "amount" => (float) $item_adjustment->getAmount()->getNumber(),
+            "percentage" => (float) $item_adjustment->getPercentage(),
+          ];
+
+          $discounts[] = $discount;
         }
       }
 

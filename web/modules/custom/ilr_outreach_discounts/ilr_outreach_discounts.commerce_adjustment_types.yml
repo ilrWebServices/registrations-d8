@@ -1,0 +1,6 @@
+ilr_outreach_discount:
+  label: 'ILR Outreach discount'
+  singular_label: 'discount'
+  plural_label: 'discounts'
+  has_ui: TRUE
+  weight: 10

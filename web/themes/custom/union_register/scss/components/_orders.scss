@@ -68,13 +68,26 @@
   }
 }
 
+.order-total-line {
+  display: grid;
+  grid-template-columns: 3fr 4.5em;
+  gap: var(--cu-ps-1);
+  align-items: end;
+  justify-items: right;
+  margin-bottom: var(--cu-vr-1);
+}
+
 .order-total-line-label {
-  margin-right: var(--cu-ps-1);
   display: inline-flex;
+  align-items: flex-end;
 
   &::after {
     content: ':';
   }
+}
+
+.order-total-line-value {
+  width: auto;
 }
 
 .coupon-redemption-form__coupons table {
