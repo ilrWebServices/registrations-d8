@@ -340,7 +340,7 @@ class DiscountRedemption extends InlineFormBase {
       'Discount_Percent__c',
       'Discount_Type__c',
       'Discount_Start_Date__c',
-      'Expiry_Date__c',
+      'Discount_End_Date__c',
       'Universal__c',
       "(SELECT Id, Name, Class__c, Eligible__c FROM Discount_Classes__r)",
     ];
@@ -356,7 +356,7 @@ class DiscountRedemption extends InlineFormBase {
     }
 
     $discount_start_date = new \DateTime($discount_code_object->field('Discount_Start_Date__c'));
-    $discount_end_date = new \DateTime($discount_code_object->field('Expiry_Date__c'));
+    $discount_end_date = new \DateTime($discount_code_object->field('Discount_End_Date__c'));
     $now_date = new \DateTime('now');
     $rules_for_class = [];
 
@@ -376,8 +376,8 @@ class DiscountRedemption extends InlineFormBase {
       return FALSE;
     }
     // If there is a discount end date and it's in the past, not eligible.
-    elseif ($discount_code_object->field('Expiry_Date__c') && $discount_end_date < $now_date) {
       // dump('discount expired');
+    elseif ($discount_code_object->field('Discount_End_Date__c') && $discount_end_date < $now_date) {
       return FALSE;
     }
     // If there are 'rules' for this discount/class combo.
