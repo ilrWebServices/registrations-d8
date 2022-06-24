@@ -108,9 +108,6 @@ class DiscountRedemption extends InlineFormBase {
 
     $inline_form = [
       '#tree' => TRUE,
-      // '#attached' => [
-      //   'library' => ['commerce_promotion/coupon_redemption_form'],
-      // ],
       '#theme' => 'ilr_outreach_discount_redemption_form',
       '#configuration' => $this->getConfiguration(),
     ] + $inline_form;
@@ -156,10 +153,6 @@ class DiscountRedemption extends InlineFormBase {
       $inline_form['discounts'][$index]['code'] = [
         '#plain_text' => $discount_code,
       ];
-      // $inline_form['discounts'][$index]['display_name'] = [
-      //   // @todo Use the promotion display name once added.
-      //   '#plain_text' => $discount_code,
-      // ];
       $inline_form['discounts'][$index]['remove_button'] = [
         '#type' => 'submit',
         '#value' => $this->t('Remove discount'),

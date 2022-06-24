@@ -130,15 +130,4 @@ class DiscountRedemption extends CheckoutPaneBase {
     return $pane_form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function submitPaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
-    // The form was submitted with a non-applied coupon in the input field,
-    // mapped to a coupon ID in CouponRedemptionForm::validateForm().
-    if (!empty($pane_form['form']['code']['#coupon_id'])) {
-      $this->order->get('coupons')->appendItem($pane_form['form']['code']['#coupon_id']);
-    }
-  }
-
 }
