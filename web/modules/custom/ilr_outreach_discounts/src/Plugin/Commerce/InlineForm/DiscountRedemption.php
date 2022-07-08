@@ -368,7 +368,7 @@ class DiscountRedemption extends InlineFormBase {
       $discount_code_object = reset($discount_records);
     }
     else {
-      $error = 'No such discount code.';
+      $error = "Discount code '{$discount_code}' is invalid.";
       return FALSE;
     }
 
@@ -389,12 +389,12 @@ class DiscountRedemption extends InlineFormBase {
 
     // If there is a discount start date and it's in the future, not eligible.
     if ($discount_code_object->field('Discount_Start_Date__c') && $discount_start_date > $now_date) {
-      $error = 'Discount currently ineligible.';
+      $error = "Discount code '{$discount_code}' is currently ineligible.";
       return FALSE;
     }
     // If there is a discount end date and it's in the past, not eligible.
     elseif ($discount_code_object->field('Discount_End_Date__c') && $discount_end_date < $now_date) {
-      $error = 'Discount no longer eligible.';
+      $error = "Discount '{$discount_code}' is no longer eligible.";
       return FALSE;
     }
     // If there are 'rules' for this discount/class combo.
@@ -402,14 +402,14 @@ class DiscountRedemption extends InlineFormBase {
       foreach ($rules_for_class as $rule) {
         // If any rule for this class is not eligible, this discount is not eligible.
         if ($rule['Eligible__c'] === FALSE) {
-          $error = 'Discount not eligible for class ' . $class_sf_id;
+          $error = "Discount '{$discount_code}' is not eligible for this class.";
           return FALSE;
         }
       }
     }
     // There are no rules for this discount/class combo.
     elseif (!$discount_code_object->field('Universal__c')) {
-      $error = 'Discount not applicable.';
+      $error = "Discount code '{$discount_code}' is not applicable.";
       return FALSE;
     }
 
