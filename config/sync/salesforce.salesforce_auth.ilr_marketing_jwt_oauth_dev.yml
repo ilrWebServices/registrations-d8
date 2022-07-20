@@ -10,7 +10,7 @@ id: ilr_marketing_jwt_oauth_dev
 label: 'ILR Marketing JWT OAuth (Dev)'
 provider: jwt
 provider_settings:
-  consumer_key: 3MVG9ooRt4uZ_3Tn2AXN7hjvld6fIY72ZgGA.V5wGuEfw2hTl1mnxz9sttGf0GGMFv3kW0hfHtm5Z5028FbiJ
+  consumer_key: 3MVG9ooRt4uZ_3Tn2AXN7hjvld3ZJwCrPzG6VVroaZ8OmtFd2zhodEGK.FbzJQ82oTd7P3RzZHTONCAZddNTk
   login_user: apionly@ilr.cornell.edu.tiger
   login_url: 'https://test.salesforce.com'
   encrypt_key: ilr_marketing_jwt_x509_key
