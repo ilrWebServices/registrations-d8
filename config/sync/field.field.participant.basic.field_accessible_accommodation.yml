@@ -9,7 +9,7 @@ id: participant.basic.field_accessible_accommodation
 field_name: field_accessible_accommodation
 entity_type: participant
 bundle: basic
-label: 'Please describe any accessibility accommodations needed to ensure full participation'
+label: '<em>We strive to host inclusive, accessible events that enable all individuals to engage and participate fully</em>. Please list any reasonable accommodations you may need, such as alternate formats, interpreters, or sign language interpreters.'
 description: ''
 required: false
 translatable: false
