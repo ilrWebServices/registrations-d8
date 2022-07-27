@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_order.commerce_order_type.registration
     - core.entity_view_mode.commerce_order.user
+    - field.field.commerce_order.registration.field_opt_in
     - field.field.commerce_order.registration.field_payment_owner
   module:
     - commerce_order
@@ -93,6 +94,7 @@ hidden:
   balance: true
   billing_profile: true
   changed: true
+  field_opt_in: true
   order_number: true
   store_id: true
   total_paid: true

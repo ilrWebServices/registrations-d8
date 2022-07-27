@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.registration
+    - field.field.commerce_order.registration.field_opt_in
     - field.field.commerce_order.registration.field_payment_owner
   module:
     - commerce_order
@@ -28,6 +29,13 @@ content:
   cart:
     type: boolean_checkbox
     weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_opt_in:
+    type: boolean_checkbox
+    weight: 22
     region: content
     settings:
       display_label: true

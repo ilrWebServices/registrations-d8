@@ -101,6 +101,15 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "order_items" => [],
     ];
 
+    // Add email opt-in value.
+    // if ($order->hasField('field_opt_in')) {
+    //   $response['customer']['additional_fields'][] = [
+    //     'name' => 'HasOptedOutOfEmail',
+    //     'value' => $order->field_opt_in->value ? 'false' : 'true',
+    //   ];
+    //   $response['customer']['HasOptedOutOfEmail'] = $order->field_opt_in->value ? 'false' : 'true';
+    // }
+
     // Add any stored UTM codes if they exist in the order data. See
     // OrderCreateSubscriber::onOrderCreate().
     if ($utm_codes = $order->getData('utm_codes')) {

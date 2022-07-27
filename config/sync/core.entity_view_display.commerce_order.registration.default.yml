@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_order.commerce_order_type.registration
+    - field.field.commerce_order.registration.field_opt_in
     - field.field.commerce_order.registration.field_payment_owner
   module:
     - commerce_order
@@ -24,6 +25,16 @@ content:
       timezone: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_opt_in:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_payment_owner:
     type: list_default

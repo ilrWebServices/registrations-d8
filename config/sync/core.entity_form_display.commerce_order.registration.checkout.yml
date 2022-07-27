@@ -5,12 +5,20 @@ dependencies:
   config:
     - commerce_order.commerce_order_type.registration
     - core.entity_form_mode.commerce_order.checkout
+    - field.field.commerce_order.registration.field_opt_in
     - field.field.commerce_order.registration.field_payment_owner
 id: commerce_order.registration.checkout
 targetEntityType: commerce_order
 bundle: registration
 mode: checkout
 content:
+  field_opt_in:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_payment_owner:
     type: options_buttons
     weight: 0
