@@ -133,7 +133,8 @@
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
       },
       "drupal/persistent_visitor_parameters": {
-        "Allow cookie name and domain to be changed": "https://git.drupalcode.org/project/persistent_visitor_parameters/-/commit/6269974586dccbbd62d08585261f8cbb6e1590f1.diff"
+        "Allow cookie name and domain to be changed": "https://git.drupalcode.org/project/persistent_visitor_parameters/-/commit/6269974586dccbbd62d08585261f8cbb6e1590f1.diff",
+        "Set PVP cookie for authenticated users, too": "patches/pvp-auth-users.diff"
       }
     }
   }

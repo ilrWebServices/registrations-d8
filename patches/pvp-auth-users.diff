@@ -1,0 +1,23 @@
+diff --git a/src/EventSubscriber/ResponseSubscriber.php b/src/EventSubscriber/ResponseSubscriber.php
+index f13c1e4..04cd0a3 100644
+--- a/src/EventSubscriber/ResponseSubscriber.php
++++ b/src/EventSubscriber/ResponseSubscriber.php
+@@ -55,11 +55,6 @@ class ResponseSubscriber implements EventSubscriberInterface {
+       }
+     }
+
+-    // only non-logged users
+-    if (!$this->currentUser->isAnonymous()) {
+-      return;
+-    }
+-
+     $this->cookieManager->setCookie($response);
+   }
+
+@@ -71,4 +66,4 @@ class ResponseSubscriber implements EventSubscriberInterface {
+     return $events;
+   }
+
+-}
+\ No newline at end of file
++}
