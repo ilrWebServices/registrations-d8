@@ -41,6 +41,7 @@
     "drupal/erf": "^2.x-dev",
     "drupal/fixed_block_content": "^1.0",
     "drupal/key": "^1.14",
+    "drupal/persistent_visitor_parameters": "1.0.x-dev@dev",
     "drupal/queue_ui": "^3.0",
     "drupal/salesforce": "^5.0",
     "drupal/samlauth": "^3.0",
@@ -130,6 +131,9 @@
       },
       "drupal/address": {
         "Configure visible address fields per formatter": "https://www.drupal.org/files/issues/2019-05-23/address-visible_address_fields_per_field_formatter-2852800-23.patch"
+      },
+      "drupal/persistent_visitor_parameters": {
+        "Allow cookie name and domain to be changed": "https://git.drupalcode.org/project/persistent_visitor_parameters/-/commit/6269974586dccbbd62d08585261f8cbb6e1590f1.diff"
       }
     }
   }

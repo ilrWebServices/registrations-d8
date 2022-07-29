@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1700ce673082ce138618aa71d73dafd0",
+    "content-hash": "ca639d8d7abd2ac8fce8e272948cc59b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3375,6 +3375,51 @@
             "homepage": "https://www.drupal.org/project/mailsystem",
             "support": {
                 "source": "https://git.drupalcode.org/project/mailsystem"
+            }
+        },
+        {
+            "name": "drupal/persistent_visitor_parameters",
+            "version": "dev-1.0.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/persistent_visitor_parameters.git",
+                "reference": "c845a1c355b10ef801488ae14dc69e36ea67e388"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
+                "drupal": {
+                    "version": "1.0.0-beta2+2-dev",
+                    "datestamp": "1616506525",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "criz",
+                    "homepage": "https://www.drupal.org/user/71764"
+                },
+                {
+                    "name": "dejan0",
+                    "homepage": "https://www.drupal.org/user/3634531"
+                }
+            ],
+            "description": "Checks GET and HTTP Request parameters from anonymous visitors, and saves those in a cookie for further processing",
+            "homepage": "https://www.drupal.org/project/persistent_visitor_parameters",
+            "support": {
+                "source": "https://git.drupalcode.org/project/persistent_visitor_parameters"
             }
         },
         {
@@ -13116,6 +13161,7 @@
     "stability-flags": {
         "drupal/email_registration": 5,
         "drupal/erf": 20,
+        "drupal/persistent_visitor_parameters": 20,
         "drupal/swiftmailer": 10,
         "drupal/typed_data": 15,
         "drupal/union_organizer": 20

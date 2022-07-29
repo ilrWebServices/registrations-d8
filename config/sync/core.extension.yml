@@ -55,6 +55,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  persistent_visitor_parameters: 0
   profile: 0
   queue_ui: 0
   rest: 0
