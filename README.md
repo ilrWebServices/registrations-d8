@@ -120,6 +120,12 @@ Then run `git diff` to determine if any of the scaffolding files have changed.
 
 Review changes and restore any customizations to `.htaccess` or `robots.txt`. Commit everything together in a single commit (or merge), so `web` will remain in sync with `core` when checking out branches or running `git bisect`.
 
+## Updating Commerce
+
+```
+$ composer update "drupal/commerce*" --with-all-dependencies
+```
+
 ## Salesforce Integration
 
 This site uses the Salesforce Suite module to synchronize some Salesforce objects to Drupal entities, mainly Professionional Programs courses, classes, and related items.
