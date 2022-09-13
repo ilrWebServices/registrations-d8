@@ -34,7 +34,7 @@
     "drupal/config_split": "^1.4",
     "drupal/config_update": "^1.7",
     "drupal/core-composer-scaffold": "^9.0.0",
-    "drupal/core-recommended": "^9.0.0",
+    "drupal/core-recommended": "^9.0.0@stable",
     "drupal/date_popup": "^1.1",
     "drupal/dynamic_entity_reference": "^2.0",
     "drupal/email_registration": "^1.0@RC",
