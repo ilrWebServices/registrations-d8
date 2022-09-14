@@ -16,7 +16,7 @@ settings:
       label: 'My personal funds'
     -
       value: company
-      label: 'My company is paying'
+      label: 'My organization is paying'
   allowed_values_function: ''
 module: options
 locked: false

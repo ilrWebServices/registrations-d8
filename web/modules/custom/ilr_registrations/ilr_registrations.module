@@ -643,6 +643,7 @@ function ilr_registrations_form_user_login_form_alter(&$form, FormStateInterface
 function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
   if (isset($context['widget']) && $context['widget'] instanceof AddressDefaultWidget) {
     $element['#type'] = 'container';
+    $element['address']['#after_build'][] = 'ilr_registrations_alter_address_element';
   }
 
   if (isset($context['widget']) && $context['widget'] instanceof StringTextareaWidget) {
@@ -654,4 +655,15 @@ function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface
     }
   }
 
+}
+
+/**
+ * After build callback for address widget.
+ * @see ilr_registrations_field_widget_form_alter().
+ */
+function ilr_registrations_alter_address_element($element, FormStateInterface $form_state) {
+  if (isset($element['organization'])) {
+    $element['organization']['#title'] = t('Organization');
+  }
+  return $element;
 }
