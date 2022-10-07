@@ -103,3 +103,23 @@ function union_register_preprocess_commerce_order_receipt(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add a non-standard Union class to all blocks so that custom property font
+ * styles will apply.
+ */
+function union_register_preprocess_block(&$variables) {
+  $variables['attributes']['class'][] = 'cu-x-block';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add the cu-text class to all body fields so that custo property font styles
+ * will apply to <a> elements.
+ */
+function union_register_preprocess_field__body(&$variables) {
+  $variables['attributes']['class'][] = 'cu-text';
+}

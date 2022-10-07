@@ -1,7 +1,4 @@
-:root {
-  --cu-current-link-color: #{$color-link};
-}
-
-a {
-  color: var(--cu-current-link-color);
+// This is for the Admin Login link.
+sub {
+  --cu-font-size: var(--cu-ms-3);
 }
