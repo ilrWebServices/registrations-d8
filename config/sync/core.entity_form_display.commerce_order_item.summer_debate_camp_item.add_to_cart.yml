@@ -33,4 +33,5 @@ content:
 hidden:
   adjustments: true
   created: true
+  total_price: true
   unit_price: true
