@@ -1,0 +1,36 @@
+uuid: 42271377-ac65-42da-883e-d2068fbc1422
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.international_summer_debate_camp
+    - field.field.registration.international_summer_debate_camp.field_user_price
+    - field.field.registration.international_summer_debate_camp.participants
+    - field.field.registration.international_summer_debate_camp.product_variation
+  module:
+    - commerce_price
+    - user
+id: registration.international_summer_debate_camp.default
+targetEntityType: registration
+bundle: international_summer_debate_camp
+mode: default
+content:
+  field_user_price:
+    type: commerce_price_default
+    label: above
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  user_id:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  participants: true
+  product_variation: true

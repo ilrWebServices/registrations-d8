@@ -9,7 +9,7 @@ id: registration.international_summer_debate_camp.product_variation
 field_name: product_variation
 entity_type: registration
 bundle: international_summer_debate_camp
-label: 'Summer Debate Camp Cost'
+label: Event
 description: ''
 required: true
 translatable: true

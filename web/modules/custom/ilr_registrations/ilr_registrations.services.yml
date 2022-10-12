@@ -36,3 +36,7 @@ services:
     arguments: ['@entity_type.bundle.info', '@database']
     tags:
       - { name: event_subscriber, priority: 100 }
+  ilr_registrations.custom_registration_price_subscriber:
+    class: Drupal\ilr_registrations\EventSubscriber\CustomRegistrationPriceSubscriber
+    tags:
+      - { name: event_subscriber }

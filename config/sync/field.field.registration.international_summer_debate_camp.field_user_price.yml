@@ -1,0 +1,24 @@
+uuid: e5708647-77a0-4056-8849-0f33dd57fe67
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.international_summer_debate_camp
+    - field.storage.registration.field_user_price
+  module:
+    - commerce_price
+id: registration.international_summer_debate_camp.field_user_price
+field_name: field_user_price
+entity_type: registration
+bundle: international_summer_debate_camp
+label: 'Camp Tuition'
+description: 'Please enter the amount indicated on your debate summer camp confirmation email.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_currencies:
+    - '0'
+  allow_negative: false
+field_type: commerce_price

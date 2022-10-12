@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_form_mode.participant.inline
     - erf.registration_type.international_summer_debate_camp
+    - field.field.registration.international_summer_debate_camp.field_user_price
     - field.field.registration.international_summer_debate_camp.participants
     - field.field.registration.international_summer_debate_camp.product_variation
   module:
+    - commerce_price
     - erf_commerce
     - inline_entity_form
 id: registration.international_summer_debate_camp.default
@@ -15,6 +17,12 @@ targetEntityType: registration
 bundle: international_summer_debate_camp
 mode: default
 content:
+  field_user_price:
+    type: commerce_price_default
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   locked:
     type: boolean_checkbox
     weight: 15

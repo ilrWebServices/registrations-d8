@@ -1,0 +1,19 @@
+uuid: 8c2773b6-2b2e-4d27-8087-821767e89b70
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_price
+    - erf
+id: registration.field_user_price
+field_name: field_user_price
+entity_type: registration
+type: commerce_price
+settings: {  }
+module: commerce_price
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
