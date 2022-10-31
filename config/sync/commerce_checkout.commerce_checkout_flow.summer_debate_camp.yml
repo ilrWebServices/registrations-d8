@@ -7,6 +7,7 @@ dependencies:
     - commerce_payment
     - commerce_promotion
     - email_registration
+    - ilr_outreach_discounts
 label: 'Summer Debate Camp'
 id: summer_debate_camp
 plugin: multistep_default
@@ -63,3 +64,7 @@ configuration:
     email_registration_completion_registration:
       step: _disabled
       weight: 10
+    ilr_outreach_discount_redemption:
+      step: _disabled
+      weight: 10
+      allow_multiple: false

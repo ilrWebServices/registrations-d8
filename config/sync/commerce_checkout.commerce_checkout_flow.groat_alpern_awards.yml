@@ -7,6 +7,7 @@ dependencies:
     - commerce_payment
     - commerce_promotion
     - email_registration
+    - ilr_outreach_discounts
 label: 'Groat Alpern Awards'
 id: groat_alpern_awards
 plugin: multistep_default
@@ -58,6 +59,10 @@ configuration:
     email_registration_completion_registration:
       step: _disabled
       weight: 10
+    ilr_outreach_discount_redemption:
+      step: _disabled
+      weight: 10
+      allow_multiple: false
     login:
       step: _disabled
       weight: 11
