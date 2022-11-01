@@ -1,4 +1,6 @@
 #block-union-register-breadcrumbs {
+  --cu-text-color: #{$cornell-red};
+
   ol {
     list-style-type: none;
     display: flex;

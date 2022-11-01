@@ -22,11 +22,16 @@
     },
     {
       "type": "vcs",
+      "url": "https://github.com/ilrWebServices/union.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/ilrWebServices/union_organizer.git"
     }
   ],
   "require": {
     "composer/installers": "^2",
+    "cornell/union": "dev-union_ng",
     "cweagans/composer-patches": "^1.6.5",
     "drupal/admin_toolbar": "^3.0.0",
     "drupal/commerce": "^2.15",
@@ -48,7 +53,7 @@
     "drupal/swiftmailer": "^2.0@beta",
     "drupal/token": "^1.5",
     "drupal/typed_data": "^1.0@alpha",
-    "drupal/union_organizer": "dev-master",
+    "drupal/union_organizer": "dev-union_ng",
     "drush/drush": "^10",
     "firebase/php-jwt": "^5.2",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",

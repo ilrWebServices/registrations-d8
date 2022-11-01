@@ -5,6 +5,11 @@ global:
       css/style.css: {}
   dependencies:
     - union_organizer/message
+typography:
+  version: 1.x
+  css:
+    base:
+      css/typography.css: {}
 livereload:
   remote: https://github.com/mklabs/tiny-lr
   version: 1.1.1

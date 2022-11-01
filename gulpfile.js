@@ -30,7 +30,6 @@ function watchFiles(done) {
   gulp.watch('web/themes/custom/union_register/scss/**/*.scss', css);
 
   var lr_watcher = gulp.watch([
-    'web/libraries/union/source/**/*.css',
     'web/themes/custom/union_register/css/style.css'
   ]);
 

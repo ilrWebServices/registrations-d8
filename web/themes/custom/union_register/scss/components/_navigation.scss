@@ -1,4 +1,7 @@
 #block-union-register-main-nav {
+  --cu-text-color: #{$black};
+  --cu-font-size: var(--cu-ms-1);
+
   ul {
     display: flex;
     justify-content: flex-end;
@@ -7,10 +10,6 @@
 
     li {
       margin-right: 1em;
-
-      a {
-        color: $black;
-      }
     }
   }
 
@@ -20,6 +19,9 @@
 }
 
 #block-union-register-footer-menu {
+  --cu-text-color: #{$black};
+  --cu-font-size: var(--cu-ms-1);
+
   ul {
     list-style: none;
     padding: 0;
@@ -31,11 +33,6 @@
     li {
       padding: 0.5em 0;
       margin-right: 1em;
-      color: $black;
-
-      a {
-        color: $black;
-      }
 
       &:last-child {
         margin-left: auto;
