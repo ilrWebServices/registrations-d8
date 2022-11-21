@@ -10,7 +10,7 @@ This module replaces that with the following:
 2. A custom `ilr_outreach_discount` adjustment type.
 3. The custom `IlrOutreachDiscountOrderProcessor` Commerce order processor.
 
-Discount codes are applied by querying Salesforce in real time and applying eligibility rules as defined in `Drupal\ilr_outreach_discounts\Plugin\Commerce\InlineForm\DiscountRedemption::getEligibleClassDiscount()`. These rules are checked during the checkout pane inline form validation. In the future, these rules may be defined in Salesforce.
+Discount codes are applied by querying Salesforce in real time and applying eligibility rules as defined in `Drupal\ilr_outreach_discounts\Plugin\Commerce\InlineForm\DiscountRedemption::getEligibleDiscount()`. These rules are checked during the checkout pane inline form validation. In the future, these rules may be defined in Salesforce.
 
 Here's a basic overview of the discount code flow:
 
