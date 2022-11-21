@@ -27,6 +27,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/ilrWebServices/union_organizer.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ilrWebServices/ilr_outreach_discount_api.git"
     }
   ],
   "require": {
@@ -45,6 +49,7 @@
     "drupal/email_registration": "^1.0@RC",
     "drupal/erf": "^2.x-dev",
     "drupal/fixed_block_content": "^1.0",
+    "drupal/ilr_outreach_discount_api": "^1",
     "drupal/key": "^1.14",
     "drupal/persistent_visitor_parameters": "1.0.x-dev@dev",
     "drupal/queue_ui": "^3.0",

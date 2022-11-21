@@ -5,4 +5,4 @@ core_version_requirement: ^9 || ^10
 package: 'ILR'
 dependencies:
   - commerce:commerce_order
-  - ilr_registrations
+  - ilr_outreach_discount_api
