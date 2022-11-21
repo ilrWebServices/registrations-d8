@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c7f9d4459ab3e5aff55d448e58f3e64",
+    "content-hash": "255d3c48abb136252b5d50d431f69ed7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3160,6 +3160,32 @@
                 "source": "https://cgit.drupalcode.org/fixed_block_content",
                 "issues": "https://drupal.org/project/issues/fixed_block_content"
             }
+        },
+        {
+            "name": "drupal/ilr_outreach_discount_api",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/ilr_outreach_discount_api.git",
+                "reference": "9014af1ab0462c0d40970faf06197259eaa52d52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/ilr_outreach_discount_api/zipball/9014af1ab0462c0d40970faf06197259eaa52d52",
+                "reference": "9014af1ab0462c0d40970faf06197259eaa52d52",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/salesforce": "~5.0"
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "description": "Custom Drupal module containing helpers for ILR Outreach discount codes.",
+            "support": {
+                "source": "https://github.com/ilrWebServices/ilr_outreach_discount_api/tree/1.x",
+                "issues": "https://github.com/ilrWebServices/ilr_outreach_discount_api/issues"
+            },
+            "time": "2022-11-21T19:38:35+00:00"
         },
         {
             "name": "drupal/inline_entity_form",
