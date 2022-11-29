@@ -5,7 +5,6 @@ namespace Drupal\ilr_outreach_discounts\Plugin\Commerce\InlineForm;
 use Drupal\commerce\Plugin\Commerce\InlineForm\InlineFormBase;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Component\Utility\NestedArray;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\ilr_outreach_discount_api\IlrOutreachDiscountManager;
@@ -124,14 +123,6 @@ class DiscountRedemption extends InlineFormBase {
         'autocomplete' => 'new-password',
       ],
     ];
-
-    $date = new DrupalDateTime('now');
-    $cyber_expire = new DrupalDateTime('12/3/2022');
-
-    if ($date < $cyber_expire) {
-      $inline_form['code']['#description'] = $this->t('Use <code>CYBER20</code> for 20% off until 12/2.');
-    }
-
     $inline_form['apply'] = [
       '#type' => 'submit',
       '#value' => $this->t('Apply discount'),
