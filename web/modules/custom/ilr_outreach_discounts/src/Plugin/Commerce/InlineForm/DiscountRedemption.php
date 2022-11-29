@@ -103,7 +103,7 @@ class DiscountRedemption extends InlineFormBase {
     }
 
     assert($order instanceof OrderInterface);
-    $ilr_outreach_discounts = $order->getData('ilr_outreach_discounts', []);
+    $ilr_outreach_discounts = $_SESSION['ilr_discount_codes'] ?? [];
 
     $inline_form = [
       '#tree' => TRUE,
@@ -265,14 +265,14 @@ class DiscountRedemption extends InlineFormBase {
 
     // `ilr_outreach_discounts` is set in the form state in validateInlineForm().
     if ($discounts = $form_state->get('ilr_outreach_discounts')) {
+      // Store applicable discounts in the session. Discounts are actually
+      // applied to the order in IlrOutreachDiscountOrderProcessor::process().
+      $_SESSION['ilr_discount_codes'] = $discounts;
+
       $order_storage = \Drupal::entityTypeManager()->getStorage('commerce_order');
 
       /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
       $order = $order_storage->load($inline_form['#configuration']['order_id']);
-
-      // Store applicable discounts in the order data. Discounts are actually
-      // applied to the order in IlrOutreachDiscountOrderProcessor::process().
-      $order->setData('ilr_outreach_discounts', $discounts);
       $order->save();
     }
 
@@ -290,11 +290,14 @@ class DiscountRedemption extends InlineFormBase {
     $order_storage = \Drupal::entityTypeManager()->getStorage('commerce_order');
     /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $order_storage->load($inline_form['#configuration']['order_id']);
-    $ilr_outreach_discounts = $order->getData('ilr_outreach_discounts', []);
+
+    // Store applicable discounts in the session. They are actually applied to
+    // the order in IlrOutreachDiscountOrderProcessor::process().
+    $ilr_outreach_discounts = $_SESSION['ilr_discount_codes'] ?? [];
 
     if (!empty($ilr_outreach_discounts[$triggering_element['#discount_code']])) {
       unset($ilr_outreach_discounts[$triggering_element['#discount_code']]);
-      $order->setData('ilr_outreach_discounts', $ilr_outreach_discounts);
+      $_SESSION['ilr_discount_codes'] = $ilr_outreach_discounts;
       $order->save();
     }
 
