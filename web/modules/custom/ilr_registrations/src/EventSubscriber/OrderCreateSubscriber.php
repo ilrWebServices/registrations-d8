@@ -6,7 +6,6 @@ use Drupal\commerce_order\Event\OrderEvent;
 use Drupal\commerce_order\Event\OrderEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Drupal\ilr_outreach_discount_api\IlrOutreachDiscountManager;
 
 /**
  * Class OrderCreateSubscriber.
@@ -23,23 +22,13 @@ class OrderCreateSubscriber implements EventSubscriberInterface {
   protected $requestStack;
 
   /**
-   * The ILR Outreach discount manager.
-   *
-   * @var \Drupal\ilr_outreach_discount_api\IlrOutreachDiscountManager
-   */
-  protected $discountManager;
-
-  /**
    * Constructs a new OrderCreateSubscriber object.
    *
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The request stack.
-   * @param \Drupal\ilr_outreach_discount_api\IlrOutreachDiscountManager $discount_manager
-   *   The ILR Outreach discount manager.
    */
-  public function __construct(RequestStack $request_stack, IlrOutreachDiscountManager $discount_manager) {
+  public function __construct(RequestStack $request_stack) {
     $this->requestStack = $request_stack;
-    $this->discountManager = $discount_manager;
   }
 
   /**
