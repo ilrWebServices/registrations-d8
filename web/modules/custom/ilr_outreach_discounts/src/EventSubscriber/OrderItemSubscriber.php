@@ -3,10 +3,10 @@
 namespace Drupal\ilr_outreach_discounts\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Drupal\commerce_order\Event\OrderEvents;
+use Drupal\commerce_cart\Event\CartEvents;
 use Drupal\ilr_outreach_discount_api\IlrOutreachDiscountManager;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Drupal\commerce_order\Event\OrderItemEvent;
+use Drupal\commerce_cart\Event\CartOrderItemAddEvent;
 
 /**
  * Class OrderItemSubscriber.
@@ -48,17 +48,20 @@ class OrderItemSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     return [
-      OrderEvents::ORDER_ITEM_INSERT => 'onOrderItemInsert'
+      CartEvents::CART_ORDER_ITEM_ADD => 'onCartOrderItemInsert',
     ];
   }
 
   /**
+   * Callback for the cart order item insert event
    *
+   * @param CartOrderItemAddEvent $event
+   *   The event.
    */
-  public function onOrderItemInsert(OrderItemEvent $event) {
+  public function onCartOrderItemInsert(CartOrderItemAddEvent $event) {
     $item = $event->getOrderItem();
+    $order = $event->getCart();
 
-    // $order->bundle() === 'registration'
     if ($item->bundle() !== 'class' || !$item->getData('sf_class_id')) {
       return;
     }
@@ -86,10 +89,10 @@ class OrderItemSubscriber implements EventSubscriberInterface {
     }
 
     if ($discount_codes && $discount = $this->discountManager->getEligibleDiscount($discount_codes[0], $item->getData('sf_class_id'))) {
-      $_SESSION['ilr_discount_codes'] = [$discount->code => $discount];
+      $order->setData('ilr_outreach_discounts', [$discount->code => $discount]);
     }
     else {
-      unset($_SESSION['ilr_discount_codes']);
+      $order->setData('ilr_outreach_discounts', []);
     }
   }
 

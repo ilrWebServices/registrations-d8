@@ -19,10 +19,8 @@ class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
   * {@inheritdoc}
   */
   public function process(OrderInterface $order) {
-    $session_discounts = $_SESSION['ilr_discount_codes'] ?? [];
-
     /** @var \Drupal\ilr_outreach_discounts\IlrOutreachDiscount $discount */
-    foreach ($session_discounts as $discount) {
+    foreach ($order->getData('ilr_outreach_discounts', []) as $discount) {
       foreach ($order->getItems() as $order_item) {
         // If this is not a universal discount, only apply it to this item if
         // the discount applies to this class.
