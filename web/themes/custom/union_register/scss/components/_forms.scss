@@ -102,3 +102,13 @@
   padding-top: var(--cu-vr1);
   margin: var(--cu-vr1) 0 0 -2px;
 }
+
+// @todo Remove or revisit when Union-ng forms are refactored.
+.cu-input-list__item--checkbox {
+  flex-wrap: wrap;
+}
+
+.cu-input-message {
+  order: -1;
+  color: unset;
+}

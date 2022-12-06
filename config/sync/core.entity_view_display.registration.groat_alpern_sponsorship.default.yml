@@ -5,6 +5,7 @@ dependencies:
   config:
     - erf.registration_type.groat_alpern_sponsorship
     - field.field.registration.groat_alpern_sponsorship.field_full_name
+    - field.field.registration.groat_alpern_sponsorship.field_media_consent
     - field.field.registration.groat_alpern_sponsorship.participants
     - field.field.registration.groat_alpern_sponsorship.product_variation
 id: registration.groat_alpern_sponsorship.default
@@ -19,6 +20,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_media_consent:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
     region: content
   participants:
     type: entity_reference_entity_view

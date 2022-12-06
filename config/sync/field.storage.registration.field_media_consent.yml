@@ -1,0 +1,18 @@
+uuid: da747053-d7a2-4f94-866a-bba480371a2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: registration.field_media_consent
+field_name: field_media_consent
+entity_type: registration
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

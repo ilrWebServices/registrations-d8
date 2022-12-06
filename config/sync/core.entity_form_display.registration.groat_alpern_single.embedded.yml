@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.participant.inline
     - core.entity_form_mode.registration.embedded
     - erf.registration_type.groat_alpern_single
+    - field.field.registration.groat_alpern_single.field_media_consent
     - field.field.registration.groat_alpern_single.participants
     - field.field.registration.groat_alpern_single.product_variation
   module:
@@ -16,9 +17,16 @@ targetEntityType: registration
 bundle: groat_alpern_single
 mode: embedded
 content:
+  field_media_consent:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   participants:
     type: inline_entity_form_complex
-    weight: 10
+    weight: 2
     region: content
     settings:
       form_mode: inline

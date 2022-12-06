@@ -1,0 +1,23 @@
+uuid: a62d4b41-2a60-4cbf-9efa-e7f5774edce1
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.groat_alpern_single
+    - field.storage.registration.field_media_consent
+id: registration.groat_alpern_single.field_media_consent
+field_name: field_media_consent
+entity_type: registration
+bundle: groat_alpern_single
+label: 'I understand'
+description: 'This is a public event, which will be photographed and filmed and/or otherwise recorded. Your registration for this event constitutes your consent to such photography, live streaming, filming and/or recording, and any use, in any and all media.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

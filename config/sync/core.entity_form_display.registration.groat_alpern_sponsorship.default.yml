@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.participant.inline
     - erf.registration_type.groat_alpern_sponsorship
     - field.field.registration.groat_alpern_sponsorship.field_full_name
+    - field.field.registration.groat_alpern_sponsorship.field_media_consent
     - field.field.registration.groat_alpern_sponsorship.participants
     - field.field.registration.groat_alpern_sponsorship.product_variation
   module:
@@ -23,6 +24,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_media_consent:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   locked:
     type: boolean_checkbox

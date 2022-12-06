@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - erf.registration_type.groat_alpern_single
+    - field.field.registration.groat_alpern_single.field_media_consent
     - field.field.registration.groat_alpern_single.participants
     - field.field.registration.groat_alpern_single.product_variation
 id: registration.groat_alpern_single.default
@@ -11,6 +12,16 @@ targetEntityType: registration
 bundle: groat_alpern_single
 mode: default
 content:
+  field_media_consent:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   participants:
     type: entity_reference_entity_view
     label: above
