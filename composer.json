@@ -34,6 +34,7 @@
     }
   ],
   "require": {
+    "php": ">=8.0",
     "composer/installers": "^2",
     "cornell/union": "dev-union_ng",
     "cweagans/composer-patches": "^1.6.5",
