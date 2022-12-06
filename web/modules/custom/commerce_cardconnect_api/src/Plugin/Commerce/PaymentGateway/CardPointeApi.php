@@ -35,6 +35,9 @@ use GuzzleHttp\Exception\ServerException;
  */
 class CardPointeApi extends OnsitePaymentGatewayBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public function defaultConfiguration() {
     return [
       'cp_user' => '',
@@ -44,6 +47,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     ] + parent::defaultConfiguration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
 
@@ -87,6 +93,9 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     return $form;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
     $values = $form_state->getValue($form['#parents']);
@@ -100,7 +109,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
    * {@inheritdoc}
    */
   public function createPayment(PaymentInterface $payment, $capture = TRUE) {
-    // gather all necessary information from the payment, payment method, and order
+    // Gather necessary info from the payment, payment method, and order.
     $payment_method = $payment->getPaymentMethod();
 
     /** @var \Drupal\commerce_order\Entity\Order $order */
@@ -160,6 +169,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
         $data['postal'] = $billing_address->getPostalCode();
       }
 
+      /** @var \CardPointeGateway\Psr7\DataAwareResponse $client_response */
       $client_response = $client->post('auth', ['json' => $data]);
     }
     // Could not connect to server or other network issue.

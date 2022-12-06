@@ -24,7 +24,7 @@ class IntegerYearFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = array();
+    $elements = [];
 
     foreach ($items as $delta => $item) {
       $value = strlen($item->value) === 4 ? substr($item->value, -2) : $item->value;

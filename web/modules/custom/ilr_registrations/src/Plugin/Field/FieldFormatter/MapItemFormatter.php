@@ -34,7 +34,7 @@ class MapItemFormatter extends FormatterBase {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $element = [];
-    $yaml = new Yaml;
+    $yaml = new Yaml();
 
     foreach ($items as $delta => $item) {
       if ($item instanceof MapItem) {

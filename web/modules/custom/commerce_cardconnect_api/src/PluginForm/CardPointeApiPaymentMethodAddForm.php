@@ -7,6 +7,9 @@ use Drupal\commerce_payment\PluginForm\PaymentMethodAddForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
+/**
+ * Provides a Cardpointe Gateway API payment form using the iframe tokenizer.
+ */
 class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
 
   /**
@@ -74,21 +77,21 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
     $element['token'] = [
       '#type' => 'hidden',
       '#attributes' => [
-        'class' => ['cp-token']
+        'class' => ['cp-token'],
       ],
     ];
 
     $element['expiry'] = [
       '#type' => 'hidden',
       '#attributes' => [
-        'class' => ['cp-expiry']
+        'class' => ['cp-expiry'],
       ],
     ];
 
     $element['validation_error'] = [
       '#type' => 'hidden',
       '#attributes' => [
-        'class' => ['cp-validation-error']
+        'class' => ['cp-validation-error'],
       ],
     ];
 
@@ -98,7 +101,7 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
     //   '#type' => 'checkbox',
     //   '#title' => $this->t('Save card'),
     // ];
-
+    // The above code example, or similar, would be used.
     $element['#weight'] = 20;
 
     return $element;

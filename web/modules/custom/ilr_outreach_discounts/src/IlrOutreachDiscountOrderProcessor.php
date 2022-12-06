@@ -9,15 +9,15 @@ use Drupal\commerce_price\Price;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
-* Provides an order processor that calculates ILR Outreach discounts.
-*/
+ * Provides an order processor that calculates ILR Outreach discounts.
+ */
 class IlrOutreachDiscountOrderProcessor implements OrderProcessorInterface {
 
   use StringTranslationTrait;
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function process(OrderInterface $order) {
     /** @var \Drupal\ilr_outreach_discounts\IlrOutreachDiscount $discount */
     foreach ($order->getData('ilr_outreach_discounts', []) as $discount) {

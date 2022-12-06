@@ -12,7 +12,7 @@ use Drupal\Core\Render\Element\RenderCallbackInterface;
 class IlrRegistrationsBlockAlter implements RenderCallbackInterface {
 
   /**
-   * #pre_render callback: Updates the cart icon.
+   * A #pre_render callback that updates the cart icon.
    */
   public static function preRender($build) {
     $build['content']['#icon']['#uri'] = "modules/contrib/commerce/icons/bebebe/cart.png";

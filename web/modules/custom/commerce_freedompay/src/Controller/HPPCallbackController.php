@@ -26,6 +26,7 @@ class HPPCallbackController extends ControllerBase {
    * - /commerce-freedompay/return
    * - /commerce-freedompay/success
    * - /commerce-freedompay/fail
+   * See commerce_freedompay.routing.yml for info about the above paths.
    */
   public function return(Request $request) {
     $response = $this->getReturnResponse($request, 'commerce_payment.checkout.return');
@@ -41,8 +42,9 @@ class HPPCallbackController extends ControllerBase {
   }
 
   /**
-   * Creates a redirect URL for use with the offsite payment gateway, with a
-   * `transid` query parameter included.
+   * Creates a redirect URL for use with the offsite payment gateway.
+   *
+   * Includes a `transid` query parameter.
    */
   private function getReturnResponse(Request $request, $response_route) {
     $payment = $this->entityTypeManager()->getStorage('commerce_payment')->loadByProperties([

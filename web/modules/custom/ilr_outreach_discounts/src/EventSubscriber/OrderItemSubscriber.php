@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\commerce_cart\Event\CartOrderItemAddEvent;
 
 /**
- * Class OrderItemSubscriber.
+ * An event subscriber for order items.
  */
 class OrderItemSubscriber implements EventSubscriberInterface {
 
@@ -53,9 +53,9 @@ class OrderItemSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Callback for the cart order item insert event
+   * Callback for the cart order item insert event.
    *
-   * @param CartOrderItemAddEvent $event
+   * @param \Drupal\commerce_cart\Event\CartOrderItemAddEvent $event
    *   The event.
    */
   public function onCartOrderItemInsert(CartOrderItemAddEvent $event) {

@@ -59,8 +59,9 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * React to a list of classes for a course product before they can be added to
-   * a cart.
+   * React to a list of classes for a course product.
+   *
+   * This affects the display before they can be added to a cart.
    *
    * @param \Drupal\commerce_product\Event\FilterVariationsEvent $event
    *   Commerce product FilterVariationsEvent event.

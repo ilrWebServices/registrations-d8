@@ -9,16 +9,16 @@ use Drupal\commerce_order\Adjustment;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
-* Provides an order processor that modifies groat single ticket prices according to class year.
-*/
+ * An order processor that modifies groat single ticket prices by class year.
+ */
 class GroatDiscountOrderProcessor implements OrderProcessorInterface {
 
   use StringTranslationTrait;
 
   /**
-  * {@inheritdoc}
-  */
-  public function process(OrderInterface $order)  {
+   * {@inheritdoc}
+   */
+  public function process(OrderInterface $order) {
     if ($order->bundle() !== 'groat_alpern_awards') {
       return;
     }
@@ -47,7 +47,6 @@ class GroatDiscountOrderProcessor implements OrderProcessorInterface {
       foreach ($registration->participants->referencedEntities() as $participant) {
         $class_year = $participant->field_class_year->value ?? 0;
         $years_graduated = date('Y') - $class_year;
-        // $participant_name = $participant->field_address->first()->getGivenName() . ' ' . $participant->field_address->first()->getFamilyName();
 
         /** @var \Drupal\commerce_price\Price $full_price */
         $full_price = $product_variation->getPrice();

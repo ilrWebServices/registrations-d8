@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Class OrderCreateSubscriber.
+ * Event subscriber for order creation.
  *
  * @package Drupal\ilr_registrations\EventSubscriber
  */

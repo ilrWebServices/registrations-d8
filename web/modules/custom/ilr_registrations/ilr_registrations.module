@@ -32,7 +32,7 @@ use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
  * salesforce_mapping_entity_type_alter().
  */
 function ilr_registrations_entity_type_alter(array &$entity_types) {
-  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
   if (isset($entity_types['commerce_product_variation'])) {
     $entity_types['commerce_product_variation']->setLinkTemplate('salesforce', "/commerce_product_variation/{commerce_product_variation}/salesforce");
   }
@@ -145,8 +145,8 @@ function ilr_registrations_commerce_product_presave(EntityInterface $product) {
   if ($product->variations->count() > 0 && $product->variations->first()->entity->hasField('field_class_start')) {
     $variation_entities = $product->variations->referencedEntities();
 
-    // sort the variations by date here.
-    usort($variation_entities, function($a, $b) {
+    // Sort the variations by date here.
+    usort($variation_entities, function ($a, $b) {
       if ($a->field_class_start->first()->value == $b->field_class_start->first()->value) {
         return 0;
       }
@@ -177,7 +177,7 @@ function ilr_registrations_salesforce_mapped_object_presave(EntityInterface $sf_
       $coupon = $coupon_storage->create([
         'promotion_id' => $commerce_promotion->id(),
         'code' => $commerce_promotion->label(),
-        'status' => 1
+        'status' => 1,
       ]);
       $coupon->save();
     }
@@ -264,7 +264,7 @@ function ilr_registrations_form_registration_form_alter(&$form, FormStateInterfa
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $registration_storage = $entity_type_manager->getStorage('registration');
 
-    // Check if the current user is authenticated
+    // Check if the current user is authenticated.
     if ($account->isAuthenticated()) {
       $registrations = $registration_storage->loadByProperties([
         'user_id' => $account->id(),
@@ -343,7 +343,7 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
     $billing_pane = &$form['payment_information']['billing_information'];
 
     // Get the default commerce customer profile.
-    // @todo: rework once https://www.drupal.org/project/commerce/issues/3022850 lands
+    // @todo rework once https://www.drupal.org/project/commerce/issues/3022850 lands
     $entity_type_manager = \Drupal::service('entity_type.manager');
     $profile = $entity_type_manager->getStorage('profile')->loadDefaultByUser($order->getCustomer(), 'customer', TRUE);
 
@@ -539,8 +539,7 @@ function ilr_registrations_preprocess_status_messages(&$variables) {
  * stringformatter because product variations don't have canonical link
  * templates.
  *
- * @see
- * Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter::viewElements()
+ * @see Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter::viewElements()
  */
 function ilr_registrations_preprocess_field__commerce_product_variation__title(&$variables) {
   $variables['items'][0]['content'] = [
@@ -649,7 +648,7 @@ function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface
 
   if (isset($context['widget']) && $context['widget'] instanceof StringTextareaWidget) {
     /** @var \Drupal\Core\Field\FieldItemList $items */
-    $items = isset($context['items']) ? $context['items'] : null;
+    $items = $context['items'] ?? NULL;
 
     if ($items && in_array($items->getName(), ['field_accessible_accommodation', 'field_dietary_restrictions'])) {
       $element['value']['#maxlength'] = 255;
@@ -660,7 +659,8 @@ function ilr_registrations_field_widget_form_alter(&$element, FormStateInterface
 
 /**
  * After build callback for address widget.
- * @see ilr_registrations_field_widget_form_alter().
+ *
+ * @see ilr_registrations_field_widget_form_alter()
  */
 function ilr_registrations_alter_address_element($element, FormStateInterface $form_state) {
   if (isset($element['organization'])) {

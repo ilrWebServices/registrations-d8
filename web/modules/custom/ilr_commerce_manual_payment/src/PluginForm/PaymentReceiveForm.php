@@ -6,6 +6,9 @@ use Drupal\commerce_payment\PluginForm\PaymentReceiveForm as CommercePaymentRece
 use Drupal\commerce_price\Price;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * A payment receive form with a remote_id field.
+ */
 class PaymentReceiveForm extends CommercePaymentReceiveForm {
 
   /**
