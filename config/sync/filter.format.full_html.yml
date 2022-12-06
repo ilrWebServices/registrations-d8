@@ -1,0 +1,41 @@
+uuid: d056f8b6-4ca5-4318-985f-94f9ae6a668e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Full html'
+format: full_html
+weight: 0
+filters:
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: -45
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -44
+    settings:
+      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <li> <dl> <dt> <dd> <h2 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid> <p class="shout"> <h1> <pre> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title> <fn> <h3 id class="cu-heading--strong"> <ol type start class="accentuated">'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: false
+    weight: -41
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: false
+    weight: -40
+    settings: {  }
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -43
+    settings: {  }
