@@ -677,9 +677,9 @@ function ilr_registrations_token_info_alter(&$data) {
   $date = new \DateTime('@' . $time);
   $date->add(new DateInterval('P3M'));
 
-  $data['tokens']['pattern']['year_fall'] = [
-    'name' => t('Year Fall'),
-    'description' => t('The current year, incremented in the Fall. (%date)', ['%date' => $date->format('Y')]),
+  $data['tokens']['pattern']['year_P3M'] = [
+    'name' => t('Year P3M'),
+    'description' => t('The current year plus three months. (%date)', ['%date' => $date->format('Y')]),
   ];
 }
 
@@ -698,7 +698,7 @@ function ilr_registrations_tokens($type, $tokens, array $data, array $options, B
 
     foreach ($tokens as $name => $original) {
       switch ($name) {
-        case 'year_fall':
+        case 'year_P3M':
           $replacements[$original] = $date->format('Y');
           break;
       }

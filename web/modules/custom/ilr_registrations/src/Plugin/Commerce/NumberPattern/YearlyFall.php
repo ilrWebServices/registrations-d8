@@ -22,7 +22,7 @@ class YearlyFall extends SequentialNumberPatternBase {
    */
   public function defaultConfiguration() {
     return [
-      'pattern' => '[pattern:year_fall]-[pattern:number]',
+      'pattern' => '[pattern:year_P3M]-[pattern:number]',
     ] + parent::defaultConfiguration();
   }
 
