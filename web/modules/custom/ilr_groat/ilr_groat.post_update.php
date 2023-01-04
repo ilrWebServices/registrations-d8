@@ -40,4 +40,3 @@ function ilr_groat_post_update_remove_source_entity(&$sandbox) {
     $standalone_registration->save();
   }
 }
-

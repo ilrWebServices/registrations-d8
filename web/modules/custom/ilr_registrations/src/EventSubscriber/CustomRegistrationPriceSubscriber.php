@@ -6,6 +6,9 @@ use Drupal\commerce_price\Price;
 use Drupal\erf_commerce\Event\RegistrationOrderItemEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * An event subscriber for adjusting custom debate prices.
+ */
 class CustomRegistrationPriceSubscriber implements EventSubscriberInterface {
 
   /**
@@ -21,7 +24,8 @@ class CustomRegistrationPriceSubscriber implements EventSubscriberInterface {
   /**
    * Modify the order item price for a registration if a custom amount exists.
    *
-   * @param RegistrationOrderItemEvent $event
+   * @param \Drupal\erf_commerce\Event\RegistrationOrderItemEvent $event
+   *   The event.
    */
   public function onRegistrationOrderItem(RegistrationOrderItemEvent $event) {
     if (!$event->registration->hasField('field_user_price')) {

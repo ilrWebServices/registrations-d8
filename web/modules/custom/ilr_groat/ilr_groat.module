@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Custom allowed_values_function callback for the participant class year field.
  *
- * @see callback_allowed_values_function().
+ * @see callback_allowed_values_function()
  */
 function ilr_groat_class_year_options(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity, &$cacheable) {
   $years = range((int) date('Y') + 3, 1947);

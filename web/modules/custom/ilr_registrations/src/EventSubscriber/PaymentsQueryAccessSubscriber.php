@@ -7,6 +7,9 @@ use Drupal\Core\Database\Connection;
 use Drupal\entity\QueryAccess\QueryAccessEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Event subscriber for Payment entity access.
+ */
 class PaymentsQueryAccessSubscriber implements EventSubscriberInterface {
 
   /**
@@ -24,7 +27,7 @@ class PaymentsQueryAccessSubscriber implements EventSubscriberInterface {
   protected $database;
 
   /**
-   * Constructs a new QueryAccessSubscriber object.
+   * Constructs a new PaymentsQueryAccessSubscriber object.
    *
    * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $bundle_info
    *   The entity type bundle info.

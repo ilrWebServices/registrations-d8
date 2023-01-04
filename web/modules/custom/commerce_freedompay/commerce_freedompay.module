@@ -36,7 +36,7 @@ function commerce_freedompay_entity_operation(EntityInterface $entity) {
     'title' => t('FreedomPay Transaction'),
     'weight' => 200,
     'url' => Url::fromRoute('commerce_freedompay.transaction', [
-      'commerce_payment' => $entity->id()
+      'commerce_payment' => $entity->id(),
     ]),
   ];
 

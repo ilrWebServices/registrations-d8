@@ -77,7 +77,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         // Drupal user from the profile. This should probably be renamed
         // `customer_user_id`.
         'customer_profile_id' => $customer->id(),
-        "contact_sfid" => NULL, // Temporarily stop sending the salesforce id per request from DE.
+        // Temporarily stop sending the salesforce id per request from DE.
+        "contact_sfid" => NULL,
         "email" => $order->uid->entity->getEmail(),
         "first_name" => $billing_address['given_name'],
         "middle_name" => $billing_address['additional_name'],
@@ -105,9 +106,9 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
     // OrderCreateSubscriber::onOrderCreate().
     if ($utm_codes = $order->getData('utm_codes')) {
       foreach ($utm_codes as $utm_name => $utm_code) {
-        $utm_name = ($utm_name === 'utm_term') ? 'utm_keyword': $utm_name;
+        $utm_name = ($utm_name === 'utm_term') ? 'utm_keyword' : $utm_name;
         $response['customer']['additional_fields'][] = [
-          'name' => strtoupper(substr($utm_name, 0, 5)).substr($utm_name, 5) . '__c',
+          'name' => strtoupper(substr($utm_name, 0, 5)) . substr($utm_name, 5) . '__c',
           'value' => $utm_code,
         ];
       }
@@ -199,7 +200,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           }
         }
         elseif ($item_adjustment->getType() === 'ilr_outreach_discount') {
-          list($sfid, $code) = explode(',', $item_adjustment->getSourceId());
+          [$sfid, $code] = explode(',', $item_adjustment->getSourceId());
           $discount = [
             "sfid" => $sfid,
             "code" => $code,
@@ -236,7 +237,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
           $address = reset($address_value);
           $participants[] = [
             'participant_id' => $participant->id(),
-            "contact_sfid" => NULL, // Temporarily stop sending the salesforce id per request from DE.
+            // Temporarily stop sending the salesforce id per request from DE.
+            "contact_sfid" => NULL,
             'email' => $participant->mail->value,
             "first_name" => $address['given_name'],
             "middle_name" => $address['additional_name'],

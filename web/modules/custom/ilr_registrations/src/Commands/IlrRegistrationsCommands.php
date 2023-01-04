@@ -7,6 +7,9 @@ use Drupal\Core\Queue\QueueFactory;
 use Drupal\ilr_registrations\SerializedOrderManagerInterface;
 use Drush\Commands\DrushCommands;
 
+/**
+ * Provides custom Drush commands for ILR registrations.
+ */
 class IlrRegistrationsCommands extends DrushCommands {
 
   /**
@@ -50,11 +53,11 @@ class IlrRegistrationsCommands extends DrushCommands {
   /**
    * Queue an order to send to Salesforce.
    *
-   * @command ilr_registrations:queue-order
-   * @aliases ilrqo
-   *
    * @param string $order_id
    *   An order id.
+   *
+   * @command ilr_registrations:queue-order
+   * @aliases ilrqo
    */
   public function queueOrder($order_id) {
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($order_id);
@@ -73,7 +76,6 @@ class IlrRegistrationsCommands extends DrushCommands {
       // Queue the serialized order for submission to the WebReg webhook on
       // Salesforce.
       $this->queue->createItem($serialized_order);
-
 
       $this->io()->success(dt('Outgoing Salesforce WebReg webhook request queued for order @order_id.', [
         '@order_id' => $order_id,

@@ -34,6 +34,7 @@
     }
   ],
   "require": {
+    "php": ">=8.0",
     "composer/installers": "^2",
     "cornell/union": "dev-union_ng",
     "cweagans/composer-patches": "^1.6.5",
@@ -59,14 +60,15 @@
     "drupal/token": "^1.5",
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-union_ng",
-    "drush/drush": "^10",
+    "drush/drush": "^11.0",
     "firebase/php-jwt": "^5.2",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
     "platformsh/config-reader": "^2.2",
     "vlucas/phpdotenv": "^4.1"
   },
   "require-dev": {
-    "drupal/core-dev": "^9.0.0"
+    "drupal/core-dev": "^9.0.0",
+    "phpcompatibility/php-compatibility": "dev-develop"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -87,8 +89,9 @@
     "files": ["load.environment.php"]
   },
   "scripts": {
-    "cs": "phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
-    "cbf": "phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom/",
+    "cs": "phpcs --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --standard=Drupal web/modules/custom/",
+    "cbf": "phpcbf --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --standard=Drupal web/modules/custom/",
+    "cs:phpcompat": "phpcs --extensions=php,module,inc,install,test,profile,theme --standard=PHPCompatibility --runtime-set testVersion 8.1 web/modules/custom/",
     "sync-dev": [
       "drush sql:drop -y",
       "drush sql:sync @register.develop @self -y",

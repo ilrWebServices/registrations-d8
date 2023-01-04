@@ -36,7 +36,7 @@ function commerce_cardconnect_api_entity_operation(EntityInterface $entity) {
     'title' => t('CardPointe Details'),
     'weight' => 200,
     'url' => Url::fromRoute('commerce_cardconnect_api.transaction', [
-      'commerce_payment' => $entity->id()
+      'commerce_payment' => $entity->id(),
     ]),
   ];
 

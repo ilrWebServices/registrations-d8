@@ -195,7 +195,7 @@ class DiscountRedemption extends InlineFormBase {
     // Runs if the 'Apply discount' button was clicked, or the main form was
     // submitted by the user clicking the primary submit button.
     $triggering_element = $form_state->getTriggeringElement();
-    $button_type = isset($triggering_element['#button_type']) ? $triggering_element['#button_type'] : NULL;
+    $button_type = $triggering_element['#button_type'] ?? NULL;
 
     if ($triggering_element['#name'] != 'apply_discount' && $button_type != 'primary') {
       return;
@@ -254,7 +254,8 @@ class DiscountRedemption extends InlineFormBase {
     $user_input = &$form_state->getUserInput();
     NestedArray::setValue($user_input, array_merge($parents, ['code']), '');
 
-    // `ilr_outreach_discounts` is set in the form state in validateInlineForm().
+    // `ilr_outreach_discounts` is set in the form state in
+    // validateInlineForm().
     if ($discounts = $form_state->get('ilr_outreach_discounts')) {
       $order_storage = \Drupal::entityTypeManager()->getStorage('commerce_order');
 

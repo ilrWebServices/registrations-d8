@@ -5,6 +5,8 @@
  * Contains ilr_registrations.post_update.php.
  */
 
+use Drupal\commerce_price\Price;
+
 /**
  * Add 'Pay by check' product term.
  */
@@ -32,7 +34,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => 'Groat Alpern Single Ticket',
     'sku' => 'groat-single-full',
-    'price' => new \Drupal\commerce_price\Price('290', 'USD'),
+    'price' => new Price('290', 'USD'),
     'field_ticket_limit' => 10,
   ]);
   $single_full_variation->save();
@@ -51,7 +53,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => 'Groat Alpern Awards Ticket (\'12 - \'19 Graduate)',
     'sku' => 'groat-single-ten',
-    'price' => new \Drupal\commerce_price\Price('100', 'USD'),
+    'price' => new Price('100', 'USD'),
     'field_ticket_limit' => 10,
   ]);
   $single_ten_variation->save();
@@ -70,7 +72,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => 'Groat Alpern Single Ticket (\'20 - \'21 Graduate)',
     'sku' => 'groat-single-recent',
-    'price' => new \Drupal\commerce_price\Price('50', 'USD'),
+    'price' => new Price('50', 'USD'),
     'field_ticket_limit' => 10,
   ]);
   $single_recent_variation->save();
@@ -89,7 +91,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => '2 Ticket Sponsorship',
     'sku' => 'groat-sponsorship-2',
-    'price' => new \Drupal\commerce_price\Price('1000', 'USD'),
+    'price' => new Price('1000', 'USD'),
     'field_ticket_limit' => 2,
   ]);
   $sponsor_two_variation->save();
@@ -98,7 +100,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => '5 Ticket Sponsorship',
     'sku' => 'groat-sponsorship-5',
-    'price' => new \Drupal\commerce_price\Price('3000', 'USD'),
+    'price' => new Price('3000', 'USD'),
     'field_ticket_limit' => 5,
   ]);
   $sponsor_five_variation->save();
@@ -107,7 +109,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => '10 Ticket Sponsorship',
     'sku' => 'groat-sponsorship-10',
-    'price' => new \Drupal\commerce_price\Price('5000', 'USD'),
+    'price' => new Price('5000', 'USD'),
     'field_ticket_limit' => 10,
   ]);
   $sponsor_ten_variation->save();
@@ -116,7 +118,7 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'type' => 'groat_alpern_awards_ticket_level',
     'title' => '15 Ticket Sponsorship',
     'sku' => 'groat-sponsorship-15',
-    'price' => new \Drupal\commerce_price\Price('7500', 'USD'),
+    'price' => new Price('7500', 'USD'),
     'field_ticket_limit' => 15,
   ]);
   $sponsor_fifteen_variation->save();

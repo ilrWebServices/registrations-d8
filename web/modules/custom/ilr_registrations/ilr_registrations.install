@@ -22,7 +22,9 @@ function ilr_registrations_update_8002() {
 }
 
 /**
- * Install ilr_outreach_discount_api module which contains a new service required by ilr_registrations.
+ * Install ilr_outreach_discount_api module.
+ *
+ * It contains a new service required by ilr_registrations.
  */
 function ilr_registrations_update_9001() {
   if (!\Drupal::service('module_handler')->moduleExists('ilr_outreach_discount_api')) {

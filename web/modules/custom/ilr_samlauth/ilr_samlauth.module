@@ -11,7 +11,7 @@ use Drupal\Core\Url;
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  *
- * @todo: Implement a settings form to be able to manage this via the UI.
+ * @todo Implement a settings form to be able to manage this via the UI.
  */
 function ilr_samlauth_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $ilr_samlauth_config = \Drupal::config('ilr_samlauth.settings');
@@ -22,7 +22,7 @@ function ilr_samlauth_form_user_login_form_alter(&$form, FormStateInterface $for
 
   $form['saml_login_title'] = [
     '#markup' => '<h2>' . t('Cornell Users') . '</h2>',
-    '#weight' => -3
+    '#weight' => -3,
   ];
 
   $form['saml_login'] = [
@@ -31,12 +31,12 @@ function ilr_samlauth_form_user_login_form_alter(&$form, FormStateInterface $for
     '#title' => t('NetID Login'),
     '#weight' => -2,
     '#attributes' => [
-      'class' => 'button cu-button'
-    ]
+      'class' => 'button cu-button',
+    ],
   ];
 
   $form['drupal_login_title'] = [
     '#markup' => '<h2>' . t('No Cornell NetID?') . '</h2>',
-    '#weight' => -1
+    '#weight' => -1,
   ];
 }

@@ -5,6 +5,9 @@ namespace Drupal\ilr_commerce_manual_payment\PluginForm;
 use Drupal\commerce_payment\PluginForm\ManualPaymentAddForm as CommerceManualPaymentAddForm;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * A manual payment form with a remote_id field.
+ */
 class ManualPaymentAddForm extends CommerceManualPaymentAddForm {
 
   /**

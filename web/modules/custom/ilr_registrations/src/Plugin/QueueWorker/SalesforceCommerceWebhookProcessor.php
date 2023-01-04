@@ -15,7 +15,7 @@ use Drupal\salesforce\Rest\RestException;
 use Drupal\salesforce\SelectQuery;
 
 /**
- * A Queue worker that processes data from the incoming Salesforce Commerce webhook.
+ * A Queue worker that processes the incoming Salesforce Commerce webhook data.
  *
  * @QueueWorker(
  *   id = "salesforce_commerce_webhook_processor",
