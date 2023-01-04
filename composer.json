@@ -67,7 +67,8 @@
     "vlucas/phpdotenv": "^4.1"
   },
   "require-dev": {
-    "drupal/core-dev": "^9.0.0"
+    "drupal/core-dev": "^9.0.0",
+    "phpcompatibility/php-compatibility": "dev-develop"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -90,6 +91,7 @@
   "scripts": {
     "cs": "phpcs --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --standard=Drupal web/modules/custom/",
     "cbf": "phpcbf --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --standard=Drupal web/modules/custom/",
+    "cs:phpcompat": "phpcs --extensions=php,module,inc,install,test,profile,theme --standard=PHPCompatibility --runtime-set testVersion 8.1 web/modules/custom/",
     "sync-dev": [
       "drush sql:drop -y",
       "drush sql:sync @register.develop @self -y",
