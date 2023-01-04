@@ -61,7 +61,7 @@
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-union_ng",
     "drush/drush": "^11.0",
-    "firebase/php-jwt": "^5.2",
+    "firebase/php-jwt": "^6.0",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
     "platformsh/config-reader": "^2.2",
     "vlucas/phpdotenv": "^4.1"
