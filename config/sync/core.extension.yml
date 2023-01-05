@@ -81,6 +81,6 @@ module:
   views: 10
   minimal: 1000
 theme:
-  seven: 0
   union_register: 0
+  claro: 0
 profile: minimal
