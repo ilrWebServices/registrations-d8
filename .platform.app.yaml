@@ -66,7 +66,7 @@ hooks:
     cd web
     drush -y cache-rebuild
     drush -y updatedb --no-post-updates
-    drush -y config-import --partial
+    drush -y config-import
     drush -y updatedb
     drush -y cache-rebuild
 
