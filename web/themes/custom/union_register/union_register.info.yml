@@ -7,7 +7,7 @@ libraries:
   - union_register/global
   - union_organizer/ilr-base
   - union_register/typography
-base theme: stable
+base theme: false
 regions:
     header: Header
     highlighted: Highlighted

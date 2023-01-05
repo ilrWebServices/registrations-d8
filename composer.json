@@ -46,7 +46,7 @@
     "drupal/core-composer-scaffold": "^9.0.0",
     "drupal/core-recommended": "^9.0.0@stable",
     "drupal/date_popup": "^1.1",
-    "drupal/dynamic_entity_reference": "^2.0",
+    "drupal/dynamic_entity_reference": "^4.0",
     "drupal/email_registration": "^1.0@RC",
     "drupal/erf": "^2.x-dev",
     "drupal/fixed_block_content": "^1.0",
@@ -61,7 +61,7 @@
     "drupal/typed_data": "^1.0@alpha",
     "drupal/union_organizer": "dev-union_ng",
     "drush/drush": "^11.0",
-    "firebase/php-jwt": "^5.2",
+    "firebase/php-jwt": "^6.0",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
     "platformsh/config-reader": "^2.2",
     "vlucas/phpdotenv": "^4.1"
