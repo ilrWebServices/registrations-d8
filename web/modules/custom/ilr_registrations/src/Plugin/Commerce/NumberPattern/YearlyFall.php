@@ -2,7 +2,6 @@
 
 namespace Drupal\ilr_registrations\Plugin\Commerce\NumberPattern;
 
-use DateInterval;
 use Drupal\commerce_number_pattern\Plugin\Commerce\NumberPattern\SequentialNumberPatternBase;
 use Drupal\commerce_number_pattern\Sequence;
 use Drupal\Core\Datetime\DrupalDateTime;
@@ -35,7 +34,7 @@ class YearlyFall extends SequentialNumberPatternBase {
 
     // Add 3 months to the times. This is confusing (to Jeff) but appears to
     // work.
-    $interval = new DateInterval('P3M');
+    $interval = new \DateInterval('P3M');
     $generated_time->add($interval);
     $current_time->add($interval);
 
