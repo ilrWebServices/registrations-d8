@@ -31,4 +31,9 @@ main footer {
 // Commerce regions
 .layout-region-checkout-secondary {
   margin-top: var(--cu-vr1);
+
+  @include breakpoint(md) {
+    position: sticky;
+    top: 2em;
+  }
 }
