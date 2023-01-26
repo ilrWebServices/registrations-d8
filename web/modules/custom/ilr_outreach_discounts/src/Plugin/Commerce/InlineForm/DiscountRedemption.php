@@ -107,7 +107,7 @@ class DiscountRedemption extends InlineFormBase {
     $inline_form = [
       '#tree' => TRUE,
       '#type' => 'fieldset',
-      '#title' => $this->t('Discount codes'),
+      '#title' => $this->t('Discount code'),
       '#attached' => [
         'library' => ['ilr_registrations/coupon_enhancements'],
       ],
