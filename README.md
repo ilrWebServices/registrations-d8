@@ -7,7 +7,7 @@ It is based on the [Composer template for Drupal projects][].
 ## Requirements
 
 - git
-- PHP 7.1 or greater
+- PHP 8.1 or greater
 - Composer
 - Drush ([Drush launcher][] is recommended, since a copy of Drush is included in this project)
 - Node.js 8.x or greater
