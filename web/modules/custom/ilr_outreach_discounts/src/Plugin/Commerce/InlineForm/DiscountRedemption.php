@@ -107,7 +107,7 @@ class DiscountRedemption extends InlineFormBase {
     $inline_form = [
       '#tree' => TRUE,
       '#type' => 'fieldset',
-      '#title' => $this->t('Discount code'),
+      '#title' => $this->t('Discounts'),
       '#attached' => [
         'library' => ['ilr_registrations/coupon_enhancements'],
       ],
@@ -116,7 +116,7 @@ class DiscountRedemption extends InlineFormBase {
     ] + $inline_form;
     $inline_form['code'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Code'),
+      '#title' => $this->t('Discount code'),
       // Chrome autofills this field with the address line 1, and ignores
       // autocomplete => 'off', but respects 'new-password'.
       '#attributes' => [
