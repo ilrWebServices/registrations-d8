@@ -99,14 +99,32 @@
   }
 }
 
-.ilr-outreach-discount-applied-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: var(--cu-vr-1);
 
-  input {
-    margin-bottom: 0;
+@include breakpoint(md) {
+  .ilr-govt-nonprofit {
+    margin-bottom: 2em;
+  }
+
+  #edit-ilr-outreach-discount-redemption-form .cu-fieldset__wrapper {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+
+    .cu-input, .cu-input-list__item {
+      margin-bottom: 0;
+    }
+  }
+
+  .ilr-outreach-discount-applied-item {
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    input {
+      margin-bottom: 0;
+    }
   }
 }
 
