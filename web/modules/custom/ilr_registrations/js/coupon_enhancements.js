@@ -28,7 +28,7 @@ Drupal.behaviors.ilr_registrations_govt_nonprofit_helper = {
     if ($showHelperCheckbox) {
       var $helperCheckbox = $('<div class="ilr-govt-nonprofit"><input type="checkbox" id="ilr-govt-nonprofit" /> <label for="ilr-govt-nonprofit">' + Drupal.t('I am a government or non-profit employee') + '</label></div>');
 
-      $codeFieldSet.prepend($helperCheckbox);
+      $codeFieldSet.find('legend').after($helperCheckbox);
 
       $helperCheckbox.on('click', 'input', function(ev) {
         if ($appliedCode === 'EBIRD') {
