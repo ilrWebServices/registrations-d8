@@ -6,7 +6,7 @@ dependencies:
     - commerce_cardconnect_hpp
 id: cardpointe_hpp_registrations_alumni
 label: 'CardPointe HPP Registrations (alumni)'
-weight: null
+weight: 0
 plugin: cardpointe_hpp
 configuration:
   display_label: 'Credit Card'

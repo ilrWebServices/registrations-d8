@@ -6,7 +6,7 @@ dependencies:
     - commerce_freedompay
 id: freedompay_hpp_registrations
 label: 'FreedomPay HPP Registrations'
-weight: null
+weight: 0
 plugin: freedompay_hpp
 configuration:
   display_label: 'Secure Payment Page'

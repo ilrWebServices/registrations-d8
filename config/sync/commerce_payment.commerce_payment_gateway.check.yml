@@ -6,7 +6,7 @@ dependencies:
     - ilr_commerce_manual_payment
 id: check
 label: Check
-weight: null
+weight: 0
 plugin: manual_with_remote_id
 configuration:
   display_label: Check

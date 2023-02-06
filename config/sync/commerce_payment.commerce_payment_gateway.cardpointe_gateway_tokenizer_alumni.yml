@@ -6,7 +6,7 @@ dependencies:
     - commerce_cardconnect_api
 id: cardpointe_gateway_tokenizer_alumni
 label: 'CardPointe Gateway Tokenizer (Alumni)'
-weight: null
+weight: 0
 plugin: cardpointe_api
 configuration:
   display_label: 'CardPointe Gateway API'

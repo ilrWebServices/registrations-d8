@@ -1,10 +1,12 @@
 uuid: d7283cea-7548-4245-9994-d20d87f1c999
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - ilr_commerce_manual_payment
 id: check_summer_debate
 label: 'Check (Summer Debate Camp)'
-weight: null
+weight: 0
 plugin: manual_with_remote_id
 configuration:
   display_label: Check
