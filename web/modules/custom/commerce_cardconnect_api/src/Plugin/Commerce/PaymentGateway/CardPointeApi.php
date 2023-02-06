@@ -129,6 +129,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     try {
       $is_live = $this->getMode() === 'live';
       $client = new CardPointeGatewayRestClient([
+        // @see https://developer.cardpointe.com/guides/cardpointe-gateway#uat-api-credentials
         'cp_user' => $is_live ? $this->configuration['cp_user'] : 'testing',
         'cp_pass' => $is_live ? $this->configuration['cp_pass'] : 'testing123',
         'cp_site' => $this->configuration['cp_site'] . ($is_live ? '' : '-uat'),
@@ -136,7 +137,8 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
 
       // The 'Payment process' pane settings determine the 'capture' value.
       $data = [
-        'merchid' => $this->configuration['cp_merchant_id'],
+        // @see https://developer.cardpointe.com/guides/cardpointe-gateway#uat-merchant-id
+        'merchid' => $is_live ? $this->configuration['cp_merchant_id'] : '496160873888',
         'amount' => $number_formatter->format($payment->getAmount()->getNumber(), [
           'minimum_fraction_digits' => 2,
           'use_grouping' => FALSE,
