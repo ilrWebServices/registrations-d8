@@ -1,6 +1,6 @@
 uuid: e9857646-f746-423a-9739-65aa20264d86
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - commerce_cardconnect_api
