@@ -1075,7 +1075,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: false
-          content: "<p>This is a list of attendees registered within the last year. Note that attendees from unlocked registrations are not shown.</p>\r\n\r\n<p><a href=\"./groat-alpern-attendees.csv\">Download</a></p>\r\n\r\n<p><a href=\"/registration/add/groat_alpern_single?destination=/admin/registrations/reports/groat-alpern-attendees\">Add complimentary ticket</a></p>\r\n\r\n<p><a href=\"/product/172\">Add a paid ticket sale</a></p>\r\n\r\n<p><a href=\"/tickets/groat/2022/sponsorship\">Add a sponsorship</a></p>"
+          content: "<p>This is a list of attendees registered within the last year. Note that attendees from unlocked registrations are not shown.</p>\r\n\r\n<p><a href=\"./groat-alpern-attendees.csv\">Download</a></p>\r\n\r\n<p><a href=\"/registration/add/groat_alpern_single?destination=/admin/registrations/reports/groat-alpern-attendees\">Add complimentary ticket</a></p>\r\n\r\n<p><a href=\"/product/172\">Add a paid ticket sale</a></p>\r\n\r\n<p><a href=\"/product/175\">Add a sponsorship</a></p>"
           tokenize: false
       footer: {  }
       display_extenders: {  }
