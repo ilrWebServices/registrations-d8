@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ *
+ * Template override for class product variations in the selection view mode.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product_variation: The rendered product variation fields.
+ *   Use 'product_variation' to print them all, or print a subset such as
+ *   'product_variation.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product_variation|without('title') }}
+ *   @endcode
+ * - product_variation_entity: The product variation entity.
+ * - product_url: The product URL.
+ *
+ * @see union_register_preprocess_commerce_product_variation__class__selection()
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes }}>
+  {{ class_dates|first }}
+  {% if class_dates|length > 1 %} - {{ class_dates|last}}{% endif %}
+  {{- product_variation|without('field_class_start', 'field_class_end') -}}
+</div>

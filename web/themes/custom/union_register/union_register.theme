@@ -123,3 +123,43 @@ function union_register_preprocess_block(&$variables) {
 function union_register_preprocess_field__body(&$variables) {
   $variables['attributes']['class'][] = 'cu-text';
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Add a list that includes both the start and end date for the class in the
+ * selection view mode.
+ *
+ * @see commerce-product-variation--class--selection.html.twig
+ */
+function union_register_preprocess_commerce_product_variation__class__selection(&$variables) {
+  $variation = $variables['elements']['#commerce_product_variation'];
+  $variables['class_dates'] = [];
+
+  if ($variation->field_class_start->isEmpty() || $variation->field_class_end->isEmpty()) {
+    return;
+  }
+
+  $start_date = $variation->field_class_start->date->getPhpDateTime();
+  $end_date = $variation->field_class_end->date->getPhpDateTime();
+  $interval = new DateInterval('P1D');
+  $period = new DatePeriod($start_date, $interval, $end_date);
+
+  // Note that this assumes that there is a session every day between the start
+  // and end dates. If we need the actual dates, we should sync class session
+  // objects.
+  foreach ($period as $date) {
+    $variables['class_dates'][] = [
+      '#theme' => 'time',
+      '#text' => $date->format('M j, Y'),
+      '#attributes' => [
+        'datetime' => $date->format('c'),
+      ],
+      '#cache' => [
+        'contexts' => [
+          'timezone',
+        ],
+      ],
+    ];
+  }
+}
