@@ -140,15 +140,14 @@ function union_register_preprocess_commerce_product_variation__class__selection(
     return;
   }
 
-  $start_date = $variation->field_class_start->date->getPhpDateTime();
-  $end_date = $variation->field_class_end->date->getPhpDateTime();
-  $interval = new DateInterval('P1D');
-  $period = new DatePeriod($start_date, $interval, $end_date);
+  $dates = [
+    $variation->field_class_start->date->getPhpDateTime(),
+    $variation->field_class_end->date->getPhpDateTime(),
+  ];
 
-  // Note that this assumes that there is a session every day between the start
-  // and end dates. If we need the actual dates, we should sync class session
-  // objects.
-  foreach ($period as $date) {
+  // Note that this only includes the start and end dates, not the session
+  // dates.
+  foreach ($dates as $date) {
     $variables['class_dates'][] = [
       '#theme' => 'time',
       '#text' => $date->format('M j, Y'),
