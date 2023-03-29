@@ -28,75 +28,91 @@ field_mappings:
     direction: sf_drupal
     salesforce_field: Course__c
     id: 0
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: title
     direction: sf_drupal
     salesforce_field: Name
     id: 1
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: field_class_price
     direction: sf_drupal
     salesforce_field: Event_Class_Fee__c
     id: 2
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: sku
     direction: sf_drupal
     salesforce_field: Id
     id: 3
+    description: ''
   -
     drupal_field_type: properties
-    drupal_field_value: field_class_start
+    drupal_field_value: field_class_start.value
     direction: sf_drupal
     salesforce_field: Start__c
     id: 4
+    description: ''
   -
     drupal_field_type: properties
-    drupal_field_value: field_class_end
+    drupal_field_value: field_class_end.value
     direction: sf_drupal
     salesforce_field: End__c
     id: 5
+    description: ''
   -
     drupal_field_type: properties_extended
     drupal_field_value: field_class_location.locality
     direction: sf_drupal
     salesforce_field: Event_Location_City__c
     id: 6
+    description: ''
   -
     drupal_field_type: properties_extended
     drupal_field_value: field_class_location.administrative_area
     direction: sf_drupal
     salesforce_field: Event_Location_State__c
     id: 7
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: status
     direction: sf_drupal
     salesforce_field: Class_Show_on_Web__c
     id: 8
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: field_cancelled
     direction: sf_drupal
     salesforce_field: Is_Cancelled__c
     id: 9
+    description: ''
   -
     drupal_field_type: properties
     drupal_field_value: field_full
     direction: sf_drupal
     salesforce_field: Is_Full__c
     id: 10
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_close_registration.value
+    direction: sf_drupal
+    salesforce_field: Close_Web_Registration__c
+    id: 11
+    description: ''
 status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.class
     - field.field.commerce_product_variation.class.field_cancelled
-    - field.field.commerce_product_variation.class.field_class_end
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
-    - field.field.commerce_product_variation.class.field_class_start
     - field.field.commerce_product_variation.class.field_full
     - field.storage.commerce_product_variation.field_class_location
   module:

@@ -10,6 +10,7 @@ dependencies:
     - field.field.commerce_product_variation.class.field_class_location
     - field.field.commerce_product_variation.class.field_class_price
     - field.field.commerce_product_variation.class.field_class_start
+    - field.field.commerce_product_variation.class.field_close_registration
     - field.field.commerce_product_variation.class.field_full
   module:
     - address
@@ -39,6 +40,7 @@ hidden:
   field_cancelled: true
   field_class_end: true
   field_class_price: true
+  field_close_registration: true
   field_full: true
   list_price: true
   price: true
