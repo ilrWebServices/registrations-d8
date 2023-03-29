@@ -75,11 +75,11 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
       // Filter 'Class' product variations.
       if ($variation->bundle() === 'class') {
         // Note: Watch out for timezones, DST, and other gotchas.
-        $end_datetime = $variation->field_class_end->first()->get('value')->getDateTime();
-        $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
+        $start_datetime = $variation->field_class_start->first()->get('value')->getDateTime();
+        $tomorrow = new DrupalDateTime('tomorrow');
 
-        // If the end date in the past, don't display it.
-        if ($end_datetime < $current_datetime) {
+        // If the start date is today or in the past, don't display it.
+        if ($start_datetime < $tomorrow) {
           $display = FALSE;
         }
 
