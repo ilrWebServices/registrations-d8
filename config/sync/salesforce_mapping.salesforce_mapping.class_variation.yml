@@ -99,6 +99,13 @@ field_mappings:
     salesforce_field: Is_Full__c
     id: 10
     description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_close_registration.value
+    direction: sf_drupal
+    salesforce_field: Close_Web_Registration__c
+    id: 11
+    description: ''
 status: true
 dependencies:
   config:
