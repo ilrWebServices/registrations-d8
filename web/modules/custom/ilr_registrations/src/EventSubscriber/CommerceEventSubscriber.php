@@ -74,12 +74,6 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
 
       // Filter 'Class' product variations.
       if ($variation->bundle() === 'class') {
-        // If a class has no end datetime, ignore it, which will display it.
-        // @todo Review this.
-        if ($variation->field_class_end->isEmpty()) {
-          continue;
-        }
-
         // Note: Watch out for timezones, DST, and other gotchas.
         $end_datetime = $variation->field_class_end->first()->get('value')->getDateTime();
         $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
