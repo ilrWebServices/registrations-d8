@@ -68,28 +68,21 @@ class CommerceEventSubscriber implements EventSubscriberInterface {
    */
   public function filterVariations(FilterVariationsEvent $event) {
     $filtered_variations = [];
+    $now = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
 
     foreach ($event->getVariations() as $key => $variation) {
       $display = TRUE;
 
       // Filter 'Class' product variations.
       if ($variation->bundle() === 'class') {
-        // Note: Watch out for timezones, DST, and other gotchas.
-        $start_datetime = $variation->field_class_start->first()->get('value')->getDateTime();
-        $tomorrow = new DrupalDateTime('tomorrow');
+        // Set the registration cutoff date, which defaults to the wee hours of
+        // the start date if not specified.
+        $cutoff_date = ($variation->field_close_registration->isEmpty())
+          ? $variation->field_class_start->first()->get('value')->getDateTime()->setTime(5, 1)
+          : $variation->field_close_registration->first()->get('value')->getDateTime();
 
-        // Check if the class has a close registration date/time.
-        if (!$variation->field_close_registration->isEmpty()) {
-          $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
-          $cutoff_date = $variation->field_close_registration->first()->get('value')->getDateTime();
-
-          if ($cutoff_date < $current_datetime) {
-            $display = FALSE;
-          }
-        }
-
-        // If the start date is today or in the past, don't display it.
-        if ($start_datetime < $tomorrow) {
+        // If the cutoff date for the class is in the past, don't display it.
+        if ($cutoff_date < $now) {
           $display = FALSE;
         }
 
