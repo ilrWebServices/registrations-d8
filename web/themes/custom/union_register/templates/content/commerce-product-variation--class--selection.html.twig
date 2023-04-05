@@ -20,7 +20,7 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes }}>
+<div{{ attributes.setAttribute('data-sku', product_variation_entity.sku.value).setAttribute('data-v', product_variation_entity.id) }}>
   {{ class_dates|first }}
   {% if class_dates|length > 1 %} - {{ class_dates|last}}{% endif %}
   {{- product_variation|without('field_class_start', 'field_class_end') -}}
