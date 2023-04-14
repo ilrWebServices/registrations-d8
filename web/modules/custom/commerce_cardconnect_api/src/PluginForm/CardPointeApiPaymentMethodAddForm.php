@@ -116,6 +116,15 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
     if (!empty($values['validation_error'])) {
       $form_state->setError($element['tokenizer'], $values['validation_error']);
     }
+
+    if (empty($values['token'])) {
+      $form_state->setError($element['tokenizer'], 'Please re-enter your credit card number.');
+    }
+    // CardPointe tokens use the second number (after the 9) to represent the
+    // card type. See https://developer.cardpointe.com/guides/cardsecure
+    elseif (is_null(CreditCard::detectType(substr($values['token'], 1)))) {
+      $form_state->setError($element['tokenizer'], 'Unknown credit card type. Please use another card.');
+    }
   }
 
   /**
