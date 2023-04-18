@@ -8,7 +8,10 @@ use Drupal\commerce_payment\Entity\PaymentMethodInterface;
 use Drupal\commerce_payment\Exception\AuthenticationException;
 use Drupal\commerce_payment\Exception\DeclineException;
 use Drupal\commerce_payment\Exception\InvalidResponseException;
+use Drupal\commerce_payment\Exception\PaymentGatewayException;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\OnsitePaymentGatewayBase;
+use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsRefundsInterface;
+use Drupal\commerce_price\Price;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -33,7 +36,7 @@ use GuzzleHttp\Exception\ServerException;
  *   }
  * )
  */
-class CardPointeApi extends OnsitePaymentGatewayBase {
+class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsInterface {
 
   /**
    * {@inheritdoc}
@@ -191,7 +194,6 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
     }
     catch (\Exception $e) {
       throw new AuthenticationException('CardConnect API error: ' . $e->getMessage());
-
     }
 
     $response = $client_response->getData();
@@ -236,6 +238,73 @@ class CardPointeApi extends OnsitePaymentGatewayBase {
       $payment->setAvsResponseCodeLabel($avs_response_code_label);
     }
 
+    $payment->save();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function refundPayment(PaymentInterface $payment, Price $amount = NULL, $attempt_refund = FALSE) {
+    $this->assertPaymentState($payment, ['completed', 'partially_refunded']);
+    // If not specified, refund the entire amount.
+    $amount = $amount ?: $payment->getAmount();
+    $this->assertRefundAmount($payment, $amount);
+
+    // @todo: Override refund form and add option to attempt a refund request.
+    if ($attempt_refund) {
+      try {
+        /** @var \Drupal\commerce_price\NumberFormatter $number_formatter */
+        $number_formatter = \Drupal::service('commerce_price.number_formatter');
+
+        $is_live = $this->getMode() === 'live';
+        $client = new CardPointeGatewayRestClient([
+          // @see https://developer.cardpointe.com/guides/cardpointe-gateway#uat-api-credentials
+          'cp_user' => $is_live ? $this->configuration['cp_user'] : 'testing',
+          'cp_pass' => $is_live ? $this->configuration['cp_pass'] : 'testing123',
+          'cp_site' => $this->configuration['cp_site'] . ($is_live ? '' : '-uat'),
+        ]);
+
+        // @see https://developer.cardpointe.com/cardconnect-api?lang=json#refund
+        $data = [
+          'merchid' => $is_live ? $this->configuration['cp_merchant_id'] : '496160873888',
+          'retref' => $payment->getRemoteId(),
+          'amount' => $number_formatter->format($amount->getNumber(), [
+            'minimum_fraction_digits' => 2,
+            'use_grouping' => FALSE,
+          ]),
+        ];
+
+        /** @var \CardPointeGateway\Psr7\DataAwareResponse $client_response */
+        $client_response = $client->put('refund', ['json' => $data]);
+      }
+      // Throw an exception if the refund fails.
+      catch (\Exception $e) {
+        throw new PaymentGatewayException('Error message about the failure');
+      }
+
+      $response = $client_response->getData();
+
+      // As far as we can tell, `respstat` is normalized between different credit
+      // card processors, so A = Approval, B = Temporary processing issue, such as
+      // a network error, and C = Rejection. See
+      // https://developer.cardpointe.com/gateway-response-codes
+      if ($response['respstat'] === 'C') {
+        throw new PaymentGatewayException('Refund rejected: ' . $response['resptext']);
+      }
+    }
+
+    // Determine whether payment has been fully or partially refunded.
+    $old_refunded_amount = $payment->getRefundedAmount();
+    $new_refunded_amount = $old_refunded_amount->add($amount);
+
+    if ($new_refunded_amount->lessThan($payment->getAmount())) {
+      $payment->setState('partially_refunded');
+    }
+    else {
+      $payment->setState('refunded');
+    }
+
+    $payment->setRefundedAmount($new_refunded_amount);
     $payment->save();
   }
 
