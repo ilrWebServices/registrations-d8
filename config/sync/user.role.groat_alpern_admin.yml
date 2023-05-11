@@ -10,6 +10,7 @@ dependencies:
     - commerce_order
     - commerce_payment
     - erf
+    - profile
     - system
     - toolbar
 id: groat_alpern_admin
@@ -31,6 +32,7 @@ permissions:
   - 'manage own commerce_payment_method'
   - 'update groat_alpern_awards commerce_order'
   - 'view any commerce_payment_method'
+  - 'view any customer profile'
   - 'view groat_alpern_awards commerce_order'
   - 'view groat_alpern_single registrations'
   - 'view groat_alpern_sponsorship registrations'

@@ -1,0 +1,10 @@
+uuid: f1d830d3-a48e-4066-94b7-488818e5bedc
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: profile.mini
+label: Mini
+targetEntityType: profile
+cache: true

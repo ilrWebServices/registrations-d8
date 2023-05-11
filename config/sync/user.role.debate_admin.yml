@@ -9,6 +9,7 @@ dependencies:
     - commerce_order
     - commerce_payment
     - erf
+    - profile
     - system
     - toolbar
 id: debate_admin
@@ -22,6 +23,7 @@ permissions:
   - 'administer commerce_payment'
   - 'manage own commerce_payment_method'
   - 'view any commerce_payment_method'
+  - 'view any customer profile'
   - 'view international_summer_debate_camp registrations'
   - 'view summer_debate_camp commerce_order'
   - 'view the administration theme'

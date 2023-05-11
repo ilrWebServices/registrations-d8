@@ -1,0 +1,49 @@
+uuid: 7e719d71-8497-4ce7-a290-3e7afe42fad8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.profile.mini
+    - field.field.profile.customer.address
+    - field.field.profile.customer.field_email
+    - field.field.profile.customer.field_industry
+    - field.field.profile.customer.field_job_title
+    - field.field.profile.customer.field_phone
+    - profile.type.customer
+  module:
+    - address
+  enforced:
+    module:
+      - commerce_order
+_core:
+  default_config_hash: '-D8G44VGLIAIFvoHm_u7-Awnie4iCenOWfldrpNy_ys'
+id: profile.customer.mini
+targetEntityType: profile
+bundle: customer
+mode: mini
+content:
+  address:
+    type: address_default
+    label: hidden
+    settings:
+      field_settings:
+        givenName: givenName
+        familyName: familyName
+        organization: organization
+        additionalName: 0
+        addressLine1: 0
+        addressLine2: 0
+        postalCode: 0
+        sortingCode: 0
+        dependentLocality: 0
+        locality: 0
+        administrativeArea: 0
+        country: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_email: true
+  field_industry: true
+  field_job_title: true
+  field_phone: true

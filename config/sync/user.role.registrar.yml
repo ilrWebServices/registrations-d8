@@ -9,6 +9,7 @@ dependencies:
     - commerce_order
     - commerce_payment
     - erf
+    - profile
     - system
     - toolbar
 id: registrar
@@ -26,6 +27,7 @@ permissions:
   - 'manage own commerce_payment_method'
   - 'update registration commerce_order'
   - 'view any commerce_payment_method'
+  - 'view any customer profile'
   - 'view registration commerce_order'
   - 'view simple_class registrations'
   - 'view the administration theme'
