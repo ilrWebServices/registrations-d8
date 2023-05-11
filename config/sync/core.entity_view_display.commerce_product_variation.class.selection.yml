@@ -23,7 +23,8 @@ content:
   field_class_location:
     type: address_default
     label: hidden
-    settings: {  }
+    settings:
+      field_settings: {  }
     third_party_settings: {  }
     weight: 2
     region: content
