@@ -47,6 +47,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
       'cp_pass' => '',
       'cp_site' => 'fts',
       'cp_merchant_id' => '',
+      'attempt_refunds' => false,
     ] + parent::defaultConfiguration();
   }
 
@@ -93,6 +94,13 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
       '#required' => TRUE,
     ];
 
+    $form['attempt_refunds'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Attempt refunds'),
+      '#description' => $this->t('When checked, refund operations will actually attempt to return funds to the card used in the transaction. Otherwise, payments will only be <em>marked</em> as refunded. Leave this setting unchecked when refunds are processed via other means.'),
+      '#default_value' => $this->configuration['attempt_refunds'],
+    ];
+
     return $form;
   }
 
@@ -106,6 +114,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
     $this->configuration['cp_pass'] = $values['cp_pass'];
     $this->configuration['cp_site'] = $values['cp_site'];
     $this->configuration['cp_merchant_id'] = $values['cp_merchant_id'];
+    $this->configuration['attempt_refunds'] = $values['attempt_refunds'];
   }
 
   /**
@@ -244,14 +253,13 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
   /**
    * {@inheritdoc}
    */
-  public function refundPayment(PaymentInterface $payment, Price $amount = NULL, $attempt_refund = FALSE) {
+  public function refundPayment(PaymentInterface $payment, Price $amount = NULL) {
     $this->assertPaymentState($payment, ['completed', 'partially_refunded']);
     // If not specified, refund the entire amount.
     $amount = $amount ?: $payment->getAmount();
     $this->assertRefundAmount($payment, $amount);
 
-    // @todo: Override refund form and add option to attempt a refund request.
-    if ($attempt_refund) {
+    if ($this->shouldAttemptRefunds()) {
       try {
         /** @var \Drupal\commerce_price\NumberFormatter $number_formatter */
         $number_formatter = \Drupal::service('commerce_price.number_formatter');
@@ -352,6 +360,15 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
     }
 
     return $response->getData();
+  }
+
+  /**
+   * Determines if refunds should actually be attempted.
+   *
+   * @return boolean TRUE if refunds should be attempted via the API.
+   */
+  public function shouldAttemptRefunds() {
+    return (bool) $this->configuration['attempt_refunds'];
   }
 
 }

@@ -42,3 +42,21 @@ function commerce_cardconnect_api_entity_operation(EntityInterface $entity) {
 
   return $operations;
 }
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function commerce_cardconnect_api_entity_operation_alter(&$operations, EntityInterface $entity) {
+  if ($entity->getEntityTypeId() !== 'commerce_payment') {
+    return;
+  }
+
+  // Change the title of the refund operation for payments that use the
+  // `cardpointe_api` gateway if it is configured to not actually refund the
+  // transaction via the API.
+  if ($entity->payment_gateway->entity->getPluginId() === 'cardpointe_api' && isset($operations['refund'])) {
+    if (!$entity->payment_gateway->entity->getPlugin()->shouldAttemptRefunds()) {
+      $operations['refund']['title'] = t('Mark refunded');
+    }
+  }
+}

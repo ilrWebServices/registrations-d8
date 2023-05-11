@@ -18,6 +18,7 @@ configuration:
   cp_pass: 'set in env'
   cp_site: fts
   cp_merchant_id: 'set in env'
+  attempt_refunds: 0
 conditions:
   -
     plugin: order_type
