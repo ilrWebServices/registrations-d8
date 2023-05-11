@@ -54,6 +54,7 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: delete
     third_party_settings: {  }
 hidden:
   ip_address: true
