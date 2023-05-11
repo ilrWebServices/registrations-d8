@@ -57,6 +57,7 @@ content:
       removed_reference: delete
     third_party_settings: {  }
 hidden:
+  coupons: true
   ip_address: true
   mail: true
   order_number: true

@@ -14,6 +14,7 @@ hidden:
   adjustments: true
   billing_profile: true
   cart: true
+  coupons: true
   ip_address: true
   mail: true
   order_items: true
