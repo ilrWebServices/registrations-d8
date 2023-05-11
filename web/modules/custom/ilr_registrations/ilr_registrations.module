@@ -22,6 +22,8 @@ use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
 use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\user\UserInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -413,8 +415,18 @@ function ilr_registrations_local_tasks_alter(&$local_tasks) {
 /**
  * Implements hook_user_format_name_alter().
  */
-function ilr_registrations_user_format_name_alter(&$name, $account) {
+function ilr_registrations_user_format_name_alter(&$name, AccountInterface $account) {
   $entity_type_manager = \Drupal::service('entity_type.manager');
+
+  // Order admins can create orders on behalf of others, so always show their
+  // NetID common name (or real username if common name is empty).
+  if ($account->hasPermission('access commerce_order overview')) {
+    if ($account instanceof UserInterface && !$account->field_common_name->isEmpty()) {
+      $name =  $account->field_common_name->value . ' (' . $name . ')';
+    }
+
+    return;
+  }
 
   // Load a customer profile for this user. This can be done via
   // loadDefaultByUser() as below, but loadByUser() and loadMultipleByUser() are
