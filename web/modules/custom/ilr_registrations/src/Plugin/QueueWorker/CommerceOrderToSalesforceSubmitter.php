@@ -5,6 +5,7 @@ namespace Drupal\ilr_registrations\Plugin\QueueWorker;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Logger\LoggerChannelTrait;
+use Drupal\Core\Queue\SuspendQueueException;
 use Drupal\salesforce\Rest\RestClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\salesforce\Rest\RestException;
@@ -64,6 +65,7 @@ class CommerceOrderToSalesforceSubmitter extends QueueWorkerBase implements Cont
     // webhook. This will call the correct endpoint automatically based on the
     // default authentication provider.
     try {
+      /** @var \Drupal\salesforce\Rest\RestResponse */
       $sf_response = $this->sfapi->apiCall('/services/apexrest/WebReg', $data, 'POST', TRUE);
 
       $this->logger->notice('WebReg hook success for order @order_id. Response code: @response_code. Response message: @response_message', [
@@ -76,15 +78,15 @@ class CommerceOrderToSalesforceSubmitter extends QueueWorkerBase implements Cont
     catch (RestException $e) {
       $response = $e->getResponse();
 
-      // If this was a connection error, throw a generic exception so that this
-      // item will be retried. The exception will be logged.
+      // If this was a connection error, throw a SuspendQueueException exception
+      // so that this and any other queue items will be retried at the next cron
+      // run. The exception will be logged.
       if ($response === NULL) {
-        throw new \Exception($e->getMessage());
+        throw new SuspendQueueException($e->getMessage());
       }
       // If there was no connection error but there was some other error (e.g.,
-      // the WebReg endpoint was not found or returned an error), just log it
-      // and return with no exception. This will remove this queue item so that
-      // it will NOT be retried.
+      // the WebReg endpoint was not found or returned an error), log it and
+      // throw an exception. This queue item will be retried next cron run.
       else {
         $this->logger->error('WebReg hook rest error for order @order_id. Response code: @response_code. Response message: @response_message. Error message: @message', [
           '@order_id' => $data['order_id'],
@@ -92,6 +94,8 @@ class CommerceOrderToSalesforceSubmitter extends QueueWorkerBase implements Cont
           '@response_message' => $response->getReasonPhrase(),
           '@message' => $e->getMessage(),
         ]);
+
+        throw new \Exception($e->getMessage());
       }
     }
   }
