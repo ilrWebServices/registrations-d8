@@ -67,7 +67,8 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
 
     $response = [
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
-      "response_webhook_url" => $this->request->getSchemeAndHttpHost() . '/hooks/v1/salesforce-commerce',
+      // @see WebReg_ParsePayload.cls line ~915
+      "response_webhook_url" => NULL,
       "order_id" => $order->id(),
       "payments" => [],
       "customer" => [
