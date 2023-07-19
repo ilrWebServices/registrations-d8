@@ -140,3 +140,15 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'field_tags' => [['target_id' => $payable_check_term->id()]],
   ])->save();
 }
+
+/**
+ * Add 'Alumni' product_tags term.
+ */
+function ilr_registrations_post_update_01_alumni_product_tags_term(&$sandbox) {
+  $term_entity_manager = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term');
+  $term_entity_manager->create([
+    'vid' => 'product_tags',
+    'name' => 'Alumni',
+    'uuid' => '577cd687-f818-4b38-92bb-57345eb1b93b',
+  ])->save();
+}
