@@ -1,0 +1,51 @@
+uuid: 48cb01f5-83b5-48ef-b546-0ec8f12c2b01
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.tickets_by_quantity
+    - field.field.commerce_product.tickets_by_quantity.body
+    - field.field.commerce_product.tickets_by_quantity.field_tags
+  module:
+    - commerce_product
+    - text
+id: commerce_product.tickets_by_quantity.default
+targetEntityType: commerce_product
+bundle: tickets_by_quantity
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true

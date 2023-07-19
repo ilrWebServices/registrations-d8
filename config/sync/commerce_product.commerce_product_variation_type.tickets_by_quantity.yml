@@ -1,0 +1,10 @@
+uuid: 9f815ab2-7d92-443f-b22b-c16e925fb054
+langcode: en
+status: true
+dependencies: {  }
+id: tickets_by_quantity
+label: 'Tickets by quantity'
+traits: {  }
+locked: false
+orderItemType: simple_ticket
+generateTitle: false
