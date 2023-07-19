@@ -51,7 +51,7 @@ content:
     type: commerce_order_item_table
     label: above
     settings:
-      order_item_view: registration_order_items
+      view: registration_order_items
     third_party_settings: {  }
     weight: 0
     region: content
@@ -68,7 +68,9 @@ content:
   state:
     type: state_transition_form
     label: hidden
-    settings: {  }
+    settings:
+      require_confirmation: false
+      use_modal: false
     third_party_settings: {  }
     weight: 10
     region: content

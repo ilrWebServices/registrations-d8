@@ -52,7 +52,7 @@ content:
     type: commerce_order_item_table
     label: above
     settings:
-      order_item_view: registration_order_items_mini
+      view: registration_order_items_mini
     third_party_settings: {  }
     weight: 0
     region: content
