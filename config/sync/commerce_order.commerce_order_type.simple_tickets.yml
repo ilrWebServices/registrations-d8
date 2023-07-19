@@ -1,0 +1,28 @@
+uuid: cf0a39a7-0964-41c1-a33d-3154f821f24c
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+    - commerce_checkout
+third_party_settings:
+  commerce_cart:
+    cart_block_view: commerce_cart_block
+    cart_form_view: commerce_cart_form
+    cart_expiration:
+      number: 30
+      unit: day
+    enable_cart_message: true
+  commerce_checkout:
+    checkout_flow: basic_checkout
+id: simple_tickets
+label: 'Simple Tickets'
+traits: {  }
+locked: false
+workflow: order_default
+numberPattern: null
+refresh_mode: customer
+refresh_frequency: 300
+sendReceipt: true
+receiptBcc: ''
+receiptSubject: ''
