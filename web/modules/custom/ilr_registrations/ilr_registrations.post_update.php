@@ -152,3 +152,30 @@ function ilr_registrations_post_update_01_alumni_product_tags_term(&$sandbox) {
     'uuid' => '577cd687-f818-4b38-92bb-57345eb1b93b',
   ])->save();
 }
+
+/**
+ * Add initial Alumni Braves ticket products.
+ */
+function ilr_registrations_post_update_alumni_braves_tix_products(&$sandbox) {
+  $store = \Drupal::service('entity_type.manager')->getStorage('commerce_store')->loadDefault();
+  $product_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_product');
+  $product_variation_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_product_variation');
+  $alumni_term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', '577cd687-f818-4b38-92bb-57345eb1b93b');
+
+  $alum_tix_variation = $product_variation_storage->create([
+    'type' => 'tickets_by_quantity',
+    'title' => 'Alumni Braves Tickets for August, 2023',
+    'sku' => 'ALUM-BRAVES-202308',
+    'price' => new Price('24', 'USD'),
+  ]);
+  $alum_tix_variation->save();
+
+  $product_storage->create([
+    'uid' => 1,
+    'type' => 'tickets_by_quantity',
+    'title' => 'Alumni Braves Tickets for August, 2023',
+    'stores' => [$store],
+    'variations' => [$alum_tix_variation],
+    'field_tags' => [['target_id' => $alumni_term->id()]],
+  ])->save();
+}
