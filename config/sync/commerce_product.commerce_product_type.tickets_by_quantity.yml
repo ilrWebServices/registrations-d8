@@ -11,4 +11,4 @@ variationType: tickets_by_quantity
 variationTypes:
   - tickets_by_quantity
 multipleVariations: false
-injectVariationFields: false
+injectVariationFields: true

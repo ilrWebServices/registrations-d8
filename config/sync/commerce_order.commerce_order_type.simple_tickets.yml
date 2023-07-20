@@ -8,7 +8,7 @@ dependencies:
 third_party_settings:
   commerce_cart:
     cart_block_view: commerce_cart_block
-    cart_form_view: commerce_cart_form
+    cart_form_view: cart_form_simple_tickets
     cart_expiration:
       number: 30
       unit: day

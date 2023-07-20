@@ -1,5 +1,7 @@
-{% if element['#type'] in ['textfield', 'textarea', 'tel', 'email'] %}
+{% if element['#type'] in ['textfield', 'textarea', 'tel', 'email', 'password_confirm', 'password'] %}
   {% set labelDisplay = 'float' %}
+{% else %}
+  {% set labelDisplay = label_display %}
 {% endif %}
 {% include "@union/_form-element.twig" with {
   required: element['#required'],
