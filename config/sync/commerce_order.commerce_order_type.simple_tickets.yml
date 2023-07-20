@@ -25,4 +25,4 @@ refresh_mode: customer
 refresh_frequency: 300
 sendReceipt: true
 receiptBcc: ''
-receiptSubject: ''
+receiptSubject: 'ILR Registrations Order #[commerce_order:order_number] Confirmed'
