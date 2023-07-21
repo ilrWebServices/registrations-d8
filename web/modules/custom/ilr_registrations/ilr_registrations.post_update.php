@@ -164,8 +164,8 @@ function ilr_registrations_post_update_alumni_braves_tix_products(&$sandbox) {
 
   $alum_tix_variation = $product_variation_storage->create([
     'type' => 'tickets_by_quantity',
-    'title' => 'Alumni Braves Tickets for August, 2023',
-    'sku' => 'ALUM-BRAVES-202308',
+    'title' => 'Alumni Braves Tickets for October 1, 2023',
+    'sku' => 'ALUM-BRAVES-20231001',
     'price' => new Price('24', 'USD'),
   ]);
   $alum_tix_variation->save();
@@ -173,9 +173,14 @@ function ilr_registrations_post_update_alumni_braves_tix_products(&$sandbox) {
   $product_storage->create([
     'uid' => 1,
     'type' => 'tickets_by_quantity',
-    'title' => 'Alumni Braves Tickets for August, 2023',
+    'title' => 'Alumni Braves Tickets for October 1, 2023',
     'stores' => [$store],
     'variations' => [$alum_tix_variation],
     'field_tags' => [['target_id' => $alumni_term->id()]],
+    'path' => '/alumni-atlanta-braves-2023',
+    'body' => [
+      'value' => 'Come join the Cornell ILR Alumni Association Atlanta Chapter for an afternoon at Truist Park to watch the Atlanta Braves take on the Washington Nationals!',
+      'format' => 'plain_text',
+    ],
   ])->save();
 }
