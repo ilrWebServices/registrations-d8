@@ -140,3 +140,47 @@ function ilr_registrations_post_update_groat_products(&$sandbox) {
     'field_tags' => [['target_id' => $payable_check_term->id()]],
   ])->save();
 }
+
+/**
+ * Add 'Alumni' product_tags term.
+ */
+function ilr_registrations_post_update_01_alumni_product_tags_term(&$sandbox) {
+  $term_entity_manager = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term');
+  $term_entity_manager->create([
+    'vid' => 'product_tags',
+    'name' => 'Alumni',
+    'uuid' => '577cd687-f818-4b38-92bb-57345eb1b93b',
+  ])->save();
+}
+
+/**
+ * Add initial Alumni Braves ticket products.
+ */
+function ilr_registrations_post_update_alumni_braves_tix_products(&$sandbox) {
+  $store = \Drupal::service('entity_type.manager')->getStorage('commerce_store')->loadDefault();
+  $product_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_product');
+  $product_variation_storage = \Drupal::service('entity_type.manager')->getStorage('commerce_product_variation');
+  $alumni_term = \Drupal::service('entity.repository')->loadEntityByUuid('taxonomy_term', '577cd687-f818-4b38-92bb-57345eb1b93b');
+
+  $alum_tix_variation = $product_variation_storage->create([
+    'type' => 'tickets_by_quantity',
+    'title' => 'Alumni Braves Tickets for October 1, 2023',
+    'sku' => 'ALUM-BRAVES-20231001',
+    'price' => new Price('24', 'USD'),
+  ]);
+  $alum_tix_variation->save();
+
+  $product_storage->create([
+    'uid' => 1,
+    'type' => 'tickets_by_quantity',
+    'title' => 'Alumni Braves Tickets for October 1, 2023',
+    'stores' => [$store],
+    'variations' => [$alum_tix_variation],
+    'field_tags' => [['target_id' => $alumni_term->id()]],
+    'path' => '/alumni-atlanta-braves-2023',
+    'body' => [
+      'value' => 'Come join the Cornell ILR Alumni Association Atlanta Chapter for an afternoon at Truist Park to watch the Atlanta Braves take on the Washington Nationals!',
+      'format' => 'plain_text',
+    ],
+  ])->save();
+}

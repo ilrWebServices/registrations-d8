@@ -1,6 +1,6 @@
 uuid: e9857646-f746-423a-9739-65aa20264d86
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - commerce_cardconnect_api
@@ -21,8 +21,8 @@ configuration:
   attempt_refunds: 0
 conditions:
   -
-    plugin: order_type
+    plugin: order_product_category
     configuration:
-      bundles:
-        - groat_alpern_awards
+      terms:
+        - 577cd687-f818-4b38-92bb-57345eb1b93b
 conditionOperator: AND

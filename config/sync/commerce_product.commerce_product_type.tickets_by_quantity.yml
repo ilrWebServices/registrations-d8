@@ -1,0 +1,14 @@
+uuid: fbf8ced7-a347-4f1a-af4d-4be51cc344b5
+langcode: en
+status: true
+dependencies: {  }
+id: tickets_by_quantity
+label: 'Tickets by quantity'
+traits: {  }
+locked: false
+description: 'A basic ticket product that does not have an associated registration or any participants.'
+variationType: tickets_by_quantity
+variationTypes:
+  - tickets_by_quantity
+multipleVariations: false
+injectVariationFields: true

@@ -1,0 +1,10 @@
+uuid: 914e5fa5-4631-4155-806b-788b3d0d15fd
+langcode: en
+status: true
+dependencies: {  }
+id: simple_ticket
+label: 'Simple Ticket'
+traits: {  }
+locked: false
+purchasableEntityType: commerce_product_variation
+orderType: simple_tickets

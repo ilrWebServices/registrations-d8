@@ -135,3 +135,27 @@
     margin-right: 1em;
   }
 }
+
+.cart-form .simple-tickets table {
+  width: 100%;
+
+  .views-field {
+    text-align: right;
+  }
+
+  .views-field-purchased-entity {
+    text-align: left;
+  }
+}
+
+.checkout-order-summary table {
+  width: 100%;
+
+  td {
+    padding: 0;
+  }
+
+  td:last-of-type {
+    text-align: right;
+  }
+}

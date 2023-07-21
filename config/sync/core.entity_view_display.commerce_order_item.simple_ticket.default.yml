@@ -1,0 +1,34 @@
+uuid: 882e5e17-e246-4019-83d4-7f3d55c98518
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_order.commerce_order_item_type.simple_ticket
+id: commerce_order_item.simple_ticket.default
+targetEntityType: commerce_order_item
+bundle: simple_ticket
+mode: default
+content:
+  created:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  purchased_entity:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  adjustments: true
+  quantity: true
+  total_price: true
+  unit_price: true
