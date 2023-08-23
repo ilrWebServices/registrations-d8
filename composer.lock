@@ -3551,36 +3551,39 @@
         },
         {
             "name": "drupal/salesforce",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/salesforce.git",
-                "reference": "5.0.2"
+                "reference": "5.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/salesforce-5.0.2.zip",
-                "reference": "5.0.2",
-                "shasum": "1dda8743e3b3650149f94f83ab9773cc5c55a939"
+                "url": "https://ftp.drupal.org/files/projects/salesforce-5.0.3.zip",
+                "reference": "5.0.3",
+                "shasum": "45f22b818a7b4104ee11dce9751bf47fd2ee3b6a"
             },
             "require": {
                 "consolidation/output-formatters": "^3.2.0 || ^4.1",
-                "drupal/core": "^9 || ^10",
-                "ext-json": "*",
-                "lusitanian/oauth": "^0.8.11"
-            },
-            "require-dev": {
                 "drupal/address": "^1.8",
+                "drupal/core": "^9 || ^10",
                 "drupal/dynamic_entity_reference": "^1.9 || ^2.0 || ^3 || ^4",
                 "drupal/key": "^1.14",
-                "drupal/salesforce_mapping": "*",
-                "drupal/salesforce_push": "*",
                 "drupal/typed_data": "^1.0-beta2",
-                "drupal/webform": "*",
+                "ext-json": "*",
                 "ext-soap": "*",
                 "firebase/php-jwt": "^5.0 || ^6.0",
                 "lusitanian/oauth": "^0.8.11",
                 "messageagency/force.com-toolkit-for-php": "^1.0.2"
+            },
+            "require-dev": {
+                "drupal/address": "*",
+                "drupal/dynamic_entity_reference": "*",
+                "drupal/key": "*",
+                "drupal/salesforce_mapping": "*",
+                "drupal/salesforce_push": "*",
+                "drupal/typed_data": "*",
+                "drupal/webform": "*"
             },
             "suggest": {
                 "consolidation/output-formatters": "Required for drush 10 commands.",
@@ -3595,8 +3598,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "5.0.2",
-                    "datestamp": "1679940932",
+                    "version": "5.0.3",
+                    "datestamp": "1691095606",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5362,6 +5365,45 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.7.6"
             },
             "time": "2022-08-18T16:18:26+00:00"
+        },
+        {
+            "name": "messageagency/force.com-toolkit-for-php",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/messageagency/Forcecom-Toolkit-for-PHP.git",
+                "reference": "ee971ea3ff1c1477c86ae0547f405c032bb58110"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/messageagency/Forcecom-Toolkit-for-PHP/zipball/ee971ea3ff1c1477c86ae0547f405c032bb58110",
+                "reference": "ee971ea3ff1c1477c86ae0547f405c032bb58110",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "^7.1 || ^8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "soapclient"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A wrapper for the Force.com Web Services SOAP API",
+            "support": {
+                "issues": "https://github.com/messageagency/Forcecom-Toolkit-for-PHP/issues",
+                "source": "https://github.com/messageagency/Forcecom-Toolkit-for-PHP/tree/1.0.2"
+            },
+            "time": "2022-05-05T15:39:51+00:00"
         },
         {
             "name": "nikic/php-parser",
