@@ -9,7 +9,7 @@ label: 'Groat Alpern Tickets'
 targetEntityType: commerce_order
 plugin: yearly_fall
 configuration:
-  pattern: 'GROAT-[pattern:year_P3M]-[pattern:number]'
+  pattern: 'GROAT-[pattern:year_P4M]-[pattern:number]'
   initial_number: '1'
   padding: '0'
   per_store_sequence: true

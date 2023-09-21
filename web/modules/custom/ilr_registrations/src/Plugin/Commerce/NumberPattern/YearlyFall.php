@@ -11,7 +11,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
  *
  * @CommerceNumberPattern(
  *   id = "yearly_fall",
- *   label = @Translation("Yearly Fall (Reset every year on Oct. 1, e.g. 2022-11-2 would return 2023)"),
+ *   label = @Translation("Yearly Fall (Reset every year on Sep. 1, e.g. 2023-09-2 would return 2024)"),
  * )
  */
 class YearlyFall extends SequentialNumberPatternBase {
@@ -21,7 +21,7 @@ class YearlyFall extends SequentialNumberPatternBase {
    */
   public function defaultConfiguration() {
     return [
-      'pattern' => '[pattern:year_P3M]-[pattern:number]',
+      'pattern' => '[pattern:year_P4M]-[pattern:number]',
     ] + parent::defaultConfiguration();
   }
 
@@ -34,7 +34,7 @@ class YearlyFall extends SequentialNumberPatternBase {
 
     // Add 3 months to the times. This is confusing (to Jeff) but appears to
     // work.
-    $interval = new \DateInterval('P3M');
+    $interval = new \DateInterval('P4M');
     $generated_time->add($interval);
     $current_time->add($interval);
 

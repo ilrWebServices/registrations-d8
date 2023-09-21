@@ -9,7 +9,7 @@ label: 'Summer Debate Camp Order Number'
 targetEntityType: commerce_order
 plugin: yearly_fall
 configuration:
-  pattern: 'SUMMER-DEBATE-CAMP-[pattern:year_P3M]-[pattern:number]'
+  pattern: 'SUMMER-DEBATE-CAMP-[pattern:year_P4M]-[pattern:number]'
   initial_number: '1'
   padding: '0'
   per_store_sequence: true

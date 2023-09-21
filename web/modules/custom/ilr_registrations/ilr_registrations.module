@@ -674,11 +674,11 @@ function ilr_registrations_alter_address_element($element, FormStateInterface $f
 function ilr_registrations_token_info_alter(&$data) {
   $time = \Drupal::time()->getRequestTime();
   $date = new \DateTime('@' . $time);
-  $date->add(new DateInterval('P3M'));
+  $date->add(new DateInterval('P4M'));
 
-  $data['tokens']['pattern']['year_P3M'] = [
-    'name' => t('Year P3M'),
-    'description' => t('The current year plus three months. (%date)', ['%date' => $date->format('Y')]),
+  $data['tokens']['pattern']['year_P4M'] = [
+    'name' => t('Year P4M'),
+    'description' => t('The current year plus four months. (%date)', ['%date' => $date->format('Y')]),
   ];
 }
 
@@ -690,14 +690,14 @@ function ilr_registrations_tokens($type, $tokens, array $data, array $options, B
   if ($type === 'pattern') {
     $time = \Drupal::time()->getRequestTime();
     $date = new \DateTime('@' . $time);
-    $date->add(new DateInterval('P3M'));
+    $date->add(new DateInterval('P4M'));
 
     // The tokens must not be cached due to the reliance on the current time.
     $bubbleable_metadata->setCacheMaxAge(0);
 
     foreach ($tokens as $name => $original) {
       switch ($name) {
-        case 'year_P3M':
+        case 'year_P4M':
           $replacements[$original] = $date->format('Y');
           break;
       }
