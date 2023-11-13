@@ -140,9 +140,23 @@ function union_register_preprocess_commerce_product_variation__class__selection(
     return;
   }
 
+  /** @var \Drupal\Core\Datetime\DrupalDateTime $start_date  */
+  $start_date = $variation->field_class_start->date;
+
+  /** @var \Drupal\Core\Datetime\DrupalDateTime $end_date  */
+  $end_date = $variation->field_class_end->date;
+
+  // Explicitly set the timezone. For some reason, `field_class_start` is
+  // already in 'America/New_York', but `field_class_end` remains in UTC. I have
+  // no idea why, so I'm setting them both to the default. Info about how
+  // date_default_timezone_get() is set: https://www.drupal.org/node/3009387
+  $timezone = new \DateTimeZone(date_default_timezone_get());
+  $start_date->setTimezone($timezone);
+  $end_date->setTimezone($timezone);
+
   $dates = [
-    $variation->field_class_start->date->getPhpDateTime(),
-    $variation->field_class_end->date->getPhpDateTime(),
+    $start_date,
+    $end_date,
   ];
 
   // Note that this only includes the start and end dates, not the session
