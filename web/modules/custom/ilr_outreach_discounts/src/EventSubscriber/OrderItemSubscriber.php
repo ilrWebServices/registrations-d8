@@ -46,7 +46,7 @@ class OrderItemSubscriber implements EventSubscriberInterface {
    * @return array
    *   The event names to listen for, and the methods that should be executed.
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       CartEvents::CART_ORDER_ITEM_ADD => 'onCartOrderItemInsert',
     ];
