@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use DrupalFinder\DrupalFinder;
+use DrupalRector\Set\Drupal10SetList;
 use DrupalRector\Set\Drupal8SetList;
 use DrupalRector\Set\Drupal9SetList;
 use Rector\Config\RectorConfig;
@@ -12,11 +13,10 @@ return static function (RectorConfig $rectorConfig): void {
     // @todo find out how to only load the relevant rector rules.
     //   Should we try and load \Drupal::VERSION and check?
     $rectorConfig->sets([
-        // Drupal8SetList::DRUPAL_8,
+        Drupal8SetList::DRUPAL_8,
         Drupal9SetList::DRUPAL_9,
+        Drupal10SetList::DRUPAL_10,
     ]);
-
-    $parameters = $rectorConfig->parameters();
 
     $drupalFinder = new DrupalFinder();
     $drupalFinder->locateRoot(__DIR__);
@@ -32,5 +32,4 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->fileExtensions(['php', 'module', 'theme', 'install', 'profile', 'inc', 'engine']);
     $rectorConfig->importNames(true, false);
     $rectorConfig->importShortClasses(false);
-    $parameters->set('drupal_rector_notices_as_comments', true);
 };
