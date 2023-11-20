@@ -4001,12 +4001,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/union_organizer.git",
-                "reference": "cb4147d22a7a992ca81a543c9f0f2bc70463820a"
+                "reference": "b07c60a9441f0f176b5e7823c6bc2dffcc8fd15a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/cb4147d22a7a992ca81a543c9f0f2bc70463820a",
-                "reference": "cb4147d22a7a992ca81a543c9f0f2bc70463820a",
+                "url": "https://api.github.com/repos/ilrWebServices/union_organizer/zipball/b07c60a9441f0f176b5e7823c6bc2dffcc8fd15a",
+                "reference": "b07c60a9441f0f176b5e7823c6bc2dffcc8fd15a",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -4022,7 +4022,7 @@
                 "issues": "https://github.com/ilrWebServices/union_organizer/issues",
                 "source": "https://github.com/ilrWebServices/union_organizer.git"
             },
-            "time": "2023-04-12T19:26:01+00:00"
+            "time": "2023-11-09T20:11:53+00:00"
         },
         {
             "name": "drush/drush",
