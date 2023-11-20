@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4685c6ba40b783522bd731edd69fedb7",
+    "content-hash": "998b7bc9dd6df84411e33da291c659bb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3367,48 +3367,33 @@
         },
         {
             "name": "drupal/persistent_visitor_parameters",
-            "version": "dev-1.0.x",
+            "version": "2.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/persistent_visitor_parameters.git",
-                "reference": "c845a1c355b10ef801488ae14dc69e36ea67e388"
+                "url": "https://github.com/ilrWebServices/persistent_visitor_parameters.git",
+                "reference": "02d2b58d12a3f39cb789f6621052931509f92f60"
             },
-            "require": {
-                "drupal/core": "^8.8 || ^9"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/persistent_visitor_parameters/zipball/02d2b58d12a3f39cb789f6621052931509f92f60",
+                "reference": "02d2b58d12a3f39cb789f6621052931509f92f60",
+                "shasum": ""
             },
+            "default-branch": true,
             "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.0.x": "1.0.x-dev"
-                },
-                "drupal": {
-                    "version": "1.0.0-beta2+2-dev",
-                    "datestamp": "1616506525",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "criz",
-                    "homepage": "https://www.drupal.org/user/71764"
-                },
-                {
-                    "name": "dejan0",
-                    "homepage": "https://www.drupal.org/user/3634531"
-                }
+                "GPL-2.0+"
             ],
             "description": "Checks GET and HTTP Request parameters from anonymous visitors, and saves those in a cookie for further processing",
-            "homepage": "https://www.drupal.org/project/persistent_visitor_parameters",
+            "homepage": "https://github.com/ilrWebServices/persistent_visitor_parameters",
+            "keywords": [
+                "Drupal"
+            ],
             "support": {
-                "source": "https://git.drupalcode.org/project/persistent_visitor_parameters"
-            }
+                "issues": "https://github.com/ilrWebServices/persistent_visitor_parameters/issues",
+                "source": "https://github.com/ilrWebServices/persistent_visitor_parameters.git"
+            },
+            "time": "2023-11-09T21:08:37+00:00"
         },
         {
             "name": "drupal/profile",
@@ -14161,7 +14146,6 @@
         "drupal/core-recommended": 0,
         "drupal/email_registration": 5,
         "drupal/erf": 20,
-        "drupal/persistent_visitor_parameters": 20,
         "drupal/swiftmailer": 10,
         "drupal/typed_data": 15,
         "drupal/union_organizer": 20,
