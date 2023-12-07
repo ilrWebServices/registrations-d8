@@ -53,7 +53,7 @@
     "drupal/date_popup": "^2",
     "drupal/dynamic_entity_reference": "^4.0",
     "drupal/email_registration": "^1.0@RC",
-    "drupal/erf": "^2.x-dev",
+    "drupal/erf": "2.x-dev",
     "drupal/ilr_outreach_discount_api": "^1",
     "drupal/key": "^1.14",
     "drupal/persistent_visitor_parameters": "^2",

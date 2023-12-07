@@ -9,6 +9,8 @@
  *         For example: form.coupons.0.code.
  *
  * @ingroup themeable
+ *
+ * This is probably @deprecated, since we switched from commerce_promotion to ilr_outreach_discounts.
  */
 #}
 {% if form.coupons|length %}
@@ -23,7 +25,7 @@
     <div class="coupon-redemption-form__coupons coupon-redemption-form__coupons--multiple">
       <h3 class="cu-heading"> {{ 'Applied coupons'|t }} </h3>
       <table>
-        {% for key, coupon in form.coupons if key|first != '#' %}
+        {% for key, coupon in form.coupons|filter((v, k) => k|first != '#') %}
           <tr>
             <td> {{ coupon.code }} </td>
             <td> {{ coupon.remove_button }} </td>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "998b7bc9dd6df84411e33da291c659bb",
+    "content-hash": "98028d080ecd6df32649beadac8ef2fd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3015,10 +3015,10 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/erf.git",
-                "reference": "4de00de9365c3ef60b98415192cd04c4190ada33"
+                "reference": "1491b4d44e7c1c3840b19501d149ceed3ecf3d61"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9",
+                "drupal/core": "^9.5 || ^10",
                 "drupal/inline_entity_form": "^1.0-rc4"
             },
             "require-dev": {
@@ -3032,8 +3032,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "2.0.0-alpha6+9-dev",
-                    "datestamp": "1665589737",
+                    "version": "2.0.0-alpha6+10-dev",
+                    "datestamp": "1701982477",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
