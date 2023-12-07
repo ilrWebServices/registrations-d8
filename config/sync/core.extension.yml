@@ -15,7 +15,6 @@ module:
   commerce_freedompay: 0
   commerce_number_pattern: 0
   commerce_order: 0
-  commerce_order_item_render_widget: 0
   commerce_payment: 0
   commerce_price: 0
   commerce_product: 0
