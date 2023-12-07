@@ -3,4 +3,4 @@ widget:
   js:
     js/commerce_order_item_render.widget.js: {}
   dependencies:
-    - core/jquery.once
+    - core/once
