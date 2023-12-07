@@ -10,6 +10,8 @@ dependencies:
     - commerce_order
     - commerce_price
     - ilr_registrations
+    - rest
+    - serialization
     - user
 id: marketing_orders
 label: 'Marketing Orders'
@@ -716,7 +718,18 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header: {  }
+      header:
+        display_link:
+          id: display_link
+          table: views
+          field: display_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: display_link
+          label: CSV
+          empty: false
+          display_id: rest_export_1
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -733,6 +746,9 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      defaults:
+        header: false
+      header: {  }
       display_extenders: {  }
       path: admin/reports/marketing-orders
       menu:
@@ -750,5 +766,60 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - user.roles
+      tags: {  }
+  rest_export_1:
+    id: rest_export_1
+    display_title: 'CSV export'
+    display_plugin: rest_export
+    position: 3
+    display_options:
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: serializer
+        options:
+          uses_fields: false
+          formats:
+            csv: csv
+      row:
+        type: data_field
+        options:
+          field_options:
+            order_number:
+              alias: ''
+              raw_output: true
+            locked:
+              alias: ''
+              raw_output: false
+            type:
+              alias: ''
+              raw_output: false
+            uid:
+              alias: ''
+              raw_output: false
+            order_items_target_id:
+              alias: ''
+              raw_output: false
+            total_price__number:
+              alias: ''
+              raw_output: false
+            data:
+              alias: ''
+              raw_output: false
+            changed:
+              alias: ''
+              raw_output: false
+      display_description: ''
+      display_extenders: {  }
+      path: admin/reports/marketing-orders/csv
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
         - user.roles
       tags: {  }
