@@ -161,6 +161,17 @@ foreach ($platformsh->variables() as $name => $value) {
   }
 }
 
+// For all platform environments, set the symfony mailer `smtp` transport host
+// and port if email sending is enabled. In code, the `smtp` transport config is
+// set to values for mailhog.
+if (getenv('PLATFORM_SMTP_HOST')) {
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = getenv('PLATFORM_SMTP_HOST');
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
+}
+else {
+  $config['symfony_mailer.mailer_transport.smtp']['status'] = false;
+}
+
 if ($platformsh->onProduction()) {
   // Set the swiftmailer sendmail_path on platform.
   // @see https://docs.platform.sh/development/email.html#swiftmailer
