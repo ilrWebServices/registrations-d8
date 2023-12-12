@@ -60,7 +60,6 @@
     "drupal/queue_ui": "^3.0",
     "drupal/salesforce": "^5.0",
     "drupal/samlauth": "^3.0",
-    "drupal/swiftmailer": "^2.0@beta",
     "drupal/symfony_mailer": "^1.4",
     "drupal/token": "^1.5",
     "drupal/typed_data": "^1.0@alpha",
