@@ -64,11 +64,7 @@ hooks:
     set -e
     php ./drush/platformsh_generate_drush_yml.php
     cd web
-    drush -y cache-rebuild
-    drush -y updatedb --no-post-updates
-    drush -y config-import
-    drush -y updatedb
-    drush -y cache-rebuild
+    drush deploy
 
 # The configuration of app when it is exposed to the web.
 web:

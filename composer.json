@@ -111,10 +111,7 @@
       "drush sfrvk ilr_marketing_jwt_oauth"
     ],
     "sync-update": [
-      "drush cr",
-      "drush updatedb --no-post-updates -y",
-      "drush config:import -y",
-      "drush updatedb -y",
+      "drush deploy",
       "@sf-dev"
     ],
     "sf-dev": [
