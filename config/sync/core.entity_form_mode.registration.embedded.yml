@@ -6,5 +6,6 @@ dependencies:
     - erf
 id: registration.embedded
 label: 'Embedded on Source Entity'
+description: ''
 targetEntityType: registration
 cache: true

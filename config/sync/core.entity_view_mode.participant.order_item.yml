@@ -6,5 +6,6 @@ dependencies:
     - erf
 id: participant.order_item
 label: 'Order Item'
+description: ''
 targetEntityType: participant
 cache: true

@@ -6,5 +6,6 @@ dependencies:
     - profile
 id: profile.mini
 label: Mini
+description: ''
 targetEntityType: profile
 cache: true

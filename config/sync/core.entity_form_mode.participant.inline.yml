@@ -6,5 +6,6 @@ dependencies:
     - ilr_registrations
 id: participant.inline
 label: Inline
+description: ''
 targetEntityType: participant
 cache: true

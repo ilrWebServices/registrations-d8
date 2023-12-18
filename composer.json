@@ -89,7 +89,8 @@
       "drupal/core-composer-scaffold": true,
       "drupal/console-extend-plugin": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "phpstan/extension-installer": true
+      "phpstan/extension-installer": true,
+      "php-http/discovery": true
     }
   },
   "autoload": {
