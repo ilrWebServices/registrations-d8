@@ -8,6 +8,24 @@ name: 'Basic HTML'
 format: basic_html
 weight: 0
 filters:
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: false
+    weight: -46
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: -50
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: false
+    weight: -45
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -17,11 +35,17 @@ filters:
       allowed_html: "<p> <br> <a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type='1 A I'> <li> <dl> <dt> <dd> <h2 id='jump-*'> <h3 id> <h4 id> <h5 id> <h6 id>"
       filter_html_help: false
       filter_html_nofollow: false
-  filter_autop:
-    id: filter_autop
+  filter_html_escape:
+    id: filter_html_escape
     provider: filter
-    status: true
-    weight: -50
+    status: false
+    weight: -47
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: -42
     settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
@@ -29,11 +53,17 @@ filters:
     status: true
     weight: -48
     settings: {  }
-  filter_html_image_secure:
-    id: filter_html_image_secure
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
     provider: filter
     status: false
-    weight: -42
+    weight: -41
+    settings: {  }
+  filter_union_components:
+    id: filter_union_components
+    provider: union_organizer
+    status: false
+    weight: -43
     settings: {  }
   filter_url:
     id: filter_url
@@ -42,33 +72,3 @@ filters:
     weight: -44
     settings:
       filter_url_length: 72
-  filter_align:
-    id: filter_align
-    provider: filter
-    status: false
-    weight: -46
-    settings: {  }
-  filter_image_lazy_load:
-    id: filter_image_lazy_load
-    provider: filter
-    status: false
-    weight: -41
-    settings: {  }
-  filter_caption:
-    id: filter_caption
-    provider: filter
-    status: false
-    weight: -45
-    settings: {  }
-  filter_html_escape:
-    id: filter_html_escape
-    provider: filter
-    status: false
-    weight: -47
-    settings: {  }
-  filter_union_components:
-    id: filter_union_components
-    provider: union_organizer
-    status: false
-    weight: -43
-    settings: {  }
