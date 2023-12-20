@@ -56,6 +56,9 @@ $config['system.performance']['js']['preprocess'] = FALSE;
 
 // Skip file system permissions hardening.
 $settings['skip_permissions_hardening'] = TRUE;
+
+// Config ignore pattern debugging.
+$settings['config_ignore_pattern_debug'] = FALSE;
 ```
 
 ### Clean install
@@ -137,6 +140,8 @@ Authentication is done via OAuth JWT tokens - one for ILR Drupal sites to connec
 The only required configuration is to set the `SALESFORCE_CONSUMER_JWT_X509_KEY` environment variable. For development, this is done by editing the `.env` file. On production, this is done via platform.sh environment variable settings.
 
 The JWT x509 key is stored in the 'SalesForce prod key/secret for ILR Marketing D8 JWT' note in the shared 'ILR Webdev' folder in LastPass.
+
+Some configuration, mainly registration and participant types, is ignored from sync. The `config_ignore_pattern` module is used. See $settings['config_ignore_patterns'].
 
 ### Usage
 

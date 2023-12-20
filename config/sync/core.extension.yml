@@ -21,7 +21,7 @@ module:
   commerce_promotion: 0
   commerce_store: 0
   config: 0
-  config_filter: 0
+  config_ignore_pattern: 0
   config_split: 0
   config_update: 0
   config_update_ui: 0

@@ -934,6 +934,19 @@ $scheme = $_SERVER['REQUEST_SCHEME'] ?? 'https';
 $config['samlauth.authentication']['sp_entity_id'] = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/saml/metadata';
 
 /**
+ * Ignored config name regex patterns.
+ */
+$settings['config_ignore_patterns'] = [
+  '/^erf\.registration_type\.[a-z_]+$/',
+  '/^erf\.participant_type\.[a-z_]+$/',
+];
+
+/**
+ * Config ignore pattern debugging.
+ */
+$settings['config_ignore_pattern_debug'] = TRUE;
+
+/**
  * Load local development override configuration, if available.
  *
  * Create a settings.local.php file to override variables on secondary (staging,
