@@ -51,12 +51,20 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
   /**
    * Constructs a new SalesforceCommerceWebhookProcessor.
    *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\salesforce\Rest\RestClientInterface $sfapi
    *   The salesforce rest client.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, RestClientInterface $sfapi) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, RestClientInterface $sfapi) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+
     $this->entityTypeManager = $entity_type_manager;
     $this->sfapi = $sfapi;
     $this->logger = $this->getLogger('ilr_registrations_webhook');
@@ -67,6 +75,9 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
       $container->get('entity_type.manager'),
       $container->get('salesforce.client')
     );
