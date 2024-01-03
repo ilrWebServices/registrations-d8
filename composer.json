@@ -143,6 +143,9 @@
       "drupal/core": "-p2"
     },
     "patches": {
+      "drupal/core": {
+        "Issue #3396207: Log cron run missing lease_time warning": "https://www.drupal.org/files/issues/2024-01-03/drupal-3396207-7.patch"
+      },
       "drupal/commerce": {
         "Improve order argument for order total Views field": "patches/commerce-order_total_handler.patch",
         "Add block visibility conditions for store type and product type": "https://www.drupal.org/files/issues/2020-05-16/commerce-2918708-11.patch",
