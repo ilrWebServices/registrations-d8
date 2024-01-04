@@ -461,7 +461,18 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'There are no sponsorships for this year.'
+          tokenize: false
       sorts: {  }
       arguments: {  }
       filters:
@@ -653,6 +664,7 @@ display:
         - 'config:core.entity_view_display.registration.default.default'
         - 'config:core.entity_view_display.registration.groat_alpern_single.default'
         - 'config:core.entity_view_display.registration.groat_alpern_sponsorship.default'
+        - 'config:core.entity_view_display.registration.international_summer_debate_camp.default'
         - 'config:core.entity_view_display.registration.simple_class.default'
         - 'config:field.storage.registration.field_full_name'
         - 'config:field.storage.registration.participants'
@@ -684,6 +696,7 @@ display:
         - 'config:core.entity_view_display.registration.default.default'
         - 'config:core.entity_view_display.registration.groat_alpern_single.default'
         - 'config:core.entity_view_display.registration.groat_alpern_sponsorship.default'
+        - 'config:core.entity_view_display.registration.international_summer_debate_camp.default'
         - 'config:core.entity_view_display.registration.simple_class.default'
         - 'config:field.storage.registration.field_full_name'
         - 'config:field.storage.registration.participants'

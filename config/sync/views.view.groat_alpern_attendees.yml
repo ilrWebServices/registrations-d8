@@ -776,7 +776,18 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'There are no attendees for the current year.'
+          tokenize: false
       sorts: {  }
       arguments: {  }
       filters:
@@ -1083,7 +1094,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: text_custom
-          empty: false
+          empty: true
           content: "<p>This is a list of attendees registered within the last year. Note that attendees from unlocked registrations are not shown.</p>\r\n\r\n<p><a href=\"./groat-alpern-attendees.csv\">Download</a></p>\r\n\r\n<p><a href=\"/registration/add/groat_alpern_single?destination=/admin/registrations/reports/groat-alpern-attendees\">Add complimentary ticket</a></p>\r\n\r\n<p><a href=\"/product/172\">Add a paid ticket sale</a></p>\r\n\r\n<p><a href=\"/product/175\">Add a sponsorship</a></p>"
           tokenize: false
       footer: {  }
