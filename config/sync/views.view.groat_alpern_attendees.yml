@@ -807,8 +807,8 @@ display:
           value:
             min: ''
             max: ''
-            value: '-9 months'
-            type: offset
+            value: 'january 1'
+            type: date
           group: 1
           exposed: false
           expose:

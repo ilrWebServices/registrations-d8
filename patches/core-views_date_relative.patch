@@ -1,0 +1,17 @@
+diff --git a/core/modules/views/src/Plugin/views/filter/Date.php b/core/modules/views/src/Plugin/views/filter/Date.php
+index e15f0b2493..fa423ab79c 100644
+--- a/core/modules/views/src/Plugin/views/filter/Date.php
++++ b/core/modules/views/src/Plugin/views/filter/Date.php
+@@ -182,10 +182,10 @@ protected function opBetween($field) {
+   }
+ 
+   protected function opSimple($field) {
+-    $value = intval(strtotime($this->value['value'], 0));
++    $value = intval(strtotime($this->value['value']));
+     if (!empty($this->value['type']) && $this->value['type'] == 'offset') {
+       // Keep sign.
+-      $value = '***CURRENT_TIME***' . sprintf('%+d', $value);
++      $value = '***CURRENT_TIME***' . sprintf('%+d', intval(strtotime($this->value['value'], 0)));
+     }
+     // This is safe because we are manually scrubbing the value.
+     // It is necessary to do it this way because $value is a formula when using an offset.
