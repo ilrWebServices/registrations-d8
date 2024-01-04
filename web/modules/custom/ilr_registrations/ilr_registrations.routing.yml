@@ -24,3 +24,11 @@ ilr_registrations.salesforce_commerce_webhook_v1:
   requirements:
     _content_type_format: json
     _permission: 'access content'
+
+ilr_registrations.commerce_ilr_info:
+  path: '/admin/commerce/ilr'
+  defaults:
+    _controller: '\Drupal\ilr_registrations\Controller\IlrCommerceInfo::content'
+    _title: 'ILR Commerce info'
+  requirements:
+    _permission: 'access commerce administration pages'

@@ -41,3 +41,10 @@ ilr_registrations.displayname:
   menu_name: main
   class: Drupal\ilr_registrations\Plugin\Menu\DisplayNameMenuLink
   weight: -15
+
+ilr_registrations.commerce_ilr_info:
+  title: 'ILR Commerce Info'
+  route_name: 'ilr_registrations.commerce_ilr_info'
+  parent: 'commerce.configuration'
+  description: 'Info about commerce and a placeholder in the menu to try to get it to appear.'
+  weight: 10
