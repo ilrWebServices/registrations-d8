@@ -947,18 +947,25 @@ $settings['config_ignore_patterns'] = [
 $settings['config_ignore_pattern_debug'] = TRUE;
 
 /**
- * Switch to symfony_mailer when using SMTP for email.
+ * Modify SMTP email delivery settings via env vars.
+ *
+ * First, use any SMTP_* variables that we define.
+ *
+ * For all platform environments, set the symfony mailer `smtp` transport host
+ * and port if email sending is enabled (e.g. the `PLATFORM_SMTP_HOST` var is set).
+ *
+ * In code, the `smtp` transport config is set to values for mailhog, so that's
+ * the fallback.
  */
 if (getenv('SMTP_HOST')) {
-  $config['system.mail']['interface'] = [ 'default' => 'symfony_mailer' ];
-
-  $config['system.mail']['mailer_dsn'] = [
-    'scheme' => 'smtp',
-    'host' => getenv('SMTP_HOST'),
-    'port' => getenv('SMTP_PORT') ?: 587,
-    'user' => getenv('SMTP_USER'),
-    'password' => getenv('SMTP_PASS'),
-  ];
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = getenv('SMTP_HOST');
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = getenv('SMTP_PORT') ?: 587;
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['user'] = getenv('SMTP_USER');
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['pass'] = getenv('SMTP_PASS');
+}
+elseif (getenv('PLATFORM_SMTP_HOST')) {
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = getenv('PLATFORM_SMTP_HOST');
+  $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
 }
 
 /**

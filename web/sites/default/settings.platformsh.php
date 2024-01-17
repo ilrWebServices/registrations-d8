@@ -115,6 +115,11 @@ if ($platformsh->inRuntime()) {
 
   // Set the deployment identifier, which is used by some Drupal cache systems.
   $settings['deployment_identifier'] = $settings['deployment_identifier'] ?? $platformsh->treeId;
+
+  // Disable the SMTP transport if platform email sending is not enabled.
+  if (!getenv('PLATFORM_SMTP_HOST')) {
+    $config['symfony_mailer.mailer_transport.smtp']['status'] = false;
+  }
 }
 
 // The 'trusted_hosts_pattern' setting allows an admin to restrict the Host header values
@@ -164,22 +169,7 @@ foreach ($platformsh->variables() as $name => $value) {
   }
 }
 
-// For all platform environments, set the symfony mailer `smtp` transport host
-// and port if email sending is enabled. In code, the `smtp` transport config is
-// set to values for mailhog.
-if (getenv('PLATFORM_SMTP_HOST')) {
-  $config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = getenv('PLATFORM_SMTP_HOST');
-  $config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = 25;
-}
-else {
-  $config['symfony_mailer.mailer_transport.smtp']['status'] = false;
-}
-
 if ($platformsh->onProduction()) {
-  // Set the swiftmailer sendmail_path on platform.
-  // @see https://docs.platform.sh/development/email.html#swiftmailer
-  $config['swiftmailer.transport']['sendmail_path'] = '/usr/sbin/sendmail';
-
   // Switch the salesforce auth provider for production. Otherwise, we will use
   // the default for dev.
   $config['salesforce.settings']['salesforce_auth_provider'] = 'ilr_marketing_jwt_oauth';
