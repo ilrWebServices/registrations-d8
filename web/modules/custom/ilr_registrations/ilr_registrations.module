@@ -706,3 +706,13 @@ function ilr_registrations_tokens($type, $tokens, array $data, array $options, B
 
   return $replacements;
 }
+
+/**
+ * Implements hook_mail_alter().
+ */
+function ilr_registrations_mail_alter(&$message) {
+  // When sending via Campaign Monitor transactional email, this helps with
+  // reporting. See
+  // https://help.campaignmonitor.com/classic-transactional-emails#group-smtp
+  $message['headers']['X-Cmail-GroupName'] = \Drupal::config('system.site')->get('name');
+}
