@@ -12,7 +12,7 @@ field_name: field_user_price
 entity_type: registration
 bundle: international_summer_debate_camp
 label: 'Camp Tuition'
-description: 'Please enter the amount indicated on your debate summer camp confirmation email.'
+description: 'Please manually enter in the amount of your payment.'
 required: true
 translatable: false
 default_value: {  }
