@@ -1,0 +1,19 @@
+uuid: 4b3146ee-c0f2-4533-bab3-bd330d5f48a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_student_gender
+id: participant.summer_debate_camper.field_student_gender
+field_name: field_student_gender
+entity_type: participant
+bundle: summer_debate_camper
+label: 'What is the gender of your child?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

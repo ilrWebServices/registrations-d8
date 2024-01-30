@@ -1,0 +1,21 @@
+uuid: 9a2e3c17-ded2-41bd-aeef-cf3fc64eb88f
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+id: participant.field_student_age
+field_name: field_student_age
+entity_type: participant
+type: string
+settings:
+  max_length: 20
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

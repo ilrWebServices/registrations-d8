@@ -9,8 +9,8 @@ id: participant.summer_debate_camper.field_experience
 field_name: field_experience
 entity_type: participant
 bundle: summer_debate_camper
-label: Experience
-description: "Describe the student's past experience with debate, including format. <em>Note: No experience required or expected for camp.</em>"
+label: 'Please describe any past debate experience that your child may have'
+description: 'Note: prior experience is not a requirement for camp enrollment!'
 required: true
 translatable: false
 default_value: {  }

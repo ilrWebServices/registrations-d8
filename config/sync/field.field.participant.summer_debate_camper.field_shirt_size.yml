@@ -1,0 +1,21 @@
+uuid: 23082d4b-8086-43ff-a185-5e636fad6420
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_shirt_size
+  module:
+    - options
+id: participant.summer_debate_camper.field_shirt_size
+field_name: field_shirt_size
+entity_type: participant
+bundle: summer_debate_camper
+label: "What is your child's t-shirt size?"
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,19 @@
+uuid: 1943b9ed-b1a1-47a6-8f8e-36e1d4082e21
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_student_age
+id: participant.summer_debate_camper.field_student_age
+field_name: field_student_age
+entity_type: participant
+bundle: summer_debate_camper
+label: 'How old will your child be when camp begins on July 24, 2024?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

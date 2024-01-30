@@ -1,0 +1,19 @@
+uuid: 76c1e66a-3552-432a-8c84-cb59b767a1b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_student_first_name
+id: participant.summer_debate_camper.field_student_first_name
+field_name: field_student_first_name
+entity_type: participant
+bundle: summer_debate_camper
+label: 'Student first name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

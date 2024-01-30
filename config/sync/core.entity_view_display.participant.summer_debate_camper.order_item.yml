@@ -8,6 +8,11 @@ dependencies:
     - field.field.participant.summer_debate_camper.field_experience
     - field.field.participant.summer_debate_camper.field_parent_guardian_email
     - field.field.participant.summer_debate_camper.field_parent_guardian_name
+    - field.field.participant.summer_debate_camper.field_shirt_size
+    - field.field.participant.summer_debate_camper.field_student_age
+    - field.field.participant.summer_debate_camper.field_student_first_name
+    - field.field.participant.summer_debate_camper.field_student_gender
+    - field.field.participant.summer_debate_camper.field_student_last_name
     - field.field.participant.summer_debate_camper.field_student_name
 id: participant.summer_debate_camper.order_item
 targetEntityType: participant
@@ -26,5 +31,10 @@ hidden:
   field_experience: true
   field_parent_guardian_email: true
   field_parent_guardian_name: true
+  field_shirt_size: true
+  field_student_age: true
+  field_student_first_name: true
+  field_student_gender: true
+  field_student_last_name: true
   mail: true
   uid: true
