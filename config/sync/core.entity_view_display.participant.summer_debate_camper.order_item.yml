@@ -19,7 +19,15 @@ targetEntityType: participant
 bundle: summer_debate_camper
 mode: order_item
 content:
-  field_student_name:
+  field_student_first_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_student_last_name:
     type: string
     label: hidden
     settings:
@@ -33,8 +41,7 @@ hidden:
   field_parent_guardian_name: true
   field_shirt_size: true
   field_student_age: true
-  field_student_first_name: true
   field_student_gender: true
-  field_student_last_name: true
+  field_student_name: true
   mail: true
   uid: true
