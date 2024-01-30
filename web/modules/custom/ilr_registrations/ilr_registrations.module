@@ -253,6 +253,18 @@ function ilr_registrations_entity_bundle_create($entity_type_id, $bundle) {
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
  *
+ * Add requested help text to debate camp registration forms.
+ */
+function ilr_registrations_form_registration_international_summer_debate_camp_embedded_form_alter(&$form, FormStateInterface $form_state) {
+  $form['participant_help'] = [
+    '#markup' => '<p><strong>' . t('If you are enrolling more than one child in the camp, please save this participant and then you will be able to add another.') .'</strong></p>',
+    '#weight' => 10,
+  ];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
  * Add the participant change protection js to the form.
  * Add the participant_ui js library when there is a registration form.
  * Add the default participant for logged_in users with previous registrations.
