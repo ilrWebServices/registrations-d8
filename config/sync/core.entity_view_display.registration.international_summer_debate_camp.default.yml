@@ -24,6 +24,15 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  participants:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   user_id:
     type: author
     label: hidden
@@ -32,5 +41,4 @@ content:
     weight: 0
     region: content
 hidden:
-  participants: true
   product_variation: true
