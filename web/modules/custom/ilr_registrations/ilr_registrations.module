@@ -732,3 +732,23 @@ function ilr_registrations_mail_alter(&$message) {
   $message['headers']['X-Cmail-TrackOpens'] = 'false';
   $message['headers']['X-Cmail-TrackClicks'] = 'false';
 }
+
+/**
+ * Implements hook_entity_operation().
+ *
+ * Add a view operation for registrations if the user has the view permission.
+ * @todo Figure out why this is not being provided directly by the ERF module.
+ */
+function ilr_registrations_entity_operation(EntityInterface $entity) {
+  $operations = [];
+  $user = \Drupal::currentUser();
+
+  if ($entity->getEntityTypeId() === 'registration' && $user->hasPermission("view {$entity->bundle()} registrations")) {
+    $operations['view'] = [
+      'title' => t('View'),
+      'url' => Url::fromRoute('entity.registration.canonical', ['registration' => $entity->id()]),
+      'weight' => 0,
+    ];
+  }
+  return $operations;
+}
