@@ -6,3 +6,4 @@ name: 'Course Prefixes'
 vid: course_prefixes
 description: 'Course Prefixes can be used to group Course Products for discounts and other uses.'
 weight: 0
+new_revision: false

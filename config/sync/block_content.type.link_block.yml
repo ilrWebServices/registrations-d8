@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: link_block
 label: 'Link Block'
-revision: 0
+revision: false
 description: 'A <em>Link Block</em> is a block with one or more link fields.'

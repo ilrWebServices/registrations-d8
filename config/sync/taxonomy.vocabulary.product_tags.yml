@@ -6,3 +6,4 @@ name: 'Product Tags'
 vid: product_tags
 description: 'Generic product tags can be used to group and filter products. Currently used for discount elegibility.'
 weight: 0
+new_revision: false
