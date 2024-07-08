@@ -109,7 +109,7 @@
     ],
     "sync-prod": [
       "drush sql:drop -y",
-      "drush sql:sync @register.master @self -y",
+      "drush sql:sync @register.master @self -y --extra-dump=\" | awk 'NR==1 {if (/enable the sandbox mode/) next} {print}'\"",
       "./post_sync_fix_triggers.php",
       "drush sfrvk ilr_marketing_jwt_oauth"
     ],
