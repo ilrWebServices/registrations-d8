@@ -69,7 +69,7 @@
     "firebase/php-jwt": "^6.0",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
     "platformsh/config-reader": "^2.2",
-    "vlucas/phpdotenv": "^4.1"
+    "symfony/dotenv": "^7.1"
   },
   "require-dev": {
     "drupal/core-dev": "^10",
