@@ -263,7 +263,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
             "industry" => $participant->hasField('field_industry') ? $participant->field_industry->value : NULL,
             "phone" => $participant->hasField('field_phone') ? $participant->field_phone->value : NULL,
             "dietary_restrictions" => $participant->hasField('field_dietary_restrictions') ? $participant->field_dietary_restrictions->value : NULL,
-            "accessible_accommodation" => $participant->hasField('field_accessible_accommodation') ? $participant->field_accessible_accommodation->value : NULL,
+            "accessible_accommodation" => $participant->hasField('field_accessible_accommodation') ? substr($participant->field_accessible_accommodation->value, 0, 250) : NULL,
             "is_cornell_employee" => $participant->hasField('field_is_cornell_employee') ? ($participant->field_is_cornell_employee->value ? 'true' : 'false') : NULL,
             "apply_to_certificate" => "",
             // @todo Add additional participant fields as necessary.
