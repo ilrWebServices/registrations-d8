@@ -2097,17 +2097,17 @@
         },
         {
             "name": "drupal/config_ignore_pattern",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/config_ignore_pattern.git",
-                "reference": "1.0.0-beta2"
+                "reference": "1.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_ignore_pattern-1.0.0-beta2.zip",
-                "reference": "1.0.0-beta2",
-                "shasum": "b3c1cafdbfc8f21d3d43eda2490072c48e30a52e"
+                "url": "https://ftp.drupal.org/files/projects/config_ignore_pattern-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "c2f9daf888a2cb5ec866b1ef819587a6d7b1e3ff"
             },
             "require": {
                 "drupal/core": "^10"
@@ -2115,11 +2115,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-beta2",
-                    "datestamp": "1703027370",
+                    "version": "1.0.0",
+                    "datestamp": "1706115434",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
