@@ -46,7 +46,6 @@
     "drupal/admin_toolbar": "^3.0.0",
     "drupal/commerce": "^2.39",
     "drupal/commerce_checkout_order_fields": "^1.0",
-    "drupal/config_filter": "^1",
     "drupal/config_ignore_pattern": "^1",
     "drupal/config_split": "^2",
     "drupal/config_update": "^2",
