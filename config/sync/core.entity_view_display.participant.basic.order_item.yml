@@ -13,29 +13,65 @@ dependencies:
     - field.field.participant.basic.field_job_title
     - field.field.participant.basic.field_phone
   module:
-    - address
+    - address_display
 id: participant.basic.order_item
 targetEntityType: participant
 bundle: basic
 mode: order_item
 content:
   field_address:
-    type: address_default
+    type: address_display_formatter
     label: hidden
     settings:
-      field_settings:
-        givenName: givenName
-        familyName: familyName
-        additionalName: 0
-        organization: 0
-        addressLine1: 0
-        addressLine2: 0
-        postalCode: 0
-        sortingCode: 0
-        dependentLocality: 0
-        locality: 0
-        administrativeArea: 0
-        country: 0
+      address_display:
+        organization:
+          glue: ''
+          weight: -1
+          display: false
+        address_line1:
+          glue: ''
+          weight: 0
+          display: false
+        address_line2:
+          glue: ','
+          weight: 1
+          display: false
+        locality:
+          glue: ','
+          weight: 2
+          display: false
+        postal_code:
+          glue: ''
+          weight: 3
+          display: false
+        country_code:
+          glue: ''
+          weight: 4
+          display: false
+        langcode:
+          glue: ','
+          weight: 100
+          display: false
+        administrative_area:
+          glue: ','
+          weight: 100
+          display: false
+        dependent_locality:
+          glue: ','
+          weight: 100
+          display: false
+        sorting_code:
+          glue: ','
+          weight: 100
+          display: false
+        given_name:
+          glue: ''
+          weight: 100
+          display: true
+        family_name:
+          glue: ','
+          weight: 100
+          display: true
     third_party_settings: {  }
     weight: 0
     region: content
