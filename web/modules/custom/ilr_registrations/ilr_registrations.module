@@ -5,6 +5,8 @@
  * Contains ilr_registrations.module.
  */
 
+use CommerceGuys\Addressing\AddressFormat\AddressField;
+use CommerceGuys\Addressing\AddressFormat\FieldOverride;
 use Drupal\address\Plugin\Field\FieldWidget\AddressDefaultWidget;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -413,6 +415,18 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
         }
       }
     }
+  }
+}
+
+/**
+ * Implements hook_commerce_inline_form_PLUGIN_ID_alter().
+ */
+function ilr_registrations_commerce_inline_form_customer_profile_alter(array &$inline_form, FormStateInterface $form_state, array &$complete_form) {
+  if (isset($inline_form['address']['widget'][0]['address'])) {
+    // Make the customer field required.
+    $inline_form['address']['widget'][0]['address']['#field_overrides'] = [
+      AddressField::ORGANIZATION => FieldOverride::REQUIRED,
+    ];
   }
 }
 
