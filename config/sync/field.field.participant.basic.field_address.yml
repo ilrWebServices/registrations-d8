@@ -11,13 +11,13 @@ id: participant.basic.field_address
 field_name: field_address
 entity_type: participant
 bundle: basic
-label: Address
+label: 'Work address'
 description: ''
 required: true
 translatable: false
 default_value:
   -
-    langcode: ''
+    langcode: null
     country_code: US
     administrative_area: ''
     locality: ''
@@ -26,6 +26,7 @@ default_value:
     sorting_code: null
     address_line1: ''
     address_line2: ''
+    address_line3: ''
     organization: ''
     given_name: ''
     additional_name: ''

@@ -668,9 +668,8 @@ function ilr_registrations_form_user_login_form_alter(&$form, FormStateInterface
 function ilr_registrations_field_widget_single_element_form_alter(&$element, FormStateInterface $form_state, $context) {
   $field_definition = $context['items']->getFieldDefinition();
   $field_name = $field_definition->getName();
-  $entity_type = $field_definition->getTargetEntityTypeId();
 
-  if ($field_name === 'address' && $entity_type === 'profile') {
+  if (strpos($field_name, 'address') !== FALSE) {
     $element['#after_build'][] = 'ilr_registrations_alter_address_element';
   }
 
@@ -690,6 +689,13 @@ function ilr_registrations_field_widget_single_element_form_alter(&$element, For
  * @see ilr_registrations_field_widget_single_element_form_alter()
  */
 function ilr_registrations_alter_address_element($element, FormStateInterface $form_state) {
+  // Find all address elements and prepend "Work" to the `#title`.
+  foreach ($element['address'] as $key => $render_element) {
+    if (strpos($key, 'address') === 0) {
+      $element['address'][$key]['#title'] = t('Work ') . strtolower($element['address'][$key]['#title']);
+    }
+  }
+
   if (isset($element['address']['organization'])) {
     $element['address']['organization']['#title'] = t('Organization');
   }
