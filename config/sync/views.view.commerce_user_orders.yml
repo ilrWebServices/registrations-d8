@@ -108,7 +108,7 @@ display:
             alter_text: false
             text: ''
             make_link: true
-            path: 'user/{{ arguments.uid }}/orders/{{ order_id }}'
+            path: 'user/{{ raw_arguments.uid }}/orders/{{ order_id }}'
             absolute: false
             external: false
             replace_spaces: false
