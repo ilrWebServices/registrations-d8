@@ -1509,7 +1509,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/address_display.git",
-                "reference": "0c8725aceed4bc0d8405fe340c75fe2b09dddce5"
+                "reference": "fed032fcd50fa3acca5246d1eb20564af8d76dbc"
             },
             "require": {
                 "drupal/address": "^1.0 || ^2.0",
@@ -1521,8 +1521,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta5+4-dev",
-                    "datestamp": "1716536595",
+                    "version": "8.x-1.0-beta5+5-dev",
+                    "datestamp": "1722504349",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
