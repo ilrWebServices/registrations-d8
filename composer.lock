@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "631c005a871edfee953b0a59e64659cd",
+    "content-hash": "31ccfbaff1fcfe6b03c985a473847c18",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3216,7 +3216,7 @@
             ],
             "authors": [
                 {
-                    "name": "Cellar Door",
+                    "name": "cellar door",
                     "homepage": "https://www.drupal.org/user/658076"
                 },
                 {
@@ -3426,25 +3426,25 @@
         },
         {
             "name": "drupal/salesforce",
-            "version": "5.1.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/salesforce.git",
-                "reference": "5.1.0"
+                "reference": "5.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/salesforce-5.1.0.zip",
-                "reference": "5.1.0",
-                "shasum": "2b4b4fff5f3cbfec92bcb312692825a4c1642604"
+                "url": "https://ftp.drupal.org/files/projects/salesforce-5.1.1.zip",
+                "reference": "5.1.1",
+                "shasum": "86e4950b4a411aab3cb44137f7fb2714f534ee84"
             },
             "require": {
-                "consolidation/output-formatters": "^3.2.0 || ^4.1",
-                "drupal/address": "^1.8 || ^2.0",
-                "drupal/core": "^10.1",
-                "drupal/dynamic_entity_reference": "^1.9 || ^2.0 || ^3 || ^4",
-                "drupal/key": "^1.14",
-                "drupal/typed_data": "^1.0-beta2",
+                "consolidation/output-formatters": "^3.2.0 || ^4.5",
+                "drupal/address": "^2.0",
+                "drupal/core": "^10.3 || ^11",
+                "drupal/dynamic_entity_reference": "^3 || ^4",
+                "drupal/key": "^1",
+                "drupal/typed_data": "^2",
                 "ext-json": "*",
                 "ext-soap": "*",
                 "firebase/php-jwt": "^5.0 || ^6.0",
@@ -3473,8 +3473,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "5.1.0",
-                    "datestamp": "1716389310",
+                    "version": "5.1.1",
+                    "datestamp": "1725652061",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3482,7 +3482,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9 || ^10 || ^11"
+                        "drush.services.yml": ">=9"
                     }
                 }
             },
@@ -3806,29 +3806,29 @@
         },
         {
             "name": "drupal/typed_data",
-            "version": "1.0.0-beta2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/typed_data.git",
-                "reference": "8.x-1.0-beta2"
+                "reference": "2.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/typed_data-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
-                "shasum": "e0aa651b129d8dcd765ca49cba8682ebe09e6e73"
+                "url": "https://ftp.drupal.org/files/projects/typed_data-2.1.0.zip",
+                "reference": "2.1.0",
+                "shasum": "24e76b2add189b8d6baaf177f2e636b1c4cc5417"
             },
             "require": {
-                "drupal/core": "^9.1 || ^10"
+                "drupal/core": "^10.3 | ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1679429196",
+                    "version": "2.1.0",
+                    "datestamp": "1720651977",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -3847,7 +3847,7 @@
                     "homepage": "https://www.drupal.org/user/16747"
                 },
                 {
-                    "name": "TR",
+                    "name": "tr",
                     "homepage": "https://www.drupal.org/user/202830"
                 }
             ],
@@ -14593,7 +14593,6 @@
         "drupal/address_display": 20,
         "drupal/email_registration": 5,
         "drupal/erf": 20,
-        "drupal/typed_data": 15,
         "drupal/union_organizer": 20,
         "phpcompatibility/php-compatibility": 20
     },
