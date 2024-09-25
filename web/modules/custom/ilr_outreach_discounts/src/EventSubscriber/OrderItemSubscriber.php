@@ -74,7 +74,7 @@ class OrderItemSubscriber implements EventSubscriberInterface {
 
       if (is_array($pvp_variables)) {
         foreach ($pvp_variables as $key => $val) {
-          $val = preg_replace("/[^a-z0-9'\/]/i", '', $val);
+          $val = preg_replace("/[^a-z0-9'\/\-_]/i", '', $val);
 
           if ($key === 'ilr_discount_code') {
             $discount_codes[] = $val;
