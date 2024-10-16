@@ -38,5 +38,7 @@ settings:
   field_overrides:
     organization:
       override: required
+    addressLine3:
+      override: hidden
   fields: {  }
 field_type: address

@@ -430,12 +430,14 @@ function ilr_registrations_commerce_inline_form_customer_profile_alter(array &$i
     if ($order->bundle() === 'registration' && isset($inline_form['address']['widget'][0]['address'])) {
       $inline_form['address']['widget'][0]['address']['#field_overrides'] = [
         AddressField::ORGANIZATION => FieldOverride::REQUIRED,
+        AddressField::ADDRESS_LINE3 => FieldOverride::HIDDEN,
       ];
     }
 
     if ($order->bundle() === 'summer_debate_camp' && isset($inline_form['address']['widget'][0]['address'])) {
       $inline_form['address']['widget'][0]['address']['#field_overrides'] = [
         AddressField::ORGANIZATION => FieldOverride::HIDDEN,
+        AddressField::ADDRESS_LINE3 => FieldOverride::HIDDEN,
       ];
     }
 
