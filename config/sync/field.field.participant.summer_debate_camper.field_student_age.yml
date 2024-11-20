@@ -9,7 +9,7 @@ id: participant.summer_debate_camper.field_student_age
 field_name: field_student_age
 entity_type: participant
 bundle: summer_debate_camper
-label: 'How old will your child be when camp begins on July 24, 2024?'
+label: 'How old will your child be when camp begins on July 27, 2025?'
 description: ''
 required: false
 translatable: false
