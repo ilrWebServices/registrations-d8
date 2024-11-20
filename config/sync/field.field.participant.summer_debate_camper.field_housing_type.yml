@@ -1,0 +1,21 @@
+uuid: 4a91660e-c0dd-47f7-b95e-f5c5425796f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_housing_type
+  module:
+    - options
+id: participant.summer_debate_camper.field_housing_type
+field_name: field_housing_type
+entity_type: participant
+bundle: summer_debate_camper
+label: 'Housing type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

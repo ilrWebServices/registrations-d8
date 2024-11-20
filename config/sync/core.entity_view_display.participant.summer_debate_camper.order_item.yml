@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.participant.order_item
     - erf.participant_type.summer_debate_camper
     - field.field.participant.summer_debate_camper.field_experience
+    - field.field.participant.summer_debate_camper.field_housing_type
     - field.field.participant.summer_debate_camper.field_parent_guardian_email
     - field.field.participant.summer_debate_camper.field_parent_guardian_name
     - field.field.participant.summer_debate_camper.field_shirt_size
@@ -37,6 +38,7 @@ content:
     region: content
 hidden:
   field_experience: true
+  field_housing_type: true
   field_parent_guardian_email: true
   field_parent_guardian_name: true
   field_shirt_size: true
