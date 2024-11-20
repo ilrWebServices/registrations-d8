@@ -1,11 +1,11 @@
-uuid: 236002af-c214-4b17-acb5-bdd7499c3ad3
+uuid: bb35840b-49a5-45c5-b293-a94300cf3857
 langcode: en
 status: true
 dependencies:
   module:
     - commerce_cardconnect_api
-id: cardpointe_gateway_tokenizer_web_reg
-label: 'CardPointe Gateway Tokenizer (Web Reg)'
+id: cardpointe_gateway_tokenizer_debate_camp
+label: 'CardPointe Gateway Tokenizer (Debate Camp)'
 weight: 0
 plugin: cardpointe_api
 configuration:
@@ -24,5 +24,5 @@ conditions:
     plugin: order_type
     configuration:
       bundles:
-        - registration
+        - summer_debate_camp
 conditionOperator: AND
