@@ -27,7 +27,7 @@
   <p>
     {{ 'Total cost: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
   </p>
-  <p style="margin-bottom: 0;">Discounts applied:</p>
+  <p style="margin-bottom: 0;">Adjustments:</p>
   {% for adjustment in totals.adjustments %}
   <p style="margin-bottom: 0;">
     {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
