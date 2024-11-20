@@ -8,12 +8,15 @@ dependencies:
     - field.field.participant.summer_debate_camper.field_housing_type
     - field.field.participant.summer_debate_camper.field_parent_guardian_email
     - field.field.participant.summer_debate_camper.field_parent_guardian_name
+    - field.field.participant.summer_debate_camper.field_parent_guardian_phone
     - field.field.participant.summer_debate_camper.field_shirt_size
     - field.field.participant.summer_debate_camper.field_student_age
     - field.field.participant.summer_debate_camper.field_student_first_name
     - field.field.participant.summer_debate_camper.field_student_gender
     - field.field.participant.summer_debate_camper.field_student_last_name
     - field.field.participant.summer_debate_camper.field_student_name
+  module:
+    - telephone
 id: participant.summer_debate_camper.default
 targetEntityType: participant
 bundle: summer_debate_camper
@@ -47,6 +50,13 @@ content:
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_guardian_phone:
+    type: telephone_default
+    weight: 5
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_shirt_size:

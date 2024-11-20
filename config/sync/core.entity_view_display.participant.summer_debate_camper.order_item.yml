@@ -9,6 +9,7 @@ dependencies:
     - field.field.participant.summer_debate_camper.field_housing_type
     - field.field.participant.summer_debate_camper.field_parent_guardian_email
     - field.field.participant.summer_debate_camper.field_parent_guardian_name
+    - field.field.participant.summer_debate_camper.field_parent_guardian_phone
     - field.field.participant.summer_debate_camper.field_shirt_size
     - field.field.participant.summer_debate_camper.field_student_age
     - field.field.participant.summer_debate_camper.field_student_first_name
@@ -41,6 +42,7 @@ hidden:
   field_housing_type: true
   field_parent_guardian_email: true
   field_parent_guardian_name: true
+  field_parent_guardian_phone: true
   field_shirt_size: true
   field_student_age: true
   field_student_gender: true

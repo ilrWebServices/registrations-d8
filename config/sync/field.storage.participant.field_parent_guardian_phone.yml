@@ -1,0 +1,19 @@
+uuid: 7d98e3b5-2881-4303-98cc-2c999fba157c
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+    - telephone
+id: participant.field_parent_guardian_phone
+field_name: field_parent_guardian_phone
+entity_type: participant
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

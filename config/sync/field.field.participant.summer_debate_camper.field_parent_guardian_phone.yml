@@ -1,0 +1,21 @@
+uuid: 34512902-9ae7-4025-a8e3-784e1212cf19
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.summer_debate_camper
+    - field.storage.participant.field_parent_guardian_phone
+  module:
+    - telephone
+id: participant.summer_debate_camper.field_parent_guardian_phone
+field_name: field_parent_guardian_phone
+entity_type: participant
+bundle: summer_debate_camper
+label: 'Parent/Guardian phone'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone
