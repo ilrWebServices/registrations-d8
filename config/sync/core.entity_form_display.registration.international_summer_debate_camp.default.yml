@@ -9,7 +9,6 @@ dependencies:
     - field.field.registration.international_summer_debate_camp.participants
     - field.field.registration.international_summer_debate_camp.product_variation
   module:
-    - commerce_price
     - erf_commerce
     - inline_entity_form
 id: registration.international_summer_debate_camp.default
@@ -17,12 +16,6 @@ targetEntityType: registration
 bundle: international_summer_debate_camp
 mode: default
 content:
-  field_user_price:
-    type: commerce_price_default
-    weight: 16
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   locked:
     type: boolean_checkbox
     weight: 15
@@ -46,6 +39,7 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: optional
     third_party_settings: {  }
   product_variation:
     type: rendered_variations
@@ -64,4 +58,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_user_price: true
