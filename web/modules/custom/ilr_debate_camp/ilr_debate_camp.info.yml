@@ -1,0 +1,7 @@
+name: 'ILR Debate'
+type: module
+description: 'Update hooks and misc custom code for Summer Debate Camp registrations'
+core_version_requirement: ^10 || ^11
+package: 'ILR'
+dependencies:
+  - erf:erf_commerce

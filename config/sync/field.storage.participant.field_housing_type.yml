@@ -1,0 +1,27 @@
+uuid: 4e144bf0-d780-4317-99d2-130bd9fd8c79
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf
+    - options
+id: participant.field_housing_type
+field_name: field_housing_type
+entity_type: participant
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: residential
+      label: Residential
+    -
+      value: commuter
+      label: Commuter
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

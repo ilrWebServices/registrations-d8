@@ -39,6 +39,7 @@ module:
   field: 0
   filter: 0
   ilr_commerce_manual_payment: 0
+  ilr_debate_camp: 0
   ilr_groat: 0
   ilr_outreach_discount_api: 0
   ilr_outreach_discounts: 0

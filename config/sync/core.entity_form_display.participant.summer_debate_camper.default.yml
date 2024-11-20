@@ -5,6 +5,7 @@ dependencies:
   config:
     - erf.participant_type.summer_debate_camper
     - field.field.participant.summer_debate_camper.field_experience
+    - field.field.participant.summer_debate_camper.field_housing_type
     - field.field.participant.summer_debate_camper.field_parent_guardian_email
     - field.field.participant.summer_debate_camper.field_parent_guardian_name
     - field.field.participant.summer_debate_camper.field_shirt_size
@@ -25,6 +26,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_housing_type:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_parent_guardian_email:
     type: email_default

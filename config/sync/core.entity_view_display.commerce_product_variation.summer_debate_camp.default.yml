@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - commerce_product.commerce_product_variation_type.summer_debate_camp
+    - field.field.commerce_product_variation.summer_debate_camp.field_housing_price
   module:
     - commerce_price
 id: commerce_product_variation.summer_debate_camp.default
@@ -30,6 +31,7 @@ content:
     weight: 1
     region: content
 hidden:
+  field_housing_price: true
   product_id: true
   sku: true
   title: true
