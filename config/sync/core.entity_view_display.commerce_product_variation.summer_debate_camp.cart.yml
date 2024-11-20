@@ -5,6 +5,7 @@ dependencies:
   config:
     - commerce_product.commerce_product_variation_type.summer_debate_camp
     - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.summer_debate_camp.field_housing_price
 id: commerce_product_variation.summer_debate_camp.cart
 targetEntityType: commerce_product_variation
 bundle: summer_debate_camp
@@ -19,6 +20,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_housing_price: true
   list_price: true
   price: true
   product_id: true
