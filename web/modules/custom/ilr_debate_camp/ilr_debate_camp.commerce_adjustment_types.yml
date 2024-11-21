@@ -1,6 +1,0 @@
-housing_fee:
-  label: 'Housing fee'
-  singular_label: 'fee'
-  plural_label: 'fees'
-  has_ui: TRUE
-  weight: 10

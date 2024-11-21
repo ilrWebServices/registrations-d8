@@ -1,8 +1,4 @@
 services:
-  debate_order_processor:
-    class: '\Drupal\ilr_debate_camp\DebateCampOrderProcessor'
-    tags:
-      - { name: commerce_order.order_processor, priority: 300 }
   ilr_debate_camp.item_price_subscriber:
     class: '\Drupal\ilr_debate_camp\DebateCampItemPriceSubscriber'
     tags:
