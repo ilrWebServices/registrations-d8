@@ -39,10 +39,9 @@ class CustomRegistrationPriceSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\commerce_price\Plugin\Field\FieldType\PriceItem $user_price */
     $user_price = $event->registration->field_user_price->first();
 
-    if ($user_price) {
-      $user_price_value = $user_price->getValue();
-      $unit_price = new Price($user_price_value['number'], $user_price_value['currency_code']);
-      $event->orderItem->setUnitPrice($unit_price, TRUE);
+    if ($user_price->toPrice()->greaterThan(new Price('0', 'USD'))) {
+      $event->orderItem->setUnitPrice($user_price->toPrice(), TRUE);
+      $event->orderItem->setData('unit_price_overrider', 'ilr_registrations');
     }
     else {
       $event->orderItem->set('overridden_unit_price', FALSE);
