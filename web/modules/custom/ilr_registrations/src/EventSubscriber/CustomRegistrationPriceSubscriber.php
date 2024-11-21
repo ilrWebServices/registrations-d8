@@ -28,6 +28,10 @@ class CustomRegistrationPriceSubscriber implements EventSubscriberInterface {
    *   The event.
    */
   public function onRegistrationOrderItem(RegistrationOrderItemEvent $event) {
+    if ($event->orderItem->getData('unit_price_overrider') && $event->orderItem->getData('unit_price_overrider') !== 'ilr_registrations') {
+      return;
+    }
+
     if (!$event->registration->hasField('field_user_price')) {
       return;
     }

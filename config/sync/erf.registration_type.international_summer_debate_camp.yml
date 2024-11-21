@@ -7,6 +7,6 @@ dependencies:
 third_party_settings:
   erf_commerce:
     cart_redirect: true
-    participants_as_quantity: true
+    participants_as_quantity: false
 id: international_summer_debate_camp
 label: 'International Summer Debate Camp'
