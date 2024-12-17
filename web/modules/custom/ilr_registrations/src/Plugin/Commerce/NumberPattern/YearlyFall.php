@@ -32,9 +32,9 @@ class YearlyFall extends SequentialNumberPatternBase {
     $generated_time = DrupalDateTime::createFromTimestamp($current_sequence->getGeneratedTime());
     $current_time = DrupalDateTime::createFromTimestamp($this->time->getCurrentTime());
 
-    // Add 3 months to the times. This is confusing (to Jeff) but appears to
+    // Add 5 months to the times. This is confusing (to Jeff) but appears to
     // work.
-    $interval = new \DateInterval('P4M');
+    $interval = new \DateInterval('P5M');
     $generated_time->add($interval);
     $current_time->add($interval);
 
