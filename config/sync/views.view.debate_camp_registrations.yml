@@ -14,6 +14,7 @@ dependencies:
     - field.storage.participant.field_student_gender
     - field.storage.participant.field_student_last_name
     - field.storage.registration.participants
+    - system.menu.admin
     - user.role.debate_admin
   module:
     - commerce_order
@@ -541,6 +542,15 @@ display:
     display_options:
       display_extenders: {  }
       path: admin/camp-registrations
+      menu:
+        type: normal
+        title: 'Debate Camp Registrations'
+        description: ''
+        weight: 1
+        expanded: false
+        menu_name: admin
+        parent: commerce.admin_commerce
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1378,7 +1388,7 @@ display:
           plugin_id: standard
           required: true
       display_extenders: {  }
-      path: admin/camp-registrations-export
+      path: admin/camp-registrations.csv
       auth:
         - cookie
     cache_metadata:
