@@ -7,7 +7,6 @@ label: 'Tickets by quantity'
 traits: {  }
 locked: false
 description: 'A basic ticket product that does not have an associated registration or any participants.'
-variationType: tickets_by_quantity
 variationTypes:
   - tickets_by_quantity
 multipleVariations: false

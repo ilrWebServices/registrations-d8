@@ -1,16 +1,15 @@
 diff --git a/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentInformation.php b/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentInformation.php
-index 9d9dfb9f..c8a67a53 100644
+index aeacbc82..cc3bbafe 100644
 --- a/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentInformation.php
 +++ b/modules/payment/src/Plugin/Commerce/CheckoutPane/PaymentInformation.php
-@@ -147,6 +147,11 @@ class PaymentInformation extends CheckoutPaneBase {
+@@ -160,6 +160,10 @@ class PaymentInformation extends PaymentCheckoutPaneBase {
     * {@inheritdoc}
     */
    public function buildPaneForm(array $pane_form, FormStateInterface $form_state, array &$complete_form) {
-+    // Reload the order to ensure that price adjustments down to zero result in isZero() === TRUE.
-+    //$this->messenger()->addMessage(microtime() . ' $this->order total: ' . $this->order->getTotalPrice()->__toString());
++    // Reload the order to ensure that price adjustments down to zero result in
++    // isZero() === TRUE.
 +    $this->setOrder($this->entityTypeManager->getStorage('commerce_order')->load($this->order->id()));
-+    //$this->messenger()->addMessage(microtime() . ' $this->order total: ' . $this->order->getTotalPrice()->__toString());
 +
-     if (!$this->order->getTotalPrice() || $this->order->isPaid() || $this->order->getTotalPrice()->isZero()) {
-       // No payment is needed if the order is free or has already been paid.
-       // In that case, collect just the billing information.
+     if ($this->collectBillingProfileOnly()) {
+       // No payment is needed if we don't require payment method collection,
+       // and the order balance is zero. In that case, collect just the billing

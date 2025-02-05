@@ -7,6 +7,7 @@ label: 'Groat Alpern Awards Ticket'
 traits: {  }
 locked: false
 description: ''
-variationType: groat_alpern_awards_ticket_level
+variationTypes:
+  - groat_alpern_awards_ticket_level
 multipleVariations: true
 injectVariationFields: false

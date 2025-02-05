@@ -7,6 +7,7 @@ label: 'Summer Debate Camp'
 traits: {  }
 locked: false
 description: ''
-variationType: summer_debate_camp
+variationTypes:
+  - summer_debate_camp
 multipleVariations: false
 injectVariationFields: false
