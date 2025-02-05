@@ -74,7 +74,7 @@
   },
   "require-dev": {
     "drupal/core-dev": "^10",
-    "palantirnet/drupal-rector": "^0.18.0",
+    "palantirnet/drupal-rector": "^0.20",
     "phpcompatibility/php-compatibility": "dev-develop"
   },
   "conflict": {

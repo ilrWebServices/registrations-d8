@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "116a5c26cf58c0c45132c52071e16902",
+    "content-hash": "096570cac7120c4e35254aaa386c3158",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -11222,20 +11222,20 @@
         },
         {
             "name": "palantirnet/drupal-rector",
-            "version": "0.18.6",
+            "version": "0.20.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/palantirnet/drupal-rector.git",
-                "reference": "94650bc58a9b99b9616115fa3a9e89dfc1135928"
+                "reference": "50c742a34f89e4202056e433bbb476ca1fdf3797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/palantirnet/drupal-rector/zipball/94650bc58a9b99b9616115fa3a9e89dfc1135928",
-                "reference": "94650bc58a9b99b9616115fa3a9e89dfc1135928",
+                "url": "https://api.github.com/repos/palantirnet/drupal-rector/zipball/50c742a34f89e4202056e433bbb476ca1fdf3797",
+                "reference": "50c742a34f89e4202056e433bbb476ca1fdf3797",
                 "shasum": ""
             },
             "require": {
-                "rector/rector": "~0.18.0",
+                "rector/rector": "^1.0",
                 "webflo/drupal-finder": "^1.2"
             },
             "replace": {
@@ -11244,14 +11244,13 @@
             },
             "require-dev": {
                 "cweagans/composer-patches": "^1.7.2",
-                "friendsofphp/php-cs-fixer": "^3.38",
-                "php": "^8.1",
+                "friendsofphp/php-cs-fixer": "^3.58",
+                "php": "^8.2",
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-deprecation-rules": "^1.0",
                 "phpunit/phpunit": "^10.0",
-                "symfony/yaml": "^5 || ^6",
-                "symplify/rule-doc-generator": "^12.0",
+                "symfony/yaml": "^5 || ^6 || ^7",
                 "symplify/vendor-patches": "^11.0"
             },
             "type": "library",
@@ -11283,6 +11282,14 @@
                 {
                     "name": "Matt Glaman",
                     "email": "nmd.matt@gmail.com"
+                },
+                {
+                    "name": "Björn Brala",
+                    "email": "drupal@bjorn.dev"
+                },
+                {
+                    "name": "Ken Rickard",
+                    "email": "agentrickard@gmail.com"
                 }
             ],
             "description": "Instant fixes for your Drupal code by using Rector.",
@@ -11294,9 +11301,9 @@
                 "rector"
             ],
             "support": {
-                "source": "https://github.com/palantirnet/drupal-rector/tree/0.18.6"
+                "source": "https://github.com/palantirnet/drupal-rector/tree/0.20.3"
             },
-            "time": "2023-12-28T16:38:54+00:00"
+            "time": "2024-06-10T19:18:13+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -12853,27 +12860,30 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.18.13",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618"
+                "reference": "40f9cf38c05296bd32f444121336a521a293fa61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f8011a76d36aa4f839f60f3b4f97707d97176618",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/40f9cf38c05296bd32f444121336a521a293fa61",
+                "reference": "40f9cf38c05296bd32f444121336a521a293fa61",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.35"
+                "phpstan/phpstan": "^1.12.5"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
                 "rector/rector-downgrade-php": "*",
                 "rector/rector-phpunit": "*",
                 "rector/rector-symfony": "*"
+            },
+            "suggest": {
+                "ext-dom": "To manipulate phpunit.xml via the custom-rule command"
             },
             "bin": [
                 "bin/rector"
@@ -12897,7 +12907,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.13"
+                "source": "https://github.com/rectorphp/rector/tree/1.2.10"
             },
             "funding": [
                 {
@@ -12905,7 +12915,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-20T16:08:01+00:00"
+            "time": "2024-11-08T13:59:10+00:00"
         },
         {
             "name": "sebastian/cli-parser",
