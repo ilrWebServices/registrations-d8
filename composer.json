@@ -69,7 +69,7 @@
     "drush/drush": "^12",
     "firebase/php-jwt": "^6.0",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
-    "platformsh/config-reader": "^2.2",
+    "platformsh/config-reader": "^3",
     "symfony/dotenv": "^7.1"
   },
   "require-dev": {
