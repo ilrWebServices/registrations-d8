@@ -13,6 +13,7 @@ use Drupal\salesforce\SObject;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\salesforce\Rest\RestException;
 use Drupal\salesforce\SelectQuery;
+use Drupal\user\Entity\User;
 
 /**
  * A Queue worker that processes the incoming Salesforce Commerce webhook data.
@@ -117,6 +118,7 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
     // $sf_order_object->field('Order_ID__c']?
     // Load the commerce order. Note that this Drupal entity id is stored in
     // Salesforce in the `Order_ID__c` field on Order_c objects.
+    /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($sf_order_object->field('Order_ID__c'));
 
     // Map the commerce order to the salesforce order object.
@@ -128,9 +130,15 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
     // Map the salesforce customer contact to the Drupal user for the order
     // billing profile user (not the billing profile entity itself).
     $sf_customer_contact_object = $this->sfapi->objectRead('Contact', $sf_order_object->field('Purchaser__c'));
+
+    /** @var \Drupal\user\UserInterface $customer_user */
     $customer_user = $order->getCustomer();
     $contact_mapping = $this->entityTypeManager->getStorage('salesforce_mapping')->load('contact_user');
-    $this->createMapping($contact_mapping, $sf_customer_contact_object, $customer_user);
+
+    // Don't map if the user is anonymous (because of guest checkout).
+    if (!$customer_user->isAnonymous()) {
+      $this->createMapping($contact_mapping, $sf_customer_contact_object, $customer_user);
+    }
 
     // Map the salesforce participants to the Drupal participant entities and,
     // if set, their associated user entities.

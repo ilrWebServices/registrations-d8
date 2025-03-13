@@ -79,7 +79,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         'customer_profile_id' => $customer->id(),
         // Temporarily stop sending the salesforce id per request from DE.
         "contact_sfid" => NULL,
-        "email" => $order->uid->entity->getEmail(),
+        "email" => $order->getEmail(),
         "first_name" => $billing_address['given_name'],
         "middle_name" => $billing_address['additional_name'],
         "last_name" => $billing_address['family_name'],

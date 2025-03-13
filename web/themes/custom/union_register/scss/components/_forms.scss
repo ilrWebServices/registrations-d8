@@ -112,3 +112,11 @@
   order: -1;
   color: unset;
 }
+
+// For the register account after order completion form, hide the lone required
+// asterisk, which is probably an artifact of Union templates. Also hide the
+// help text, which was added by the Department of Redundancy Department.
+.checkout-pane-email-registration-completion-registration label[for="edit-email-registration-completion-registration-pass"],
+.checkout-pane-email-registration-completion-registration .cu-input-message {
+  display: none;
+}
