@@ -8,63 +8,104 @@ dependencies:
     - commerce_promotion
     - email_registration
     - ilr_outreach_discounts
+    - ilr_registrations
 label: 'Summer Debate Camp'
 id: summer_debate_camp
 plugin: multistep_default
 configuration:
   display_checkout_progress: true
   display_checkout_progress_breadcrumb_links: false
+  guest_order_assign: false
+  guest_new_account: false
+  guest_new_account_notify: false
   panes:
     order_summary:
+      display_label: null
       step: _sidebar
       weight: 0
+      wrapper_element: container
       view: registration_checkout_order_summary
     completion_message:
+      display_label: null
       step: complete
       weight: 0
+      wrapper_element: null
       message:
         value: 'You can also view this order on your account page.'
         format: plain_text
     payment_information:
+      display_label: null
       step: order_information
       weight: 0
+      wrapper_element: fieldset
+      require_payment_method: false
     payment_process:
+      display_label: null
       step: payment
       weight: 0
+      wrapper_element: container
       capture: true
     email_registration_login:
+      display_label: null
       step: login
       weight: 0
+      wrapper_element: container
       allow_guest_checkout: false
       allow_registration: true
+      registration_form_mode: register
     login:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: null
       allow_guest_checkout: true
       allow_registration: false
+      registration_form_mode: register
     completion_register:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: null
     review:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: null
     contact_information:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: fieldset
       double_entry: false
+    customer_comments:
+      display_label: null
+      step: _disabled
+      weight: 10
+      wrapper_element: fieldset
     'order_fields:checkout':
+      display_label: 'Order fields'
       step: _disabled
       weight: 10
       wrapper_element: container
-      display_label: 'Order fields'
     coupon_redemption:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: container
       allow_multiple: false
     email_registration_completion_registration:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: container
     ilr_outreach_discount_redemption:
+      display_label: null
       step: _disabled
       weight: 10
+      wrapper_element: container
       allow_multiple: false
+    order_details:
+      display_label: null
+      step: complete
+      weight: 10
+      wrapper_element: null
