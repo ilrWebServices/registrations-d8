@@ -8,6 +8,7 @@ dependencies:
     - commerce_promotion
     - email_registration
     - ilr_outreach_discounts
+    - ilr_registrations
 label: Registration
 id: registration
 plugin: multistep_default
@@ -95,6 +96,11 @@ configuration:
       step: _disabled
       weight: 10
       wrapper_element: container
+    order_details:
+      display_label: null
+      step: complete
+      weight: 10
+      wrapper_element: null
     login:
       display_label: null
       step: _disabled

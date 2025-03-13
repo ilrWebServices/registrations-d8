@@ -352,6 +352,10 @@ function ilr_registrations_form_commerce_checkout_flow_multistep_default_alter(&
     $form['payment_information']['#title'] = t('Account info');
   }
 
+  if (isset($form['order_details'])) {
+    $form['#attributes']['class'][] = 'with-order-details';
+  }
+
   // Get the order for this checkout multistep form.
   $order_registration_manager = \Drupal::service('erf_commerce.order_registration_manager');
   $order = $form_state->getFormObject()->getOrder();

@@ -129,10 +129,16 @@
 }
 
 @media (min-width: 769px) {
-  .checkout-complete__order {
-    float: left;
-    max-width: 50%;
-    margin-right: 1em;
+  .commerce-checkout-flow.with-order-details .layout-checkout-form {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5em;
+
+    #edit-order-details-order-detail {
+      grid-column: 2;
+      grid-row: 1 / -1;
+    }
   }
 }
 
