@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "096570cac7120c4e35254aaa386c3158",
+    "content-hash": "7d37f8a27510a4b57fdc7cc85ac60a10",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2636,33 +2636,30 @@
         },
         {
             "name": "drupal/email_registration",
-            "version": "2.0.0-rc7",
+            "version": "2.0.0-rc8",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/email_registration.git",
-                "reference": "2.0.0-rc7"
+                "reference": "2.0.0-rc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/email_registration-2.0.0-rc7.zip",
-                "reference": "2.0.0-rc7",
-                "shasum": "3a6a9516cdf530df630b6cdc8b8c2c42e3170858"
+                "url": "https://ftp.drupal.org/files/projects/email_registration-2.0.0-rc8.zip",
+                "reference": "2.0.0-rc8",
+                "shasum": "ddfa7b30b348f49ac44ce17d7ca57c19a4d33b56"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10 || ^11"
             },
-            "conflict": {
-                "drupal/commerce": "<2.12"
-            },
             "require-dev": {
-                "drupal/commerce": "^2.0",
+                "drupal/commerce": "^3.0",
                 "drupal/token": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-rc7",
-                    "datestamp": "1722882404",
+                    "version": "2.0.0-rc8",
+                    "datestamp": "1741172472",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -14830,6 +14827,7 @@
     "stability-flags": {
         "cornell/union": 20,
         "drupal/address_display": 20,
+        "drupal/email_registration": 5,
         "drupal/erf": 20,
         "drupal/union_organizer": 20,
         "phpcompatibility/php-compatibility": 20
