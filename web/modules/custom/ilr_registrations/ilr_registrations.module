@@ -25,6 +25,7 @@ use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Render\Markup;
 use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Session\UserSession;
 use Drupal\user\UserInterface;
 
 /**
@@ -474,8 +475,18 @@ function ilr_registrations_user_format_name_alter(&$name, AccountInterface $acco
   // Order admins can create orders on behalf of others, so always show their
   // NetID common name (or real username if common name is empty).
   if ($account->hasPermission('access commerce_order overview')) {
-    if ($account instanceof UserInterface && !$account->field_common_name->isEmpty()) {
-      $name =  $account->field_common_name->value . ' (' . $name . ')';
+    if ($account instanceof UserSession) {
+      $user = $entity_type_manager->getStorage('user')->load($account->id());
+    }
+    else if ($account instanceof UserInterface) {
+      $user = $account;
+    }
+    else {
+      return;
+    }
+
+    if ($user instanceof UserInterface && !$user->field_common_name->isEmpty()) {
+      $name =  $user->field_common_name->value . ' (' . $name . ')';
     }
 
     return;
