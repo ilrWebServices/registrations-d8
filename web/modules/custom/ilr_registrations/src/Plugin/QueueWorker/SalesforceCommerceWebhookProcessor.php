@@ -161,13 +161,6 @@ class SalesforceCommerceWebhookProcessor extends QueueWorkerBase implements Cont
       foreach ($sf_participant_results->records() as $sf_participant) {
         $participant = $this->entityTypeManager->getStorage('participant')->load((int) $sf_participant->field('POS_Participant_Id__c'));
         $this->createMapping($participant_mapping, $sf_participant, $participant);
-
-        // If this participant was linked to a user, map that user to the
-        // salesforce contact.
-        if (!$participant->uid->isEmpty()) {
-          $sf_participant_contact_object = $this->sfapi->objectRead('Contact', $sf_participant->field('Contact__c'));
-          $this->createMapping($contact_mapping, $sf_participant_contact_object, $participant->uid->entity);
-        }
       }
     }
 

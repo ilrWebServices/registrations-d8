@@ -232,15 +232,6 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
         $registration = reset($registrations);
 
         foreach ($registration->participants->referencedEntities() as $participant) {
-          if (!$participant->uid->isEmpty() && $participant_contact_mapping = $sf_mapping_storage->loadByEntity($participant->uid->entity)) {
-            /** @var Drupal\salesforce_mapping\Entity\MappedObject $participant_contact_mapping */
-            $participant_contact_mapping = reset($participant_contact_mapping);
-            $participant_contact_sfid = $participant_contact_mapping->sfid();
-          }
-          else {
-            $participant_contact_sfid = NULL;
-          }
-
           // @todo handle participants even if there is not an address field
           $address_value = $participant->field_address->getValue();
           $address = reset($address_value);
