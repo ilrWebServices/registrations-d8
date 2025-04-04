@@ -150,7 +150,7 @@ class CardPointeApi extends OnsitePaymentGatewayBase implements SupportsRefundsI
       // The 'Payment process' pane settings determine the 'capture' value.
       $data = [
         // @see https://developer.cardpointe.com/guides/cardpointe-gateway#uat-merchant-id
-        'merchid' => $is_live ? $this->configuration['cp_merchant_id'] : '496160873888',
+        'merchid' => $is_live ? $this->configuration['cp_merchant_id'] : '800000001509',
         'amount' => $number_formatter->format($payment->getAmount()->getNumber(), [
           'minimum_fraction_digits' => 2,
           'use_grouping' => FALSE,
