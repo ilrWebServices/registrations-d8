@@ -188,16 +188,16 @@
         },
         {
             "name": "commerceguys/intl",
-            "version": "v2.0.6",
+            "version": "v2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/intl.git",
-                "reference": "53d10f3f2f7375fa20ad83314c3eb5a272ce246d"
+                "reference": "2cf8f74987095aedff45249ce6fc7b0427beefee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/intl/zipball/53d10f3f2f7375fa20ad83314c3eb5a272ce246d",
-                "reference": "53d10f3f2f7375fa20ad83314c3eb5a272ce246d",
+                "url": "https://api.github.com/repos/commerceguys/intl/zipball/2cf8f74987095aedff45249ce6fc7b0427beefee",
+                "reference": "2cf8f74987095aedff45249ce6fc7b0427beefee",
                 "shasum": ""
             },
             "require": {
@@ -233,9 +233,9 @@
             "description": "Internationalization library powered by CLDR data.",
             "support": {
                 "issues": "https://github.com/commerceguys/intl/issues",
-                "source": "https://github.com/commerceguys/intl/tree/v2.0.6"
+                "source": "https://github.com/commerceguys/intl/tree/v2.0.7"
             },
-            "time": "2024-07-12T07:51:53+00:00"
+            "time": "2025-04-11T08:13:51+00:00"
         },
         {
             "name": "composer/installers",
@@ -1646,17 +1646,17 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",
-                "reference": "3.0.1"
+                "reference": "3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "00670705ee64b811a151fb58ab06f73e0f3400c3"
+                "url": "https://ftp.drupal.org/files/projects/commerce-3.0.2.zip",
+                "reference": "3.0.2",
+                "shasum": "7024c86d554569d274695ca33af39a15dcf28055"
             },
             "require": {
                 "commerceguys/intl": "^2.0.6",
@@ -1692,8 +1692,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.0.2",
+                    "datestamp": "1745850985",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3683,11 +3683,11 @@
             ],
             "authors": [
                 {
-                    "name": "Berdir",
+                    "name": "berdir",
                     "homepage": "https://www.drupal.org/user/214652"
                 },
                 {
-                    "name": "Dave Reid",
+                    "name": "dave reid",
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
