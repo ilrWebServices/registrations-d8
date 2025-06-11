@@ -5,26 +5,13 @@ namespace Drupal\ilr_registrations;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\ilr_analytics_session\IlrAnalyticsSessionManager;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class SerializedOrderService.
  */
 class SerializedOrderManager implements SerializedOrderManagerInterface {
-
-  /**
-   * Drupal\Core\Entity\EntityManagerInterface definition.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
-   * Drupal\Core\Config\ConfigFactoryInterface definition.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
 
   /**
    * Symfony\Component\HttpFoundation\Request definition.
@@ -36,9 +23,12 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   /**
    * Constructs a new SerializedOrderService object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, RequestStack $request_stack) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->configFactory = $config_factory;
+  public function __construct(
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected ConfigFactoryInterface $configFactory,
+    RequestStack $request_stack,
+    protected IlrAnalyticsSessionManager $anlyticsSessionManager
+  ) {
     $this->request = $request_stack->getCurrentRequest();
   }
 
@@ -69,6 +59,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
       "response_webhook_url" => $this->request->getSchemeAndHttpHost() . '/hooks/v1/salesforce-commerce',
       "order_id" => $order->id(),
+      "analytics_session_id" => $this->anlyticsSessionManager->getClientId(),
       "payments" => [],
       "customer" => [
         // `customer_profile_id` was originally planned to be the profile entity
