@@ -6,4 +6,5 @@ package: 'ILR'
 dependencies:
   - commerce:commerce_store
   - erf:erf_commerce
+  - ilr_analytics_session
   - ilr_outreach_discount_api
