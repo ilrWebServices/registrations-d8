@@ -36,6 +36,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/ilrWebServices/persistent_visitor_parameters.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ilrWebServices/ilr-analytics-session.git"
     }
   ],
   "require": {
@@ -56,6 +60,7 @@
     "drupal/dynamic_entity_reference": "^4.0",
     "drupal/email_registration": "^2.0@RC",
     "drupal/erf": "2.x-dev",
+    "drupal/ilr_analytics_session": "dev-main",
     "drupal/ilr_outreach_discount_api": "^1",
     "drupal/key": "^1.14",
     "drupal/persistent_visitor_parameters": "^3",

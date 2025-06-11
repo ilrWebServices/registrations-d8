@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d37f8a27510a4b57fdc7cc85ac60a10",
+    "content-hash": "9555bd63d0eae5031a439410b99662e0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2958,6 +2958,29 @@
                 "source": "https://git.drupalcode.org/project/externalauth",
                 "issues": "https://www.drupal.org/project/issues/externalauth"
             }
+        },
+        {
+            "name": "drupal/ilr_analytics_session",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ilrWebServices/ilr-analytics-session.git",
+                "reference": "5d6062db131f860432403aae841b9c5f860488fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ilrWebServices/ilr-analytics-session/zipball/5d6062db131f860432403aae841b9c5f860488fa",
+                "reference": "5d6062db131f860432403aae841b9c5f860488fa",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "description": " A small Drupal module that provides a service to get an analytics ID (initially Google) from the current session.",
+            "support": {
+                "source": "https://github.com/ilrWebServices/ilr-analytics-session/tree/main",
+                "issues": "https://github.com/ilrWebServices/ilr-analytics-session/issues"
+            },
+            "time": "2025-06-11T20:49:21+00:00"
         },
         {
             "name": "drupal/ilr_outreach_discount_api",
@@ -15172,6 +15195,7 @@
         "drupal/address_display": 20,
         "drupal/email_registration": 5,
         "drupal/erf": 20,
+        "drupal/ilr_analytics_session": 20,
         "drupal/union_organizer": 20,
         "phpcompatibility/php-compatibility": 20
     },
