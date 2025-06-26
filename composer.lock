@@ -2965,12 +2965,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/ilr-analytics-session.git",
-                "reference": "5d6062db131f860432403aae841b9c5f860488fa"
+                "reference": "bb86d5ce297f500071da1c16a5438ffe585d7b24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/ilr-analytics-session/zipball/5d6062db131f860432403aae841b9c5f860488fa",
-                "reference": "5d6062db131f860432403aae841b9c5f860488fa",
+                "url": "https://api.github.com/repos/ilrWebServices/ilr-analytics-session/zipball/bb86d5ce297f500071da1c16a5438ffe585d7b24",
+                "reference": "bb86d5ce297f500071da1c16a5438ffe585d7b24",
                 "shasum": ""
             },
             "default-branch": true,
@@ -2980,7 +2980,7 @@
                 "source": "https://github.com/ilrWebServices/ilr-analytics-session/tree/main",
                 "issues": "https://github.com/ilrWebServices/ilr-analytics-session/issues"
             },
-            "time": "2025-06-11T20:49:21+00:00"
+            "time": "2025-06-12T16:45:24+00:00"
         },
         {
             "name": "drupal/ilr_outreach_discount_api",
