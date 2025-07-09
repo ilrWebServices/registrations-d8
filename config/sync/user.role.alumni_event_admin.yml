@@ -1,0 +1,27 @@
+uuid: 57490cf6-95c9-4ccb-9364-1493d42f121f
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.alumni_event
+  module:
+    - commerce
+    - commerce_order
+    - erf
+    - profile
+    - system
+    - toolbar
+id: alumni_event_admin
+label: 'Alumni event admin'
+weight: 7
+is_admin: null
+permissions:
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access registration administration pages'
+  - 'access toolbar'
+  - 'update alumni_event commerce_order'
+  - 'view alumni_event commerce_order'
+  - 'view alumni_event registrations'
+  - 'view any customer profile'
+  - 'view the administration theme'

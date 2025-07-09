@@ -1,0 +1,25 @@
+uuid: 01e281d2-19e0-4df4-815a-3b003f208a6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.alumni_event
+    - field.field.registration.alumni_event.participants
+    - field.field.registration.alumni_event.product_variation
+id: registration.alumni_event.default
+targetEntityType: registration
+bundle: alumni_event
+mode: default
+content:
+  participants:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  product_variation: true
+  user_id: true
