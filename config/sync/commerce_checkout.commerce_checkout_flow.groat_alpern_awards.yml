@@ -20,11 +20,10 @@ configuration:
   guest_new_account_notify: false
   panes:
     email_registration_login:
-      display_label: null
       step: login
       weight: 0
       wrapper_element: container
-      allow_guest_checkout: false
+      allow_guest_checkout: true
       allow_registration: true
       registration_form_mode: register
     contact_information:
@@ -38,6 +37,7 @@ configuration:
       step: order_information
       weight: 2
       wrapper_element: fieldset
+      always_display: false
       require_payment_method: false
     payment_process:
       display_label: null
@@ -48,17 +48,17 @@ configuration:
     completion_register:
       display_label: null
       step: _disabled
-      weight: 4
+      weight: 8
       wrapper_element: null
     'order_fields:checkout':
       display_label: 'Order fields'
       step: _disabled
-      weight: 4
+      weight: 9
       wrapper_element: container
     completion_message:
       display_label: null
       step: complete
-      weight: 5
+      weight: 4
       wrapper_element: null
       message:
         value: 'You can view your order on your account page when logged in.'
@@ -66,45 +66,45 @@ configuration:
     order_summary:
       display_label: null
       step: _sidebar
-      weight: 6
+      weight: 7
       wrapper_element: container
       view: registration_checkout_order_summary
     review:
       display_label: null
       step: _disabled
-      weight: 7
+      weight: 10
       wrapper_element: null
     customer_comments:
       display_label: null
       step: _disabled
-      weight: 10
+      weight: 11
       wrapper_element: fieldset
     coupon_redemption:
       display_label: null
       step: _disabled
-      weight: 10
+      weight: 12
       wrapper_element: container
       allow_multiple: false
     email_registration_completion_registration:
       display_label: null
-      step: _disabled
-      weight: 10
+      step: complete
+      weight: 5
       wrapper_element: container
     ilr_outreach_discount_redemption:
       display_label: null
       step: _disabled
-      weight: 10
+      weight: 13
       wrapper_element: container
       allow_multiple: false
     order_details:
       display_label: null
       step: complete
-      weight: 10
+      weight: 6
       wrapper_element: null
     login:
       display_label: null
       step: _disabled
-      weight: 11
+      weight: 14
       wrapper_element: null
       allow_guest_checkout: true
       allow_registration: false
