@@ -9,7 +9,9 @@ third_party_settings:
   commerce_cart:
     cart_block_view: commerce_cart_block
     cart_form_view: registration_cart_form
-    cart_expiration: {  }
+    cart_expiration:
+      number: 30
+      unit: day
     enable_cart_message: true
   commerce_checkout:
     checkout_flow: groat_alpern_awards
@@ -22,5 +24,5 @@ numberPattern: null
 refresh_mode: customer
 refresh_frequency: 300
 sendReceipt: true
-receiptBcc: ''
-receiptSubject: ''
+receiptBcc: ad838@cornell.edu
+receiptSubject: 'ILR Registrations Order #[commerce_order:order_number] Confirmed'
