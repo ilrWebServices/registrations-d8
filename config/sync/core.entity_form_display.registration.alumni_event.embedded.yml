@@ -1,0 +1,46 @@
+uuid: a6181ec9-1657-4b0d-a1c5-9c40b9279c84
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - core.entity_form_mode.registration.embedded
+    - erf.registration_type.alumni_event
+    - field.field.registration.alumni_event.participants
+    - field.field.registration.alumni_event.product_variation
+  module:
+    - erf_commerce
+    - inline_entity_form
+id: registration.alumni_event.embedded
+targetEntityType: registration
+bundle: alumni_event
+mode: embedded
+content:
+  participants:
+    type: inline_entity_form_complex
+    weight: 10
+    region: content
+    settings:
+      form_mode: inline
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  product_variation:
+    type: rendered_variations
+    weight: 0
+    region: content
+    settings:
+      variation_view_mode: selection
+    third_party_settings: {  }
+hidden:
+  locked: true
+  user_id: true

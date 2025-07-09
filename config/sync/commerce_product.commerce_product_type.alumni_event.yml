@@ -1,0 +1,13 @@
+uuid: def756ba-3b34-4c67-a921-c580fa403689
+langcode: en
+status: true
+dependencies: {  }
+id: alumni_event
+label: 'Alumni event'
+traits: {  }
+locked: false
+description: ''
+variationTypes:
+  - alumni_event
+multipleVariations: true
+injectVariationFields: false

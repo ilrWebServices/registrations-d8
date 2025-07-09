@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - erf.registration_type.alumni_event
     - erf.registration_type.groat_alpern_single
     - erf.registration_type.groat_alpern_sponsorship
     - erf.registration_type.international_summer_debate_camp
@@ -23,6 +24,7 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access content'
+  - 'create alumni_event registrations'
   - 'create groat_alpern_single registrations'
   - 'create groat_alpern_sponsorship registrations'
   - 'create international_summer_debate_camp registrations'

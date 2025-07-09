@@ -1,0 +1,35 @@
+uuid: 60b0d0c2-3c35-4aa6-9ad2-9a414752c14e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.alumni_event
+    - core.entity_view_mode.commerce_product_variation.selection
+  module:
+    - commerce_price
+id: commerce_product_variation.alumni_event.selection
+targetEntityType: commerce_product_variation
+bundle: alumni_event
+mode: selection
+content:
+  price:
+    type: commerce_price_default
+    label: hidden
+    settings:
+      strip_trailing_zeroes: false
+      currency_display: symbol
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  list_price: true
+  product_id: true
+  sku: true

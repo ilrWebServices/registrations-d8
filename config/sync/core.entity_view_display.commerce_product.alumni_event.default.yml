@@ -1,0 +1,45 @@
+uuid: 4d2aecb0-7405-494a-b6b8-a9c616f62281
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.alumni_event
+    - field.field.commerce_product.alumni_event.body
+    - field.field.commerce_product.alumni_event.field_registration_type
+    - field.field.commerce_product.alumni_event.field_tags
+  module:
+    - erf
+    - text
+id: commerce_product.alumni_event.default
+targetEntityType: commerce_product
+bundle: alumni_event
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_registration_type:
+    type: registration_form
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_tags: true
+  stores: true
+  uid: true
+  variations: true

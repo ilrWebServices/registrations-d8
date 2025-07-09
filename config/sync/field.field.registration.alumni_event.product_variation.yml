@@ -1,0 +1,21 @@
+uuid: ed752199-f774-43de-9192-2437ed549652
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.registration_type.alumni_event
+    - field.storage.registration.product_variation
+id: registration.alumni_event.product_variation
+field_name: product_variation
+entity_type: registration
+bundle: alumni_event
+label: Tickets
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: erf_commerce_variation
+  handler_settings: {  }
+field_type: entity_reference

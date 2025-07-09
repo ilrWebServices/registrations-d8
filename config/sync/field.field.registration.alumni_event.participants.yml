@@ -1,0 +1,28 @@
+uuid: ebb91cbb-46b0-481e-900b-9d4d2acec23d
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.alumni_event_attendee
+    - erf.registration_type.alumni_event
+    - field.storage.registration.participants
+id: registration.alumni_event.participants
+field_name: participants
+entity_type: registration
+bundle: alumni_event
+label: Participants
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:participant'
+  handler_settings:
+    target_bundles:
+      default: alumni_event_attendee
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

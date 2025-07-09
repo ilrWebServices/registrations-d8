@@ -1,0 +1,46 @@
+uuid: 2307868a-6f86-446e-90d2-5cc672243c67
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.alumni_event_attendee
+    - field.field.participant.alumni_event_attendee.field_address
+    - field.field.participant.alumni_event_attendee.field_class_year
+  module:
+    - address
+    - options
+    - user
+id: participant.alumni_event_attendee.default
+targetEntityType: participant
+bundle: alumni_event_attendee
+mode: default
+content:
+  field_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_class_year:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  mail:
+    type: email_mailto
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -10
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

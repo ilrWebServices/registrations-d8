@@ -28,6 +28,8 @@ use Drupal\Core\Render\Markup;
 use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\UserSession;
+use Drupal\erf\Entity\RegistrationInterface;
+use Drupal\erf\Form\RegistrationForm;
 use Drupal\user\UserInterface;
 
 /**
@@ -738,6 +740,13 @@ function ilr_registrations_alter_address_element($element, FormStateInterface $f
 
   if (isset($element['address']['organization'])) {
     $element['address']['organization']['#title'] = t('Organization');
+
+    $form_object = $form_state->getFormObject();
+    if ($form_object instanceof RegistrationForm && $form_object->getEntity() instanceof RegistrationInterface) {
+      if ($form_object->getEntity()->bundle() === 'alumni_event') {
+        $element['address']['organization']['#title'] = t('School');
+      }
+    }
   }
   return $element;
 }
