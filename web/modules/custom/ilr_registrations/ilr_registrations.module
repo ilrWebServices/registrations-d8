@@ -19,6 +19,8 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\StringTextareaWidget;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -811,4 +813,14 @@ function ilr_registrations_entity_operation(EntityInterface $entity) {
     ];
   }
   return $operations;
+}
+
+/**
+ * Custom allowed_values_function callback for the participant field_class_year.
+ *
+ * @see callback_allowed_values_function()
+ */
+function ilr_registrations_field_class_year_options(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity, &$cacheable) {
+  $years = range((int) date('Y') + 3, 1945);
+  return array_combine($years, $years);
 }
