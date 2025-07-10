@@ -1,0 +1,14 @@
+uuid: e5b5f634-4916-478f-9778-3a4f1f0395b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.alumni_event_admin
+  module:
+    - user
+id: user_remove_role_action.alumni_event_admin
+label: 'Remove the Alumni event admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: alumni_event_admin

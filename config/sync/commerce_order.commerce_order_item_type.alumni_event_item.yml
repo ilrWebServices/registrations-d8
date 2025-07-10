@@ -1,0 +1,10 @@
+uuid: 85794b7b-47a1-441a-b9a3-85c2b8a580eb
+langcode: en
+status: true
+dependencies: {  }
+id: alumni_event_item
+label: 'Alumni event item'
+traits: {  }
+locked: false
+purchasableEntityType: commerce_product_variation
+orderType: alumni_event

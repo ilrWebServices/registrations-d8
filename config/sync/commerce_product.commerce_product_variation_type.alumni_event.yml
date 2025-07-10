@@ -1,0 +1,10 @@
+uuid: 098d89da-70d7-455d-a6b8-2ddf00dbbdab
+langcode: en
+status: true
+dependencies: {  }
+id: alumni_event
+label: 'Alumni event'
+traits: {  }
+locked: false
+orderItemType: alumni_event_item
+generateTitle: false

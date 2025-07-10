@@ -1,0 +1,25 @@
+uuid: f4ee65c9-1b60-4383-a9db-2cf9ed0653b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.alumni_event
+    - core.entity_view_mode.commerce_product_variation.cart
+id: commerce_product_variation.alumni_event.cart
+targetEntityType: commerce_product_variation
+bundle: alumni_event
+mode: cart
+content:
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  list_price: true
+  price: true
+  product_id: true
+  sku: true

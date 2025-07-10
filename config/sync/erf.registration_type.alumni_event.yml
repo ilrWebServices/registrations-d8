@@ -1,0 +1,12 @@
+uuid: bc514e06-8143-4c37-a4f2-497fd6f470a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - erf_commerce
+third_party_settings:
+  erf_commerce:
+    cart_redirect: true
+    participants_as_quantity: true
+id: alumni_event
+label: 'Alumni event'

@@ -1,0 +1,21 @@
+uuid: b7760a22-3bf4-4529-b3fe-7ffd81d907ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - erf.participant_type.alumni_event_attendee
+    - field.storage.participant.field_class_year
+  module:
+    - options
+id: participant.alumni_event_attendee.field_class_year
+field_name: field_class_year
+entity_type: participant
+bundle: alumni_event_attendee
+label: 'Class year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,83 @@
+uuid: 625f8662-f76b-47f9-ab40-63fca3ae769e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.participant.order_item
+    - erf.participant_type.alumni_event_attendee
+    - field.field.participant.alumni_event_attendee.field_address
+    - field.field.participant.alumni_event_attendee.field_class_year
+  module:
+    - address_display
+    - ilr_groat
+id: participant.alumni_event_attendee.order_item
+targetEntityType: participant
+bundle: alumni_event_attendee
+mode: order_item
+content:
+  field_address:
+    type: address_display_formatter
+    label: hidden
+    settings:
+      address_display:
+        organization:
+          glue: ''
+          weight: -1
+          display: false
+        address_line1:
+          glue: ''
+          weight: 0
+          display: false
+        address_line2:
+          glue: ','
+          weight: 1
+          display: false
+        locality:
+          glue: ','
+          weight: 2
+          display: false
+        postal_code:
+          glue: ''
+          weight: 3
+          display: false
+        country_code:
+          glue: ''
+          weight: 4
+          display: false
+        langcode:
+          glue: ','
+          weight: 100
+          display: false
+        administrative_area:
+          glue: ','
+          weight: 100
+          display: false
+        dependent_locality:
+          glue: ','
+          weight: 100
+          display: false
+        sorting_code:
+          glue: ','
+          weight: 100
+          display: false
+        given_name:
+          glue: ''
+          weight: 100
+          display: true
+        family_name:
+          glue: ','
+          weight: 100
+          display: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_class_year:
+    type: integer_year
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  mail: true
+  uid: true

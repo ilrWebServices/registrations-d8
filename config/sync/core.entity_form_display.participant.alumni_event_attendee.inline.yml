@@ -1,0 +1,39 @@
+uuid: 23c69684-13ec-49fe-a3ba-a9242d70ee1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.participant.inline
+    - erf.participant_type.alumni_event_attendee
+    - field.field.participant.alumni_event_attendee.field_address
+    - field.field.participant.alumni_event_attendee.field_class_year
+  module:
+    - address
+id: participant.alumni_event_attendee.inline
+targetEntityType: participant
+bundle: alumni_event_attendee
+mode: inline
+content:
+  field_address:
+    type: address_default
+    weight: 0
+    region: content
+    settings:
+      wrapper_type: details
+    third_party_settings: {  }
+  field_class_year:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  mail:
+    type: email_default
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+hidden:
+  uid: true

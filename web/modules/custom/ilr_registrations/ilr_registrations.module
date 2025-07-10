@@ -19,6 +19,8 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\StringTextareaWidget;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -26,6 +28,8 @@ use Drupal\Core\Render\Markup;
 use Drupal\ilr_registrations\IlrRegistrationsBlockAlter;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\UserSession;
+use Drupal\erf\Entity\RegistrationInterface;
+use Drupal\erf\Form\RegistrationForm;
 use Drupal\user\UserInterface;
 
 /**
@@ -736,6 +740,13 @@ function ilr_registrations_alter_address_element($element, FormStateInterface $f
 
   if (isset($element['address']['organization'])) {
     $element['address']['organization']['#title'] = t('Organization');
+
+    $form_object = $form_state->getFormObject();
+    if ($form_object instanceof RegistrationForm && $form_object->getEntity() instanceof RegistrationInterface) {
+      if ($form_object->getEntity()->bundle() === 'alumni_event') {
+        $element['address']['organization']['#title'] = t('School');
+      }
+    }
   }
   return $element;
 }
@@ -811,4 +822,14 @@ function ilr_registrations_entity_operation(EntityInterface $entity) {
     ];
   }
   return $operations;
+}
+
+/**
+ * Custom allowed_values_function callback for the participant field_class_year.
+ *
+ * @see callback_allowed_values_function()
+ */
+function ilr_registrations_field_class_year_options(FieldStorageDefinitionInterface $definition, FieldableEntityInterface $entity, &$cacheable) {
+  $years = range((int) date('Y') + 3, 1945);
+  return array_combine($years, $years);
 }

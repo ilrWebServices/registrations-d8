@@ -1,0 +1,7 @@
+uuid: 37a3ff39-40cd-4c22-9980-a453b1c613b9
+langcode: en
+status: true
+dependencies: {  }
+id: alumni_event_attendee
+label: 'Alumni event attendee'
+reference_user: false
