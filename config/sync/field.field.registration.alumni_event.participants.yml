@@ -12,7 +12,7 @@ entity_type: registration
 bundle: alumni_event
 label: Participants
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
