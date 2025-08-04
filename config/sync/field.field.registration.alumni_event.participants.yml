@@ -20,9 +20,10 @@ settings:
   handler: 'default:participant'
   handler_settings:
     target_bundles:
-      default: alumni_event_attendee
+      alumni_event_attendee: alumni_event_attendee
     sort:
       field: _none
+      direction: ASC
     auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference
