@@ -1440,17 +1440,17 @@
         },
         {
             "name": "drupal/address",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/address.git",
-                "reference": "2.0.3"
+                "reference": "2.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/address-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "fa8273cf5abd21fd8a58de77844011b122ab3aa6"
+                "url": "https://ftp.drupal.org/files/projects/address-2.0.4.zip",
+                "reference": "2.0.4",
+                "shasum": "5a86f7abc028f3d9833784dbf0791a6e4463da8e"
             },
             "require": {
                 "commerceguys/addressing": "^2.1.1",
@@ -1465,8 +1465,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1736773032",
+                    "version": "2.0.4",
+                    "datestamp": "1746462054",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1646,17 +1646,17 @@
         },
         {
             "name": "drupal/commerce",
-            "version": "3.0.2",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce.git",
-                "reference": "3.0.2"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce-3.0.2.zip",
-                "reference": "3.0.2",
-                "shasum": "7024c86d554569d274695ca33af39a15dcf28055"
+                "url": "https://ftp.drupal.org/files/projects/commerce-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "7c112d32957669f523261560df911f06a4f26fb3"
             },
             "require": {
                 "commerceguys/intl": "^2.0.6",
@@ -1692,8 +1692,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.2",
-                    "datestamp": "1745850985",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1726,7 +1726,7 @@
         },
         {
             "name": "drupal/commerce_cart",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
@@ -1735,8 +1735,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1769,7 +1769,7 @@
         },
         {
             "name": "drupal/commerce_checkout",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_cart": "*",
@@ -1779,8 +1779,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1879,7 +1879,7 @@
         },
         {
             "name": "drupal/commerce_number_pattern",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_store": "*",
@@ -1888,8 +1888,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1922,7 +1922,7 @@
         },
         {
             "name": "drupal/commerce_order",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_number_pattern": "*",
@@ -1936,8 +1936,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1970,7 +1970,7 @@
         },
         {
             "name": "drupal/commerce_price",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/core": "^10.3 || ^11"
@@ -1978,8 +1978,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2012,7 +2012,7 @@
         },
         {
             "name": "drupal/commerce_store",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "require": {
                 "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
@@ -2021,8 +2021,8 @@
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1742306320",
+                    "version": "3.1.0",
+                    "datestamp": "1751630881",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3030,7 +3030,7 @@
                     "homepage": "https://www.drupal.org/user/86106"
                 },
                 {
-                    "name": "Centarro",
+                    "name": "centarro",
                     "homepage": "https://www.drupal.org/user/3661446"
                 },
                 {
@@ -3526,17 +3526,17 @@
         },
         {
             "name": "drupal/state_machine",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/state_machine.git",
-                "reference": "8.x-1.12"
+                "reference": "8.x-1.13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.12.zip",
-                "reference": "8.x-1.12",
-                "shasum": "0ecc47e903b6783d58d58d658f39e57680ee69c1"
+                "url": "https://ftp.drupal.org/files/projects/state_machine-8.x-1.13.zip",
+                "reference": "8.x-1.13",
+                "shasum": "7b676068295b412e049d1915daf52225f1044ace"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10.1 || ^11",
@@ -3548,8 +3548,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.12",
-                    "datestamp": "1721740592",
+                    "version": "8.x-1.13",
+                    "datestamp": "1746459629",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
