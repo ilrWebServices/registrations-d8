@@ -37,6 +37,7 @@ module:
   erf: 0
   erf_commerce: 0
   field: 0
+  field_ui: 0
   filter: 0
   ilr_commerce_manual_payment: 0
   ilr_debate_camp: 0
