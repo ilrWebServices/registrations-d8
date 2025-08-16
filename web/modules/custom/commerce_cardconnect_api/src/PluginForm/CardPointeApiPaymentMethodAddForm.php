@@ -65,7 +65,6 @@ class CardPointeApiPaymentMethodAddForm extends PaymentMethodAddForm {
       <iframe id="tokenFrame" name="tokenFrame" src="{{ url }}" height="300px" width="100%" scrolling="no"></iframe>
       <noscript>
         <p>{{ no_js_message }}</p>
-        <style>#tokenFrame{display:none;}
       </noscript>
       JSC,
       '#context' => [
