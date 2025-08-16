@@ -98,7 +98,7 @@ class DiscountRedemption extends InlineFormBase {
     $order = $this->entityTypeManager->getStorage('commerce_order')->load($this->configuration['order_id']);
 
     if (!$order) {
-      throw new \RuntimeException('Invalid order_id given to the coupon_redemption inline form.');
+      throw new \RuntimeException('Invalid order_id given to the ilr_outreach_discount_redemption inline form.');
     }
 
     assert($order instanceof OrderInterface);
