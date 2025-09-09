@@ -11,3 +11,14 @@
 function ilr_registrations_update_last_removed() {
   return 9001;
 }
+
+/**
+ * Install ilr_analytics_session module.
+ *
+ * It contains a new service required by ilr_registrations.
+ */
+function ilr_registrations_update_10001() {
+  if (!\Drupal::service('module_handler')->moduleExists('ilr_analytics_session')) {
+    \Drupal::service('module_installer')->install(['ilr_analytics_session']);
+  }
+}
