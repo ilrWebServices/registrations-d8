@@ -11,7 +11,7 @@ services:
       - { name: event_subscriber }
   ilr_registrations_order_create_subscriber:
     class: Drupal\ilr_registrations\EventSubscriber\OrderCreateSubscriber
-    arguments: ['@request_stack']
+    arguments: ['@request_stack', '@ilr_analytics_session_manager']
     tags:
       - { name: event_subscriber }
   ilr_registrations_salesforce_event_subscriber:
@@ -21,7 +21,7 @@ services:
       - { name: event_subscriber }
   ilr_registrations.serialized_order:
     class: Drupal\ilr_registrations\SerializedOrderManager
-    arguments: ['@entity_type.manager', '@config.factory', '@request_stack', '@ilr_analytics_session_manager']
+    arguments: ['@entity_type.manager', '@config.factory', '@request_stack']
   serializer.encoder.csv:
     class: Symfony\Component\Serializer\Encoder\CsvEncoder
     tags:

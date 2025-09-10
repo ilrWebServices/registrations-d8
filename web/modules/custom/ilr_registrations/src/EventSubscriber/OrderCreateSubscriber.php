@@ -6,6 +6,7 @@ use Drupal\commerce_order\Event\OrderEvent;
 use Drupal\commerce_order\Event\OrderEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\ilr_analytics_session\IlrAnalyticsSessionManager;
 
 /**
  * Event subscriber for order creation.
@@ -15,21 +16,12 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class OrderCreateSubscriber implements EventSubscriberInterface {
 
   /**
-   * The request stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  protected $requestStack;
-
-  /**
    * Constructs a new OrderCreateSubscriber object.
-   *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack.
    */
-  public function __construct(RequestStack $request_stack) {
-    $this->requestStack = $request_stack;
-  }
+  public function __construct(
+    protected RequestStack $requestStack,
+    protected IlrAnalyticsSessionManager $anlyticsSessionManager
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -74,6 +66,10 @@ class OrderCreateSubscriber implements EventSubscriberInterface {
     if ($utm_codes) {
       $order->setData('utm_codes', $utm_codes);
     }
+
+    // Add the analytics id (usually from _ga cookie value) to the order for
+    // later use.
+    $order->setData('analytics_session_id', $this->anlyticsSessionManager->getClientId());
   }
 
 }

@@ -5,7 +5,6 @@ namespace Drupal\ilr_registrations;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\ilr_analytics_session\IlrAnalyticsSessionManager;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -26,8 +25,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
     protected ConfigFactoryInterface $configFactory,
-    RequestStack $request_stack,
-    protected IlrAnalyticsSessionManager $anlyticsSessionManager
+    RequestStack $request_stack
   ) {
     $this->request = $request_stack->getCurrentRequest();
   }
@@ -59,7 +57,7 @@ class SerializedOrderManager implements SerializedOrderManagerInterface {
       "point_of_sale" => $this->configFactory->get('system.site')->get('name') . ' : ' . $this->request->getHost(),
       "response_webhook_url" => $this->request->getSchemeAndHttpHost() . '/hooks/v1/salesforce-commerce',
       "order_id" => $order->id(),
-      "analytics_session_id" => $this->anlyticsSessionManager->getClientId(),
+      "analytics_session_id" => $order->getData('analytics_session_id'),
       "payments" => [],
       "customer" => [
         // `customer_profile_id` was originally planned to be the profile entity
