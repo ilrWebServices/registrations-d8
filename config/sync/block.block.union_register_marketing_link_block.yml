@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - commerce_product
     - ilr_registrations
     - system
   theme:
@@ -26,3 +27,10 @@ visibility:
     negate: false
     context_mapping: {  }
     pages: '/product/*'
+  product_type:
+    id: product_type
+    bundles:
+      course: course
+    negate: 0
+    context_mapping:
+      product: '@commerce_product.product_route_context:commerce_product'
