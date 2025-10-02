@@ -26,3 +26,22 @@
     display: inline;
   }
 }
+
+.marketing-link-block {
+  list-style-type: none;
+  display: inline-flex;
+  gap: var(--cu-ps1);
+  margin: 0 0 0 var(--cu-ps1);
+  padding: var(--cu-vr-1) 0 var(--cu-vr1);
+
+  .marketing-link-block__link {
+    display: block;
+    color: #6c6c6c;
+    font-weight: 400;
+  }
+
+  li:last-child {
+    padding-left: var(--cu-ps1);
+    border-left: 1px solid #ccc;
+  }
+}

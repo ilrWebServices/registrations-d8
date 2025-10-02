@@ -79,6 +79,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
   public function defaultConfiguration() {
     return [
       'marketing_site_url' => 'http://www.ilr.cornell.edu',
+      'course_catalog_uri' => '/programs/professional-education',
       'link_text' => 'Return to course details.',
     ] + parent::defaultConfiguration();
   }
@@ -92,6 +93,14 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
       '#title' => $this->t('Marketing site url'),
       '#description' => $this->t('The url of the marketing site'),
       '#default_value' => $this->configuration['marketing_site_url'],
+      '#weight' => '0',
+    ];
+
+    $form['course_catalog_uri'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Course catalog path'),
+      '#description' => $this->t('The uri path to the course catalog on the marketing site.'),
+      '#default_value' => $this->configuration['course_catalog_uri'],
       '#weight' => '0',
     ];
 
@@ -114,6 +123,7 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->configuration['marketing_site_url'] = $form_state->getValue('marketing_site_url');
     $this->configuration['link_text'] = $form_state->getValue('link_text');
+    $this->configuration['course_catalog_uri'] = $form_state->getValue('course_catalog_uri');
   }
 
   /**
@@ -140,17 +150,40 @@ class MarketingLinkBlock extends BlockBase implements ContainerFactoryPluginInte
     }
 
     $marketing_site_url = $this->configuration['marketing_site_url'];
+    $course_catalog_url = $marketing_site_url . $this->configuration['course_catalog_uri'];
     $marketing_site_url .= '/course/' . $mapped_object->sfid();
 
-    $build['marketing_link_block']['content'] = [
+    $links = [];
+
+    $links[] = [
       '#type' => 'link',
       '#title' => $this->configuration['link_text'],
       '#url' => Url::fromUri($marketing_site_url),
+      '#attributes' => ['class' => ['marketing-link-block__link']],
       '#cache' => [
         'contexts' => [
           'url.path',
         ],
       ],
+    ];
+
+    $links[] = [
+      '#type' => 'link',
+      '#title' => $this->t('Course Catalog'),
+      '#url' => Url::fromUri($course_catalog_url),
+      '#attributes' => ['class' => ['marketing-link-block__link']],
+      '#cache' => [
+        'contexts' => [
+          'url.path',
+        ],
+      ],
+    ];
+
+    $build['marketing_link_block']['content'] = [
+      '#theme' => 'item_list',
+      '#items' => $links,
+      '#type' => 'ul',
+      '#attributes' => ['class' => ['marketing-link-block']],
     ];
 
     return $build;

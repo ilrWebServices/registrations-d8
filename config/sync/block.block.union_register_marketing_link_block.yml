@@ -20,7 +20,8 @@ settings:
   label_display: '0'
   provider: ilr_registrations
   marketing_site_url: 'https://www.ilr.cornell.edu'
-  link_text: 'Return to course details.'
+  course_catalog_uri: /programs/professional-education
+  link_text: 'Back to course page'
 visibility:
   request_path:
     id: request_path
