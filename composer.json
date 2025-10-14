@@ -71,7 +71,7 @@
     "drupal/token": "^1.5",
     "drupal/typed_data": "^2",
     "drupal/union_organizer": "dev-union_ng",
-    "drush/drush": "^12",
+    "drush/drush": "^13",
     "firebase/php-jwt": "^6.0",
     "ilrwebservices/cardpointe-gateway-rest-api-client": "^1.0",
     "platformsh/config-reader": "^3",
