@@ -982,12 +982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/union.git",
-                "reference": "ec849b464708afc6990528683f927d5d0a47fc47"
+                "reference": "1153d220dcb3dd51daba2557353f8a2a4e4f71ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/ec849b464708afc6990528683f927d5d0a47fc47",
-                "reference": "ec849b464708afc6990528683f927d5d0a47fc47",
+                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/1153d220dcb3dd51daba2557353f8a2a4e4f71ea",
+                "reference": "1153d220dcb3dd51daba2557353f8a2a4e4f71ea",
                 "shasum": ""
             },
             "require": {
@@ -996,7 +996,6 @@
                 "symfony/yaml": "^4.4.19 || ^5 || ^6",
                 "twig/twig": "^2 || ^3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1021,7 +1020,7 @@
                 "source": "https://github.com/ilrWebServices/union/tree/union_ng",
                 "issues": "https://github.com/ilrWebServices/union/issues"
             },
-            "time": "2025-05-29T21:06:40+00:00"
+            "time": "2025-08-21T18:59:09+00:00"
         },
         {
             "name": "cweagans/composer-patches",
