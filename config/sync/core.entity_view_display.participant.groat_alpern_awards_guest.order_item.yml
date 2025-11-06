@@ -10,7 +10,7 @@ dependencies:
     - field.field.participant.groat_alpern_awards_guest.field_degree
     - field.field.participant.groat_alpern_awards_guest.field_other_school
   module:
-    - address
+    - address_display
     - ilr_groat
 id: participant.groat_alpern_awards_guest.order_item
 targetEntityType: participant
@@ -18,22 +18,62 @@ bundle: groat_alpern_awards_guest
 mode: order_item
 content:
   field_address:
-    type: address_default
+    type: address_display_formatter
     label: hidden
     settings:
-      field_settings:
-        givenName: givenName
-        familyName: familyName
-        additionalName: 0
-        organization: 0
-        addressLine1: 0
-        addressLine2: 0
-        postalCode: 0
-        sortingCode: 0
-        dependentLocality: 0
-        locality: 0
-        administrativeArea: 0
-        country: 0
+      address_display:
+        organization:
+          glue: ''
+          weight: -1
+          display: false
+        address_line1:
+          glue: ''
+          weight: 0
+          display: false
+        address_line2:
+          glue: ','
+          weight: 1
+          display: false
+        address_line3:
+          glue: ','
+          weight: 2
+          display: false
+        locality:
+          glue: ','
+          weight: 3
+          display: false
+        postal_code:
+          glue: ''
+          weight: 4
+          display: false
+        country_code:
+          glue: ''
+          weight: 5
+          display: false
+        langcode:
+          glue: ','
+          weight: 100
+          display: false
+        administrative_area:
+          glue: ','
+          weight: 100
+          display: false
+        dependent_locality:
+          glue: ','
+          weight: 100
+          display: false
+        sorting_code:
+          glue: ','
+          weight: 100
+          display: false
+        given_name:
+          glue: ''
+          weight: 100
+          display: true
+        family_name:
+          glue: ','
+          weight: 100
+          display: true
     third_party_settings: {  }
     weight: 0
     region: content
