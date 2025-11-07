@@ -819,8 +819,8 @@ display:
           value:
             min: ''
             max: ''
-            value: 'january 1'
-            type: date
+            value: '-6 months'
+            type: offset
           group: 1
           exposed: false
           expose:
