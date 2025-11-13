@@ -12052,12 +12052,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "8daeec54772a592ad369be23ae02ed593c71e7f1"
+                "reference": "ff4efdd80e094a81fd6329b570c9a632f21d42b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/8daeec54772a592ad369be23ae02ed593c71e7f1",
-                "reference": "8daeec54772a592ad369be23ae02ed593c71e7f1",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/ff4efdd80e094a81fd6329b570c9a632f21d42b4",
+                "reference": "ff4efdd80e094a81fd6329b570c9a632f21d42b4",
                 "shasum": ""
             },
             "require": {
@@ -12138,32 +12138,32 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-09-19T19:40:19+00:00"
+            "time": "2025-10-30T20:24:19+00:00"
         },
         {
             "name": "phpcsstandards/phpcsutils",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "b22b59e3d9ec8fe4953e42c7d59117c6eae70eae"
+                "reference": "fa82d14ad1c1713224a52c66c78478145fe454ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/b22b59e3d9ec8fe4953e42c7d59117c6eae70eae",
-                "reference": "b22b59e3d9ec8fe4953e42c7d59117c6eae70eae",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/fa82d14ad1c1713224a52c66c78478145fe454ba",
+                "reference": "fa82d14ad1c1713224a52c66c78478145fe454ba",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
                 "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.13.3 || ^4.0"
+                "squizlabs/php_codesniffer": "^3.13.5 || ^4.0.1"
             },
             "require-dev": {
                 "ext-filter": "*",
                 "php-parallel-lint/php-console-highlighter": "^1.0",
                 "php-parallel-lint/php-parallel-lint": "^1.4.0",
-                "phpcsstandards/phpcsdevcs": "^1.1.6",
+                "phpcsstandards/phpcsdevcs": "^1.2.0",
                 "yoast/phpunit-polyfills": "^1.1.0 || ^2.0.0 || ^3.0.0"
             },
             "type": "phpcodesniffer-standard",
@@ -12231,7 +12231,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-09-05T00:00:03+00:00"
+            "time": "2025-11-11T00:17:56+00:00"
         },
         {
             "name": "phpspec/prophecy",
