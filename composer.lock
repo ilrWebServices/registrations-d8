@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57dd6460b34cf84172699f5dc0ffabbf",
+    "content-hash": "a9ad21bb18656e6bfdd790eb8a51354c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -978,16 +978,16 @@
         },
         {
             "name": "cornell/union",
-            "version": "dev-union_ng",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/union.git",
-                "reference": "1153d220dcb3dd51daba2557353f8a2a4e4f71ea"
+                "reference": "43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/1153d220dcb3dd51daba2557353f8a2a4e4f71ea",
-                "reference": "1153d220dcb3dd51daba2557353f8a2a4e4f71ea",
+                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2",
+                "reference": "43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2",
                 "shasum": ""
             },
             "require": {
@@ -996,6 +996,7 @@
                 "symfony/yaml": "^4.4.19 || ^5 || ^6",
                 "twig/twig": "^2 || ^3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1017,10 +1018,10 @@
             ],
             "description": "A component-based design system",
             "support": {
-                "source": "https://github.com/ilrWebServices/union/tree/union_ng",
+                "source": "https://github.com/ilrWebServices/union/tree/master",
                 "issues": "https://github.com/ilrWebServices/union/issues"
             },
-            "time": "2025-08-21T18:59:09+00:00"
+            "time": "2025-11-12T18:25:05+00:00"
         },
         {
             "name": "cweagans/composer-patches",
@@ -15303,7 +15304,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "cornell/union": 20,
         "drupal/address_display": 20,
         "drupal/email_registration": 5,
         "drupal/erf": 20,

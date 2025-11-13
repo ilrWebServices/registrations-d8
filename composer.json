@@ -45,7 +45,7 @@
   "require": {
     "php": ">=8.0",
     "composer/installers": "^2",
-    "cornell/union": "dev-union_ng",
+    "cornell/union": "master",
     "cweagans/composer-patches": "^1.6.5",
     "drupal/address_display": "^1.0@dev",
     "drupal/admin_toolbar": "^3.0.0",
