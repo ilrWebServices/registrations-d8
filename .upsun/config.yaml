@@ -24,7 +24,6 @@ applications:
                 composer/composer: '~2.7.0'
         hooks:
             build: |
-                curl -sS https://platform.sh/cli/installer | php
                 set -e
                 composer --no-dev --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader
                 npm install
@@ -65,15 +64,6 @@ applications:
                 # Run drush cron every five minutes
                 spec: '*/5 * * * *'
                 cmd: 'cd web ; drush core-cron'
-            snapshot:
-                # Take a snapshot automatically every night at 5am (UTC). See
-                # https://docs.platform.sh/administration/backup-and-restore.html#automated-backups
-                # for more info about API tokens and configuration.
-                spec: '0 5 * * *'
-                cmd: |
-                    if [ "$PLATFORM_BRANCH" = master ]; then
-                      platform snapshot:create --yes --no-wait
-                    fi
             unclog:
                 # Clear cron logs from watchdog every every 24 hours
                 spec: '0 6 * * *'
