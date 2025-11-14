@@ -921,9 +921,9 @@ if (getenv('MARKETING_SITE_HOSTNAME')) {
   $config['block.block.union_register_marketing_link_block']['settings']['marketing_site_url'] = getenv('MARKETING_SITE_HOSTNAME');
 }
 
-// Automatic Platform.sh settings.
-if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
-  include $app_root . '/' . $site_path . '/settings.platformsh.php';
+// Upsun configuration
+if (getenv('PLATFORM_APPLICATION') && file_exists(__DIR__ . '/settings.upsun.php')) {
+  include __DIR__ . '/settings.upsun.php';
 }
 
 /**
