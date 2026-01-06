@@ -982,12 +982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ilrWebServices/union.git",
-                "reference": "43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2"
+                "reference": "85f017683e804e8933a916329374e1d950a7b4e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2",
-                "reference": "43d03ab0c8eb63a4a1f5fb2fdec0ac35f53c14d2",
+                "url": "https://api.github.com/repos/ilrWebServices/union/zipball/85f017683e804e8933a916329374e1d950a7b4e6",
+                "reference": "85f017683e804e8933a916329374e1d950a7b4e6",
                 "shasum": ""
             },
             "require": {
@@ -1021,7 +1021,7 @@
                 "source": "https://github.com/ilrWebServices/union/tree/master",
                 "issues": "https://github.com/ilrWebServices/union/issues"
             },
-            "time": "2025-11-12T18:25:05+00:00"
+            "time": "2025-12-18T16:41:22+00:00"
         },
         {
             "name": "cweagans/composer-patches",
