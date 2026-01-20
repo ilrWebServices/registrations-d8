@@ -21,7 +21,7 @@ applications:
             flavor: none
         dependencies:
             php:
-                composer/composer: '~2.7.0'
+                composer/composer: '~2.9.0'
         hooks:
             build: |
                 set -e
