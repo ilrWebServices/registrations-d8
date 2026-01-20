@@ -2,7 +2,7 @@ applications:
     register:
         type: 'php:8.3'
         relationships:
-            database: 'mysqldb:mysql'
+            db:
         runtime:
             extensions:
                 - apcu
