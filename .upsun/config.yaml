@@ -1,5 +1,6 @@
 applications:
     register:
+        container_profile: HIGH_CPU
         type: 'php:8.3'
         relationships:
             mariadb:
@@ -73,6 +74,7 @@ applications:
 services:
     mariadb:
         type: mariadb:10.11
+        container_profile: HIGH_MEMORY
 routes:
     "https://{default}/":
         type: upstream
