@@ -26,3 +26,5 @@
 /node_modules/
 /web/themes/custom/union_register/css/*
 !/web/themes/custom/union_register/css/typography.css
+
+/.upsun/local/
