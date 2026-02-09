@@ -2,7 +2,7 @@ applications:
     register:
         type: 'php:8.3'
         relationships:
-            db:
+            mariadb:
         runtime:
             extensions:
                 - apcu
@@ -71,8 +71,8 @@ applications:
         source:
             root: /
 services:
-    db:
-        type: mariadb:10.6
+    mariadb:
+        type: mariadb:10.11
 routes:
     "https://{default}/":
         type: upstream
