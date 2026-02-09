@@ -69,6 +69,10 @@ To work on a blank slate of the codebase without syncing content and data from p
 $ drush si minimal --config-dir=../config/sync
 ```
 
+### Required environment variables
+
+Previously, these were documented in `.env.example`, and they still are. Additional notes will go here.
+
 ## Adding and Updating Modules and Other Dependencies
 
 Use standard composer commands to add, remove, and update project dependencies. To add the rules module, for example, run:
