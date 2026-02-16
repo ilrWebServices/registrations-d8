@@ -56,3 +56,16 @@ aside.layout-sidebar-first {
     justify-content: space-between;
   }
 }
+
+.maintenance-page {
+  padding: 0 var(--cu-ps1);
+
+  header {
+    display: flex;
+    gap: var(--cu-ps1);
+  }
+
+  header img {
+    min-width: 100px;
+  }
+}
